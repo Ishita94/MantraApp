@@ -8,20 +8,23 @@
 import SwiftUI
 
 struct SetSymptomContentPage: View {
-    //    @State var pastReportedSymptoms:[SymptoPickerItem] = [
-    //     SymptoPickerItem(symptomName: "Nausea"),
-    //     SymptoPickerItem(symptomName: "Fatigue"),
-    //     SymptoPickerItem(symptomName: "Pain")]
-    
+    @State var item: Symptom
     @State var symptomName: String
+
+//    @Binding var path: NavigationPath
+    @Binding var loggedIn: Bool
+    @State var selectedSegment: Int = 0
+    @EnvironmentObject var generalViewModel : GeneralViewModel
+    @EnvironmentObject var symptomViewModel : SymptomViewModel
+
+    @State private var readyToNavigate = false
+
     
     var body: some View {
         NavigationStack{
             VStack (alignment: .leading){
-                Text("""
-                     New Symptom Report
-                     """)
-                .foregroundColor(Color(.white))
+                Text("Symptom Report")
+                .foregroundColor(.white)
                 .background(Color(.primary4))
                 .font(.smallTitle)
                 .cornerRadius(6)
@@ -46,7 +49,7 @@ struct SetSymptomContentPage: View {
 //                            .frame(height: 100)
                 
                 Text("""
-                    As this is a new symptom, you will need to make an initial severity report. Please rate it on a scale of 0 to 10, with 0 being an absence of symptom and 10 being very severe.
+                    Please rate it on a scale of 0 to 10, with 0 being an absence of symptom and 10 being very severe.
                     """)
                 .foregroundColor(Color(.blackMediumEmphasis))
                 .font(.regularText)
@@ -57,40 +60,29 @@ struct SetSymptomContentPage: View {
                 SetSymptomRatingView()
                 
                 Divider()
-
-                    NavigationLink {
-                        ReportedSymptomsView()
-                    } label: {
-                        VStack{
-                            Button(action: {}) {
-                                HStack {
-                                    Image(systemName: "checkmark.circle.fill")
-                                        .foregroundColor(Color(.white))
-                                    Text("Confirm")
-                                        .foregroundColor(.white)
-                                        .font(.titleinRowItem)
-                                        .frame(maxWidth: .infinity)
-                                }
-                            }
-                        }
-                        .padding()
-                        .background(Color(.primary4))
-                        .cornerRadius(10)
+                
+                Button(action: {
+                    if(item.id==nil){
+                        symptomViewModel.saveSymptomReport(symptomReport: SymptomReport(creationDateTime: item.creationDateTime, rating: generalViewModel.selectedSegment, symptomName: symptomName, symptomComparisonState: "", reportCompletionStatus: false, recentStatus: "New", userId: ""))
                     }
-                                
-//                Button(action: {}) {
-//                    HStack {
-//                        Image(systemName: "checkmark.circle.fill")
-//                            .foregroundColor(Color(.white))
-//                        Text("Confirm")
-//                            .foregroundColor(.white)
-//                            .font(.titleinRowItem)
-//                            .frame(maxWidth: .infinity)
-//                    }
-//                }
-//                .padding()
-//                .background(Color(.primary4))
-//                .cornerRadius(10)
+                    else
+                    {
+                        symptomViewModel.editSymptomReport(symptomReport: SymptomReport( id:item.id,  creationDateTime: item.creationDateTime, rating: generalViewModel.selectedSegment, symptomName: symptomName, symptomComparisonState: "", reportCompletionStatus: false, recentStatus: "New", userId: ""))
+                    }
+                    readyToNavigate = true
+                }) {
+                    HStack {
+                        Image(systemName: "checkmark.circle.fill")
+                            .foregroundColor(.white)
+                        Text("Confirm")
+                            .foregroundColor(.white)
+                            .font(.smallTitle)
+                            .frame(maxWidth: .infinity)
+                    }
+                    .padding()
+                    .background(Color(.primary4))
+                    .cornerRadius(10)
+                }
                 
                 Button(action: {}) {
                     HStack {
@@ -108,11 +100,18 @@ struct SetSymptomContentPage: View {
                         .strokeBorder(Color(.outlineGrey), lineWidth: 1)
                 )
             }
-            
+            .navigationDestination(isPresented: $readyToNavigate) {
+                    AddorEditSymptomsLandingPage(loggedIn: $loggedIn, dateString: item.creationDateTime.datetoString()!,
+                        showAfterCreatingNewSymptomReport: true)
+            }
+            .presentationDetents([.fraction(0.8), .large])
         }
     }
 }
 
 #Preview {
-    SetSymptomContentPage(symptomName: "N/A")
+    SetSymptomContentPage(item: Symptom(symptomName: "Nausea", rating: 0, recentStatus: "", creationDateTime: Date.now, tracking: true, userId: ""), symptomName: "Nausea", loggedIn: Binding.constant(true))
+        .environmentObject(GeneralViewModel())
+        .environmentObject(SymptomViewModel())
+
 }

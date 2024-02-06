@@ -9,105 +9,147 @@ import SwiftUI
 
 struct ChooseSymptomComparisonView: View {
     @Binding var isSheetVisible: Bool
-    @Binding var showThirdView: Bool
+    @State var symptomComparisonState = "Much Better"
+    @State var readyToNavigate: Bool = false
+    @State var item: SymptomReport
+    @EnvironmentObject var symptomController : SymptomViewModel
+    @EnvironmentObject var generalViewModel : GeneralViewModel
+    @Environment(\.dismiss) var dismiss
+    @Binding var loggedIn: Bool
+    @State var dateString: String
+    @State var edit: Bool
 
-    @State var reportedItems:[SymptoPickerItem] = [
-        SymptoPickerItem(symptomName: "Nausea"),
-        SymptoPickerItem(symptomName: "Fatigue"),
-        SymptoPickerItem(symptomName: "Pain")]
-    
     var body: some View {
         NavigationStack{
             ZStack{
-                VStack (){
-                    Text("""
-                     Please choose up to 5 symptoms to understand more about your health.
-                     """)
-                    .foregroundColor(Color(.black))
-                    .font(.titleinRowItem)
+                VStack (alignment: .leading){
                     Divider()
-                    Text("""
-                If a symptom is not listed, click Add a new  symptom.
-                """)
-                    .foregroundColor(Color(.black))
-                    .font(.regularText)
-                    .padding(.bottom, 8.0)
-                    Text("""
-                     Swipe left on a symptom to delete it from the list.
-                    """)
-                    .foregroundColor(Color(.black))
-                    .font(.regularText)
-                    .padding(.bottom, 22.0)
-                    Button(action: {}) {
-                        HStack {
-                            Image(systemName: "plus.circle")
-                                .foregroundColor(.white)
-                            Text("Add new symptom")
-                                .foregroundColor(.white)
-                                .font(.titleinRowItem)
-                                .frame(maxWidth: .infinity)
-                        }
+                    VStack {
+                        Text("Title")
+                            .foregroundColor(Color(.blackMediumEmphasis))
+                            .font(.regularText)
+                            .padding(.bottom, 11.0)
                     }
-                    .padding()
-                    .background(Color(.primary4))
-                    .cornerRadius(10)
+                    
+                    TextEditor(text: $item.symptomName)
+                        .padding(4)
+                        .background(Color.clear)
+                        .foregroundColor(Color(.blackMediumEmphasis))
+                        .font(.titleinRowItemEditable)
+                        .overlay( /// apply a rounded border
+                            RoundedRectangle(cornerRadius: 10)
+                                .strokeBorder(Color(.outlineGrey), lineWidth: 1)
+                        )
+                        .frame(height: 56)
+                    
+                    Text("""
+                        You rated your symptom \(item.rating)/10 last time. Please rate today on a scale of 0 to 10, with 0 being an absence of symptom and 10 being very severe.
+                        """)
+                    .foregroundColor(Color(.blackMediumEmphasis))
+                    .font(.regularText)
+                    .padding(.bottom, 9.0)
                     
                     Divider()
                     
-                    List(reportedItems) { item in
-                        NavigationLink {
-                            SetSymptomView(symptomName: item.symptomName)
-                        } label: {
-                            SymptomPickerRow(item: item, showThirdView: $showThirdView)
-                                .listRowSeparator(.hidden)
-                                .listRowInsets(EdgeInsets())
-                        }
-                        
-                    }
-                    .frame(maxWidth: .infinity)
-                    .scrollContentBackground(.hidden)
-                    .listStyle(.plain)
+                    SetSymptomRatingView()
                     
-                    Button(action: {}) {
+                    Text("""
+                        How have you felt today compared to last time?
+                        """)
+                    .foregroundColor(Color(.blackMediumEmphasis))
+                    .font(.regularText)
+                    .padding(.bottom, 9.0)
+                    
+                    Divider()
+                    
+                    ScrollView{
+                        ForEach(symptomController.symptomStatesforComparison, id: \.self) { state in
+                            SymptomComparisonListRow(pressed: state.stateName == item.symptomComparisonState.capitalized, imageName: state.imageName, stateName: state.stateName, symptomComparisonState: $symptomComparisonState)
+                        }
+                    }
+                    Divider()
+                    
+                    
+                    Button(action: {
+                        if(!edit){ //create new symptom report
+                            symptomController.setSymptomReportofTrackedSymptom(symptomReport: SymptomReport(creationDateTime: prepareDate(dateString: dateString)!, rating: generalViewModel.selectedSegment,
+                                                                                                            symptomName: item.symptomName,  symptomComparisonState: symptomComparisonState, reportCompletionStatus: false, recentStatus: "New", symptomId: item.symptomId,
+                                                                                                            userId: ""))
+                        }
+                        else
+                        {
+                            symptomController.editSymptomReport(symptomReport: SymptomReport(id: item.id, creationDateTime: prepareDate(dateString: dateString)!, rating: generalViewModel.selectedSegment,
+                                                                                                            symptomName: item.symptomName,  symptomComparisonState: symptomComparisonState, reportCompletionStatus: false, recentStatus: "New", symptomId: item.symptomId,
+                                                                                             userId: item.userId))
+                        }
+                        readyToNavigate = true
+                    }) {
                         HStack {
                             Image(systemName: "checkmark.circle.fill")
-                                .foregroundColor(Color(.white))
+                                .foregroundColor(.white)
                             Text("Confirm")
                                 .foregroundColor(.white)
-                                .font(.titleinRowItem)
+                                .font(.smallTitle)
                                 .frame(maxWidth: .infinity)
                         }
+                        .padding()
+                        .background(Color(.primary4))
+                        .cornerRadius(10)
                     }
-                    .padding()
-                    .background(Color(.primary4))
-                    .cornerRadius(10)
-                    
-                    Button(action: {}) {
-                        HStack {
-                            Image(systemName: "xmark.circle.fill")
-                                .foregroundColor(Color(.warning2))
-                            Text("Cancel")
-                                .foregroundColor(Color(.warning2))
-                                .font(.titleinRowItem)
-                                .frame(maxWidth: .infinity)
+                        Button(action: {
+                            dismiss()
+                        }) {
+                            HStack {
+                                Image(systemName: "xmark.circle.fill")
+                                    .foregroundColor(Color(.warning2))
+                                Text("Cancel")
+                                    .foregroundColor(Color(.warning2))
+                                    .font(.smallTitle)
+                                    .frame(maxWidth: .infinity)
+                            }
                         }
+                        .padding()
+                        .overlay( /// apply a rounded border
+                            RoundedRectangle(cornerRadius: 10)
+                                .strokeBorder(Color(.outlineGrey), lineWidth: 1)
+                        )
+                        
+                        Button(action: {}) {
+                            HStack {
+                                Image(systemName: "xmark.bin.fill")
+                                    .foregroundColor(.white)
+                                Text("Remove symptom")
+                                    .foregroundColor(.white)
+                                    .font(.smallTitle)
+                                    .frame(maxWidth: .infinity)
+                            }
+                        }
+                        .padding()
+                        .background(Color(.warning2))
+                        .cornerRadius(10)
                     }
                     .padding()
-                    .overlay( /// apply a rounded border
-                        RoundedRectangle(cornerRadius: 10)
-                            .strokeBorder(Color(.outlineGrey), lineWidth: 1)
-                    )
-                }
-                .padding()
-                .cornerRadius(30)
+                    .cornerRadius(30)
+                
+                
+            }
+            .navigationDestination(isPresented: $readyToNavigate) {
+                    AddorEditSymptomsLandingPage(loggedIn: $loggedIn, dateString: dateString,
+                        showAfterCreatingNewSymptomReport: true)
             }
             .presentationDetents([.fraction(0.8), .large])
             //.frame(maxWidth: .infinity, maxHeight: 680)
+        }
+        .onAppear(){
+            generalViewModel.setSelectedSegment(segment: 0)
         }
     }
 }
 
 
 #Preview {
-    ChooseSymptomComparisonView(isSheetVisible: Binding.constant(true), showThirdView: Binding.constant(false))//default value)
+    ChooseSymptomComparisonView(isSheetVisible: Binding.constant(true), symptomComparisonState: "Much Better", item: SymptomReport(
+        dateFormatted: "Aug 20, 2023", creationDateTime: Date.now, rating: 0, emojiIconName: "ic-incomplete-red-filled", symptomName: "", symptomComparisonState: "Much Better", reportCompletionStatus: false, recentStatus: "N/A", symptomId: "", userId: ""), loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!, edit: false)//default value)
+        .environmentObject(SymptomViewModel())
+        .environmentObject(GeneralViewModel())
 }

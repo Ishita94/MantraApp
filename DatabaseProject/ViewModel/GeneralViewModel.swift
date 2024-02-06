@@ -10,10 +10,23 @@ import Combine
 class GeneralViewModel: ObservableObject {
     
     @Published var currentState: Int = 1;
-    @Published var selectedSegment: Int = 0
+    @Published var selectedSegment: Int = 0 //for rating slider
     
     
     init() {
         //loadFromPersistentStore()
+    }
+    func setSelectedSegment (segment: Int){
+        selectedSegment = segment
+    }
+    func incrementState (){
+        if(currentState<5) {
+            currentState+=1
+        }
+    }
+    func decrementState (){
+        if(currentState>1) {
+            currentState-=1
+        }
     }
 }

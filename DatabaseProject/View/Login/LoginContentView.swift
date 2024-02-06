@@ -6,13 +6,27 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct LoginContentView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+        @Binding var loggedIn: Bool
+        
+        var body: some View {
+            
+            VStack {
+                Text("Welcome!")
+                Button {
+                    try! Auth.auth().signOut()
+                    loggedIn = false
+                } label: {
+                    Text("Sign Out")
+                }
 
-#Preview {
-    LoginContentView()
+            }
+        }
+    }
+struct LoginContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        LoginContentView(loggedIn: .constant(true))
+    }
 }

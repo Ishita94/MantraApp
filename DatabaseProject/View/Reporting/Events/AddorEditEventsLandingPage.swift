@@ -11,7 +11,7 @@ struct AddorEditEventsLandingPage: View {
     @EnvironmentObject var eventViewModel : EventsViewModel
     @EnvironmentObject var generalViewModel : GeneralViewModel
     @State var dateString: String
-
+    
     @Binding var loggedIn: Bool
     
     var body: some View {
@@ -19,29 +19,33 @@ struct AddorEditEventsLandingPage: View {
             NavBar(loggedIn: $loggedIn)
             Divider()
             SecondaryNavBar()
+                .environmentObject(generalViewModel)
             Divider()
-//            ScrollView{
+            //            ScrollView{
+            
+            if (eventViewModel.suggestedEvents.count>0 || eventViewModel.reportedEventsofUserbyDate.count>0)
+            {
+                AddorEditEventButtonPanel(loggedIn: $loggedIn, dateString: dateString)
+                ReportedEventsView(loggedIn: $loggedIn
+                                     , dateString: dateString)
                 
-            if (eventViewModel.suggestedEventsofUserbeforeDate.count>0 || (eventViewModel.dictionaryofEvents[dateString] != nil && eventViewModel.dictionaryofEvents[dateString]!.count>0)
-                    ) {
-                    AddSymptomwithSuggestionsorReportedSymptomsView(loggedIn: $loggedIn, dateString: dateString)
-                }
-                else
-                {
-                    AddorEditEventsContentPage(loggedIn: $loggedIn)
-                }
-                Divider()
-                BackandNextButtonPanel(loggedIn: $loggedIn, dateString: dateString)
+                Spacer()
             }
-//        }
-//        .frame(maxWidth: .infinity, maxHeight: .infinity)
+            else
+            {
+                AddorEditEventsContentPage(loggedIn: $loggedIn, dateString: dateString)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
 
-//        .sheet(isPresented: $isSheetVisible)
-//        {
-//            ChooseSymptomView(isSheetVisible: $isSheetVisible, showThirdView: $showThirdView) //default value
-//        }
+            }
+            Divider()
+            BackandNextButtonPanel(loggedIn: $loggedIn, dateString: dateString)
+        }
+        .onAppear {
+            // Call for the data
+            eventViewModel.getEventsReportedonDate(date: prepareDate(dateString: dateString)!)
+        }
         .padding()
-       .frame(maxWidth: .infinity, maxHeight: .infinity)
+//        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 
@@ -49,5 +53,5 @@ struct AddorEditEventsLandingPage: View {
     AddorEditEventsLandingPage(dateString: Date.now.datetoString()!, loggedIn: Binding.constant(true)).environmentObject(SymptomViewModel())
         .environmentObject(GeneralViewModel())
         .environmentObject(EventsViewModel())
-
+    
 }

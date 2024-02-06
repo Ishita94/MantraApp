@@ -27,28 +27,6 @@ struct ReportedSymptomsView: View {
 
     var body: some View {
         VStack(alignment: .leading){
-            
-            //            NavigationLink {
-            //                ReportedSymptomsView()
-            //            } label: {
-            //                VStack{
-            //                    Button(action: {}) {
-            //                        HStack {
-            //                            Image(systemName: "plus.circle")
-            //                                .foregroundColor(.white)
-            //                            Text("Add or Edit List of Symptoms")
-            //                                .foregroundColor(.white)
-            //                                .font(.titleinRowItem)
-            //                                .frame(maxWidth: .infinity)
-            //                        }
-            //                    }
-            //                }
-            //                .padding()
-            //                .background(Color(.primary4))
-            //                .cornerRadius(10)
-            //            }
-            //            .padding(.top, 8)
-            
             Text("""
                 Reported Symptoms
                 """)
@@ -65,7 +43,7 @@ struct ReportedSymptomsView: View {
                                 
                 ScrollView{
                     ForEach(symptomViewModel.reportedSymptomsofUserbyDate, id: \.self) { item in
-                        ReportedSymptomListRow(item: item, loggedIn: $loggedIn)
+                        ReportedSymptomListRow(item: item, loggedIn: $loggedIn, dateString: dateString)
                     }
                     .scrollContentBackground(.hidden)
                     .listStyle(.plain)

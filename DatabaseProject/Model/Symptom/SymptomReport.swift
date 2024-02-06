@@ -13,11 +13,16 @@ struct SymptomReport: Identifiable, Hashable, Codable {
 //    var id: UUID = UUID()
     @DocumentID var id: String?
 
-    var day:String
-    var date:String
-    var emojiIconName:String
-    var emojiStateofDay:String
-    var symptom:Symptom
+    var dateFormatted:String?
+    var dateString:String?
+    var creationDateTime: Date
+    var rating:Int
+    var emojiIconName:String?
+    //var emojiStateofDay:String
+    var symptomName:String
     var symptomComparisonState:String
-
+    var reportCompletionStatus:Bool
+    var recentStatus: String
+    var symptomId: String?
+    var userId: String
 }

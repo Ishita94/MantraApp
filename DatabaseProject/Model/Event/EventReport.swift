@@ -6,3 +6,13 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
+struct EventReport: Identifiable, Hashable, Codable {
+    
+    @DocumentID var id: String?
+    var title:String
+    var category:String
+    var creationDateTime: Date
+    var userId: String
+    var reportCompletionStatus:Bool
+}

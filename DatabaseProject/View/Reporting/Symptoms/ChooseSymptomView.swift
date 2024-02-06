@@ -9,17 +9,18 @@ import SwiftUI
 
 struct ChooseSymptomView: View {
     @Binding var isSheetVisible: Bool
-    @Binding var showThirdView: Bool
-
-    @State var reportedItems:[SymptoPickerItem] = [
-        SymptoPickerItem(symptomName: "Nausea"),
-        SymptoPickerItem(symptomName: "Fatigue"),
-        SymptoPickerItem(symptomName: "Pain")]
+    @State var readyToNavigate: Bool = false
+    @State private var path = NavigationPath()
+    @Binding var loggedIn: Bool
+    @EnvironmentObject var symptomViewModel : SymptomViewModel
+    @Environment(\.dismiss) var dismiss
+    @State var dateString: String
     
     var body: some View {
-        NavigationStack{
+        NavigationStack (path: $path){
             ZStack{
-                VStack (){
+                VStack
+                {
                     Text("""
                      Please choose up to 5 symptoms to understand more about your health.
                      """)
@@ -32,13 +33,10 @@ struct ChooseSymptomView: View {
                     .foregroundColor(Color(.black))
                     .font(.regularText)
                     .padding(.bottom, 8.0)
-                    Text("""
-                     Swipe left on a symptom to delete it from the list.
-                    """)
-                    .foregroundColor(Color(.black))
-                    .font(.regularText)
-                    .padding(.bottom, 22.0)
-                    Button(action: {}) {
+                    
+                    Button(action: {
+                        readyToNavigate=true
+                    }) {
                         HStack {
                             Image(systemName: "plus.circle")
                                 .foregroundColor(.white)
@@ -53,48 +51,30 @@ struct ChooseSymptomView: View {
                     .cornerRadius(10)
                     
                     Divider()
-                    
-                    List(reportedItems) { item in
-//                        SymptomPickerRow(item: item, showThirdView: $showThirdView)
-//                            .listRowSeparator(.hidden)
-//                            .listRowInsets(EdgeInsets())
-                        
-                        NavigationLink {
-                            SetSymptomView(symptomName: item.symptomName)
-                                .onAppear(){
-                                    showThirdView=true
-                                }
-                        } label: {
-                            SymptomPickerRow(item: item, showThirdView: $showThirdView)
-                                .listRowSeparator(.hidden)
-                                .listRowInsets(EdgeInsets())
+                
+                    ScrollView{
+                        ForEach(symptomViewModel.trackedSymptomsofUser, id: \.self) { item in
+                            SymptomPickerRow(item: item, loggedIn: $loggedIn)
                         }
-                        
-                        
-                           
-                        
-                        
+                        if(!symptomViewModel.trackedSymptomsofUser.contains(where: { $0.symptomName.lowercased() == "nausea" }))
+                        {
+                            SymptomPickerRow(item: Symptom(symptomName: "Nausea", rating: 0, recentStatus: "New", creationDateTime: Date.now, tracking: false, userId: ""), loggedIn: $loggedIn)
+                        }
+                        if(!symptomViewModel.trackedSymptomsofUser.contains(where: { $0.symptomName.lowercased() == "fatigue" }))
+                        {
+                            SymptomPickerRow(item: Symptom(symptomName: "Fatigue", rating: 0, recentStatus: "New", creationDateTime: Date.now, tracking: false, userId: ""),loggedIn: $loggedIn)
+                        }
+                        if(!symptomViewModel.trackedSymptomsofUser.contains(where: { $0.symptomName.lowercased() == "pain" }))
+                        {
+                            SymptomPickerRow(item: Symptom(symptomName: "Pain", rating: 0, recentStatus: "New", creationDateTime: Date.now, tracking: false, userId: ""), loggedIn: $loggedIn)
+                        }
                     }
-                    
                     .frame(maxWidth: .infinity)
                     .scrollContentBackground(.hidden)
-                    .listStyle(.plain)
                     
-                    Button(action: {}) {
-                        HStack {
-                            Image(systemName: "checkmark.circle.fill")
-                                .foregroundColor(Color(.white))
-                            Text("Confirm")
-                                .foregroundColor(.white)
-                                .font(.titleinRowItem)
-                                .frame(maxWidth: .infinity)
-                        }
-                    }
-                    .padding()
-                    .background(Color(.primary4))
-                    .cornerRadius(10)
-                    
-                    Button(action: {}) {
+                    Button(action: {
+                        dismiss()
+                    }) {
                         HStack {
                             Image(systemName: "xmark.circle.fill")
                                 .foregroundColor(Color(.warning2))
@@ -110,15 +90,32 @@ struct ChooseSymptomView: View {
                             .strokeBorder(Color(.outlineGrey), lineWidth: 1)
                     )
                 }
+                
                 .padding()
                 .cornerRadius(30)
+                .presentationDetents([.fraction(0.8), .large])
+                //.frame(maxWidth: .infinity, maxHeight: 680)
+                //                .navigationDestination(for: String.self) { symptomName in
+                //
+                //                    SetSymptomView(symptomName: symptomName)
+                //
+                //                }
+                
+                
             }
-            .presentationDetents([.fraction(0.8), .large])
-            //.frame(maxWidth: .infinity, maxHeight: 680)
+            .navigationDestination(isPresented: $readyToNavigate) {
+                SetSymptomView(item: Symptom(symptomName: "", rating: 0, recentStatus: "New", creationDateTime: prepareDate(dateString: dateString)!, tracking: true, userId: ""), loggedIn: $loggedIn)
+                //create symptom on that specified date, instead of current date
+            }
+        }
+        .onAppear()
+        {
+            symptomViewModel.getTrackedSymptomsofUser()
         }
     }
 }
 
 #Preview {
-    ChooseSymptomView(isSheetVisible: Binding.constant(true), showThirdView:  Binding.constant(false))//default value)
+    ChooseSymptomView(isSheetVisible: Binding.constant(true), loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!).environmentObject(SymptomViewModel())
+        .environmentObject(GeneralViewModel())//default value)
 }

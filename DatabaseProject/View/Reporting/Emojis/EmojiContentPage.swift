@@ -6,13 +6,41 @@
 //
 
 import SwiftUI
+import EmojiPicker
 
 struct EmojiContentPage: View {
+    @Binding var loggedIn: Bool
+    @State var dateString: String
+    @EnvironmentObject var reportingViewModel : ReportingViewModel
+//    @State var readyToNavigate: Bool = false
+    @Binding var emojiStateofDay : String?
+    @State var selectedEmoji: Emoji? 
+
+    @State var displayEmojiPicker: Bool = false
+
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+        NavigationStack{
+            VStack (){
+                
+                Text("""
+                Please choose the emoji that best represents your day.
+                """)
+                .foregroundColor(.black)
+                .font(.titleinRowItem)
+                
+                Divider()
+                
+                EmojiPickerViewCustomized(selectedEmoji: $selectedEmoji, emojiStateofDay: $emojiStateofDay, selectedColor: Color(.primary4), emojiProvider: LimitedEmojiProvider())
+                
+                                    
+                            }
+                        }
+        }
+    
 }
 
+
 #Preview {
-    EmojiContentPage()
+    EmojiContentPage(loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!, emojiStateofDay: Binding.constant(""))
 }

@@ -23,21 +23,12 @@ struct SymptomDataService {
         ]
     }
     
-    //    func getSymptomsReported() -> [SymptomReport] {
-    //        guard AuthViewModel.isUserLoggedIn() != false else {
-    //            // User is not logged in
-    //            return []
-    //        }
-    //        return []
-    //    }
-    
     
     func getReportsofUser(completion: @escaping ([SymptomReport]) -> Void) {
         
         // Get a reference to the database
         let db = Firestore.firestore()
         
-        // Perform a query against the chat collection for any chats where the user is a participant
         let reportsofUserQuery = db.collection("symptomReports")
             .whereField("userId", isEqualTo: AuthViewModel.getLoggedInUserId())
             .order(by: "creationDateTime", descending: true)
@@ -47,18 +38,10 @@ struct SymptomDataService {
             if snapshot != nil && error == nil {
                 
                 var symptomReports = [SymptomReport]()
-                
-                // Loop through all the returned chat docs
-                for doc in snapshot!.documents {
+                                for doc in snapshot!.documents {
                     print("-----------------")
                     print(doc.data())
 //                    let date = doc.get("creationDateTime") as! Timestamp
-//                    let rating = doc.get("rating") as! Int
-//                    let symptomId = doc.get("symptomId") as! String
-//                    let symptomComparisonState=doc.get("symptomComparisonState") as! String
-//                    let reportCompletionStatus=doc.get("reportCompletionStatus") as! Bool
-//                    let recentStatus=doc.get("recentStatus") as! String
-                    // Parse the data into Chat structs
                     let symptomReport = try? doc.data(as: SymptomReport.self)
                     
                     // Add the chat into the array
@@ -125,12 +108,13 @@ struct SymptomDataService {
         
         // Get a reference to the database
         let db = Firestore.firestore()
-
-        // Perform a query against the chat collection for any chats where the user is a participant
+        let fdate = Timestamp(date: fromDate)
+        let tdate = Timestamp(date: toDate)
+        
         let reportsofUserQuery = db.collection("symptomReports")
             .whereField("userId", isEqualTo: AuthViewModel.getLoggedInUserId())
-            .whereField("creationDateTime", isGreaterThanOrEqualTo: Timestamp(date: fromDate))
-            .whereField("creationDateTime", isLessThan: Timestamp(date: toDate))
+            .whereField("creationDateTime", isGreaterThanOrEqualTo: fdate)
+            .whereField("creationDateTime", isLessThan: tdate)
         
         reportsofUserQuery.getDocuments { snapshot, error in
             
@@ -174,6 +158,15 @@ struct SymptomDataService {
                                 "tracking": true, //auto-set to track when created
                                 "userId" : AuthViewModel.getLoggedInUserId()])
        
+        // Create a new symptom report for this symptom
+        Task{
+            await self.setNewSymptomReportofUser(symptomReport: symptomReport, newSymptomAdded: newSymptomAdded!)
+        }
+    }
+    
+    func setNewSymptomReportofUser(symptomReport: SymptomReport, newSymptomAdded: DocumentReference?) async {
+        let db = Firestore.firestore()
+       
         let newRef = db.collection("symptomReports")
                 .document()     // generates a new reference with a unique ID
         try? await newRef.setData([
@@ -187,7 +180,6 @@ struct SymptomDataService {
                                          "userId" : AuthViewModel.getLoggedInUserId()])
     }
     
-    //TODO: Set symptom from suggestion
     func setSymptomReportofTrackedSymptom(symptomReport: SymptomReport) async{
         
         // Get reference to database
@@ -205,13 +197,33 @@ struct SymptomDataService {
                                 "userId" : AuthViewModel.getLoggedInUserId()])
     }
     
-    func getSuggestedSymptomsofUser(symptomId: String, date: Date, completion: @escaping (SymptomReport) -> Void) {
+    func editSymptomReport(symptomReport: SymptomReport) async{
+        
+        // Get reference to database
         let db = Firestore.firestore()
         
+        if let id=symptomReport.id
+        {
+            let symptomReportRef = db.collection("symptomReports").document(id)
+            try? await symptomReportRef.updateData(["creationDateTime": symptomReport.creationDateTime,
+                                                    "rating": symptomReport.rating,
+                                                    "recentStatus": symptomReport.recentStatus,
+                                                    "reportCompletionStatus": symptomReport.reportCompletionStatus,
+                                                    "symptomComparisonState" : symptomReport.symptomComparisonState,
+                                                    "symptomId" : symptomReport.symptomId,
+                                                    "symptomName" : symptomReport.symptomName,
+                                                    "userId" : AuthViewModel.getLoggedInUserId()])
+        }
+    }
+    
+    func getSuggestedSymptomsofUser(symptomId: String, date: Date, completion: @escaping (SymptomReport) -> Void) {
+        let db = Firestore.firestore()
+        let tdate = Timestamp(date: date)
+
         let reportsofUserQuery = db.collection("symptomReports")
             .whereField("userId", isEqualTo: AuthViewModel.getLoggedInUserId())
             .whereField("symptomId", isEqualTo: symptomId)
-            .whereField("creationDateTime", isLessThan: Timestamp(date: date))
+            .whereField("creationDateTime", isLessThan: tdate)
             .order(by: "creationDateTime", descending: false)
             .limit(toLast: 1)
         ;
@@ -235,7 +247,6 @@ struct SymptomDataService {
                     // Parse the data into Chat structs
                     let symptomReport = try? doc.data(as: SymptomReport.self)
                     
-                    // Add the chat into the array
                     if var symptomReport = symptomReport {
                         symptomReport.dateString = symptomReport.creationDateTime.datetoString()
                         symptomReports.append(symptomReport)
@@ -243,7 +254,6 @@ struct SymptomDataService {
                 }
                 
                 // Return the data
-                //completion(symptomReports[0])
                 if(symptomReports.isEmpty) {
                     completion(SymptomReport(
                         id:"", dateFormatted: "Aug 20, 2023", creationDateTime: Date.now, rating: 0, emojiIconName: "ic-incomplete-red-filled", symptomName: "Nausea", symptomComparisonState: "Much Better", reportCompletionStatus: false, recentStatus: "N/A", symptomId: "", userId: "")) //dummy
@@ -256,16 +266,6 @@ struct SymptomDataService {
                 print("Error in database retrieval")
             }
         }
-        
-//        try? await db.collection("symptomReports")
-//            .addDocument(data: ["creationDateTime": symptomReport.creationDateTime,
-//                                "rating": symptomReport.rating,
-//                                "recentStatus": symptomReport.recentStatus,
-//                                "reportCompletionStatus": symptomReport.reportCompletionStatus,
-//                                "symptomComparisonState" : symptomReport.symptomComparisonState,
-//                                "symptomId" : newSymptomAdded!.documentID,
-//                                "symptomName": symptomReport.symptomName,
-//                                "userId" : AuthViewModel.getLoggedInUserId()])
     }
 
 }

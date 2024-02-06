@@ -11,6 +11,8 @@ struct AddorEditEventsContentPage: View {
     @State var isSheetVisible: Bool = false
 //    @State var showThirdView: Bool = true
     @Binding var loggedIn: Bool
+    @State var dateString: String
+
 
     var body: some View {
         NavigationStack{
@@ -49,7 +51,7 @@ struct AddorEditEventsContentPage: View {
                 .cornerRadius(10)
             }
             .sheet(isPresented: $isSheetVisible){
-                ChooseSymptomView(isSheetVisible: $isSheetVisible, loggedIn: $loggedIn) /*.frame(maxWidth: .infinity, maxHeight: 680)*/
+                SuggestedEventsView(isSheetVisible: $isSheetVisible, loggedIn: $loggedIn, dateString: dateString) /*.frame(maxWidth: .infinity, maxHeight: 680)*/
             }
             
         }
@@ -62,5 +64,5 @@ struct AddorEditEventsContentPage: View {
 }
 
 #Preview {
-    AddorEditEventsContentPage(loggedIn: Binding.constant(true))
+    AddorEditEventsContentPage(loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!)
 }

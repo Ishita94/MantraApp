@@ -11,15 +11,20 @@ struct SecondaryNavBar: View {
     @State private var stepNumber: String = "1"
     @State private var stepTitle: String = "Report your symptoms"
     @State var currentStateIndex: Int = 0
+    @EnvironmentObject var generalViewModel : GeneralViewModel
+
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
-            TopProgressBarView(currentStateIndex: $currentStateIndex)
+            TopProgressBarView()
+                .environmentObject(generalViewModel)
+
             Text("Step "+stepNumber)
                 .foregroundColor(Color(.greyText))
                 .font(.regularText)
-                
+            //TODO: update the title
             Text(stepTitle)
-                .foregroundColor(Color(.black))
+                .foregroundColor(.black)
                 .font(.symptomTitleinReportingPage)
             //Spacer()
         }
@@ -31,5 +36,10 @@ struct SecondaryNavBar: View {
 
 #Preview {
     SecondaryNavBar()
+        .environmentObject(SymptomViewModel())
+        .environmentObject(GeneralViewModel())
+        .environmentObject(EventsViewModel())
+        .environmentObject(ReportingViewModel())
+
     
 }

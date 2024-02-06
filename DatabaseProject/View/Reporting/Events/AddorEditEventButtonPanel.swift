@@ -1,13 +1,13 @@
 //
-//  AddorEditSymptomButtonPanel.swift
+//  AddorEditEventButtonPanel.swift
 //  DatabaseProject
 //
-//  Created by Ishita Haque on 2023-10-16.
+//  Created by Ishita Haque on 2023-12-28.
 //
 
 import SwiftUI
 
-struct AddorEditSymptomButtonPanel: View {
+struct AddorEditEventButtonPanel: View {
     @State var isSheetVisible: Bool = false
     @Binding var loggedIn: Bool
     @State var dateString: String
@@ -17,8 +17,8 @@ struct AddorEditSymptomButtonPanel: View {
     var body: some View {
         VStack(alignment: .leading){
             Text("""
-                How have you felt today compared to yesterday?
-                """)
+             What events today might have affected your symptoms?
+             """)
                 .font(.titleinRowItem)
                 .foregroundColor(.black)
             Button(action: {
@@ -27,7 +27,7 @@ struct AddorEditSymptomButtonPanel: View {
                 HStack {
                     Image(systemName: "plus.circle.fill")
                         .foregroundColor(.white)
-                    Text("Add or edit list of symptoms")
+                    Text("Add or edit list of events")
                         .foregroundColor(.white)
                         .font(.titleinRowItem)
                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
@@ -42,12 +42,12 @@ struct AddorEditSymptomButtonPanel: View {
         
         }
         .sheet(isPresented: $isSheetVisible){
-            ChooseSymptomView(isSheetVisible: $isSheetVisible, loggedIn: $loggedIn, dateString: dateString) /*.frame(maxWidth: .infinity, maxHeight: 680)*/
+            SuggestedEventsView(isSheetVisible: $isSheetVisible, loggedIn: $loggedIn, dateString: dateString) /*.frame(maxWidth: .infinity, maxHeight: 680)*/
         }
         
     }
 }
 
 #Preview {
-    AddorEditSymptomButtonPanel(loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!)
+    AddorEditEventButtonPanel(loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!)
 }

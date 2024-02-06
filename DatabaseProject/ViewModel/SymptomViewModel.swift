@@ -7,45 +7,16 @@
 
 import Foundation
 import Combine
-extension Date {
-    func dayNameOfWeek() -> String? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEE"
-        return dateFormatter.string(from: self)
-    }
-    func monthandDate() -> String? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM d"
-        return dateFormatter.string(from: self)
-    }
-    func monthandYear() -> String? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMMM yyyy"
-        return dateFormatter.string(from: self)
-    }
-}
+import OrderedCollections
 
 class SymptomViewModel: ObservableObject {
-    
-    //MARK: - Properties
-    @Published var definedSymptoms: [Symptom] = [
-        Symptom(symptomName: "Nausea", rating: 0, recentStatus: ""),
-        Symptom(symptomName: "Nausea", rating: 0, recentStatus: ""),
-        Symptom(symptomName: "Nausea", rating: 0, recentStatus: "")
-
-    ]
-    @Published var symptomsReportedToday: [Symptom] = [
-        Symptom(symptomName: "Nausea", rating: 6, recentStatus: "New")]
-    @Published var suggestedSymptoms: [Symptom] = [
-        Symptom(symptomName: "Nausea", rating: 6, recentStatus: "Yesterday")]
-    @Published var reportedSymptoms: [SymptomReport] = [
-        SymptomReport(
-            dateFormatted: "Aug 20, 2023", creationDateTime: Date.now, rating: 0, emojiIconName: "ic-incomplete-red-filled", symptomName: "Nausea", symptomComparisonState: "Much Better", reportCompletionStatus: false, recentStatus: "N/A", symptomId: "1"),
-        SymptomReport(
-            dateFormatted: "Aug 20, 2023", creationDateTime: Date.now, rating: 0, emojiIconName: "ic-incomplete-red-filled", symptomName: "Fatigue", symptomComparisonState: "Somewhat Worse", reportCompletionStatus: false, recentStatus: "N/A", symptomId: "1"),
-        SymptomReport(
-            dateFormatted: "Aug 20, 2023", creationDateTime: Date.now, rating: 0, emojiIconName: "ic-incomplete-red-filled", symptomName: "Pain", symptomComparisonState: "Worse", reportCompletionStatus: false, recentStatus: "N/A", symptomId: "1")
-                ]
+    @Published var reportList = [Report]()
+    @Published var reportsofUser = [SymptomReport]()
+    @Published var reportedSymptomsofUserbyDate = [SymptomReport]()
+    @Published var suggestedSymptomsofUserbeforeDate = [SymptomReport]()
+    @Published var trackedSymptomsofUser = [Symptom]()
+    @Published var dictionaryofReports: OrderedDictionary<String , [SymptomReport]> = [:]
+    @Published var dictionaryofSuggestedReports: OrderedDictionary<String , SymptomReport> = [:]
     @Published var symptomStatesforComparison : [SymptomComparisonState] = [
             SymptomComparisonState(stateName: "Much Better", imageName: "much-better"),
             SymptomComparisonState(stateName: "Somewhat Better", imageName: "somewhat-better"),
@@ -53,34 +24,21 @@ class SymptomViewModel: ObservableObject {
             SymptomComparisonState(stateName: "Somewhat Worse", imageName: "much-worse"),
             SymptomComparisonState(stateName: "Much Worse", imageName: "much-worse")
         ]
-    @Published var reports: [Report] = [
-        Report(formattedDay: "Thu", formattedDate: "Aug 20", date: Date.now, emojiIconName: "ic-incomplete-red-filled", emojiStateofDay: "Nauseous", symptomNames: "Nausea, Headache", reportCompletionStatus: false),
-        Report(formattedDay: "Thu", formattedDate: "Aug 20", date: Date.now, emojiIconName: "ic-incomplete-red-filled", emojiStateofDay: "Nauseous", symptomNames: "Nausea, Headache", reportCompletionStatus: false),
-        Report(formattedDay: "Thu", formattedDate: "Aug 20", date: Date.now, emojiIconName: "ic-incomplete-red-filled", emojiStateofDay: "Nauseous", symptomNames: "Nausea, Headache", reportCompletionStatus: false)
-                ]
     
     init() {
     }
     
-    @Published var reportList = [Report]()
-    private var reportsofUser = [SymptomReport]()
-    @Published var reportedSymptomsofUserbyDate = [SymptomReport]()
-
     func getReportsofUser() {
         
-        // Perform the contact store method asynchronously so it doesn't block the UI
         DispatchQueue.main.async {
-                // See which local contacts are actually users of this app
-                ReportingDataService().getReportsofUser() { reportsofUser in
+                SymptomDataService().getReportsofUser() { reportsofUser in
                     
                     // Update the UI in the main thread
                     DispatchQueue.main.async {
-                        
-                        // Set the fetched users to the published users property
+                        self.reportList = [];   //clearing it first so that new values override prev values
                         self.reportsofUser = reportsofUser
-                        // Set the filtered list
+                        self.prepareDictionaryforReportList()
                         self.prepareReportsforReportList()
-                        
                     }
                 }
                 
@@ -88,104 +46,128 @@ class SymptomViewModel: ObservableObject {
         }
     
     func prepareReportsforReportList() {
-        for report in self.reportsofUser{
+        for (key, value) in dictionaryofReports {
+            let date = stringtoDate(dateString: key);
+            var formattedDay = ""
+            var formattedDate = ""
+            if let date = date {
+                formattedDay = date.dayNameOfWeek() ?? ""
+                formattedDate = date.monthandDate() ?? ""
+            }
+            let symptomNameList = value.map { $0.symptomName ?? "" };
+            let symptomNames = symptomNameList.joined(separator:" , ")
             
-            let date = report.creationDateTime
-            let formattedDay = date.dayNameOfWeek() ?? ""
-            let formattedDate = date.monthandDate() ?? ""
-//            let dateFormatter = DateFormatter()
-//            dateFormatter.setLocalizedDateFormatFromTemplate("MMMMd") // set template after setting locale
-//            formattedDate = dateFormatter.string(from: date)
-//            var emojiIconName:String
-//            var emojiStateofDay:String
-            let symptomNames = ""
-            let reportCompletionStatus = report.reportCompletionStatus
-            reportList.append(Report(formattedDay: formattedDay, formattedDate: formattedDate, date: date, emojiStateofDay: "Nauseous", symptomNames: "Nausea, Fatigue", reportCompletionStatus: reportCompletionStatus))
+            let reportCompletionStatus = false //TODO: need to figure out how to store complete/incomplete status
+            self.reportList.append(Report(dayNameofWeek: formattedDay, monthNameofWeek: formattedDate, dateString: key, emojiStateofDay: "Nauseous", symptomNames: symptomNames, reportCompletionStatus: reportCompletionStatus))
+            //TODO: Need to update emojistateofday
             
         }
-        
     }
-
-    func getReportedSymptomsofUserbyDate(date: Date) {
-        reportedSymptomsofUserbyDate = []
-        for reportedSymptom in reportsofUser {
-            if reportedSymptom.creationDateTime == date {
-                reportedSymptomsofUserbyDate.append(reportedSymptom)
+    func prepareDictionaryforReportList() {
+        dictionaryofReports = OrderedDictionary(grouping: reportsofUser, by: {$0.dateString ?? ""})
+    }
+    
+    func getTrackedSymptomsofUser() {
+        
+        DispatchQueue.main.async {
+                SymptomDataService().getTrackedSymptomsofUser() { symptoms in
+                    
+                    // Update the UI in the main thread
+                    DispatchQueue.main.async {
+                        self.trackedSymptomsofUser = symptoms
+                    }
+                }
+                
             }
         }
+    
+    func getReportedSymptomsofUserbyDate(date: String, showAfterCreatingNewSymptomReport: Bool) {
+        //TODO: remove redundant 'showAfterCreatingNewSymptomReport'
+        //if(showAfterCreatingNewSymptomReport){
+            
+            let fromDate: Date? = prepareDate(dateString: date)
+            let toDate: Date? = prepareNextDate(date: fromDate!)
+            
+            DispatchQueue.main.async {
+                SymptomDataService().getReportedSymptomsbyDate(fromDate: fromDate!, toDate: toDate!) { reportsofUser in
+                        self.reportedSymptomsofUserbyDate = reportsofUser
+                    }
+            }
+//        }
+//        else
+//        {
+//            self.reportedSymptomsofUserbyDate = self.dictionaryofReports[date] ?? []
+//        }
         
     }
     
+    func getSuggestedSymptomsofUserbeforeDate(date: Date){
+        //before this date, nothing reported today
+        //all tracked symptoms
+        //last report instance
+        DispatchQueue.main.async {
+            // Get last report of the symtomId, before today
+            let preparedDate:Date? = prepareDatefromDate(date: date)
+            SymptomDataService().getTrackedSymptomsofUser() { symptoms in
+                self.trackedSymptomsofUser = symptoms
+                let group = DispatchGroup()
+                self.dictionaryofSuggestedReports = [:]
+                    for symptom in symptoms{
+                        group.enter()
+
+                        if let unwrappedSymptomId = symptom.id{
+                             SymptomDataService().getSuggestedSymptomsofUser(symptomId: unwrappedSymptomId, date: preparedDate!) { symptomReport in
+                                 if let id = symptomReport.symptomId {
+                                     if(id==""){ //to handle error situation where there is a symptom but no report of it
+                                                //ideally, it wouldn't happen
+                                     }
+                                     else
+                                     {
+                                         let alreadyReported = self.reportedSymptomsofUserbyDate.contains{
+                                             element in
+                                             if (element.symptomId == symptomReport.symptomId) { //already reported that day
+                                                 return true
+                                             } else {
+                                                 self.dictionaryofSuggestedReports[id] = symptomReport //show suggestion
+                                                 return false
+                                             }
+                                         }
+                                         if(!alreadyReported)
+                                         {
+                                             self.dictionaryofSuggestedReports[id] = symptomReport //show suggestion
+                                         }
+                                     }
+                                 }
+                            }
+                        }
+                        group.leave()
+                    }
+                }
+            }
+    }
+        
+    func saveSymptomReport(symptomReport: SymptomReport){
+        DispatchQueue.main.async {
+            Task{
+                await SymptomDataService().setNewSymptomofUser(symptomReport: symptomReport)
+            }
+        }
+    }
     
+    func editSymptomReport(symptomReport: SymptomReport){
+        DispatchQueue.main.async {
+            Task{
+                await SymptomDataService().editSymptomReport(symptomReport: symptomReport)
+            }
+        }
+    }
     
-    
-    
-//    //MARK: - CRUD Functions
-//    func createMood(emotion: Emotion, comment: String?, date: Date) {
-//
-//        let newMood = Mood(emotion: emotion, comment: comment, date: date)
-//        
-//        moods.append(newMood)
-//        saveToPersistentStore()
-//    
-//    }
-//    
-//    func deleteMood(at offset: IndexSet) {
-//        
-//        guard let index = Array(offset).first else { return }
-//     print("INDEX: \(index)")
-//        moods.remove(at: index)
-//        
-//        saveToPersistentStore()
-//    }
-//    
-//    
-//    func updateMoodComment(mood: Mood, comment: String) {
-//        if let index = moods.firstIndex(of: mood) {
-//            var mood = moods[index]
-//            mood.comment = comment
-//            
-//            moods[index] = mood
-//            saveToPersistentStore()
-//        }
-//    }
-//    
-//    // MARK: Save, Load from Persistent
-//    private var persistentFileURL: URL? {
-//      let fileManager = FileManager.default
-//      guard let documents = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
-//        else { return nil }
-//       
-//      return documents.appendingPathComponent("mood.plist")
-//    }
-//    
-//    func saveToPersistentStore() {
-//        
-//        // Stars -> Data -> Plist
-//        guard let url = persistentFileURL else { return }
-//        
-//        do {
-//            let encoder = PropertyListEncoder()
-//            let data = try encoder.encode(moods)
-//            try data.write(to: url)
-//        } catch {
-//            print("Error saving stars data: \(error)")
-//        }
-//    }
-//    
-//    func loadFromPersistentStore() {
-//        
-//        // Plist -> Data -> Stars
-////        let fileManager = FileManager.default
-////        guard let url = persistentFileURL, fileManager.fileExists(atPath: url.path) else { return }
-////        
-////        do {
-////            let data = try Data(contentsOf: url)
-////            let decoder = PropertyListDecoder()
-////            moods = try decoder.decode([Mood].self, from: data)
-////        } catch {
-////            print("error loading stars data: \(error)")
-////        }
-//    }
+    func setSymptomReportofTrackedSymptom(symptomReport: SymptomReport){
+        DispatchQueue.main.async {
+            Task{
+                await SymptomDataService().setSymptomReportofTrackedSymptom(symptomReport: symptomReport)
+            }
+        }
+    }
 }
 

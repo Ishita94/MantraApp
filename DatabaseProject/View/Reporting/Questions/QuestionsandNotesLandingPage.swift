@@ -8,11 +8,36 @@
 import SwiftUI
 
 struct QuestionsandNotesLandingPage: View {
+    @EnvironmentObject var reportingViewModel : ReportingViewModel
+    @EnvironmentObject var generalViewModel : GeneralViewModel
+    @State var dateString: String
+    
+    @Binding var loggedIn: Bool
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            NavBar(loggedIn: $loggedIn)
+            Divider()
+            SecondaryNavBar()
+                .environmentObject(generalViewModel)
+            Divider()
+            QuestionsandNotesContentPage(loggedIn: $loggedIn, dateString: dateString, questionsText: $reportingViewModel.remainingReportbyDate.questions, notesText: $reportingViewModel.remainingReportbyDate.notes)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            Divider()
+            BackandNextButtonPanelforQuestionsandNotes(loggedIn: $loggedIn, dateString: dateString, questionsText: $reportingViewModel.remainingReportbyDate.questions, notesText: $reportingViewModel.remainingReportbyDate.notes)
+            
+        }
+        .onAppear {
+            reportingViewModel.getRemainingReport(date: prepareDate(dateString: dateString)!)
+        }
+        .padding()
     }
 }
 
 #Preview {
-    QuestionsandNotesLandingPage()
+    QuestionsandNotesLandingPage(dateString: Date.now.datetoString()!, loggedIn: Binding.constant(true)).environmentObject(SymptomViewModel())
+        .environmentObject(GeneralViewModel())
+        .environmentObject(EventsViewModel())
+        .environmentObject(ReportingViewModel())
+
 }

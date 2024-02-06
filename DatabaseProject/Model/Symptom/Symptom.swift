@@ -6,11 +6,14 @@
 //
 
 import Foundation
-struct Symptom: Identifiable {
+import FirebaseFirestoreSwift
+struct Symptom: Identifiable, Hashable, Codable {
     
-    var id: UUID = UUID()
+    @DocumentID var id: String?
     var symptomName:String
-    var rating:Int
-    var recentStatus:String
-
+    var rating:Int?
+    var recentStatus:String?
+    var creationDateTime: Date
+    var tracking: Bool
+    var userId: String
 }

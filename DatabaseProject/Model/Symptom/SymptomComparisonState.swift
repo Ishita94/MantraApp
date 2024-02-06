@@ -6,3 +6,10 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
+struct SymptomComparisonState: Identifiable, Hashable, Codable {
+    
+    @DocumentID var id: String?
+    var stateName:String
+    var imageName:String
+}

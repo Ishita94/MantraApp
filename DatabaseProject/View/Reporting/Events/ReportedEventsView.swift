@@ -15,9 +15,7 @@ struct ReportedEventsView: View {
 
     var body: some View {
         VStack(alignment: .leading){
-            Text("""
-                    Reported Events
-                    """)
+            Text("Reported Events")
             .font(.symptomTitleinReportingPage)
             .foregroundColor(Color(.black))
             .padding(.vertical, 6)
@@ -31,10 +29,10 @@ struct ReportedEventsView: View {
                 
                 ScrollView{
                     ForEach(eventsViewModel.reportedEventsofUserbyDate, id: \.self) { item in
-                        ReportedEventRow(item: item, loggedIn: $loggedIn)
+                        ReportedEventRow(item: item, loggedIn: $loggedIn,  dateString: dateString)
                     }
                     .scrollContentBackground(.hidden)
-                    .listStyle(.plain)
+//                    .listStyle(.plain)
                     //            .frame(maxWidth: .infinity, maxHeight: 150)
                     
                 }

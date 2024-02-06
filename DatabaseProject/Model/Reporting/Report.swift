@@ -26,9 +26,6 @@ struct Report: Identifiable, Hashable, Codable {
     var description:String?
     var questions:String?
     var notes:String?
-    var reportCompletionStatus:Bool
-    var reportCompletionStatus:Bool
-    var reportCompletionStatus:Bool
 
    // var recentStatus: String
   //  var symptomId: String

@@ -5,14 +5,20 @@
 //  Created by Ishita Haque on 2023-10-22.
 //
 
-import SwiftUI
+import Foundation
+import FirebaseAuth
 
-struct AuthViewModel: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+class AuthViewModel {
+    
+    static func isUserLoggedIn() -> Bool {
+        return Auth.auth().currentUser != nil
     }
-}
-
-#Preview {
-    AuthViewModel()
+    
+    static func getLoggedInUserId() -> String {
+        return Auth.auth().currentUser?.uid ?? ""
+    }
+    
+    static func logout() {
+        try? Auth.auth().signOut()
+    }
 }

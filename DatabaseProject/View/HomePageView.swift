@@ -8,17 +8,16 @@
 import SwiftUI
 
 struct HomePageView: View {
+    @EnvironmentObject var symptomController : SymptomViewModel
+    @Binding var loggedIn: Bool
     
-    init(){
-            
-    }
     var body: some View {
         
         TabView {
             
-            ReportingView()
+            ReportingView(loggedIn: $loggedIn)
                 .tabItem {
-                    VStack {
+                    VStack (spacing: 10) {
                         Image("ic-test")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -33,20 +32,18 @@ struct HomePageView: View {
                 
             SummariesView()
                 .tabItem {
-                    VStack {
+                    VStack (spacing: 10) {
                         Image("ic-tab-summaries-not-selected")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                         Text("Summaries")
                             .font(.tabTitle)
-//                            .accentColor(Color.clear).foregroundColor(.black)
-                            
                     }
                 }
             
             MoreView()
                 .tabItem {
-                    VStack {
+                    VStack (spacing: 10){
                         Image("ic-tab-more-not-selected")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -62,7 +59,11 @@ struct HomePageView: View {
 
 struct HomePageView_Previews: PreviewProvider {
     static var previews: some View {
-        HomePageView()
+        HomePageView(loggedIn: Binding.constant(true))
+            .environmentObject(SymptomViewModel())
+            .environmentObject(GeneralViewModel())
+            .environmentObject(EventsViewModel())
+            .environmentObject(ReportingViewModel())
             .padding()
     }
 }

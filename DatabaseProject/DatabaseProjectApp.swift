@@ -7,6 +7,8 @@
 
 import SwiftUI
 import FirebaseCore
+import FirebaseFirestore
+import FirebaseAppCheck
 
 
 @main
@@ -19,12 +21,18 @@ struct DatabaseProjectApp: App {
     }
     init() {
         registerCustomFonts()
+        let providerFactory = AppCheckDebugProviderFactory()
+        AppCheck.setAppCheckProviderFactory(providerFactory)
         FirebaseApp.configure()
 
     }
     var body: some Scene {
         WindowGroup {
-            HomePageView()
+            LaunchView()
+                .environmentObject(SymptomViewModel())
+                .environmentObject(GeneralViewModel())
+                .environmentObject(EventsViewModel())
+                .environmentObject(ReportingViewModel())
         }
     }
 }

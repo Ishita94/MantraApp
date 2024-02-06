@@ -10,6 +10,8 @@ import SwiftUI
 struct SuggestedSymptomsView: View {
     @EnvironmentObject var symptomViewModel : SymptomViewModel
     @State var loggedIn: Bool = AuthViewModel.isUserLoggedIn()
+    @State var dateString: String
+
     //    @Binding var path: NavigationPath
     
     var body: some View {
@@ -31,7 +33,7 @@ struct SuggestedSymptomsView: View {
                  {
                      if let item =
                         symptomViewModel.dictionaryofSuggestedReports[$0]{
-                         ReportedSymptomswithRecommendationListRow(item: item, loggedIn: $loggedIn)
+                         SuggestedSymptomsListRow(item: item, loggedIn: $loggedIn, dateString: dateString)
                      }
                 }
             }
@@ -45,5 +47,5 @@ struct SuggestedSymptomsView: View {
 }
 
 #Preview {
-    SuggestedSymptomsView()
+    SuggestedSymptomsView(dateString: Date.now.datetoString()!)
 }

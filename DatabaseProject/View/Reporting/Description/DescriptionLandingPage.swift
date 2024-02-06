@@ -8,11 +8,35 @@
 import SwiftUI
 
 struct DescriptionLandingPage: View {
+    @EnvironmentObject var reportingViewModel : ReportingViewModel
+    @EnvironmentObject var generalViewModel : GeneralViewModel
+    @State var dateString: String
+
+    @Binding var loggedIn: Bool
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            NavBar(loggedIn: $loggedIn)
+            Divider()
+            SecondaryNavBar()
+                .environmentObject(generalViewModel)
+            Divider()
+            DescriptionContentPage(loggedIn: $loggedIn, dateString: dateString, descriptionText: $reportingViewModel.remainingReportbyDate.description)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            Divider()
+            BackandNextButtonPanelforDescription(loggedIn: $loggedIn, dateString: dateString, descriptionText: $reportingViewModel.remainingReportbyDate.description)
+        }
+        .onAppear {
+            reportingViewModel.getRemainingReport(date: prepareDate(dateString: dateString)!)
+        }
+        .padding()
     }
 }
 
 #Preview {
-    DescriptionLandingPage()
+    DescriptionLandingPage(dateString: Date.now.datetoString()!, loggedIn: Binding.constant(true)).environmentObject(SymptomViewModel())
+        .environmentObject(GeneralViewModel())
+        .environmentObject(EventsViewModel())
+        .environmentObject(ReportingViewModel())
+
 }

@@ -10,24 +10,32 @@ import SwiftUI
 struct AddSymptomwithSuggestionsorReportedSymptomsView: View {
     @State var isSheetVisible: Bool = false
 //    @State var showThirdView: Bool = true
-    
+    @Binding var loggedIn: Bool
+    @EnvironmentObject var symptomViewModel : SymptomViewModel
+    @State var dateString: String
+
+
     var body: some View {
         NavigationStack{
             VStack (){
-                ReportedSymptomsContentPage()
-                ReportedSymptomswithRecommendationContentPage()
+                ReportedSymptomsView(loggedIn: $loggedIn
+                                            , dateString: dateString)
+                            .frame(maxWidth: .infinity, maxHeight: 200)
+
+                Divider()
+                SuggestedSymptomsView(dateString: dateString)
+                            .frame(maxWidth: .infinity, maxHeight: 200)
+
             }
-            
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-//        .background(
-//            NavigationLink(destination: SetSymptomView(symptomName: ""), isActive: $showThirdView) {
-//                EmptyView()
-//            }
-//        )
+//        .onAppear {
+//            // Call for the data
+//            symptomViewModel.getReportedSymptomsofUserbyDate(date: dateString, showAfterCreatingNewSymptomReport: false)
+//        }
     }
 }
 
 #Preview {
-    AddSymptomwithSuggestionsorReportedSymptomsView()
+    AddSymptomwithSuggestionsorReportedSymptomsView(loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!).environmentObject(SymptomViewModel())
+        .environmentObject(GeneralViewModel())
 }
