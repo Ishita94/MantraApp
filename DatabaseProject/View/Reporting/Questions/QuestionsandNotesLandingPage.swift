@@ -21,23 +21,28 @@ struct QuestionsandNotesLandingPage: View {
             SecondaryNavBar()
                 .environmentObject(generalViewModel)
             Divider()
-            QuestionsandNotesContentPage(loggedIn: $loggedIn, dateString: dateString, questionsText: $reportingViewModel.remainingReportbyDate.questions, notesText: $reportingViewModel.remainingReportbyDate.notes)
+            QuestionsandNotesContentPage(loggedIn: $loggedIn, dateString: dateString, report:  generalViewModel.selectedReport)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-            Divider()
-            BackandNextButtonPanelforQuestionsandNotes(loggedIn: $loggedIn, dateString: dateString, questionsText: $reportingViewModel.remainingReportbyDate.questions, notesText: $reportingViewModel.remainingReportbyDate.notes)
+//            Divider()
+//            BackandNextButtonPanelforQuestionsandNotes(loggedIn: $loggedIn, dateString: dateString, questionsText: $reportingViewModel.remainingReportbyDate.questions, notesText: $reportingViewModel.remainingReportbyDate.notes)
             
         }
-        .onAppear {
-            reportingViewModel.getRemainingReport(date: prepareDate(dateString: dateString)!)
-        }
+//        .onAppear {
+//            reportingViewModel.getRemainingReport(date: prepareDate(dateString: dateString)!)
+//        }
         .padding()
     }
 }
 
 #Preview {
-    QuestionsandNotesLandingPage(dateString: Date.now.datetoString()!, loggedIn: Binding.constant(true)).environmentObject(SymptomViewModel())
-        .environmentObject(GeneralViewModel())
-        .environmentObject(EventsViewModel())
-        .environmentObject(ReportingViewModel())
+    let generalViewModel = GeneralViewModel()
+    let symptomViewModel = SymptomViewModel(generalViewModel: generalViewModel)  // Injected
+    let eventsViewModel = EventsViewModel(generalViewModel: generalViewModel)  // Injected
+    let reportingViewModel = ReportingViewModel(generalViewModel: generalViewModel)  // Injected
 
+    QuestionsandNotesLandingPage(dateString: Date.now.datetoString()!, loggedIn: Binding.constant(true))
+    .environmentObject(generalViewModel)
+    .environmentObject(symptomViewModel)
+    .environmentObject(eventsViewModel)
+    .environmentObject(reportingViewModel)
 }

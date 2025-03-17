@@ -71,14 +71,15 @@ struct ChooseSymptomComparisonView: View {
                     
                     
                     Button(action: {
+                        //Check back on lastModifiedDateTime
                         if(!edit){ //create new symptom report
-                            symptomController.setSymptomReportofTrackedSymptom(symptomReport: SymptomReport(creationDateTime: prepareDate(dateString: dateString)!, rating: generalViewModel.selectedSegment,
+                            symptomController.setSymptomReportofTrackedSymptom(symptomReport: SymptomReport(creationDateTime: prepareDate(dateString: dateString)!, lastModifiedDateTime: Date.now, rating: generalViewModel.selectedSegment,
                                                                                                             symptomName: item.symptomName,  symptomComparisonState: symptomComparisonState, reportCompletionStatus: false, recentStatus: "New", symptomId: item.symptomId,
                                                                                                             userId: ""))
                         }
                         else
                         {
-                            symptomController.editSymptomReport(symptomReport: SymptomReport(id: item.id, creationDateTime: prepareDate(dateString: dateString)!, rating: generalViewModel.selectedSegment,
+                            symptomController.editSymptomReport(symptomReport: SymptomReport(id: item.id, creationDateTime: prepareDate(dateString: dateString)!, lastModifiedDateTime: Date.now, rating: generalViewModel.selectedSegment,
                                                                                                             symptomName: item.symptomName,  symptomComparisonState: symptomComparisonState, reportCompletionStatus: false, recentStatus: "New", symptomId: item.symptomId,
                                                                                              userId: item.userId))
                         }
@@ -148,8 +149,15 @@ struct ChooseSymptomComparisonView: View {
 
 
 #Preview {
+    let generalViewModel = GeneralViewModel()
+    let symptomViewModel = SymptomViewModel(generalViewModel: generalViewModel)  // Injected
+    let eventsViewModel = EventsViewModel(generalViewModel: generalViewModel)  // Injected
+    let reportingViewModel = ReportingViewModel(generalViewModel: generalViewModel)  // Injected
+    
     ChooseSymptomComparisonView(isSheetVisible: Binding.constant(true), symptomComparisonState: "Much Better", item: SymptomReport(
-        dateFormatted: "Aug 20, 2023", creationDateTime: Date.now, rating: 0, emojiIconName: "ic-incomplete-red-filled", symptomName: "", symptomComparisonState: "Much Better", reportCompletionStatus: false, recentStatus: "N/A", symptomId: "", userId: ""), loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!, edit: false)//default value)
-        .environmentObject(SymptomViewModel())
-        .environmentObject(GeneralViewModel())
+        dateFormatted: "Aug 20, 2023", creationDateTime: Date.now, lastModifiedDateTime: Date.now, rating: 0, emojiIconName: "ic-incomplete-red-filled", symptomName: "", symptomComparisonState: "Much Better", reportCompletionStatus: false, recentStatus: "N/A", symptomId: "", userId: ""), loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!, edit: false)//default value)
+        .environmentObject(generalViewModel)
+        .environmentObject(symptomViewModel)
+        .environmentObject(eventsViewModel)
+        .environmentObject(reportingViewModel)
 }

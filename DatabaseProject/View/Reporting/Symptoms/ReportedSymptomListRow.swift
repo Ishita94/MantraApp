@@ -71,7 +71,7 @@ struct ReportedSymptomListRow: View {
                     if(item.symptomComparisonState.isEmpty == false) //symptom has been compared
                     {
                         ChooseSymptomComparisonView(isSheetVisible: Binding.constant(true), item: item, loggedIn: $loggedIn, dateString: dateString, edit: true)
-                            .environmentObject(SymptomViewModel())/*.frame(maxWidth: .infinity, maxHeight: 680)*/
+//                            .environmentObject(SymptomViewModel())/*.frame(maxWidth: .infinity, maxHeight: 680)*/
                     }
                     else
                     {                        SetSymptomView(item: Symptom(id: item.id, symptomName: item.symptomName, rating: item.rating, recentStatus: item.recentStatus, creationDateTime: item.creationDateTime, tracking: true, userId: item.userId), loggedIn: $loggedIn)
@@ -87,7 +87,7 @@ struct ReportedSymptomListRow: View {
 
 #Preview {
 ReportedSymptomListRow(item: SymptomReport(
-    dateFormatted: "Aug 20, 2023", creationDateTime: Date.now, rating: 0, emojiIconName: "ic-incomplete-red-filled", symptomName: "Nausea", symptomComparisonState: "", reportCompletionStatus: false, recentStatus: "N/A", symptomId: "1", userId: ""), loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!).environmentObject(GeneralViewModel())
+    dateFormatted: "Aug 20, 2023", creationDateTime: Date.now, lastModifiedDateTime: Date.now, rating: 0, emojiIconName: "ic-incomplete-red-filled", symptomName: "Nausea", symptomComparisonState: "", reportCompletionStatus: false, recentStatus: "N/A", symptomId: "1", userId: ""), loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!).environmentObject(GeneralViewModel())
 }
 
 

@@ -73,5 +73,5 @@ struct SuggestedSymptomsListRow: View {
 }
 
 #Preview {
-    SuggestedSymptomsListRow(item: SymptomReport(dateFormatted: "", creationDateTime: Date.now, rating: 0, emojiIconName: "ic-incomplete-red-filled", symptomName: "", symptomComparisonState: "", reportCompletionStatus: false, recentStatus: "", symptomId: "", userId: ""), loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!)
+    SuggestedSymptomsListRow(item: SymptomReport(dateFormatted: "", creationDateTime: Date.now, lastModifiedDateTime: Date.now, rating: 0, emojiIconName: "ic-incomplete-red-filled", symptomName: "", symptomComparisonState: "", reportCompletionStatus: false, recentStatus: "", symptomId: "", userId: ""), loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!)
 }

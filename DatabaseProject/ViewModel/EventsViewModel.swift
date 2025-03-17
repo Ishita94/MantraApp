@@ -14,6 +14,12 @@ class EventsViewModel: ObservableObject {
     @Published var reportedEventsofUserbyDate = [EventReport]()
     @Published var reportedEvents = [EventReport]()
     @Published var dictionaryofEvents: OrderedDictionary<String , [EventReport]> = [:]
+    private var eventDataService : EventDataService
+    
+   
+    init(generalViewModel: GeneralViewModel) {
+        self.eventDataService = EventDataService(generalViewModel: generalViewModel)
+    }
     
     var definedEventList: [Event] = [
         Event(title: "Went on a walk", category: "Physical Well-Being", creationDateTime: Date.now, userId: "", tracking: false),
@@ -26,16 +32,12 @@ class EventsViewModel: ObservableObject {
     
     @Published var suggestedEvents: [Event] = []
     
-    init() {
-    }
-    
-    
     func getEventsReportedonDate(date: Date){
         let formattedFromDate: Date? = prepareDatefromDate(date: date)
         let formattedToDate: Date? = prepareNextDate(date: formattedFromDate!)
         
                 DispatchQueue.main.async {
-                    EventDataService().getReportedEventsbyDateRange(fromDate: formattedFromDate!, toDate: formattedToDate!) { events in
+                    self.eventDataService.getReportedEventsbyDateRange(fromDate: formattedFromDate!, toDate: formattedToDate!) { events in
                         
                         // Update the UI in the main thread
                             self.reportedEventsofUserbyDate = events
@@ -55,7 +57,7 @@ class EventsViewModel: ObservableObject {
             }
             let preparedToDate:Date? = prepareDatefromDate(date: toDate)
 
-            EventDataService().getReportedEventsbyDateRange(fromDate: preparedFromDate, toDate: preparedToDate) { events in
+            self.eventDataService.getReportedEventsbyDateRange(fromDate: preparedFromDate, toDate: preparedToDate) { events in
                 self.reportedEvents = events
             }
         }
@@ -65,7 +67,7 @@ class EventsViewModel: ObservableObject {
         DispatchQueue.main.async {
             for event in events{
                 Task{
-                    await EventDataService().setEventReport(event: event)
+                    await self.eventDataService.setEventReport(event: event)
                 }
             }
         }
@@ -75,12 +77,12 @@ class EventsViewModel: ObservableObject {
         DispatchQueue.main.async {
                 Task{
                     if let report = eventReport{//edit
-                        await EventDataService().editEventandEventReport(event: event, eventReport: report)
-                        await EventDataService().editEvent(event: event)
+                        await self.eventDataService.editEventandEventReport(event: event, eventReport: report)
+                        await self.eventDataService.editEvent(event: event)
                     }
                     else //new event
                     {
-                        await EventDataService().setEvent(event: event)
+                        await self.eventDataService.setEvent(event: event)
                     }
                 }
         }
@@ -90,7 +92,7 @@ class EventsViewModel: ObservableObject {
     
     func getSuggestedEvents(){
         DispatchQueue.main.async {
-            EventDataService().getSuggestedEventsofUser() { [self] events in
+            self.eventDataService.getSuggestedEventsofUser() { [self] events in
                 var list = [Event]()
                 for item in events
                 {

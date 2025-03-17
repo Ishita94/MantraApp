@@ -12,9 +12,17 @@ struct QuestionsandNotesContentPage: View {
     @State var dateString: String
     @EnvironmentObject var reportingViewModel : ReportingViewModel
 //    @State var readyToNavigate: Bool = false
-    @Binding var questionsText: String
-    @Binding var notesText: String
-
+    @State private var questionsText: String
+    @State private var notesText: String
+    @FocusState private var isQuestionsTextEditorFocused: Bool  // Track focus state
+    @FocusState private var isNotesTextEditorFocused: Bool  // Track focus state
+    
+    init(loggedIn: Binding<Bool>, dateString: String, report: Report) {
+        _loggedIn = loggedIn
+        _dateString = State(initialValue: dateString)
+        _questionsText = State(initialValue:  report.questions)
+        _notesText = State(initialValue:  report.notes)
+        }
 
     var body: some View {
         NavigationStack{
@@ -39,8 +47,19 @@ struct QuestionsandNotesContentPage: View {
                 .foregroundColor(.black)
                 .font(.titleinRowItem)
                 
-                VStack{
+                VStack  (alignment: .leading){
+                    if $questionsText.wrappedValue.isEmpty && !isQuestionsTextEditorFocused {
+
+                    Text("2500 characters remaining")
+                        .foregroundStyle(.secondary)
+                        .font(.regularText)
+                        .lineSpacing(10)
+                        .autocapitalization(.words)
+                        .disableAutocorrection(true)
+                        .padding()
+                }
                     TextEditor(text: $questionsText)
+                        .focused($isQuestionsTextEditorFocused)  // Attach focus state
                         .foregroundStyle(.secondary)
                         .font(.regularText)
                         .lineSpacing(10)
@@ -59,8 +78,18 @@ struct QuestionsandNotesContentPage: View {
                 .foregroundColor(.black)
                 .font(.titleinRowItem)
                 
-                VStack{
+                VStack (alignment: .leading){
+                    if $notesText.wrappedValue.isEmpty && !isNotesTextEditorFocused {
+                        Text("2500 characters remaining")
+                            .foregroundStyle(.secondary)
+                            .font(.regularText)
+                            .lineSpacing(10)
+                            .autocapitalization(.words)
+                            .disableAutocorrection(true)
+                            .padding()
+                    }
                     TextEditor(text: $notesText)
+                        .focused($isNotesTextEditorFocused)  // Attach focus state
                         .foregroundStyle(.secondary)
                         .font(.regularText)
                         .lineSpacing(10)
@@ -73,6 +102,8 @@ struct QuestionsandNotesContentPage: View {
                         .stroke(Color(.outlineDarker), lineWidth: 1)
                 )
             }
+            Divider()
+            BackandNextButtonPanelforQuestionsandNotes(loggedIn: $loggedIn, dateString: dateString, questionsText: $questionsText, notesText: $notesText)
             }
         }
     
@@ -80,5 +111,5 @@ struct QuestionsandNotesContentPage: View {
 
 
 #Preview {
-    QuestionsandNotesContentPage(loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!, questionsText: Binding.constant(""), notesText: Binding.constant(""))
+    QuestionsandNotesContentPage(loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!, report: Report())
 }

@@ -129,6 +129,14 @@ struct SetEventView: View {
 }
 
 #Preview {
+    let generalViewModel = GeneralViewModel()
+    let symptomViewModel = SymptomViewModel(generalViewModel: generalViewModel)  // Injected
+    let eventsViewModel = EventsViewModel(generalViewModel: generalViewModel)  // Injected
+    let reportingViewModel = ReportingViewModel(generalViewModel: generalViewModel)  // Injected
+    
     SetEventView(item: Event(title: "Went on a walk", category: "Physical Well-Being", creationDateTime: Date.now, userId: "", tracking: false), title: "Went on a walk", loggedIn: Binding.constant(true), isSheetVisible: true, selection: "Physical Well-Being", dateString: Date.now.datetoString()!)
-        .environmentObject(EventsViewModel())
+        .environmentObject(generalViewModel)
+        .environmentObject(symptomViewModel)
+        .environmentObject(eventsViewModel)
+        .environmentObject(reportingViewModel)
 }

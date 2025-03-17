@@ -81,7 +81,14 @@ struct BackandNextButtonPanelforQuestionsandNotes: View {
     }
 
 #Preview {
+    let generalViewModel = GeneralViewModel()
+    let symptomViewModel = SymptomViewModel(generalViewModel: generalViewModel)  // Injected
+    let eventsViewModel = EventsViewModel(generalViewModel: generalViewModel)  // Injected
+    let reportingViewModel = ReportingViewModel(generalViewModel: generalViewModel)  // Injected
+    
     BackandNextButtonPanelforQuestionsandNotes(loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!, questionsText: Binding.constant(""), notesText: Binding.constant("") )
-        .environmentObject(GeneralViewModel())
-        .environmentObject(ReportingViewModel())
+        .environmentObject(generalViewModel)
+        .environmentObject(symptomViewModel)
+        .environmentObject(eventsViewModel)
+        .environmentObject(reportingViewModel)
 }

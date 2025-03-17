@@ -6,14 +6,16 @@
 //
 
 import SwiftUI
+import EmojiPicker
 
 struct ReportingView: View {
     @State var reportedItems:[Report] = [Report]()
     @State var finalReportedItems:[Report] = [Report]()
-    var reportingDataService = SymptomDataService()
     @EnvironmentObject var symptomViewModel : SymptomViewModel
+    @EnvironmentObject var generalViewModel : GeneralViewModel
     @Binding var loggedIn: Bool
     @State private var selectedItem: Symptom? = nil
+    @State private var emojis: [Emoji] = DefaultEmojiProvider().getAll()
 
     var body: some View {
         NavigationStack{
@@ -27,7 +29,12 @@ struct ReportingView: View {
                         showAfterCreatingNewSymptomReport: false)
                         } label: {
                             ReportListRow(item: item)
+                           // ReportListRow(item: item, emoji: emojis.first(where: { $0.name == item.emojiStateofDay }))
                         }
+                        .simultaneousGesture(TapGesture().onEnded {
+                            generalViewModel.setSelectedReport(report: item)
+                            generalViewModel.setDateStringofCurrentReport(dateString: item.dateString)
+                        })
                     }
                 }
                 
@@ -37,11 +44,13 @@ struct ReportingView: View {
                 .onAppear {
                     // Call for the data
                     symptomViewModel.getReportsofUser()
+                    generalViewModel.clearDateStringofCurrentReport()
+                    generalViewModel.clearSelectedReport()
                 }
-                ReportListRowforNewEntry(item: Report(dayNameofWeek: "Thu", monthNameofWeek: "Aug 20", dateString: Date.now.datetoString() ?? "", emojiIconName: "ic-incomplete-red-filled", emojiStateofDay: "Nauseous", symptomNames: "Nausea, Headache", reportCompletionStatus: false), loggedIn: $loggedIn)
-                    .environmentObject(SymptomViewModel())
-                    .environmentObject(GeneralViewModel())
-                    .environmentObject(EventsViewModel())
+                ReportListRowforNewEntry(item: Report(id:"", dayNameofWeek: "", monthNameofWeek: "", dateString: "", emojiStateofDay: "", symptomNames: "",reportCompletionStatus: false, description: "", questions: "", notes: "", symptomCompletionStatus: false, eventCompletionStatus: false,    descriptionCompletionStatus: false, questionsandNotesCompletionStatus: false, emojiCompletionStatus: false, creationDateTime: Date.now, userId: AuthViewModel.getLoggedInUserId()), loggedIn: $loggedIn)
+//                    .environmentObject(SymptomViewModel())
+//                    .environmentObject(GeneralViewModel())
+//                    .environmentObject(EventsViewModel())
             }
             
             .padding()
@@ -54,10 +63,16 @@ struct ReportingView: View {
 
 struct ReportingView_Previews: PreviewProvider {
     static var previews: some View {
-        ReportingView(loggedIn: Binding.constant(true)).environmentObject(SymptomViewModel())
-            .environmentObject(GeneralViewModel())
-            .environmentObject(EventsViewModel())
-            .environmentObject(ReportingViewModel())
+        let generalViewModel = GeneralViewModel()
+        let symptomViewModel = SymptomViewModel(generalViewModel: generalViewModel)  // Injected
+        let eventsViewModel = EventsViewModel(generalViewModel: generalViewModel)  // Injected
+        let reportingViewModel = ReportingViewModel(generalViewModel: generalViewModel)  // Injected
+        
+        ReportingView(loggedIn: Binding.constant(true))
+            .environmentObject(generalViewModel)
+            .environmentObject(symptomViewModel)
+            .environmentObject(eventsViewModel)
+            .environmentObject(reportingViewModel)
 
     }
 }

@@ -8,14 +8,9 @@
 import SwiftUI
 
 struct ReportedSymptomsView: View {
-//    @State var reportedItems:[Symptom] = [
-//        Symptom(symptomName: "Nausea", rating: 6, recentStatus: "New")
-//        ,
-//        Symptom(symptomName: "Nausea", rating: 6, recentStatus: "New"),
-//        Symptom(symptomName: "Nausea", rating: 6, recentStatus: "New")
-//
-//    ]
-    @EnvironmentObject var symptomViewModel : SymptomViewModel
+
+//    @EnvironmentObject var symptomViewModel : SymptomViewModel
+    @EnvironmentObject var generalViewModel : GeneralViewModel
 
     @Binding var loggedIn: Bool
     @State var dateString: String
@@ -34,15 +29,15 @@ struct ReportedSymptomsView: View {
             .foregroundColor(Color(.black))
             .padding(.vertical, 6)
             
-            if(symptomViewModel.reportedSymptomsofUserbyDate.count>0){
+            if(generalViewModel.selectedReport.symptomReports.count>0){
                 Text("""
-                These are symptoms you have added today
+                These are symptoms you have added today.
                 """)
                 .font(.regularText)
                 .foregroundColor(Color(.blackMediumEmphasis))
                                 
                 ScrollView{
-                    ForEach(symptomViewModel.reportedSymptomsofUserbyDate, id: \.self) { item in
+                    ForEach(generalViewModel.selectedReport.symptomReports, id: \.self) { item in
                         ReportedSymptomListRow(item: item, loggedIn: $loggedIn, dateString: dateString)
                     }
                     .scrollContentBackground(.hidden)
@@ -75,5 +70,6 @@ struct ReportedSymptomsView: View {
 
 #Preview {
     ReportedSymptomsView(loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!)
-        .environmentObject(SymptomViewModel())
+        .environmentObject(GeneralViewModel())
+
 }

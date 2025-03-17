@@ -42,6 +42,19 @@ func stringtoDate(dateString: String) -> Date? {
     return dateFormatter.date(from: dateString)
 }
 
+func stringtoFormalDate(dateString: String) -> String {
+    let inputDateFormatter = DateFormatter()
+    inputDateFormatter.dateFormat = "yyyy-MM-dd"
+    inputDateFormatter.locale = Locale.init(identifier: "en_GB")
+    if let date = inputDateFormatter.date(from: dateString) {
+            let outputFormatter = DateFormatter()
+            outputFormatter.dateFormat = "MMMM dd, yyyy"
+            return outputFormatter.string(from: date)
+        } else {
+            return "Invalid Date"
+        }
+}
+
 func prepareDatefromDate(date:Date) -> Date? {
 
     

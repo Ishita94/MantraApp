@@ -50,7 +50,16 @@ struct SetSymptomView: View {
 
 #Preview {
     NavigationStack{
-        SetSymptomView(item: Symptom(symptomName: "Nausea", rating: 0, recentStatus: "", creationDateTime: Date.now, tracking: true, userId: ""), loggedIn: Binding.constant(true)).environmentObject(SymptomViewModel())
-            .environmentObject(GeneralViewModel())
+        let generalViewModel = GeneralViewModel()
+        let symptomViewModel = SymptomViewModel(generalViewModel: generalViewModel)  // Injected
+        let eventsViewModel = EventsViewModel(generalViewModel: generalViewModel)  // Injected
+        let reportingViewModel = ReportingViewModel(generalViewModel: generalViewModel)  // Injected
+        
+        
+        SetSymptomView(item: Symptom(symptomName: "Nausea", rating: 0, recentStatus: "", creationDateTime: Date.now, tracking: true, userId: ""), loggedIn: Binding.constant(true))
+            .environmentObject(generalViewModel)
+            .environmentObject(symptomViewModel)
+            .environmentObject(eventsViewModel)
+            .environmentObject(reportingViewModel)
     }
 }

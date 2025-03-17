@@ -16,6 +16,7 @@ struct SymptomReport: Identifiable, Hashable, Codable {
     var dateFormatted:String?
     var dateString:String?
     var creationDateTime: Date
+    var lastModifiedDateTime: Date
     var rating:Int
     var emojiIconName:String?
     //var emojiStateofDay:String

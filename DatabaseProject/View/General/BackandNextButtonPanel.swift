@@ -69,7 +69,7 @@ struct BackandNextButtonPanel: View {
         .navigationDestination(isPresented: $readyToNavigateBack) {
             if(generalViewModel.currentState==1){
                 AddorEditSymptomsLandingPage(loggedIn: $loggedIn, dateString: dateString,
-            showAfterCreatingNewSymptomReport: false)
+                    showAfterCreatingNewSymptomReport: false)
                 .environmentObject(generalViewModel)
             }
             else if(generalViewModel.currentState==2){
@@ -81,7 +81,14 @@ struct BackandNextButtonPanel: View {
 }
 
 #Preview {
+    let generalViewModel = GeneralViewModel()
+    let symptomViewModel = SymptomViewModel(generalViewModel: generalViewModel)  // Injected
+    let eventsViewModel = EventsViewModel(generalViewModel: generalViewModel)  // Injected
+    let reportingViewModel = ReportingViewModel(generalViewModel: generalViewModel)  // Injected
+    
     BackandNextButtonPanel(loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!)
-        .environmentObject(GeneralViewModel())
-        .environmentObject(ReportingViewModel())
+        .environmentObject(generalViewModel)
+        .environmentObject(symptomViewModel)
+        .environmentObject(eventsViewModel)
+        .environmentObject(reportingViewModel)
 }

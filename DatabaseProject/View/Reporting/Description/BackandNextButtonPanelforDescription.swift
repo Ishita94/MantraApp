@@ -40,7 +40,7 @@ struct BackandNextButtonPanelforDescription: View {
                     
                     Button(action: {
                         generalViewModel.incrementState()
-                                            
+                        reportViewModel.remainingReportbyDate.description = descriptionText
                             reportViewModel.remainingReportbyDate.descriptionCompletionStatus = true
                             reportViewModel.saveRemainingReport(report: reportViewModel.remainingReportbyDate, saveFor: "Description" )
                         
@@ -78,7 +78,14 @@ struct BackandNextButtonPanelforDescription: View {
     }
 
 #Preview {
+    let generalViewModel = GeneralViewModel()
+    let symptomViewModel = SymptomViewModel(generalViewModel: generalViewModel)  // Injected
+    let eventsViewModel = EventsViewModel(generalViewModel: generalViewModel)  // Injected
+    let reportingViewModel = ReportingViewModel(generalViewModel: generalViewModel)  // Injected
+    
     BackandNextButtonPanelforDescription(loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!, descriptionText: Binding.constant(""))
-        .environmentObject(GeneralViewModel())
-        .environmentObject(ReportingViewModel())
+        .environmentObject(generalViewModel)
+        .environmentObject(symptomViewModel)
+        .environmentObject(eventsViewModel)
+        .environmentObject(reportingViewModel)
 }

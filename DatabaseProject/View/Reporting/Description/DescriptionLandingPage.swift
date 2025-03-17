@@ -21,22 +21,27 @@ struct DescriptionLandingPage: View {
             SecondaryNavBar()
                 .environmentObject(generalViewModel)
             Divider()
-            DescriptionContentPage(loggedIn: $loggedIn, dateString: dateString, descriptionText: $reportingViewModel.remainingReportbyDate.description)
+            DescriptionContentPage(loggedIn: $loggedIn, dateString: dateString, report:  generalViewModel.selectedReport)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-            Divider()
-            BackandNextButtonPanelforDescription(loggedIn: $loggedIn, dateString: dateString, descriptionText: $reportingViewModel.remainingReportbyDate.description)
+//            Divider()
+//            BackandNextButtonPanelforDescription(loggedIn: $loggedIn, dateString: dateString, descriptionText: $reportingViewModel.remainingReportbyDate.description)
         }
-        .onAppear {
-            reportingViewModel.getRemainingReport(date: prepareDate(dateString: dateString)!)
-        }
+//        .onAppear {
+//            reportingViewModel.getRemainingReport(date: prepareDate(dateString: dateString)!)
+//        }
         .padding()
     }
 }
 
 #Preview {
-    DescriptionLandingPage(dateString: Date.now.datetoString()!, loggedIn: Binding.constant(true)).environmentObject(SymptomViewModel())
-        .environmentObject(GeneralViewModel())
-        .environmentObject(EventsViewModel())
-        .environmentObject(ReportingViewModel())
+    let generalViewModel = GeneralViewModel()
+    let symptomViewModel = SymptomViewModel(generalViewModel: generalViewModel)  // Injected
+    let eventsViewModel = EventsViewModel(generalViewModel: generalViewModel)  // Injected
+    let reportingViewModel = ReportingViewModel(generalViewModel: generalViewModel)  // Injected
 
+    DescriptionLandingPage(dateString: Date.now.datetoString()!, loggedIn: Binding.constant(true))
+    .environmentObject(generalViewModel)
+    .environmentObject(symptomViewModel)
+    .environmentObject(eventsViewModel)
+    .environmentObject(reportingViewModel)
 }

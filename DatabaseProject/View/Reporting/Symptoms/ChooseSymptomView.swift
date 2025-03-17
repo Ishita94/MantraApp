@@ -116,6 +116,15 @@ struct ChooseSymptomView: View {
 }
 
 #Preview {
-    ChooseSymptomView(isSheetVisible: Binding.constant(true), loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!).environmentObject(SymptomViewModel())
-        .environmentObject(GeneralViewModel())//default value)
+    let generalViewModel = GeneralViewModel()
+    let symptomViewModel = SymptomViewModel(generalViewModel: generalViewModel)  // Injected
+    let eventsViewModel = EventsViewModel(generalViewModel: generalViewModel)  // Injected
+    let reportingViewModel = ReportingViewModel(generalViewModel: generalViewModel)  // Injected
+    
+    
+    ChooseSymptomView(isSheetVisible: Binding.constant(true), loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!)
+        .environmentObject(generalViewModel)
+        .environmentObject(symptomViewModel)
+        .environmentObject(eventsViewModel)
+        .environmentObject(reportingViewModel)
 }

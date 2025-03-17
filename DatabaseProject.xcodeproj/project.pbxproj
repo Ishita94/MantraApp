@@ -133,6 +133,9 @@
 		20F07C452AA5DCC1001D8815 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 20F07C442AA5DCC1001D8815 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		20F07C472AA5DCC1001D8815 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 20F07C462AA5DCC1001D8815 /* FirebaseAppCheck */; };
 		20F07C492AA5DCC1001D8815 /* FirebaseAppDistribution-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 20F07C482AA5DCC1001D8815 /* FirebaseAppDistribution-Beta */; };
+		20F393EB2D7115DA0036FC57 /* ExtensionPlaceholderforTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F393EA2D7115C90036FC57 /* ExtensionPlaceholderforTextEditor.swift */; };
+		20F393EF2D77CCA80036FC57 /* AddorEditSymptomNavigationButtonPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F393EE2D77CCA80036FC57 /* AddorEditSymptomNavigationButtonPanel.swift */; };
+		20F393F12D78CB250036FC57 /* ReportforQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F393F02D78CB150036FC57 /* ReportforQuery.swift */; };
 		20F674E42B3778B600862651 /* EventDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F674E32B3778B600862651 /* EventDataService.swift */; };
 		20F674E82B3787A400862651 /* ReportedEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F674E72B3787A400862651 /* ReportedEventsView.swift */; };
 		20F674EA2B3789A900862651 /* SuggestedSymptomsListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F674E92B3789A900862651 /* SuggestedSymptomsListRow.swift */; };
@@ -141,11 +144,9 @@
 		20F674F02B378A4E00862651 /* ReportedEventRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F674EF2B378A4E00862651 /* ReportedEventRow.swift */; };
 		20F674F72B37903800862651 /* SetEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F674F62B37903800862651 /* SetEventView.swift */; };
 		20F674F92B3CEBB900862651 /* AddorEditEventButtonPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F674F82B3CEBB900862651 /* AddorEditEventButtonPanel.swift */; };
-		AEF8AE7A01841F9DF7AE368D /* Pods_DatabaseProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CDBF45AF5BBC22253969BB5 /* Pods_DatabaseProject.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1CDBF45AF5BBC22253969BB5 /* Pods_DatabaseProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DatabaseProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2003EDAA2AE5BAB9009E1BB3 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		2003EDAC2AE5BB18009E1BB3 /* LoginContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContentView.swift; sourceTree = "<group>"; };
 		2003EDAE2AE5BF54009E1BB3 /* LoginForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginForm.swift; sourceTree = "<group>"; };
@@ -225,6 +226,9 @@
 		20D3CF212AC103460010792D /* AddorEditSymptomsLandingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddorEditSymptomsLandingPage.swift; sourceTree = "<group>"; };
 		20D3CF232AC104020010792D /* SecondaryNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryNavBar.swift; sourceTree = "<group>"; };
 		20F07C3B2AA5DB9E001D8815 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		20F393EA2D7115C90036FC57 /* ExtensionPlaceholderforTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionPlaceholderforTextEditor.swift; sourceTree = "<group>"; };
+		20F393EE2D77CCA80036FC57 /* AddorEditSymptomNavigationButtonPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddorEditSymptomNavigationButtonPanel.swift; sourceTree = "<group>"; };
+		20F393F02D78CB150036FC57 /* ReportforQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportforQuery.swift; sourceTree = "<group>"; };
 		20F674E32B3778B600862651 /* EventDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDataService.swift; sourceTree = "<group>"; };
 		20F674E72B3787A400862651 /* ReportedEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportedEventsView.swift; sourceTree = "<group>"; };
 		20F674E92B3789A900862651 /* SuggestedSymptomsListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedSymptomsListRow.swift; sourceTree = "<group>"; };
@@ -233,8 +237,9 @@
 		20F674EF2B378A4E00862651 /* ReportedEventRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportedEventRow.swift; sourceTree = "<group>"; };
 		20F674F62B37903800862651 /* SetEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetEventView.swift; sourceTree = "<group>"; };
 		20F674F82B3CEBB900862651 /* AddorEditEventButtonPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddorEditEventButtonPanel.swift; sourceTree = "<group>"; };
-		D0C2249AC9EE3E694D7632E0 /* Pods-DatabaseProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DatabaseProject.debug.xcconfig"; path = "Target Support Files/Pods-DatabaseProject/Pods-DatabaseProject.debug.xcconfig"; sourceTree = "<group>"; };
-		D7AE89FDF2C8C656F7BBBA48 /* Pods-DatabaseProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DatabaseProject.release.xcconfig"; path = "Target Support Files/Pods-DatabaseProject/Pods-DatabaseProject.release.xcconfig"; sourceTree = "<group>"; };
+		233A4E2FC533E6405D70B8B8 /* Pods_DatabaseProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DatabaseProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFADE31239D181C79078AEA7 /* Pods-DatabaseProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DatabaseProject.debug.xcconfig"; path = "Target Support Files/Pods-DatabaseProject/Pods-DatabaseProject.debug.xcconfig"; sourceTree = "<group>"; };
+		F0CFB0B1813692E8766F57D3 /* Pods-DatabaseProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DatabaseProject.release.xcconfig"; path = "Target Support Files/Pods-DatabaseProject/Pods-DatabaseProject.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -291,7 +296,6 @@
 				20C8389A2AD2B37800BDE91C /* FlowStacks in Frameworks */,
 				20B151592AE516F5005CEF89 /* FirebaseAuth in Frameworks */,
 				20B1514D2AE516F5005CEF89 /* FirebaseAnalytics in Frameworks */,
-				AEF8AE7A01841F9DF7AE368D /* Pods_DatabaseProject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +342,7 @@
 				2050DDCE2ACEFD94006F46D2 /* Symptom */,
 				209F53FA2AC96B3300421857 /* GeneralEnumerations.swift */,
 				20C8FCB22AF714620010F2AC /* ExtensionDate.swift */,
+				20F393EA2D7115C90036FC57 /* ExtensionPlaceholderforTextEditor.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -368,6 +373,7 @@
 		205783BB2B601C21005C51B4 /* Reporting */ = {
 			isa = PBXGroup;
 			children = (
+				20F393F02D78CB150036FC57 /* ReportforQuery.swift */,
 				20C8FCB42AF841FF0010F2AC /* Report.swift */,
 				205783BC2B601F11005C51B4 /* RemainingReport.swift */,
 			);
@@ -392,7 +398,7 @@
 				2070537A2AA5C90F00E518B7 /* DatabaseProject */,
 				207053792AA5C90F00E518B7 /* Products */,
 				80809AE33D04379CF3CC2260 /* Pods */,
-				C15D18E039D578D3DAF592C2 /* Frameworks */,
+				CE47F84C92C88FAD487951A1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -507,6 +513,7 @@
 				20C8389D2ADD40C800BDE91C /* AddSymptomwithSuggestionsorReportedSymptomsView.swift */,
 				20C8389F2ADDA50F00BDE91C /* AddorEditSymptomButtonPanel.swift */,
 				20F674E92B3789A900862651 /* SuggestedSymptomsListRow.swift */,
+				20F393EE2D77CCA80036FC57 /* AddorEditSymptomNavigationButtonPanel.swift */,
 			);
 			path = Symptoms;
 			sourceTree = "<group>";
@@ -556,16 +563,16 @@
 		80809AE33D04379CF3CC2260 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D0C2249AC9EE3E694D7632E0 /* Pods-DatabaseProject.debug.xcconfig */,
-				D7AE89FDF2C8C656F7BBBA48 /* Pods-DatabaseProject.release.xcconfig */,
+				DFADE31239D181C79078AEA7 /* Pods-DatabaseProject.debug.xcconfig */,
+				F0CFB0B1813692E8766F57D3 /* Pods-DatabaseProject.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		C15D18E039D578D3DAF592C2 /* Frameworks */ = {
+		CE47F84C92C88FAD487951A1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1CDBF45AF5BBC22253969BB5 /* Pods_DatabaseProject.framework */,
+				233A4E2FC533E6405D70B8B8 /* Pods_DatabaseProject.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -577,7 +584,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 207053872AA5C91100E518B7 /* Build configuration list for PBXNativeTarget "DatabaseProject" */;
 			buildPhases = (
-				09E53768DC7D54D1799191B6 /* [CP] Check Pods Manifest.lock */,
+				7494D80E082DD90AF1D0156E /* [CP] Check Pods Manifest.lock */,
 				207053742AA5C90F00E518B7 /* Sources */,
 				207053752AA5C90F00E518B7 /* Frameworks */,
 				207053762AA5C90F00E518B7 /* Resources */,
@@ -708,7 +715,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		09E53768DC7D54D1799191B6 /* [CP] Check Pods Manifest.lock */ = {
+		7494D80E082DD90AF1D0156E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -740,6 +747,7 @@
 				20F674F02B378A4E00862651 /* ReportedEventRow.swift in Sources */,
 				205783C32B602F51005C51B4 /* QuestionsandNotesContentPage.swift in Sources */,
 				2003EDAD2AE5BB18009E1BB3 /* LoginContentView.swift in Sources */,
+				20F393EF2D77CCA80036FC57 /* AddorEditSymptomNavigationButtonPanel.swift in Sources */,
 				20C838A02ADDA50F00BDE91C /* AddorEditSymptomButtonPanel.swift in Sources */,
 				207479462AEFD87100551441 /* AddorEditEventsContentPage.swift in Sources */,
 				205783C12B602F42005C51B4 /* QuestionsandNotesLandingPage.swift in Sources */,
@@ -749,12 +757,14 @@
 				2050DDCD2ACEFCDE006F46D2 /* ReportedSymptomsView.swift in Sources */,
 				2074793E2AEE42B000551441 /* TitleBarforTabs.swift in Sources */,
 				209F53FD2AC96E0F00421857 /* SetSymptomView.swift in Sources */,
+				20F393F12D78CB250036FC57 /* ReportforQuery.swift in Sources */,
 				209F54072ACC213700421857 /* ReportedSymptomListRow.swift in Sources */,
 				200CA75D2AB876F200B49508 /* ReportListRowforNewEntry.swift in Sources */,
 				20C838902ACF0DE400BDE91C /* SuggestedSymptomsView.swift in Sources */,
 				202494E52AE4D26D001D253E /* SymptomViewModel.swift in Sources */,
 				205783D62B6AC62E005C51B4 /* ReportCompletionView.swift in Sources */,
 				20A44E542AC15424002C726B /* AddorEditSymptomsContentView.swift in Sources */,
+				20F393EB2D7115DA0036FC57 /* ExtensionPlaceholderforTextEditor.swift in Sources */,
 				2003EDAB2AE5BAB9009E1BB3 /* LaunchView.swift in Sources */,
 				20C8FCB52AF841FF0010F2AC /* Report.swift in Sources */,
 				2070537E2AA5C90F00E518B7 /* ContentView.swift in Sources */,
@@ -817,6 +827,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -877,6 +888,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -928,7 +940,7 @@
 		};
 		207053882AA5C91100E518B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D0C2249AC9EE3E694D7632E0 /* Pods-DatabaseProject.debug.xcconfig */;
+			baseConfigurationReference = DFADE31239D181C79078AEA7 /* Pods-DatabaseProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -974,7 +986,7 @@
 		};
 		207053892AA5C91100E518B7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D7AE89FDF2C8C656F7BBBA48 /* Pods-DatabaseProject.release.xcconfig */;
+			baseConfigurationReference = F0CFB0B1813692E8766F57D3 /* Pods-DatabaseProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

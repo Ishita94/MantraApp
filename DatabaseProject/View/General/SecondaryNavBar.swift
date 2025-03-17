@@ -19,11 +19,11 @@ struct SecondaryNavBar: View {
             TopProgressBarView()
                 .environmentObject(generalViewModel)
 
-            Text("Step "+stepNumber)
+            Text("Step "+"\(generalViewModel.currentState)")
                 .foregroundColor(Color(.greyText))
                 .font(.regularText)
             //TODO: update the title
-            Text(stepTitle)
+            Text(generalViewModel.currentTitle)
                 .foregroundColor(.black)
                 .font(.symptomTitleinReportingPage)
             //Spacer()
@@ -35,11 +35,15 @@ struct SecondaryNavBar: View {
 }
 
 #Preview {
-    SecondaryNavBar()
-        .environmentObject(SymptomViewModel())
-        .environmentObject(GeneralViewModel())
-        .environmentObject(EventsViewModel())
-        .environmentObject(ReportingViewModel())
-
+    let generalViewModel = GeneralViewModel()
+    let symptomViewModel = SymptomViewModel(generalViewModel: generalViewModel)  // Injected
+    let eventsViewModel = EventsViewModel(generalViewModel: generalViewModel)  // Injected
+    let reportingViewModel = ReportingViewModel(generalViewModel: generalViewModel)  // Injected
     
+    
+    SecondaryNavBar()
+        .environmentObject(generalViewModel)
+        .environmentObject(symptomViewModel)
+        .environmentObject(eventsViewModel)
+        .environmentObject(reportingViewModel)
 }

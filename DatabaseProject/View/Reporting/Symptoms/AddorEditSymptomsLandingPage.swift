@@ -10,12 +10,14 @@ import SwiftUI
 struct AddorEditSymptomsLandingPage: View {
     @State var isSheetVisible: Bool = false
     @EnvironmentObject var symptomController : SymptomViewModel
+    @EnvironmentObject var generalViewModel : GeneralViewModel
     //    @State var showThirdView: Bool = false
     @Binding var loggedIn: Bool
+//    @State var report: Report
     @State var date: Date?
     @State var dateString: String
     @State var showAfterCreatingNewSymptomReport: Bool = false
-    
+
     
     var body: some View {
         VStack{
@@ -25,8 +27,9 @@ struct AddorEditSymptomsLandingPage: View {
             SecondaryNavBar()
             Divider()
             //            ScrollView{
-            if(symptomController.dictionaryofSuggestedReports.count>0 || symptomController.reportedSymptomsofUserbyDate.count>0 ) {
+            if(symptomController.dictionaryofSuggestedReports.count>0 || generalViewModel.selectedReport.symptomReports.count>0 ) {
                 AddorEditSymptomButtonPanel(loggedIn: $loggedIn, dateString: dateString)
+                Divider()
                 AddSymptomwithSuggestionsorReportedSymptomsView(loggedIn: $loggedIn, dateString: dateString)
             }
             //}
@@ -40,8 +43,12 @@ struct AddorEditSymptomsLandingPage: View {
         
         .onAppear()
         {
-            symptomController.getReportedSymptomsofUserbyDate(date: dateString, showAfterCreatingNewSymptomReport: false)
+           
+            
+//            generalViewModel.setSelectedReport(report: report)
+//            symptomController.getReportedSymptomsofUserbyDate(date: dateString, showAfterCreatingNewSymptomReport: false)
             symptomController.getSuggestedSymptomsofUserbeforeDate(date: prepareDate(dateString: dateString)!)
+            
         }
         //        }
         //        .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -51,8 +58,14 @@ struct AddorEditSymptomsLandingPage: View {
 }
 
 #Preview {
+    let generalViewModel = GeneralViewModel()
+    let symptomViewModel = SymptomViewModel(generalViewModel: generalViewModel)  // Injected
+    let eventsViewModel = EventsViewModel(generalViewModel: generalViewModel)  // Injected
+    let reportingViewModel = ReportingViewModel(generalViewModel: generalViewModel)  // Injected
+    
     AddorEditSymptomsLandingPage(loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!)
-        .environmentObject(SymptomViewModel())
-        .environmentObject(GeneralViewModel())
-        .environmentObject(EventsViewModel())
+        .environmentObject(generalViewModel)
+        .environmentObject(symptomViewModel)
+        .environmentObject(eventsViewModel)
+        .environmentObject(reportingViewModel)
 }

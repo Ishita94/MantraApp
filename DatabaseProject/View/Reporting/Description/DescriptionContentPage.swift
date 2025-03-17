@@ -12,8 +12,16 @@ struct DescriptionContentPage: View {
     @State var dateString: String
     @EnvironmentObject var reportingViewModel : ReportingViewModel
 //    @State var readyToNavigate: Bool = false
-    @Binding var descriptionText: String
-
+    @State private var descriptionText: String
+    @FocusState private var isTextEditorFocused: Bool  // Track focus state
+    
+    init(loggedIn: Binding<Bool>, dateString: String, report: Report) {
+        _loggedIn = loggedIn
+        _dateString = State(initialValue: dateString)
+        _descriptionText = State(initialValue:  report.description)
+        }
+    
+    @available(iOS 15.0, *)
     var body: some View {
         NavigationStack{
                 VStack (){
@@ -23,15 +31,29 @@ struct DescriptionContentPage: View {
                     .foregroundColor(.black)
                     .font(.titleinRowItem)
                     
-                    VStack{
-                        TextEditor(text: $descriptionText)
+                    VStack (alignment: .leading){
+                        
+                        if $descriptionText.wrappedValue.isEmpty && !isTextEditorFocused {
+                            Text("2500 characters remaining")
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .foregroundStyle(.secondary)
+                                .font(.regularText)
+                                .lineSpacing(10)
+                                .autocapitalization(.words)
+                                .disableAutocorrection(true)
+                                .padding()
+                        }
+                        
+                                    // Editable TextEditor
+                          TextEditor(text: $descriptionText)
+                            .focused($isTextEditorFocused)  // Attach focus state
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
                             .foregroundStyle(.secondary)
                             .font(.regularText)
                             .lineSpacing(10)
                             .autocapitalization(.words)
                             .disableAutocorrection(true)
                             .padding()
-                            
                     }
                     .overlay(
                         RoundedRectangle(cornerRadius: 15)
@@ -68,16 +90,23 @@ struct DescriptionContentPage: View {
                 ////                SuggestedEventsView(isSheetVisible: $isSheetVisible, loggedIn: $loggedIn, dateString: dateString)
                 //
                 //            }
+            Divider()
+            BackandNextButtonPanelforDescription(loggedIn: $loggedIn, dateString: dateString, descriptionText: $descriptionText)
             }
+        
         }
-    
 }
 
 
 #Preview {
-    DescriptionContentPage(loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!, descriptionText: Binding.constant(""))
-        .environmentObject(SymptomViewModel())
-            .environmentObject(GeneralViewModel())
-            .environmentObject(EventsViewModel())
-            .environmentObject(ReportingViewModel())
+    let generalViewModel = GeneralViewModel()
+    let symptomViewModel = SymptomViewModel(generalViewModel: generalViewModel)  // Injected
+    let eventsViewModel = EventsViewModel(generalViewModel: generalViewModel)  // Injected
+    let reportingViewModel = ReportingViewModel(generalViewModel: generalViewModel)  // Injected
+
+        DescriptionContentPage(loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!, report: Report())
+        .environmentObject(generalViewModel)
+        .environmentObject(symptomViewModel)
+        .environmentObject(eventsViewModel)
+        .environmentObject(reportingViewModel)
 }

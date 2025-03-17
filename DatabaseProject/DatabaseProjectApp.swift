@@ -13,6 +13,11 @@ import FirebaseAppCheck
 
 @main
 struct DatabaseProjectApp: App {
+    @StateObject var generalViewModel = GeneralViewModel()
+    @StateObject var symptomViewModel : SymptomViewModel
+    @StateObject var eventViewModel : EventsViewModel
+    @StateObject var reportingViewModel : ReportingViewModel
+
     private func registerCustomFonts() {
         let fonts = Bundle.main.urls(forResourcesWithExtension: "ttf", subdirectory: nil)
         fonts?.forEach { url in
@@ -20,6 +25,12 @@ struct DatabaseProjectApp: App {
         }
     }
     init() {
+        let generalViewModel = GeneralViewModel()  // Create local instance first
+                _generalViewModel = StateObject(wrappedValue: generalViewModel)
+                _symptomViewModel = StateObject(wrappedValue: SymptomViewModel(generalViewModel: generalViewModel))
+                _eventViewModel = StateObject(wrappedValue: EventsViewModel(generalViewModel: generalViewModel))
+        _reportingViewModel = StateObject(wrappedValue: ReportingViewModel(generalViewModel: generalViewModel))
+        
         registerCustomFonts()
         let providerFactory = AppCheckDebugProviderFactory()
         AppCheck.setAppCheckProviderFactory(providerFactory)
@@ -28,11 +39,13 @@ struct DatabaseProjectApp: App {
     }
     var body: some Scene {
         WindowGroup {
+           
+
             LaunchView()
-                .environmentObject(SymptomViewModel())
-                .environmentObject(GeneralViewModel())
-                .environmentObject(EventsViewModel())
-                .environmentObject(ReportingViewModel())
+                .environmentObject(generalViewModel)
+                .environmentObject(symptomViewModel)
+                .environmentObject(eventViewModel)
+                .environmentObject(reportingViewModel)
         }
     }
 }

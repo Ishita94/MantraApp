@@ -20,7 +20,7 @@ struct ReportListRowforNewEntry: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                 HStack {
-                        VStack{
+                        VStack (alignment:.trailing){
                             Text(Date.now.dayNameOfWeek()!)
                             //item.date.dayNameOfWeek()!
                                 .font(.dateText)
@@ -32,19 +32,18 @@ struct ReportListRowforNewEntry: View {
                         }
                     Spacer()
                     ZStack{
-                        Image("ic-report-list-item-blue-background")
+//                        Image("ic-report-list-item-blue-background")
                         
                         HStack{
                             Image(systemName:"plus")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(height: 30)
-                                .foregroundColor(Color(.primary4))
+                                .foregroundColor(Color(.white))
                             //                            .font(.system(size: 8))
+                        //TODO: Fix
                             NavigationLink {
                                 AddorEditSymptomsLandingPage(loggedIn: $loggedIn, date: Date.now, dateString: Date.now.datetoString()!)
-//                                    .environmentObject(GeneralViewModel())
-//                                    .environmentObject(EventsViewModel())
                                 
                             } label: {
                                 Text("Add Today's Report")
@@ -62,8 +61,10 @@ struct ReportListRowforNewEntry: View {
                         }
                         
                     }
+
                     
                 }
+//                .background(Color(.primary0))
                 .padding()
             }
         }
@@ -72,11 +73,15 @@ struct ReportListRowforNewEntry: View {
 
 struct ReportListRowforNewEntry_Previews: PreviewProvider {
     static var previews: some View {
-        ReportListRowforNewEntry(item: Report(dayNameofWeek: "Thu", monthNameofWeek: "2023-09-09", dateString: Date.now.datetoString() ?? "", emojiIconName: "ic-incomplete-red-filled", emojiStateofDay: "Nauseous", symptomNames: "Nausea, Headache", reportCompletionStatus: false), loggedIn: Binding.constant(true))
-            .environmentObject(SymptomViewModel())
-            .environmentObject(GeneralViewModel())
-            .environmentObject(EventsViewModel())
-
+        let generalViewModel = GeneralViewModel()
+        let symptomViewModel = SymptomViewModel(generalViewModel: generalViewModel)  // Injected
+        let eventsViewModel = EventsViewModel(generalViewModel: generalViewModel)  // Injected
+        let reportingViewModel = ReportingViewModel(generalViewModel: generalViewModel)  // Injected
+        
+        ReportListRowforNewEntry(item: Report(id:"", dayNameofWeek: "", monthNameofWeek: "", dateString: "", emojiStateofDay: "", symptomNames: "",reportCompletionStatus: false, description: "", questions: "", notes: "", symptomCompletionStatus: false, eventCompletionStatus: false,    descriptionCompletionStatus: false, questionsandNotesCompletionStatus: false, emojiCompletionStatus: false, creationDateTime: Date.now, userId: AuthViewModel.getLoggedInUserId()), loggedIn: Binding.constant(true))            .environmentObject(generalViewModel)
+            .environmentObject(symptomViewModel)
+            .environmentObject(eventsViewModel)
+            .environmentObject(reportingViewModel)
     }
     }
 

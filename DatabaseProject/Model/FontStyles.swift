@@ -33,7 +33,7 @@ extension Font {
         return Font.custom("Lato-Bold", size : 14 )
     }
     static var tabTitle: Font{
-        return Font.custom("Roboto-Bold", size : 16 )
+        return Font.custom("Roboto-Bold", size : 15 )
     }
     static var titleinRowItem: Font{
         return Font.custom("Lato-Bold", size : 18 )

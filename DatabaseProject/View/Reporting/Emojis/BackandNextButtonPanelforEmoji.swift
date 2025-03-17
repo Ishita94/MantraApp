@@ -14,7 +14,9 @@ struct BackandNextButtonPanelforEmoji: View {
     @State var readyToNavigateNext: Bool = false
     @State var readyToNavigateBack: Bool = false
     @State var dateString: String
-    @Binding var emojiStateofDay : String?
+    @Binding var emojiStateofDay : String
+    @Binding var emojiValue : String
+    @State var emojiCompletionStatus: Bool = false
     @State var isSheetVisible: Bool = false
 
     
@@ -43,13 +45,17 @@ struct BackandNextButtonPanelforEmoji: View {
                 Button(action: {
                     generalViewModel.incrementState()
 
-                    reportViewModel.remainingReportbyDate.emojiStateofDay = emojiStateofDay
-                    if(emojiStateofDay != nil){
+//                    reportViewModel.remainingReportbyDate.emojiStateofDay = emojiStateofDay
+                    if(!emojiStateofDay.isEmpty){
+                        reportViewModel.remainingReportbyDate.emojiStateofDay = emojiStateofDay
+                        reportViewModel.remainingReportbyDate.emojiValue = emojiValue
                         reportViewModel.remainingReportbyDate.emojiCompletionStatus = true
                     }
                     else
                     {
-                        reportViewModel.remainingReportbyDate.emojiCompletionStatus = false
+                        reportViewModel.remainingReportbyDate.emojiStateofDay = ""
+                        reportViewModel.remainingReportbyDate.emojiValue = ""
+                        reportViewModel.remainingReportbyDate.emojiCompletionStatus = true
                     }
                     reportViewModel.saveRemainingReport(report: reportViewModel.remainingReportbyDate, saveFor: "Emoji")
                     
@@ -86,7 +92,14 @@ struct BackandNextButtonPanelforEmoji: View {
 }
 
 #Preview {
-    BackandNextButtonPanelforEmoji(loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!, emojiStateofDay: Binding.constant(""))
-        .environmentObject(GeneralViewModel())
-        .environmentObject(ReportingViewModel())
+    let generalViewModel = GeneralViewModel()
+    let symptomViewModel = SymptomViewModel(generalViewModel: generalViewModel)  // Injected
+    let eventsViewModel = EventsViewModel(generalViewModel: generalViewModel)  // Injected
+    let reportingViewModel = ReportingViewModel(generalViewModel: generalViewModel)  // Injected
+    
+    BackandNextButtonPanelforEmoji(loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!, emojiStateofDay: Binding.constant(""), emojiValue: Binding.constant(""))
+        .environmentObject(generalViewModel)
+        .environmentObject(symptomViewModel)
+        .environmentObject(eventsViewModel)
+        .environmentObject(reportingViewModel)
 }

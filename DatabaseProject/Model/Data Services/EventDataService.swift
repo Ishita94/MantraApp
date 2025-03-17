@@ -10,6 +10,11 @@ import Firebase
 import FirebaseFirestore
 
 struct EventDataService {
+    private var generalViewModel : GeneralViewModel
+
+    init(generalViewModel: GeneralViewModel) {
+           self.generalViewModel = generalViewModel
+       }
     
     func getSuggestedEventsofUser(completion: @escaping ([Event]) -> Void) {
         

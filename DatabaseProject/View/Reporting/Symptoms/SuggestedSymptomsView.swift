@@ -22,11 +22,22 @@ struct SuggestedSymptomsView: View {
             .font(.symptomTitleinReportingPage)
             .foregroundColor(.black)
             .padding(.vertical, 6)
-            Text("""
+            if(symptomViewModel.reportedSymptomsofUserbyDate.count>0)
+            {
+                Text("""
                 The options below are some recommended symptoms you can add based on your previous reports.
                 """)
-            .font(.regularText)
-            .foregroundColor(Color(.blackMediumEmphasis))
+                .font(.regularText)
+                .foregroundColor(Color(.blackMediumEmphasis))
+            }
+            else
+            {
+                Text("""
+                You have not made a report today. The options below are some recommended symptoms you can add based on your previous reports.
+                """)
+                .font(.regularText)
+                .foregroundColor(Color(.blackMediumEmphasis))
+            }
 
             ScrollView{
                 ForEach(symptomViewModel.dictionaryofSuggestedReports.keys, id: \.self)

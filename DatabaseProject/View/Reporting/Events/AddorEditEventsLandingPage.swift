@@ -26,6 +26,7 @@ struct AddorEditEventsLandingPage: View {
             if (eventViewModel.suggestedEvents.count>0 || eventViewModel.reportedEventsofUserbyDate.count>0)
             {
                 AddorEditEventButtonPanel(loggedIn: $loggedIn, dateString: dateString)
+                Divider()
                 ReportedEventsView(loggedIn: $loggedIn
                                      , dateString: dateString)
                 
@@ -50,8 +51,15 @@ struct AddorEditEventsLandingPage: View {
 }
 
 #Preview {
-    AddorEditEventsLandingPage(dateString: Date.now.datetoString()!, loggedIn: Binding.constant(true)).environmentObject(SymptomViewModel())
-        .environmentObject(GeneralViewModel())
-        .environmentObject(EventsViewModel())
+    let generalViewModel = GeneralViewModel()
+    let symptomViewModel = SymptomViewModel(generalViewModel: generalViewModel)  // Injected
+    let eventsViewModel = EventsViewModel(generalViewModel: generalViewModel)  // Injected
+    let reportingViewModel = ReportingViewModel(generalViewModel: generalViewModel)  // Injected
+
+    AddorEditEventsLandingPage(dateString: Date.now.datetoString()!, loggedIn: Binding.constant(true))
+    .environmentObject(generalViewModel)
+    .environmentObject(symptomViewModel)
+    .environmentObject(eventsViewModel)
+    .environmentObject(reportingViewModel)
     
 }

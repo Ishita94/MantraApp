@@ -36,6 +36,15 @@ struct AddSymptomwithSuggestionsorReportedSymptomsView: View {
 }
 
 #Preview {
-    AddSymptomwithSuggestionsorReportedSymptomsView(loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!).environmentObject(SymptomViewModel())
-        .environmentObject(GeneralViewModel())
+    let generalViewModel = GeneralViewModel()
+    let symptomViewModel = SymptomViewModel(generalViewModel: generalViewModel)  // Injected
+    let eventsViewModel = EventsViewModel(generalViewModel: generalViewModel)  // Injected
+    let reportingViewModel = ReportingViewModel(generalViewModel: generalViewModel)  // Injected
+    
+    
+    AddSymptomwithSuggestionsorReportedSymptomsView(loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!)
+        .environmentObject(generalViewModel)
+        .environmentObject(symptomViewModel)
+        .environmentObject(eventsViewModel)
+        .environmentObject(reportingViewModel)
 }

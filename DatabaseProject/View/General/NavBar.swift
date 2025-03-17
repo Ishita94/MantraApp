@@ -9,13 +9,19 @@ import SwiftUI
 
 struct NavBar: View {
     @Binding var loggedIn: Bool
+    @EnvironmentObject var generalViewModel : GeneralViewModel
 
     var body: some View {
         HStack{
-            Text("Report your day")
-                .foregroundColor(Color(.greyText))
-                .font(.regularText)
-                .multilineTextAlignment(.leading)
+            VStack (alignment: .leading, spacing: 4) {
+                Text("Report your day")
+                    .foregroundColor(Color(.blackMediumEmphasis))
+                    .font(.regularText)
+                
+                Text(generalViewModel.dateStringofCurrentReport)
+                    .foregroundColor(Color(.black))
+                    .font(.sectionTitleinSymptomsPage)
+            }
             Spacer()
             HStack{
                 Button {
