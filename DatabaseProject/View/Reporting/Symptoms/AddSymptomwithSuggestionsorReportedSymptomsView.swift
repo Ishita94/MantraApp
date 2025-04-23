@@ -17,21 +17,16 @@ struct AddSymptomwithSuggestionsorReportedSymptomsView: View {
 
     var body: some View {
         NavigationStack{
-            VStack (){
-                ReportedSymptomsView(loggedIn: $loggedIn
-                                            , dateString: dateString)
-                            .frame(maxWidth: .infinity, maxHeight: 200)
-
-                Divider()
-                SuggestedSymptomsView(dateString: dateString)
-                            .frame(maxWidth: .infinity, maxHeight: 200)
-
+//            ScrollView {
+                
+            VStack (spacing: 16){
+                    ReportedSymptomsView(loggedIn: $loggedIn
+                                         , dateString: dateString)
+                    Divider()
+                    SuggestedSymptomsView(dateString: dateString)
+                }
             }
-        }
-//        .onAppear {
-//            // Call for the data
-//            symptomViewModel.getReportedSymptomsofUserbyDate(date: dateString, showAfterCreatingNewSymptomReport: false)
-//        }
+        //}
     }
 }
 

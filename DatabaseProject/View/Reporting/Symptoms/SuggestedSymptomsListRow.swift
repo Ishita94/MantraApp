@@ -20,13 +20,13 @@ struct SuggestedSymptomsListRow: View {
                     .strokeBorder(Color(.outlineGrey), style: StrokeStyle(lineWidth: 2, dash: [10]))
                     .fill(Color(.greyNonClickable))
                 
-                    .frame(maxWidth: .infinity, maxHeight: 92)
+                    .frame(maxWidth: .infinity, minHeight: 92)
             }
             else
             {
                 RoundedRectangle(cornerRadius: 16)
                     .fill(Color(.greyNonClickable))
-                    .frame(maxWidth: .infinity, maxHeight: 92)
+                    .frame(maxWidth: .infinity, minHeight: 92)
             }
             HStack{
                 Image(systemName: "x.square.fill")
@@ -55,7 +55,8 @@ struct SuggestedSymptomsListRow: View {
                         .font(.regularText)
                         .cornerRadius(6)
                         .frame(maxHeight: 51)
-                }.padding(.top, 10)
+                }
+//                .padding(.top, 10)
                 Spacer()
                 Button(action: {
                     isSheetVisible = true
@@ -66,7 +67,7 @@ struct SuggestedSymptomsListRow: View {
             .padding()
         }
         .sheet(isPresented: $isSheetVisible){
-            ChooseSymptomComparisonView(isSheetVisible: $isSheetVisible, item: item, loggedIn: $loggedIn, dateString: dateString, edit: false)
+            ChooseSymptomComparisonView(isSheetVisible: $isSheetVisible, symptomComparisonState: item.symptomComparisonState, item: item, loggedIn: $loggedIn, dateString: dateString, edit: false, selectedSegment: item.rating)
 //                .environmentObject(SymptomViewModel())/*.frame(maxWidth: .infinity, maxHeight: 680)*/
         }
     }

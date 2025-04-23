@@ -31,7 +31,7 @@ struct DescriptionContentPage: View {
                     .foregroundColor(.black)
                     .font(.titleinRowItem)
                     
-                    VStack (alignment: .leading){
+                    ZStack (alignment: .leading){
                         
                         if $descriptionText.wrappedValue.isEmpty && !isTextEditorFocused {
                             Text("2500 characters remaining")

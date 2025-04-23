@@ -12,8 +12,9 @@ struct Symptom: Identifiable, Hashable, Codable {
     @DocumentID var id: String?
     var symptomName:String
     var rating:Int?
-    var recentStatus:String?
+    var status:String
     var creationDateTime: Date
+    var lastModifiedDateTime: Date
     var tracking: Bool
     var userId: String
 }

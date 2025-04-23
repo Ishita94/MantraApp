@@ -37,9 +37,6 @@ struct AddorEditEventButtonPanel: View {
             .buttonStyle(PlainButtonStyle())
             .background(Color(.primary4))
             .cornerRadius(10)
-        
-        
-        
         }
         .sheet(isPresented: $isSheetVisible){
             SuggestedEventsView(isSheetVisible: $isSheetVisible, loggedIn: $loggedIn, dateString: dateString) /*.frame(maxWidth: .infinity, maxHeight: 680)*/

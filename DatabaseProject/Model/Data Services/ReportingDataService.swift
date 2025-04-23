@@ -27,19 +27,23 @@ struct ReportingDataService {
                 if(saveFor=="Description"){
                     try await db.collection("remainingReports").document(reportId)
                         .updateData(["description": report.description,
-                                                    "descriptionCompletionStatus": report.descriptionCompletionStatus])
+                                    "descriptionCompletionStatus": report.descriptionCompletionStatus,
+                                     "lastModifiedDateTime": Date()])
                 }
                 else if(saveFor=="QuestionsandNotes"){
                     try await db.collection("remainingReports").document(reportId)
                         .updateData(["questions": report.questions,
-                                                    "notes": report.notes,
-                                                    "questionsandNotesCompletionStatus": report.questionsandNotesCompletionStatus])
+                                    "notes": report.notes,
+                                    "questionsandNotesCompletionStatus": report.questionsandNotesCompletionStatus,
+                                     "lastModifiedDateTime": Date()])
                 }
                 else if(saveFor=="Emoji"){
                     try await db.collection("remainingReports").document(reportId)
                         .updateData(["emojiStateofDay": report.emojiStateofDay,
                                      "emojiValue": report.emojiValue,
-                                                    "emojiCompletionStatus": report.emojiCompletionStatus])
+                                    "emojiCompletionStatus": report.emojiCompletionStatus,
+                                     "reportCompletionStatus": report.reportCompletionStatus,
+                                     "lastModifiedDateTime": Date()])
                 }
             } catch {
                 print("Error adding description/questionsandnotes/emoji: \(error.localizedDescription)")

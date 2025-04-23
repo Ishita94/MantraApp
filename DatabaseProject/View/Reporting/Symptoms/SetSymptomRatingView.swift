@@ -12,9 +12,9 @@ struct SetSymptomRatingView: View {
     private let numberOfSegments = 10 // Number of segments
     @State private var selectedColorIndex: Double = 0
     //let segmentWidth: CGFloat
-    @EnvironmentObject var mainController : GeneralViewModel
+    @EnvironmentObject var generalViewModel : GeneralViewModel
 
-//    @Binding var selectedSegment: Int
+    @Binding var selectedSegment: Int
 
 //    init() {
 //            // Calculate the segment width based on the number of segments
@@ -24,7 +24,7 @@ struct SetSymptomRatingView: View {
             Color(.scale1), Color(.scale2), Color(.scale3), Color(.scale4), Color(.scale5), Color(.scale6), Color(.scale7),Color(.scale8), Color(.scale9), Color(.scale10)
         ]
     func colorForSegment(_ segment: Int) -> Color {
-        
+        let x = segment % colors.count
         return colors[segment % colors.count]
     }
     func getSegmentWidth(totalWidth: CGFloat) -> CGFloat {
@@ -34,11 +34,11 @@ struct SetSymptomRatingView: View {
 
     
     func thumbOffset(totalWidth: CGFloat)-> CGFloat {
-        if (mainController.selectedSegment==0) {
+        if (selectedSegment==0) {
             return 0
         }
         else {
-            return CGFloat(mainController.selectedSegment) * getSegmentWidth(totalWidth: totalWidth) + getSegmentWidth(totalWidth: totalWidth) / 2
+            return (CGFloat(selectedSegment) * getSegmentWidth(totalWidth: totalWidth) + getSegmentWidth(totalWidth: totalWidth) / 2).rounded()
         }
     }
     var body: some View {
@@ -49,7 +49,7 @@ struct SetSymptomRatingView: View {
                         .foregroundColor(Color(.blackMediumEmphasis))
                         .font(.regularText)
                     Spacer()
-                    Text("\(mainController.selectedSegment)/10")
+                    Text("\(selectedSegment)/10")
                         .foregroundColor(Color(.blackMediumEmphasis))
                         .font(.ratingofSymptom)
                 }
@@ -58,11 +58,31 @@ struct SetSymptomRatingView: View {
                 ZStack(alignment: .leading) {
                     // Colored segments
                     HStack(spacing: 0) {
+//                        Rectangle()
+//                            .fill(colorForSegment(0))
+//                            .frame(width: getSegmentWidth(totalWidth: geometry.size.width))
+//                            .clipShape(LeftRoundedRectangle(cornerRadius: 12))  // ✅ Only the left corners are rounded
+
+//                            .mask(
+//                                    RoundedRectangle(cornerRadius: 20)
+//                                        .frame(width: getSegmentWidth(totalWidth: geometry.size.width))
+////                                        .offset(x: -40)  // ✅ Moves mask to the left
+//                                )
                         ForEach(0..<numberOfSegments, id: \.self) { segment in
                             Rectangle()
                                 .fill(colorForSegment(segment))
                                 .frame(width: getSegmentWidth(totalWidth: geometry.size.width))
                         }
+//                        Rectangle()
+//                            .fill(colorForSegment(numberOfSegments-1))
+//                            .frame(width: getSegmentWidth(totalWidth: geometry.size.width))
+//                            .clipShape(RightRoundedRectangle(cornerRadius: 12))  // ✅ Only the left corners are rounded
+
+//                            .mask(
+//                                    RoundedRectangle(cornerRadius: 20)
+//                                        .frame(width: getSegmentWidth(totalWidth: geometry.size.width))
+////                                        .offset(x: -40)  // ✅ Moves mask to the left
+//                                )
                     }
                     
                     // Slider thumb
@@ -76,9 +96,9 @@ struct SetSymptomRatingView: View {
                         .offset(x: thumbOffset(totalWidth: geometry.size.width)-2.5) // To set at the beginning
                         .gesture(DragGesture().onChanged { value in
                             let newPosition = value.location.x - getSegmentWidth(totalWidth:  geometry.size.width) / 2
-                            let newIndex = max(0, min(numberOfSegments - 1, Int(newPosition / getSegmentWidth(totalWidth: geometry.size.width))))
-                            mainController.selectedSegment = newIndex
-                            print("Selected: \(mainController.selectedSegment)")
+                            let newIndex = max(0, min(numberOfSegments-1, Int(newPosition / getSegmentWidth(totalWidth: geometry.size.width))))
+                            selectedSegment = newIndex
+                            print("Selected: \(selectedSegment)")
                             sliderValue = Double(newIndex)
                         })
                 }
@@ -101,7 +121,7 @@ struct SetSymptomRatingView: View {
 }
 
 #Preview {
-    SetSymptomRatingView()
+    SetSymptomRatingView(selectedSegment: Binding.constant(0))
         .environmentObject(GeneralViewModel())
 }
 

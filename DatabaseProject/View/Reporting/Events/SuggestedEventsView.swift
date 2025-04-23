@@ -16,7 +16,7 @@ struct SuggestedEventsView: View {
     @State var dateString: String
     @EnvironmentObject var eventsViewModel : EventsViewModel
     @Environment(\.dismiss) var dismiss
-    @State var selectedEvents: [Event] = []
+    @State var selectedEvents: [EventReport] = []
 
     var body: some View {
         NavigationStack (path: $path){
@@ -75,8 +75,6 @@ struct SuggestedEventsView: View {
                     
                     Button(action: {
                         eventsViewModel.saveEventReport(events: selectedEvents)
-                        
-                       
                         readyToNavigate = true
                     }) {
                         HStack {
@@ -120,7 +118,7 @@ struct SuggestedEventsView: View {
             }
             .navigationDestination(isPresented: $readyToCreateNewEvent) {
                 //create new event
-                SetEventView(item: Event(title: "", category: "", creationDateTime: Date.now, userId: "", tracking: false), title: "", loggedIn: $loggedIn, isSheetVisible: isSheetVisible, selection: "Physical Well-Being", dateString: dateString, eventViewModel: _eventsViewModel)
+                SetEventView(item: Event(title: "", category: "", creationDateTime: Date.now, lastModifiedDateTime: Date.now, userId: AuthViewModel.getLoggedInUserId(), tracking: false), title: "", loggedIn: $loggedIn, isSheetVisible: isSheetVisible, selection: "Physical Well-Being", dateString: dateString)
             }
         }
         .onAppear()

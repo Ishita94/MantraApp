@@ -23,7 +23,7 @@ struct AddorEditEventsLandingPage: View {
             Divider()
             //            ScrollView{
             
-            if (eventViewModel.suggestedEvents.count>0 || eventViewModel.reportedEventsofUserbyDate.count>0)
+            if (eventViewModel.suggestedEvents.count>0 || eventViewModel.reportedEvents.count>0)
             {
                 AddorEditEventButtonPanel(loggedIn: $loggedIn, dateString: dateString)
                 Divider()
@@ -43,7 +43,7 @@ struct AddorEditEventsLandingPage: View {
         }
         .onAppear {
             // Call for the data
-            eventViewModel.getEventsReportedonDate(date: prepareDate(dateString: dateString)!)
+            eventViewModel.getEventsinReport(report: generalViewModel.selectedReport)
         }
         .padding()
 //        .frame(maxWidth: .infinity, maxHeight: .infinity)

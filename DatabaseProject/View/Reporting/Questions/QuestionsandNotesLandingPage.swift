@@ -27,9 +27,6 @@ struct QuestionsandNotesLandingPage: View {
 //            BackandNextButtonPanelforQuestionsandNotes(loggedIn: $loggedIn, dateString: dateString, questionsText: $reportingViewModel.remainingReportbyDate.questions, notesText: $reportingViewModel.remainingReportbyDate.notes)
             
         }
-//        .onAppear {
-//            reportingViewModel.getRemainingReport(date: prepareDate(dateString: dateString)!)
-//        }
         .padding()
     }
 }

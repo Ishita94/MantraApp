@@ -8,17 +8,7 @@
 import SwiftUI
 
 struct CustomBackButtonLabel: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-#Preview {
-    CustomBackButtonLabel()
-}
-
-struct CustomBackLabel: View {
-    var text: String  // 👈 Accept external text
+    var text: String = "Back"  // 👈 Accept external text
 
     var body: some View {
         HStack {
@@ -28,4 +18,8 @@ struct CustomBackLabel: View {
                 .fontWeight(.semibold)
         }
     }
+}
+
+#Preview {
+    CustomBackButtonLabel()
 }

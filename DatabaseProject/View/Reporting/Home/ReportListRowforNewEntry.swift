@@ -41,9 +41,8 @@ struct ReportListRowforNewEntry: View {
                                 .frame(height: 30)
                                 .foregroundColor(Color(.white))
                             //                            .font(.system(size: 8))
-                        //TODO: Fix
                             NavigationLink {
-                                AddorEditSymptomsLandingPage(loggedIn: $loggedIn, date: Date.now, dateString: Date.now.datetoString()!)
+                                AddorEditSymptomsLandingPage(loggedIn: $loggedIn, date: Date.now, dateString: Date.now.datetoString()!, createNewReport: true)
                                 
                             } label: {
                                 Text("Add Today's Report")

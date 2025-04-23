@@ -15,7 +15,6 @@ struct SetEventView: View {
     @State var selection: String
     @State var readyToNavigate: Bool = false
     @State var dateString: String
-    @State var eventReportItem: EventReport?
 
     @EnvironmentObject var eventViewModel : EventsViewModel
     @Environment(\.dismiss) var dismiss
@@ -25,12 +24,20 @@ struct SetEventView: View {
         NavigationStack{
             ZStack{
                 VStack (alignment: .leading){
-                    Text("New Event Report")
-                        .foregroundColor(.white)
-                        .background(Color(.primary4))
-                        .font(.smallTitle)
-                        .cornerRadius(6)
-                        .padding(.bottom, 16.0)
+                    Divider()
+                        .padding(.bottom, 19.0)
+                    
+                    if item.id==nil{//create new event
+                        Text("New Event Report")
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 4)
+                            .background(Color(.primary4))
+                            .foregroundStyle(Color(.white))
+                            .font(.smallTitle)
+                            .cornerRadius(6)
+                            .frame(maxHeight: 16)
+                            .padding(.bottom, 16.0)
+                    }
                     
                     Text("Title")
                         .foregroundColor(Color(.blackMediumEmphasis))
@@ -54,25 +61,35 @@ struct SetEventView: View {
                         .font(.regularText)
                         .padding(.bottom, 11.0)
                     
-                    Picker("Select a category", selection: $selection) {
-                        ForEach(categories, id: \.self) {
-                            Text($0)
+                    Menu {
+                        ForEach(categories, id: \.self) { category in
+                            Button(category) {
+                                selection = category
+                            }
                         }
+                    } label: {
+                        HStack {
+                            Text(selection)
+                                .foregroundColor(.black)
+
+                            Spacer()
+
+                            Image(systemName: "chevron.down")
+                                .foregroundColor(.gray)
+                        }
+                        .padding()
+                        .frame(maxWidth: .infinity, minHeight: 56)
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color(.outlineGrey), lineWidth: 1)
+                        )
                     }
-                    .frame(maxWidth: .infinity, maxHeight: 56, alignment: .leading)
-                    .font(.bigTitle)
-                    .accentColor(Color(.blackMediumEmphasis))
-                    .pickerStyle(.menu)
-                    .padding(4)
-                    .overlay( /// apply a rounded border
-                        RoundedRectangle(cornerRadius: 10)
-                            .strokeBorder(Color(.outlineGrey), lineWidth: 1)
-                    )
+                    .buttonStyle(PlainButtonStyle())
                     
                     Divider()
                     
                     Button(action: {
-                        eventViewModel.saveEvent(event: Event(title: title, category: selection, creationDateTime: Date.now, userId: "", tracking: false), eventReport: eventReportItem)
+                        eventViewModel.saveEvent(event: Event(id: item.id, title: title, category: selection, creationDateTime: Date.now, lastModifiedDateTime: Date.now, userId: AuthViewModel.getLoggedInUserId(), eventId: item.eventId, tracking: false))
                         
                         readyToNavigate = true
                     }) {
@@ -110,20 +127,17 @@ struct SetEventView: View {
                 .padding()
                 .cornerRadius(30)
                 
-                
             }
             .navigationDestination(isPresented: $readyToNavigate) {
-                if let eventReport = eventReportItem {//edit
-                    if let id = eventReport.id{
+                if let id = item.id{//edit
                         AddorEditEventsLandingPage(dateString: dateString, loggedIn: $loggedIn)
-                    }
                 }
                 else
                 {
                     SuggestedEventsView(isSheetVisible: $isSheetVisible, loggedIn: $loggedIn, dateString: dateString)
                 }
             }
-            .presentationDetents([.fraction(0.5), .large])
+            .presentationDetents([.fraction(0.6), .large])
         }
     }
 }
@@ -134,7 +148,7 @@ struct SetEventView: View {
     let eventsViewModel = EventsViewModel(generalViewModel: generalViewModel)  // Injected
     let reportingViewModel = ReportingViewModel(generalViewModel: generalViewModel)  // Injected
     
-    SetEventView(item: Event(title: "Went on a walk", category: "Physical Well-Being", creationDateTime: Date.now, userId: "", tracking: false), title: "Went on a walk", loggedIn: Binding.constant(true), isSheetVisible: true, selection: "Physical Well-Being", dateString: Date.now.datetoString()!)
+    SetEventView(item: Event(title: "Went on a walk", category: "Physical Well-Being", creationDateTime: Date.now, lastModifiedDateTime: Date.now, userId: "", tracking: false), title: "Went on a walk", loggedIn: Binding.constant(true), isSheetVisible: true, selection: "Physical Well-Being", dateString: Date.now.datetoString()!)
         .environmentObject(generalViewModel)
         .environmentObject(symptomViewModel)
         .environmentObject(eventsViewModel)

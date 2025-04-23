@@ -22,7 +22,7 @@ struct SuggestedSymptomsView: View {
             .font(.symptomTitleinReportingPage)
             .foregroundColor(.black)
             .padding(.vertical, 6)
-            if(symptomViewModel.reportedSymptomsofUserbyDate.count>0)
+            if(symptomViewModel.dictionaryofSuggestedReports.count>0)
             {
                 Text("""
                 The options below are some recommended symptoms you can add based on your previous reports.
@@ -39,7 +39,7 @@ struct SuggestedSymptomsView: View {
                 .foregroundColor(Color(.blackMediumEmphasis))
             }
 
-            ScrollView{
+//            ScrollView{
                 ForEach(symptomViewModel.dictionaryofSuggestedReports.keys, id: \.self)
                  {
                      if let item =
@@ -48,12 +48,11 @@ struct SuggestedSymptomsView: View {
                      }
                 }
             }
-            .frame(maxWidth: .infinity)
-            .scrollContentBackground(.hidden)
-//            .frame(maxWidth: .infinity, maxHeight: 200)
-//            .listStyle(.plain)
+//            .frame(maxWidth: .infinity)
+//            .scrollContentBackground(.hidden)
+
             
-        }
+        //}
     }
 }
 

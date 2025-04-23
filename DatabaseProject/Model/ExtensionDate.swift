@@ -55,6 +55,13 @@ func stringtoFormalDate(dateString: String) -> String {
         }
 }
 
+func datetoFormalDateString(date: Date) -> String {
+    let inputDateFormatter = DateFormatter()
+    inputDateFormatter.dateFormat = "MMMM dd, yyyy"  // Example: "March 05, 2024"
+    inputDateFormatter.locale = Locale(identifier: "en_GB")
+    return inputDateFormatter.string(from: date)
+}
+
 func prepareDatefromDate(date:Date) -> Date? {
 
     

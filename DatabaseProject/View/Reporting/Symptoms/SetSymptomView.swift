@@ -25,7 +25,7 @@ struct SetSymptomView: View {
             Divider()
             SecondaryNavBar()
             Divider()
-            SetSymptomContentPage(item: item, symptomName: item.symptomName,  loggedIn: $loggedIn)
+            SetSymptomContentPage(item: item, symptomName: item.symptomName,  loggedIn: $loggedIn, selectedSegment: item.rating ?? 0)
             //            Divider()
             //            BackandNextButtonPanel()
             //                .navigationTitle("Symptom Details")
@@ -56,7 +56,7 @@ struct SetSymptomView: View {
         let reportingViewModel = ReportingViewModel(generalViewModel: generalViewModel)  // Injected
         
         
-        SetSymptomView(item: Symptom(symptomName: "Nausea", rating: 0, recentStatus: "", creationDateTime: Date.now, tracking: true, userId: ""), loggedIn: Binding.constant(true))
+        SetSymptomView(item: Symptom(symptomName: "Nausea", rating: 0, status: "", creationDateTime: Date.now, lastModifiedDateTime: Date.now, tracking: true,  userId: ""), loggedIn: Binding.constant(true))
             .environmentObject(generalViewModel)
             .environmentObject(symptomViewModel)
             .environmentObject(eventsViewModel)

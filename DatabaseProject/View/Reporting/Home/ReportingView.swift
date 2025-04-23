@@ -25,11 +25,14 @@ struct ReportingView: View {
                 ScrollView{
                     ForEach(symptomViewModel.reportList, id: \.self) { item in
                         NavigationLink {
-                            AddorEditSymptomsLandingPage(loggedIn: $loggedIn, dateString: item.dateString,
-                        showAfterCreatingNewSymptomReport: false)
+                            //                            AddorEditSymptomsLandingPage(loggedIn: $loggedIn, dateString: item.dateString,
+                            //                        showAfterCreatingNewSymptomReport: false)
+                            
+                            EditReportView(loggedIn: $loggedIn, dateString: item.dateString)
+                            
                         } label: {
                             ReportListRow(item: item)
-                           // ReportListRow(item: item, emoji: emojis.first(where: { $0.name == item.emojiStateofDay }))
+                            // ReportListRow(item: item, emoji: emojis.first(where: { $0.name == item.emojiStateofDay }))
                         }
                         .simultaneousGesture(TapGesture().onEnded {
                             generalViewModel.setSelectedReport(report: item)
@@ -47,15 +50,15 @@ struct ReportingView: View {
                     generalViewModel.clearDateStringofCurrentReport()
                     generalViewModel.clearSelectedReport()
                 }
-                ReportListRowforNewEntry(item: Report(id:"", dayNameofWeek: "", monthNameofWeek: "", dateString: "", emojiStateofDay: "", symptomNames: "",reportCompletionStatus: false, description: "", questions: "", notes: "", symptomCompletionStatus: false, eventCompletionStatus: false,    descriptionCompletionStatus: false, questionsandNotesCompletionStatus: false, emojiCompletionStatus: false, creationDateTime: Date.now, userId: AuthViewModel.getLoggedInUserId()), loggedIn: $loggedIn)
-//                    .environmentObject(SymptomViewModel())
-//                    .environmentObject(GeneralViewModel())
-//                    .environmentObject(EventsViewModel())
+                if(!symptomViewModel.reportList.contains(where: { $0.dateString == Date.now.datetoString()!})){
+                    ReportListRowforNewEntry(item: Report(id:"", dayNameofWeek: "", monthNameofWeek: "", dateString: "", emojiStateofDay: "", symptomNames: "",reportCompletionStatus: false, description: "", questions: "", notes: "", symptomCompletionStatus: false, eventCompletionStatus: false,    descriptionCompletionStatus: false, questionsandNotesCompletionStatus: false, emojiCompletionStatus: false, creationDateTime: Date.now, userId: AuthViewModel.getLoggedInUserId()), loggedIn: $loggedIn)
+                    //                    .environmentObject(SymptomViewModel())
+                    //                    .environmentObject(GeneralViewModel())
+                    //                    .environmentObject(EventsViewModel())
+                }
+                
             }
-            
-            .padding()
-           .frame(maxWidth: .infinity, maxHeight: .infinity)
-            
+                    .padding()
         }
     }
 }

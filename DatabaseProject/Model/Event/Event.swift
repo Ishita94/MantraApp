@@ -13,6 +13,8 @@ struct Event: Identifiable, Hashable, Codable {
     var title:String
     var category:String
     var creationDateTime: Date
+    var lastModifiedDateTime: Date
     var userId: String
+    var eventId: String?
     var tracking:Bool
 }

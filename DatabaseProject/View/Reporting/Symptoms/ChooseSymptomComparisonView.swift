@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ChooseSymptomComparisonView: View {
     @Binding var isSheetVisible: Bool
-    @State var symptomComparisonState = "Much Better"
+    @State var symptomComparisonState : String
     @State var readyToNavigate: Bool = false
     @State var item: SymptomReport
     @EnvironmentObject var symptomController : SymptomViewModel
@@ -18,6 +18,7 @@ struct ChooseSymptomComparisonView: View {
     @Binding var loggedIn: Bool
     @State var dateString: String
     @State var edit: Bool
+    @State var selectedSegment: Int
 
     var body: some View {
         NavigationStack{
@@ -51,7 +52,7 @@ struct ChooseSymptomComparisonView: View {
                     
                     Divider()
                     
-                    SetSymptomRatingView()
+                    SetSymptomRatingView(selectedSegment: $selectedSegment)
                     
                     Text("""
                         How have you felt today compared to last time?
@@ -64,22 +65,21 @@ struct ChooseSymptomComparisonView: View {
                     
                     ScrollView{
                         ForEach(symptomController.symptomStatesforComparison, id: \.self) { state in
-                            SymptomComparisonListRow(pressed: state.stateName == item.symptomComparisonState.capitalized, imageName: state.imageName, stateName: state.stateName, symptomComparisonState: $symptomComparisonState)
+                            SymptomComparisonListRow( imageName: state.imageName, stateName: state.stateName, symptomComparisonState: $symptomComparisonState)
                         }
                     }
                     Divider()
                     
                     
                     Button(action: {
-                        //Check back on lastModifiedDateTime
                         if(!edit){ //create new symptom report
-                            symptomController.setSymptomReportofTrackedSymptom(symptomReport: SymptomReport(creationDateTime: prepareDate(dateString: dateString)!, lastModifiedDateTime: Date.now, rating: generalViewModel.selectedSegment,
+                            symptomController.setSymptomReportofTrackedSymptom(symptomReport: SymptomReport(creationDateTime: prepareDate(dateString: dateString)!, lastModifiedDateTime: Date.now, rating: selectedSegment,
                                                                                                             symptomName: item.symptomName,  symptomComparisonState: symptomComparisonState, reportCompletionStatus: false, recentStatus: "New", symptomId: item.symptomId,
-                                                                                                            userId: ""))
+                                                                                                            userId: item.userId))
                         }
                         else
                         {
-                            symptomController.editSymptomReport(symptomReport: SymptomReport(id: item.id, creationDateTime: prepareDate(dateString: dateString)!, lastModifiedDateTime: Date.now, rating: generalViewModel.selectedSegment,
+                            symptomController.editSymptomReport(symptomReport: SymptomReport(id: item.id, creationDateTime: prepareDate(dateString: dateString)!, lastModifiedDateTime: Date.now, rating: selectedSegment,
                                                                                                             symptomName: item.symptomName,  symptomComparisonState: symptomComparisonState, reportCompletionStatus: false, recentStatus: "New", symptomId: item.symptomId,
                                                                                              userId: item.userId))
                         }
@@ -115,19 +115,19 @@ struct ChooseSymptomComparisonView: View {
                                 .strokeBorder(Color(.outlineGrey), lineWidth: 1)
                         )
                         
-                        Button(action: {}) {
-                            HStack {
-                                Image(systemName: "xmark.bin.fill")
-                                    .foregroundColor(.white)
-                                Text("Remove symptom")
-                                    .foregroundColor(.white)
-                                    .font(.smallTitle)
-                                    .frame(maxWidth: .infinity)
-                            }
-                        }
-                        .padding()
-                        .background(Color(.warning2))
-                        .cornerRadius(10)
+//                        Button(action: {}) {
+//                            HStack {
+//                                Image(systemName: "xmark.bin.fill")
+//                                    .foregroundColor(.white)
+//                                Text("Remove symptom")
+//                                    .foregroundColor(.white)
+//                                    .font(.smallTitle)
+//                                    .frame(maxWidth: .infinity)
+//                            }
+//                        }
+//                        .padding()
+//                        .background(Color(.warning2))
+//                        .cornerRadius(10)
                     }
                     .padding()
                     .cornerRadius(30)
@@ -141,9 +141,6 @@ struct ChooseSymptomComparisonView: View {
             .presentationDetents([.fraction(0.8), .large])
             //.frame(maxWidth: .infinity, maxHeight: 680)
         }
-        .onAppear(){
-            generalViewModel.setSelectedSegment(segment: 0)
-        }
     }
 }
 
@@ -155,7 +152,7 @@ struct ChooseSymptomComparisonView: View {
     let reportingViewModel = ReportingViewModel(generalViewModel: generalViewModel)  // Injected
     
     ChooseSymptomComparisonView(isSheetVisible: Binding.constant(true), symptomComparisonState: "Much Better", item: SymptomReport(
-        dateFormatted: "Aug 20, 2023", creationDateTime: Date.now, lastModifiedDateTime: Date.now, rating: 0, emojiIconName: "ic-incomplete-red-filled", symptomName: "", symptomComparisonState: "Much Better", reportCompletionStatus: false, recentStatus: "N/A", symptomId: "", userId: ""), loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!, edit: false)//default value)
+        dateFormatted: "Aug 20, 2023", creationDateTime: Date.now, lastModifiedDateTime: Date.now, rating: 0, emojiIconName: "ic-incomplete-red-filled", symptomName: "", symptomComparisonState: "Much Better", reportCompletionStatus: false, recentStatus: "N/A", symptomId: "", userId: ""), loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!, edit: false, selectedSegment: 0)//default value)
         .environmentObject(generalViewModel)
         .environmentObject(symptomViewModel)
         .environmentObject(eventsViewModel)

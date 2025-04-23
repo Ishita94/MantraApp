@@ -118,6 +118,10 @@
 		20C8FCB12AF6313C0010F2AC /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20C8FCB02AF6313C0010F2AC /* Lato-Bold.ttf */; };
 		20C8FCB32AF714620010F2AC /* ExtensionDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C8FCB22AF714620010F2AC /* ExtensionDate.swift */; };
 		20C8FCB52AF841FF0010F2AC /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C8FCB42AF841FF0010F2AC /* Report.swift */; };
+		20CE1C3C2DB8491A00E35F56 /* GeneralExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CE1C3B2DB8491000E35F56 /* GeneralExtensions.swift */; };
+		20CE1C422DB8E9A700E35F56 /* SummaryDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CE1C412DB8E9A700E35F56 /* SummaryDashboardView.swift */; };
+		20CE1C442DB8EA6100E35F56 /* SummariesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CE1C432DB8EA5600E35F56 /* SummariesViewModel.swift */; };
+		20CE1C462DB8EA9500E35F56 /* SummariesDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CE1C452DB8EA9500E35F56 /* SummariesDataService.swift */; };
 		20D3CF132AC0F1160010792D /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 20D3CF122AC0F1160010792D /* FirebaseAnalytics */; };
 		20D3CF152AC0F1160010792D /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 20D3CF142AC0F1160010792D /* FirebaseAnalyticsOnDeviceConversion */; };
 		20D3CF172AC0F1160010792D /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 20D3CF162AC0F1160010792D /* FirebaseAnalyticsSwift */; };
@@ -126,6 +130,9 @@
 		20D3CF1E2AC0F1540010792D /* TopProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D3CF1D2AC0F1530010792D /* TopProgressBarView.swift */; };
 		20D3CF222AC103460010792D /* AddorEditSymptomsLandingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D3CF212AC103460010792D /* AddorEditSymptomsLandingPage.swift */; };
 		20D3CF242AC104020010792D /* SecondaryNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D3CF232AC104020010792D /* SecondaryNavBar.swift */; };
+		20EE11162D97710B00265502 /* EditReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EE11152D97710B00265502 /* EditReportView.swift */; };
+		20EE11182D97725500265502 /* StepofReportRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EE11172D97725500265502 /* StepofReportRow.swift */; };
+		20EE111A2D9E742E00265502 /* CustomBackButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EE11192D9E742E00265502 /* CustomBackButtonLabel.swift */; };
 		20F07C3C2AA5DB9E001D8815 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20F07C3B2AA5DB9E001D8815 /* GoogleService-Info.plist */; };
 		20F07C3F2AA5DCC1001D8815 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 20F07C3E2AA5DCC1001D8815 /* FirebaseAnalytics */; };
 		20F07C412AA5DCC1001D8815 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 20F07C402AA5DCC1001D8815 /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -136,6 +143,8 @@
 		20F393EB2D7115DA0036FC57 /* ExtensionPlaceholderforTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F393EA2D7115C90036FC57 /* ExtensionPlaceholderforTextEditor.swift */; };
 		20F393EF2D77CCA80036FC57 /* AddorEditSymptomNavigationButtonPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F393EE2D77CCA80036FC57 /* AddorEditSymptomNavigationButtonPanel.swift */; };
 		20F393F12D78CB250036FC57 /* ReportforQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F393F02D78CB150036FC57 /* ReportforQuery.swift */; };
+		20F393F32D8D72150036FC57 /* LeftRoundedRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F393F22D8D72150036FC57 /* LeftRoundedRectangle.swift */; };
+		20F393F52D8D74940036FC57 /* RightRoundedRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F393F42D8D74940036FC57 /* RightRoundedRectangle.swift */; };
 		20F674E42B3778B600862651 /* EventDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F674E32B3778B600862651 /* EventDataService.swift */; };
 		20F674E82B3787A400862651 /* ReportedEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F674E72B3787A400862651 /* ReportedEventsView.swift */; };
 		20F674EA2B3789A900862651 /* SuggestedSymptomsListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F674E92B3789A900862651 /* SuggestedSymptomsListRow.swift */; };
@@ -222,13 +231,22 @@
 		20C8FCB02AF6313C0010F2AC /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		20C8FCB22AF714620010F2AC /* ExtensionDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDate.swift; sourceTree = "<group>"; };
 		20C8FCB42AF841FF0010F2AC /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
+		20CE1C3B2DB8491000E35F56 /* GeneralExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralExtensions.swift; sourceTree = "<group>"; };
+		20CE1C412DB8E9A700E35F56 /* SummaryDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryDashboardView.swift; sourceTree = "<group>"; };
+		20CE1C432DB8EA5600E35F56 /* SummariesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummariesViewModel.swift; sourceTree = "<group>"; };
+		20CE1C452DB8EA9500E35F56 /* SummariesDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummariesDataService.swift; sourceTree = "<group>"; };
 		20D3CF1D2AC0F1530010792D /* TopProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopProgressBarView.swift; sourceTree = "<group>"; };
 		20D3CF212AC103460010792D /* AddorEditSymptomsLandingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddorEditSymptomsLandingPage.swift; sourceTree = "<group>"; };
 		20D3CF232AC104020010792D /* SecondaryNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryNavBar.swift; sourceTree = "<group>"; };
+		20EE11152D97710B00265502 /* EditReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReportView.swift; sourceTree = "<group>"; };
+		20EE11172D97725500265502 /* StepofReportRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepofReportRow.swift; sourceTree = "<group>"; };
+		20EE11192D9E742E00265502 /* CustomBackButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackButtonLabel.swift; sourceTree = "<group>"; };
 		20F07C3B2AA5DB9E001D8815 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		20F393EA2D7115C90036FC57 /* ExtensionPlaceholderforTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionPlaceholderforTextEditor.swift; sourceTree = "<group>"; };
 		20F393EE2D77CCA80036FC57 /* AddorEditSymptomNavigationButtonPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddorEditSymptomNavigationButtonPanel.swift; sourceTree = "<group>"; };
 		20F393F02D78CB150036FC57 /* ReportforQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportforQuery.swift; sourceTree = "<group>"; };
+		20F393F22D8D72150036FC57 /* LeftRoundedRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftRoundedRectangle.swift; sourceTree = "<group>"; };
+		20F393F42D8D74940036FC57 /* RightRoundedRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightRoundedRectangle.swift; sourceTree = "<group>"; };
 		20F674E32B3778B600862651 /* EventDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDataService.swift; sourceTree = "<group>"; };
 		20F674E72B3787A400862651 /* ReportedEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportedEventsView.swift; sourceTree = "<group>"; };
 		20F674E92B3789A900862651 /* SuggestedSymptomsListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedSymptomsListRow.swift; sourceTree = "<group>"; };
@@ -335,6 +353,7 @@
 		200CA7482AB847AF00B49508 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				20CE1C3B2DB8491000E35F56 /* GeneralExtensions.swift */,
 				200CA7112AB7EC0C00B49508 /* FontStyles.swift */,
 				205783BB2B601C21005C51B4 /* Reporting */,
 				20F674E22B37788000862651 /* Data Services */,
@@ -343,6 +362,8 @@
 				209F53FA2AC96B3300421857 /* GeneralEnumerations.swift */,
 				20C8FCB22AF714620010F2AC /* ExtensionDate.swift */,
 				20F393EA2D7115C90036FC57 /* ExtensionPlaceholderforTextEditor.swift */,
+				20F393F22D8D72150036FC57 /* LeftRoundedRectangle.swift */,
+				20F393F42D8D74940036FC57 /* RightRoundedRectangle.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -350,6 +371,7 @@
 		200CA7492AB847D200B49508 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				20CE1C3D2DB8E7C300E35F56 /* Summaries */,
 				2003EDA72AE5B523009E1BB3 /* Login */,
 				20D3CF1F2AC102570010792D /* Reporting */,
 				20D3CF1C2AC0F13B0010792D /* General */,
@@ -383,6 +405,7 @@
 		206B8AA02AE637B400FD3BCD /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				20CE1C432DB8EA5600E35F56 /* SummariesViewModel.swift */,
 				2059D5AE2AE4F3020031DF4D /* GeneralViewModel.swift */,
 				202494E42AE4D26C001D253E /* SymptomViewModel.swift */,
 				206B8AA12AE637C500FD3BCD /* AuthViewModel.swift */,
@@ -441,6 +464,7 @@
 				200CA7522AB84B8700B49508 /* ReportingView.swift */,
 				200CA7562AB8611C00B49508 /* ReportListRow.swift */,
 				200CA75C2AB876F200B49508 /* ReportListRowforNewEntry.swift */,
+				205783D52B6AC62E005C51B4 /* ReportCompletionView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -469,6 +493,38 @@
 			path = Event;
 			sourceTree = "<group>";
 		};
+		20CE1C3D2DB8E7C300E35F56 /* Summaries */ = {
+			isa = PBXGroup;
+			children = (
+				20CE1C402DB8E87700E35F56 /* MonthlyOverview */,
+				20CE1C3F2DB8E82D00E35F56 /* Visualizations */,
+				20CE1C3E2DB8E82000E35F56 /* BriefSummary */,
+			);
+			path = Summaries;
+			sourceTree = "<group>";
+		};
+		20CE1C3E2DB8E82000E35F56 /* BriefSummary */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = BriefSummary;
+			sourceTree = "<group>";
+		};
+		20CE1C3F2DB8E82D00E35F56 /* Visualizations */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Visualizations;
+			sourceTree = "<group>";
+		};
+		20CE1C402DB8E87700E35F56 /* MonthlyOverview */ = {
+			isa = PBXGroup;
+			children = (
+				20CE1C412DB8E9A700E35F56 /* SummaryDashboardView.swift */,
+			);
+			path = MonthlyOverview;
+			sourceTree = "<group>";
+		};
 		20D3CF1C2AC0F13B0010792D /* General */ = {
 			isa = PBXGroup;
 			children = (
@@ -477,7 +533,7 @@
 				20D3CF232AC104020010792D /* SecondaryNavBar.swift */,
 				20A44E552AC15488002C726B /* BackandNextButtonPanel.swift */,
 				2074793D2AEE42B000551441 /* TitleBarforTabs.swift */,
-				205783D52B6AC62E005C51B4 /* ReportCompletionView.swift */,
+				20EE11192D9E742E00265502 /* CustomBackButtonLabel.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -485,6 +541,7 @@
 		20D3CF1F2AC102570010792D /* Reporting */ = {
 			isa = PBXGroup;
 			children = (
+				20EE11142D9770D700265502 /* EditReport */,
 				20F674F52B378E6300862651 /* Emojis */,
 				20F674F42B378E5D00862651 /* Questions */,
 				20F674F32B378E5500862651 /* Description */,
@@ -518,12 +575,22 @@
 			path = Symptoms;
 			sourceTree = "<group>";
 		};
+		20EE11142D9770D700265502 /* EditReport */ = {
+			isa = PBXGroup;
+			children = (
+				20EE11152D97710B00265502 /* EditReportView.swift */,
+				20EE11172D97725500265502 /* StepofReportRow.swift */,
+			);
+			path = EditReport;
+			sourceTree = "<group>";
+		};
 		20F674E22B37788000862651 /* Data Services */ = {
 			isa = PBXGroup;
 			children = (
 				200CA75A2AB86B5800B49508 /* SymptomDataService.swift */,
 				20F674E32B3778B600862651 /* EventDataService.swift */,
 				205783BE2B6023B2005C51B4 /* ReportingDataService.swift */,
+				20CE1C452DB8EA9500E35F56 /* SummariesDataService.swift */,
 			);
 			path = "Data Services";
 			sourceTree = "<group>";
@@ -750,12 +817,15 @@
 				20F393EF2D77CCA80036FC57 /* AddorEditSymptomNavigationButtonPanel.swift in Sources */,
 				20C838A02ADDA50F00BDE91C /* AddorEditSymptomButtonPanel.swift in Sources */,
 				207479462AEFD87100551441 /* AddorEditEventsContentPage.swift in Sources */,
+				20F393F52D8D74940036FC57 /* RightRoundedRectangle.swift in Sources */,
 				205783C12B602F42005C51B4 /* QuestionsandNotesLandingPage.swift in Sources */,
 				20D3CF1E2AC0F1540010792D /* TopProgressBarView.swift in Sources */,
 				206B8A9F2AE61F9500FD3BCD /* CreateForm.swift in Sources */,
+				20CE1C442DB8EA6100E35F56 /* SummariesViewModel.swift in Sources */,
 				20A44E5A2AC1E4E5002C726B /* SymptomPickerRow.swift in Sources */,
 				2050DDCD2ACEFCDE006F46D2 /* ReportedSymptomsView.swift in Sources */,
 				2074793E2AEE42B000551441 /* TitleBarforTabs.swift in Sources */,
+				20CE1C3C2DB8491A00E35F56 /* GeneralExtensions.swift in Sources */,
 				209F53FD2AC96E0F00421857 /* SetSymptomView.swift in Sources */,
 				20F393F12D78CB250036FC57 /* ReportforQuery.swift in Sources */,
 				209F54072ACC213700421857 /* ReportedSymptomListRow.swift in Sources */,
@@ -769,6 +839,7 @@
 				20C8FCB52AF841FF0010F2AC /* Report.swift in Sources */,
 				2070537E2AA5C90F00E518B7 /* ContentView.swift in Sources */,
 				20C8389E2ADD40C800BDE91C /* AddSymptomwithSuggestionsorReportedSymptomsView.swift in Sources */,
+				20EE11182D97725500265502 /* StepofReportRow.swift in Sources */,
 				205783D22B6A2218005C51B4 /* BackandNextButtonPanelforQuestionsandNotes.swift in Sources */,
 				20F674E82B3787A400862651 /* ReportedEventsView.swift in Sources */,
 				200CA75B2AB86B5800B49508 /* SymptomDataService.swift in Sources */,
@@ -776,16 +847,19 @@
 				20C838922ACF1A3500BDE91C /* ChooseSymptomComparisonView.swift in Sources */,
 				2050DDD42ACEFDFA006F46D2 /* Symptom.swift in Sources */,
 				200CA7572AB8611C00B49508 /* ReportListRow.swift in Sources */,
+				20CE1C462DB8EA9500E35F56 /* SummariesDataService.swift in Sources */,
 				200CA7552AB85A3A00B49508 /* NavBar.swift in Sources */,
 				20F674E42B3778B600862651 /* EventDataService.swift in Sources */,
 				209F54012AC96E6200421857 /* SetSymptomRatingView.swift in Sources */,
 				200CA7532AB84B8700B49508 /* ReportingView.swift in Sources */,
+				20F393F32D8D72150036FC57 /* LeftRoundedRectangle.swift in Sources */,
 				205783C52B60328C005C51B4 /* EmojiLandingPage.swift in Sources */,
 				2003EDAF2AE5BF54009E1BB3 /* LoginForm.swift in Sources */,
 				20A44E562AC15488002C726B /* BackandNextButtonPanel.swift in Sources */,
 				205783C72B603297005C51B4 /* EmojiContentPage.swift in Sources */,
 				205783CC2B6A0F9C005C51B4 /* LimitedEmojiProvider.swift in Sources */,
 				20F674F92B3CEBB900862651 /* AddorEditEventButtonPanel.swift in Sources */,
+				20EE11162D97710B00265502 /* EditReportView.swift in Sources */,
 				209F53FF2AC96E4B00421857 /* SetSymptomContentPage.swift in Sources */,
 				205783BD2B601F11005C51B4 /* RemainingReport.swift in Sources */,
 				209F53FB2AC96B3300421857 /* GeneralEnumerations.swift in Sources */,
@@ -793,6 +867,7 @@
 				205783AC2B5D1406005C51B4 /* Event.swift in Sources */,
 				205783CE2B6A1359005C51B4 /* EmojiPickerViewCustomized.swift in Sources */,
 				205783BF2B6023B2005C51B4 /* ReportingDataService.swift in Sources */,
+				20CE1C422DB8E9A700E35F56 /* SummaryDashboardView.swift in Sources */,
 				207479442AEFD85500551441 /* AddorEditEventsLandingPage.swift in Sources */,
 				200CA74F2AB84A6B00B49508 /* MoreView.swift in Sources */,
 				20F674EC2B378A0200862651 /* SuggestedEventsView.swift in Sources */,
@@ -805,6 +880,7 @@
 				200CA74B2AB84A2400B49508 /* HomePageView.swift in Sources */,
 				20F674EA2B3789A900862651 /* SuggestedSymptomsListRow.swift in Sources */,
 				20D3CF222AC103460010792D /* AddorEditSymptomsLandingPage.swift in Sources */,
+				20EE111A2D9E742E00265502 /* CustomBackButtonLabel.swift in Sources */,
 				2074793C2AEE311200551441 /* SymptomReport.swift in Sources */,
 				20C8FCB32AF714620010F2AC /* ExtensionDate.swift in Sources */,
 				206B8AA22AE637C500FD3BCD /* AuthViewModel.swift in Sources */,

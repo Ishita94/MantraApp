@@ -10,9 +10,11 @@ import FirebaseFirestoreSwift
 struct EventReport: Identifiable, Hashable, Codable {
     
     @DocumentID var id: String?
-    var title:String
-    var category:String
+//    var title:String
+//    var category:String
     var creationDateTime: Date
+    var lastModifiedDateTime: Date
+    var eventId: String
     var userId: String
-    var reportCompletionStatus:Bool
+//    var reportCompletionStatus:Bool
 }

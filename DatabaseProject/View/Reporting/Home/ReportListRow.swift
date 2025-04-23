@@ -16,7 +16,7 @@ struct ReportListRow: View {
         ZStack{
             Image("ic-report-list-item-bordered")
                 .resizable()
-                .aspectRatio(contentMode: .fit)
+//                .aspectRatio(contentMode: .fit)
             HStack {
                 VStack (alignment:.trailing){
                     Text(item.dayNameofWeek)
@@ -26,10 +26,10 @@ struct ReportListRow: View {
                         .font(.dateText)
                         .foregroundColor(Color("BlackMediumEmphasis"))
                 }
-                Spacer()
                 ZStack{
-                    Image("ic-report-list-item-blue-background")
-                    
+                    RoundedRectangle(cornerRadius: 15)
+                        .fill(Color(.primary0))
+                        .frame(width: 265, height: 72)
                     HStack{
                         if item.emojiValue.isEmpty
                         {
@@ -45,26 +45,36 @@ struct ReportListRow: View {
                             Text(item.emojiValue)
                                 .font(.navLargeTitle)
                         }
-                        Spacer()
-                        VStack{
-                            Text(item.emojiStateofDay.isEmpty ? "Incomplete report": item.emojiStateofDay )
-                                .font(.symptomTitleinReportingPage)
-                                .foregroundColor(Color("Primary0tTextOn0"))
-                            Text(item.symptomNames)
+//                        Spacer()
+                        VStack (alignment: .leading, spacing: 4){
+                            if item.emojiStateofDay.isEmpty
+                            {
+                                Text("Incomplete\nReport")
+                                    .font(.regularText)
+                                    .foregroundColor(Color("Primary0tTextOn0"))
+                                    .multilineTextAlignment(.leading)
+                            }
+                            else
+                            {
+                                Text( item.emojiStateofDay )
+                                    .font(.symptomTitleinReportingPage)
+                                    .foregroundColor(Color("Primary0tTextOn0"))
+                            }
+                            Text(item.symptomNames.isEmpty ? " " : item.symptomNames)
                                 .font(.symptomSmallTitleinReportingPage)
                                 .foregroundColor(Color("BlackMediumEmphasis"))
-                                .frame(maxWidth: 150, maxHeight: 20, alignment: .center)
+                                .frame(maxWidth: 150, maxHeight: 20)
+                                .lineLimit(1) // Prevents wrapping
                                 .truncationMode(.tail)
                         }
+
                         Spacer()
                         Image("ic-play-blue")
-                        
                     }
-                    .padding(.horizontal)
-                    
+                    .padding(10)
                 }
             }
-            .padding()
+            .padding(10)
         
     }
 }

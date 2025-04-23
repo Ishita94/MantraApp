@@ -128,4 +128,7 @@ extension Font {
     static var shareTitleinNavBar: Font{
         return Font.custom("Lato-Black", size : 16 )
     }
+    static var editReportNavBarTitle: Font{
+        return Font.custom("Lato-ExtraBold", size : 24 )
+    }
 }

@@ -29,6 +29,7 @@ struct ReportforQuery: Identifiable, Hashable, Codable {
     var emojiCompletionStatus:Bool = false
     
     var creationDateTime: Date
+    var lastModifiedDateTime: Date
     var userId: String
     
 

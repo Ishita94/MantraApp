@@ -20,21 +20,17 @@ struct ReportedEventsView: View {
             .foregroundColor(Color(.black))
             .padding(.vertical, 6)
             
-            if(eventsViewModel.reportedEventsofUserbyDate.count>0){
+            if(eventsViewModel.reportedEvents.count>0){
                 Text("""
                     These are events you have added today
                     """)
                 .font(.regularText)
                 .foregroundColor(Color(.blackMediumEmphasis))
-                
                 ScrollView{
-                    ForEach(eventsViewModel.reportedEventsofUserbyDate, id: \.self) { item in
+                    ForEach(eventsViewModel.reportedEvents, id: \.self) { item in
                         ReportedEventRow(item: item, loggedIn: $loggedIn,  dateString: dateString)
                     }
                     .scrollContentBackground(.hidden)
-//                    .listStyle(.plain)
-                    //            .frame(maxWidth: .infinity, maxHeight: 150)
-                    
                 }
             }
             else

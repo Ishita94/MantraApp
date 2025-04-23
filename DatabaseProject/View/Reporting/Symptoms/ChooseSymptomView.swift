@@ -58,15 +58,15 @@ struct ChooseSymptomView: View {
                         }
                         if(!symptomViewModel.trackedSymptomsofUser.contains(where: { $0.symptomName.lowercased() == "nausea" }))
                         {
-                            SymptomPickerRow(item: Symptom(symptomName: "Nausea", rating: 0, recentStatus: "New", creationDateTime: Date.now, tracking: false, userId: ""), loggedIn: $loggedIn)
+                            SymptomPickerRow(item: Symptom(symptomName: "Nausea", rating: 0, status: "Tracked", creationDateTime: Date.now, lastModifiedDateTime: Date.now, tracking: false, userId: ""), loggedIn: $loggedIn)
                         }
                         if(!symptomViewModel.trackedSymptomsofUser.contains(where: { $0.symptomName.lowercased() == "fatigue" }))
                         {
-                            SymptomPickerRow(item: Symptom(symptomName: "Fatigue", rating: 0, recentStatus: "New", creationDateTime: Date.now, tracking: false, userId: ""),loggedIn: $loggedIn)
+                            SymptomPickerRow(item: Symptom(symptomName: "Fatigue", rating: 0, status: "Tracked", creationDateTime: Date.now, lastModifiedDateTime: Date.now, tracking: false, userId: ""),loggedIn: $loggedIn)
                         }
                         if(!symptomViewModel.trackedSymptomsofUser.contains(where: { $0.symptomName.lowercased() == "pain" }))
                         {
-                            SymptomPickerRow(item: Symptom(symptomName: "Pain", rating: 0, recentStatus: "New", creationDateTime: Date.now, tracking: false, userId: ""), loggedIn: $loggedIn)
+                            SymptomPickerRow(item: Symptom(symptomName: "Pain", rating: 0, status: "Tracked", creationDateTime: Date.now, lastModifiedDateTime: Date.now, tracking: false, userId: ""), loggedIn: $loggedIn)
                         }
                     }
                     .frame(maxWidth: .infinity)
@@ -104,7 +104,7 @@ struct ChooseSymptomView: View {
                 
             }
             .navigationDestination(isPresented: $readyToNavigate) {
-                SetSymptomView(item: Symptom(symptomName: "", rating: 0, recentStatus: "New", creationDateTime: prepareDate(dateString: dateString)!, tracking: true, userId: ""), loggedIn: $loggedIn)
+                SetSymptomView(item: Symptom(symptomName: "", rating: 0, status: "", creationDateTime: Date.now,  lastModifiedDateTime: Date.now, tracking: true, userId: ""), loggedIn: $loggedIn)
                 //create symptom on that specified date, instead of current date
             }
         }

@@ -17,22 +17,24 @@ struct AddorEditSymptomsLandingPage: View {
     @State var date: Date?
     @State var dateString: String
     @State var showAfterCreatingNewSymptomReport: Bool = false
+    @State var createNewReport: Bool = false
 
     
     var body: some View {
-        VStack{
+        VStack {
             
             NavBar(loggedIn: $loggedIn)
             Divider()
             SecondaryNavBar()
             Divider()
-            //            ScrollView{
             if(symptomController.dictionaryofSuggestedReports.count>0 || generalViewModel.selectedReport.symptomReports.count>0 ) {
-                AddorEditSymptomButtonPanel(loggedIn: $loggedIn, dateString: dateString)
-                Divider()
-                AddSymptomwithSuggestionsorReportedSymptomsView(loggedIn: $loggedIn, dateString: dateString)
+                ScrollView{
+                    AddorEditSymptomButtonPanel(loggedIn: $loggedIn, dateString: dateString)
+                    Divider()
+                    AddSymptomwithSuggestionsorReportedSymptomsView(loggedIn: $loggedIn, dateString: dateString)
+                }
+//                .frame(maxWidth: .infinity, alignment: .topLeading)
             }
-            //}
             else
             {
                 AddorEditSymptomsContentView(loggedIn: $loggedIn, dateString: dateString)
@@ -43,10 +45,10 @@ struct AddorEditSymptomsLandingPage: View {
         
         .onAppear()
         {
-           
-            
-//            generalViewModel.setSelectedReport(report: report)
-//            symptomController.getReportedSymptomsofUserbyDate(date: dateString, showAfterCreatingNewSymptomReport: false)
+            if(createNewReport) //For creating a new report today
+            {
+                symptomController.saveNewReport()
+            }
             symptomController.getSuggestedSymptomsofUserbeforeDate(date: prepareDate(dateString: dateString)!)
             
         }

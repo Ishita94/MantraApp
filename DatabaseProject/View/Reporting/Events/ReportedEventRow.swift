@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ReportedEventRow: View {
-    @State var item: EventReport
+    @State var item: Event
     @Binding var loggedIn: Bool
     @State var readyToNavigate: Bool = false
     @EnvironmentObject var generalViewModel : GeneralViewModel
@@ -28,10 +28,12 @@ struct ReportedEventRow: View {
                             .foregroundColor(Color(.primary0TTextOn0))
                         
                         Text(item.category)
+                            .padding(.horizontal, 4)
+                            .padding(.vertical, 4)
                             .background(Color(.secondary2))
                             .foregroundStyle(Color(.white))
                             .font(.symptomSmallTitleinReportedSymptomsPage)
-                            .cornerRadius(4)
+                            .cornerRadius(6)
                             .frame(maxHeight: 20)
                     }
                     //.padding(.top, 10)
@@ -44,19 +46,21 @@ struct ReportedEventRow: View {
                     }
                 }
                 .padding()
-                .navigationDestination(isPresented: $readyToNavigate) {
-                    
-                    //TODO: edit Event
-                    SetEventView(item: Event(title: item.title, category: item.category, creationDateTime: item.creationDateTime, userId: item.userId, tracking: false),  title: item.title,  loggedIn: $loggedIn, isSheetVisible: true, selection: item.category, dateString: dateString, eventReportItem: item)
-                    
-                }
             }
+            .sheet(isPresented: $readyToNavigate){
+                SetEventView(item: item,  title: item.title,  loggedIn: $loggedIn, isSheetVisible: true, selection: item.category, dateString: dateString)
+            }
+//            .navigationDestination(isPresented: $readyToNavigate) {
+//                
+//                SetEventView(item: item,  title: item.title,  loggedIn: $loggedIn, isSheetVisible: true, selection: item.category, dateString: dateString)
+//                
+//            }
         }
     }
     
 }
 
 #Preview {
-    ReportedEventRow(item: EventReport(title: "Went on a walk", category: "Physical Well-Being", creationDateTime: Date.now, userId: "", reportCompletionStatus: false)
+    ReportedEventRow(item: Event(title: "Went on a walk", category: "Physical Well-Being", creationDateTime: Date.now, lastModifiedDateTime: Date.now,  userId: "", tracking: true)
                      , loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!).environmentObject(GeneralViewModel())
 }

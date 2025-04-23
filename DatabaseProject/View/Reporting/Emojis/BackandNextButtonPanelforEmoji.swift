@@ -18,7 +18,7 @@ struct BackandNextButtonPanelforEmoji: View {
     @Binding var emojiValue : String
     @State var emojiCompletionStatus: Bool = false
     @State var isSheetVisible: Bool = false
-
+    @State var isReportIncomplete: Bool = false
     
     var body: some View {
         HStack{
@@ -50,16 +50,19 @@ struct BackandNextButtonPanelforEmoji: View {
                         reportViewModel.remainingReportbyDate.emojiStateofDay = emojiStateofDay
                         reportViewModel.remainingReportbyDate.emojiValue = emojiValue
                         reportViewModel.remainingReportbyDate.emojiCompletionStatus = true
+                        reportViewModel.remainingReportbyDate.reportCompletionStatus = true
+                        reportViewModel.saveRemainingReport(report: reportViewModel.remainingReportbyDate, saveFor: "Emoji")
+                        
+                        isSheetVisible = true
                     }
                     else
                     {
-                        reportViewModel.remainingReportbyDate.emojiStateofDay = ""
-                        reportViewModel.remainingReportbyDate.emojiValue = ""
-                        reportViewModel.remainingReportbyDate.emojiCompletionStatus = true
+                        isReportIncomplete = true // there is nothing to set for emoji in this report, and state of day/emoji cannot be selected to nothing
+//                        reportViewModel.remainingReportbyDate.emojiStateofDay = ""
+//                        reportViewModel.remainingReportbyDate.emojiValue = ""
+//                        reportViewModel.remainingReportbyDate.emojiCompletionStatus = false
                     }
-                    reportViewModel.saveRemainingReport(report: reportViewModel.remainingReportbyDate, saveFor: "Emoji")
                     
-                    isSheetVisible = true
                 }) {
                     HStack {
                         Image(systemName: "arrow.right")
@@ -77,9 +80,11 @@ struct BackandNextButtonPanelforEmoji: View {
             .frame(maxWidth: .infinity, maxHeight: 50)
         }
         .navigationDestination(isPresented: $isSheetVisible) {
-//        .sheet(isPresented: $isSheetVisible){
                 ReportCompletionView(isSheetVisible: $isSheetVisible, loggedIn: $loggedIn, dateString: dateString)
             
+        }
+        .navigationDestination(isPresented: $isReportIncomplete) {
+            ReportingView(loggedIn: $loggedIn)
         }
         .navigationDestination(isPresented: $readyToNavigateBack) {
                     if(generalViewModel.currentState==4){

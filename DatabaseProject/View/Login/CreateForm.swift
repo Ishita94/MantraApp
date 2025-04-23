@@ -89,7 +89,7 @@ struct CreateForm: View {
                 if error == nil {
                     // Saved
                     for event in eventViewModel.definedEventList{
-                        eventViewModel.saveEvent(event: event, eventReport: nil)
+                        eventViewModel.saveEvent(event: event)
                     }
                 }
                 else {

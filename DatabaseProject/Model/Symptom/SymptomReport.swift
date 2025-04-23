@@ -24,6 +24,7 @@ struct SymptomReport: Identifiable, Hashable, Codable {
     var symptomComparisonState:String
     var reportCompletionStatus:Bool
     var recentStatus: String
+//    var resolveStatus: String?
     var symptomId: String?
     var userId: String
 }

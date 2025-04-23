@@ -25,7 +25,7 @@ struct SymptomPickerRow: View {
                         .font(.symptomTitleinReportingPage)
                         .foregroundColor(Color("Primary0tTextOn0"))
                     if(item.tracking){
-                        Text("Being Tracked")
+                        Text(item.status)
                         //.padding()
                             .background(Color(.secondary2))
                             .foregroundStyle(Color(.white))
@@ -66,5 +66,5 @@ struct SymptomPickerRow: View {
 }
 
 #Preview {
-    SymptomPickerRow(item: Symptom(symptomName: "Nausea", rating: 0, recentStatus: "", creationDateTime: Date.now, tracking: true, userId: ""), loggedIn: Binding.constant(true))//default value))
+    SymptomPickerRow(item: Symptom(symptomName: "Nausea", rating: 0, status: "", creationDateTime: Date.now, lastModifiedDateTime: Date.now, tracking: true,  userId: ""), loggedIn: Binding.constant(true))//default value))
 }

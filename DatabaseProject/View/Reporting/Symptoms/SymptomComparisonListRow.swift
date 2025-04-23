@@ -8,37 +8,38 @@
 import SwiftUI
 
 struct SymptomComparisonListRow: View {
-    @State var pressed = false
-    @State var imageName = "much-better"
-    @State var stateName = "Much Better"
+    @State var imageName = ""
+    @State var stateName = ""
     @Binding var symptomComparisonState: String
 
+    
     var body: some View {
         ZStack{
-            
             Button(action: {
-                self.pressed.toggle()
-                if(self.pressed){
-                    symptomComparisonState = stateName
+                if(symptomComparisonState==stateName){
+                    symptomComparisonState = "" //reset selection
                 }
                 else {
-                    symptomComparisonState = ""
+                    symptomComparisonState = stateName //select it
                 }
             }) {
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
                         .strokeBorder(Color(.outlineGrey), lineWidth: 1)
                         .frame(height: 56)
-                        .background(self.pressed ? Color(.secondary2) : Color.white)
+                        .background(stateName==symptomComparisonState ? Color(.secondary2) : Color.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))  // Clips the background to match rounded corners
+
                     
+
                     HStack{
                         Image(imageName)
                         Spacer()
                         Text(stateName)
                             .font(.titleinRowItem)
-                            .foregroundColor(self.pressed ? Color(.primary4TTextOn4) : Color.black)
+                            .foregroundColor(stateName==symptomComparisonState ? Color(.primary4TTextOn4) : Color.black)
                         Spacer()
-                        if self.pressed {
+                        if (stateName==symptomComparisonState) {
                             Image(systemName: "checkmark.circle.fill")
                                 .foregroundColor(Color.white)
                                 .font(.titleinRowItemEditable)

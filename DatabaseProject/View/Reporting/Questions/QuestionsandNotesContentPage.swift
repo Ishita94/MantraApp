@@ -47,7 +47,7 @@ struct QuestionsandNotesContentPage: View {
                 .foregroundColor(.black)
                 .font(.titleinRowItem)
                 
-                VStack  (alignment: .leading){
+                ZStack  (alignment: .leading){
                     if $questionsText.wrappedValue.isEmpty && !isQuestionsTextEditorFocused {
 
                     Text("2500 characters remaining")
@@ -78,7 +78,7 @@ struct QuestionsandNotesContentPage: View {
                 .foregroundColor(.black)
                 .font(.titleinRowItem)
                 
-                VStack (alignment: .leading){
+                ZStack (alignment: .leading){
                     if $notesText.wrappedValue.isEmpty && !isNotesTextEditorFocused {
                         Text("2500 characters remaining")
                             .foregroundStyle(.secondary)

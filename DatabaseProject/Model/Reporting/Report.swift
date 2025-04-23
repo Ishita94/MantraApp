@@ -29,14 +29,12 @@ struct Report: Identifiable, Hashable, Codable {
     var descriptionCompletionStatus:Bool = false
     var questionsandNotesCompletionStatus:Bool = false
     var emojiCompletionStatus:Bool = false
-    
     var creationDateTime: Date
+    var lastModifiedDateTime: Date
     var userId: String
     
     var symptomReports: [SymptomReport] = []
-
-   // var recentStatus: String
-  //  var symptomId: String
+    var eventReports: [Event] = []
 
     init(from report: ReportforQuery) {
             self.id = report.id
@@ -51,8 +49,8 @@ struct Report: Identifiable, Hashable, Codable {
         self.descriptionCompletionStatus = report.descriptionCompletionStatus
         self.questionsandNotesCompletionStatus = report.questionsandNotesCompletionStatus
         self.creationDateTime = report.creationDateTime
+        self.lastModifiedDateTime = report.lastModifiedDateTime
         self.userId = report.userId
-
         }
     init(id: String? = nil,
              dayNameofWeek: String = "",
@@ -71,27 +69,30 @@ struct Report: Identifiable, Hashable, Codable {
              questionsandNotesCompletionStatus: Bool = false,
              emojiCompletionStatus: Bool = false,
              creationDateTime: Date = Date(),
+             lastModifiedDateTime: Date = Date(),
              userId: String = "",
-             symptomReports: [SymptomReport] = []) {
-
-            self.id = id
-        self.dayNameofWeek = dayNameofWeek
-            self.monthNameofWeek = monthNameofWeek
-            self.dateString = dateString
-            self.emojiValue = emojiValue
-            self.emojiStateofDay = emojiStateofDay
-            self.symptomNames = symptomNames
-            self.reportCompletionStatus = reportCompletionStatus
-            self.description = description
-            self.questions = questions
-            self.notes = notes
-            self.symptomCompletionStatus = symptomCompletionStatus
-            self.eventCompletionStatus = eventCompletionStatus
-            self.descriptionCompletionStatus = descriptionCompletionStatus
-            self.questionsandNotesCompletionStatus = questionsandNotesCompletionStatus
-            self.emojiCompletionStatus = emojiCompletionStatus
-            self.creationDateTime = creationDateTime
-            self.userId = userId
-            self.symptomReports = symptomReports
+             symptomReports: [SymptomReport] = [],
+             eventReports: [Event] = []) {
+                self.id = id
+                self.dayNameofWeek = dayNameofWeek
+                self.monthNameofWeek = monthNameofWeek
+                self.dateString = dateString
+                self.emojiValue = emojiValue
+                self.emojiStateofDay = emojiStateofDay
+                self.symptomNames = symptomNames
+                self.reportCompletionStatus = reportCompletionStatus
+                self.description = description
+                self.questions = questions
+                self.notes = notes
+                self.symptomCompletionStatus = symptomCompletionStatus
+                self.eventCompletionStatus = eventCompletionStatus
+                self.descriptionCompletionStatus = descriptionCompletionStatus
+                self.questionsandNotesCompletionStatus = questionsandNotesCompletionStatus
+                self.emojiCompletionStatus = emojiCompletionStatus
+                self.creationDateTime = creationDateTime
+                self.lastModifiedDateTime = lastModifiedDateTime
+                self.userId = userId
+                self.symptomReports = symptomReports
+                self.eventReports = eventReports
         }
 }

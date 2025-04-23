@@ -18,7 +18,7 @@ struct SuggestedEventRow: View {
     @Binding var loggedIn: Bool
     @State var readyToNavigate: Bool = false
     @EnvironmentObject var generalViewModel : GeneralViewModel
-    @Binding var selectedEvents: [Event]
+    @Binding var selectedEvents: [EventReport]
 
     var body: some View {
             ZStack{
@@ -48,10 +48,12 @@ struct SuggestedEventRow: View {
                         }
                         
                         Text(item.category)
+                            .padding(.horizontal, 4)
+                            .padding(.vertical, 4)
                             .background(Color(.secondary2))
                             .foregroundStyle(Color(.white))
                             .font(.symptomSmallTitleinReportedSymptomsPage)
-                            .cornerRadius(4)
+                            .cornerRadius(6)
                             .frame(maxHeight: 20)
                     }
                     //.padding(.top, 10)
@@ -60,16 +62,16 @@ struct SuggestedEventRow: View {
                     Button(action: {
                         readyToNavigate.toggle()
                         if(readyToNavigate){
-                            if(selectedEvents.contains(where: { $0.title.lowercased() == item.title.lowercased() &&  $0.category.lowercased() == item.category.lowercased()}) == false)
+                            if(selectedEvents.contains(where: { $0.eventId==item.id}) == false)
                             {
-                                selectedEvents.append(item)
+                                selectedEvents.append(EventReport(creationDateTime: Date.now, lastModifiedDateTime: Date.now, eventId: item.id!, userId: AuthViewModel.getLoggedInUserId()))
                             }
                         }
                         else
                         {
-                            if(selectedEvents.contains(where: { $0.title.lowercased() == item.title.lowercased() &&  $0.category.lowercased() == item.category.lowercased()}) == true)
+                            if(selectedEvents.contains(where: { $0.eventId==item.id}) == true)
                             {
-                                selectedEvents.removeAll(where: { $0.title.lowercased() == item.title.lowercased() &&  $0.category.lowercased() == item.category.lowercased()})
+                                selectedEvents.removeAll(where: { $0.eventId==item.id})
                             }
                         }
                     }) {
@@ -78,18 +80,15 @@ struct SuggestedEventRow: View {
                                 .fill(Color.white)
                                 .frame(width: 25, height: 25)
                                 .addBorder(Color(.primary0EElementsOn0), width: 2, cornerRadius: 20)
-                            
-                            
-                            //                        Image("ic-edit")
-                            
                         }
                         
                         else
                         {
-                            Image(systemName: "checkmark.circle")
-                                .foregroundColor(Color.white)
-//                                .background(Color.white)
-                                .font(.bigTitle)                        }
+                            Image(systemName: "checkmark.circle.fill")
+                                .renderingMode(.template)  // ✅ Ensures color is applied properly
+                                .foregroundColor(.white)   // ✅ Applies white to the entire symbol
+                                .font(.bigTitle)
+                        }
                     }
                 }
                 .padding()
@@ -100,6 +99,6 @@ struct SuggestedEventRow: View {
 }
 
 #Preview {
-    SuggestedEventRow(item: Event(title: "Went on a walk", category: "Physical Well-Being", creationDateTime: Date.now, userId: "", tracking: false)
+    SuggestedEventRow(item: Event(title: "Went on a walk", category: "Physical Well-Being", creationDateTime: Date.now, lastModifiedDateTime: Date.now,  userId: "", tracking: false)
                       , loggedIn: Binding.constant(true), selectedEvents: Binding.constant([])).environmentObject(GeneralViewModel())
 }

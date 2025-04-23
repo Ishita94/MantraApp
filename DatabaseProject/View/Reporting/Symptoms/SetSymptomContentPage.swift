@@ -13,7 +13,7 @@ struct SetSymptomContentPage: View {
     
     //    @Binding var path: NavigationPath
     @Binding var loggedIn: Bool
-    @State var selectedSegment: Int = 0
+    @State var selectedSegment: Int 
     @EnvironmentObject var generalViewModel : GeneralViewModel
     @EnvironmentObject var symptomViewModel : SymptomViewModel
     
@@ -23,11 +23,14 @@ struct SetSymptomContentPage: View {
     var body: some View {
         NavigationStack{
             VStack (alignment: .leading){
-                Text("Symptom Report")
-                    .foregroundColor(.white)
+                Text("New Symptom Report")
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
                     .background(Color(.primary4))
+                    .foregroundStyle(Color(.white))
                     .font(.smallTitle)
                     .cornerRadius(6)
+                    .frame(minHeight: 27)
                     .padding(.bottom, 16.0)
                 
                 Text("Title")
@@ -57,19 +60,19 @@ struct SetSymptomContentPage: View {
                 
                 Divider()
                 
-                SetSymptomRatingView()
+                SetSymptomRatingView(selectedSegment: $selectedSegment)
                 
                 Divider()
                 
                 Button(action: {
-                    if(item.id==nil){
-                        symptomViewModel.saveSymptomReport(symptomReport: SymptomReport(creationDateTime: item.creationDateTime, lastModifiedDateTime: Date.now, rating: generalViewModel.selectedSegment, symptomName: symptomName, symptomComparisonState: "", reportCompletionStatus: false, recentStatus: "New", userId: AuthViewModel.getLoggedInUserId()))
+                    if(item.id==nil){ //this is the first report for this new symtom
+                        symptomViewModel.saveSymptomReport(symptomReport: SymptomReport(creationDateTime: item.creationDateTime, lastModifiedDateTime: Date.now, rating: selectedSegment, symptomName: symptomName, symptomComparisonState: "", reportCompletionStatus: false, recentStatus: "New", symptomId: item.id, userId: AuthViewModel.getLoggedInUserId()))
                     }
                     else
                     {
                         symptomViewModel.editSymptomReport(symptomReport: SymptomReport( id:item.id,  creationDateTime: item.creationDateTime,
                             lastModifiedDateTime: Date.now,
-                                                                            rating: generalViewModel.selectedSegment, symptomName: symptomName, symptomComparisonState: "", reportCompletionStatus: false, recentStatus: "New", userId: AuthViewModel.getLoggedInUserId()))
+                                                                            rating: selectedSegment, symptomName: symptomName, symptomComparisonState: "", reportCompletionStatus: false, recentStatus: "New", symptomId: item.id, userId: AuthViewModel.getLoggedInUserId()))
                     }
                     readyToNavigate = true
                 }) {
@@ -117,7 +120,7 @@ struct SetSymptomContentPage: View {
     let eventsViewModel = EventsViewModel(generalViewModel: generalViewModel)  // Injected
     let reportingViewModel = ReportingViewModel(generalViewModel: generalViewModel)  // Injected
     
-    SetSymptomContentPage(item: Symptom(symptomName: "Nausea", rating: 0, recentStatus: "", creationDateTime: Date.now, tracking: true, userId: ""), symptomName: "Nausea", loggedIn: Binding.constant(true))
+    SetSymptomContentPage(item: Symptom(symptomName: "Nausea", rating: 0, status: "", creationDateTime: Date.now, lastModifiedDateTime: Date.now, tracking: true, userId: ""), symptomName: "Nausea", loggedIn: Binding.constant(true), selectedSegment: 0)
         .environmentObject(generalViewModel)
         .environmentObject(symptomViewModel)
         .environmentObject(eventsViewModel)

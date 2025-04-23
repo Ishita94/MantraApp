@@ -21,7 +21,7 @@ struct ReportedSymptomListRow: View {
             ZStack{
                 RoundedRectangle(cornerRadius: 16)
                     .fill(Color(.primary0))
-                    .frame(maxWidth: .infinity, maxHeight: 100)
+                    .frame(maxWidth: .infinity, minHeight: 100)
                 HStack{
                     VStack(alignment: .leading){
                         HStack{
@@ -30,30 +30,34 @@ struct ReportedSymptomListRow: View {
                                 .foregroundColor(Color(.primary0TTextOn0))
                             
                             Text(item.recentStatus)
-                            //.padding()
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 4)
                                 .background(Color(.warning1))
-                                .foregroundStyle(.white)
+                                .foregroundStyle(Color(.white))
                                 .font(.symptomSmallTitleinReportedSymptomsPage)
                                 .cornerRadius(6)
-                                .frame(maxHeight: 27)
+                                .frame(minHeight: 27)
                             
                         }
                         Text("Severity Rating \(item.rating) /10")
-                        //.padding()
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 4)
                             .background(Color(.secondary2))
                             .foregroundStyle(Color(.white))
                             .font(.symptomSmallTitleinReportedSymptomsPage)
-                            .cornerRadius(4)
-                            .frame(maxHeight: 20)
+                            .cornerRadius(6)
+                            .frame(minHeight: 20)
+                        
                         if(item.symptomComparisonState.isEmpty == false) //symptom has been compared
                         {
                             Text("You feel \(item.symptomComparisonState.lowercased()).")
-                            //.padding()
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 4)
                                 .background(Color(.secondary2))
                                 .foregroundStyle(Color(.white))
                                 .font(.symptomSmallTitleinReportedSymptomsPage)
                                 .cornerRadius(6)
-                                .frame(maxHeight: 20)
+                                .frame(minHeight: 20)
                         }
                         
                     }
@@ -70,11 +74,13 @@ struct ReportedSymptomListRow: View {
                 .navigationDestination(isPresented: $readyToNavigate) {
                     if(item.symptomComparisonState.isEmpty == false) //symptom has been compared
                     {
-                        ChooseSymptomComparisonView(isSheetVisible: Binding.constant(true), item: item, loggedIn: $loggedIn, dateString: dateString, edit: true)
+                        ChooseSymptomComparisonView(isSheetVisible: Binding.constant(true), symptomComparisonState: item.symptomComparisonState, item: item, loggedIn: $loggedIn, dateString: dateString, edit: true, selectedSegment: item.rating)
 //                            .environmentObject(SymptomViewModel())/*.frame(maxWidth: .infinity, maxHeight: 680)*/
                     }
                     else
-                    {                        SetSymptomView(item: Symptom(id: item.id, symptomName: item.symptomName, rating: item.rating, recentStatus: item.recentStatus, creationDateTime: item.creationDateTime, tracking: true, userId: item.userId), loggedIn: $loggedIn)
+                    {
+                        //TODO: check status
+                        SetSymptomView(item: Symptom(id: item.id, symptomName: item.symptomName, rating: item.rating, status: "New", creationDateTime: item.creationDateTime, lastModifiedDateTime: item.lastModifiedDateTime, tracking: true, userId: item.userId), loggedIn: $loggedIn)
                         
                     }
                     

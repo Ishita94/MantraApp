@@ -10,7 +10,7 @@ import Combine
 class GeneralViewModel: ObservableObject {
     
     @Published var currentState: Int = 1;
-    @Published var selectedSegment: Int = 0 //for rating slider
+//    @Published var selectedSegment: Int = 0 //for rating slider
     @Published var currentTitle: String = "Report your symptoms";
     @Published var dateStringofCurrentReport: String = "";
     @Published var selectedReport = Report()
@@ -18,20 +18,19 @@ class GeneralViewModel: ObservableObject {
     init() {
         //loadFromPersistentStore()
     }
-    func setSelectedSegment (segment: Int){
-        selectedSegment = segment
-    }
     func incrementState (){
         if(currentState<5) {
-            currentState+=1
-            setTitle()
+            setCurrentStateandTitle(state: currentState+1)
         }
     }
     func decrementState (){
         if(currentState>1) {
-            currentState-=1
-            setTitle()
+            setCurrentStateandTitle(state: currentState-1)
         }
+    }
+    func setCurrentStateandTitle (state: Int){
+        currentState = state
+        setTitle()
     }
     func setTitle (){
         currentTitle = getTitlefromState(state: currentState)
@@ -52,6 +51,7 @@ class GeneralViewModel: ObservableObject {
         default: return ""
         }
     }
+    //TODO: check
     func setDateStringofCurrentReport (dateString: String){
         dateStringofCurrentReport = stringtoFormalDate(dateString: dateString)
     }
@@ -59,10 +59,12 @@ class GeneralViewModel: ObservableObject {
         dateStringofCurrentReport = ""
     }
     func setSelectedReport (report: Report){
-        selectedReport = report //save the selected report
+        self.selectedReport = report //save the selected report
     }
     func clearSelectedReport (){
         selectedReport = Report() //initialize selected report
     }
-
+//    func addSymptomReporttoSelectedReport (symptomReport: SymptomReport){
+//        selectedReport.symptomReports.append(symptomReport) //add the new symptom
+//    }
 }

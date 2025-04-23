@@ -14,10 +14,7 @@ struct ReportedSymptomsView: View {
 
     @Binding var loggedIn: Bool
     @State var dateString: String
-//    @State var data: [SymptomReport]
     
-
-
 //    @Binding var path: NavigationPath
 
     var body: some View {
@@ -36,15 +33,13 @@ struct ReportedSymptomsView: View {
                 .font(.regularText)
                 .foregroundColor(Color(.blackMediumEmphasis))
                                 
-                ScrollView{
+//                ScrollView{
                     ForEach(generalViewModel.selectedReport.symptomReports, id: \.self) { item in
                         ReportedSymptomListRow(item: item, loggedIn: $loggedIn, dateString: dateString)
                     }
-                    .scrollContentBackground(.hidden)
-                    .listStyle(.plain)
-                    //            .frame(maxWidth: .infinity, maxHeight: 150)
-                    
-                }
+//                    .scrollContentBackground(.hidden)
+//                    .listStyle(.plain)
+//                }
             }
             else
             {
@@ -55,15 +50,6 @@ struct ReportedSymptomsView: View {
                 .foregroundColor(Color(.blackMediumEmphasis))
             }
         }
-//            .onAppear(){
-//                if let reports = symptomViewModel.dictionaryofReports[dateString]
-//                {
-//                    data = symptomViewModel.dictionaryofReports[dateString]!
-//                }
-//                else {
-//                    data = []
-//                }
-//            }
     }
     
 }
