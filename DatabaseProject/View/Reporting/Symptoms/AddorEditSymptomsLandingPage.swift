@@ -22,8 +22,7 @@ struct AddorEditSymptomsLandingPage: View {
     
     var body: some View {
         VStack {
-            
-            NavBar(loggedIn: $loggedIn)
+            NavBar(loggedIn: $loggedIn, titleText: "Report your day", subtitleText: generalViewModel.dateStringofCurrentReport)
             Divider()
             SecondaryNavBar()
             Divider()
@@ -52,8 +51,6 @@ struct AddorEditSymptomsLandingPage: View {
             symptomController.getSuggestedSymptomsofUserbeforeDate(date: prepareDate(dateString: dateString)!)
             
         }
-        //        }
-        //        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }

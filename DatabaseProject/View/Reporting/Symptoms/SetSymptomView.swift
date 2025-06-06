@@ -21,10 +21,6 @@ struct SetSymptomView: View {
         }
     var body: some View {
         VStack{
-            NavBar(loggedIn: $loggedIn)
-            Divider()
-            SecondaryNavBar()
-            Divider()
             SetSymptomContentPage(item: item, symptomName: item.symptomName,  loggedIn: $loggedIn, selectedSegment: item.rating ?? 0)
             //            Divider()
             //            BackandNextButtonPanel()

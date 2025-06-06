@@ -17,15 +17,11 @@ class SymptomDataService {
     
     var lastUsedReportRef: DocumentReference?
     
-    //    var remainingReportbyDate = RemainingReport(id: "", symptomCompletionStatus: false, eventCompletionStatus: false, descriptionCompletionStatus: false, questionsandNotesCompletionStatus: false, emojiCompletionStatus: false, description: "",questions: "", notes: "", emojiValue: "ic-incomplete-red-filled", emojiStateofDay: "", creationDateTime: Date.now, userId:  AuthViewModel.getLoggedInUserId(), dayNameofWeek: "", monthNameofWeek: "", dateString: "", symptomNames: "", reportCompletionStatus: false)
-    
-    
     init(generalViewModel: GeneralViewModel) {
         self.generalViewModel = generalViewModel
     }
     
     func getData() -> [SymptomReport] {
-        
         return [
             SymptomReport(
                 dateFormatted: "Aug 20, 2023", creationDateTime: Date.now, lastModifiedDateTime: Date.now, rating: 0, emojiIconName: "ic-incomplete-red-filled", symptomName: "Nausea", symptomComparisonState: "Much Better", reportCompletionStatus: false, recentStatus: "N/A", symptomId: "1", userId: ""),
@@ -37,7 +33,6 @@ class SymptomDataService {
     }
     
     func getReportsofUser(completion: @escaping ([Report]) -> Void) async {
-        
         // Get a reference to the database
         let db = Firestore.firestore()
         do{
@@ -65,8 +60,8 @@ class SymptomDataService {
                 var report = Report(from: reportQuery)
                 report.symptomNames = symptoms.compactMap { $0.symptomName }.joined(separator: " , ")
                 report.symptomReports = symptoms // Attach symptoms to the report
-                report.dayNameofWeek = report.creationDateTime.dayNameOfWeek() ?? ""
-                report.monthNameofWeek = report.creationDateTime.monthandDate() ?? ""
+                report.dayNameofWeek = report.creationDateTime.dayNameOfWeek() 
+                report.monthNameofWeek = report.creationDateTime.monthandDate() 
                 report.dateString = report.creationDateTime.datetoString() ?? ""
                 reportsArray.append(report) // Add the report to the array
             }
@@ -171,7 +166,7 @@ class SymptomDataService {
             }
             else{
                 var report : Report = Report()
-                var reportRef: DocumentReference = db.collection("remainingReports").document() // Auto-generated document ID
+                let reportRef: DocumentReference = db.collection("remainingReports").document() // Auto-generated document ID
                 report.id = reportRef.documentID
                 report.userId = AuthViewModel.getLoggedInUserId()
                 do

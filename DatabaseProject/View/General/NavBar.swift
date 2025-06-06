@@ -10,15 +10,16 @@ import SwiftUI
 struct NavBar: View {
     @Binding var loggedIn: Bool
     @EnvironmentObject var generalViewModel : GeneralViewModel
-
+    @State var titleText: String
+    @State var subtitleText: String
     var body: some View {
         HStack{
             VStack (alignment: .leading, spacing: 4) {
-                Text("Report your day")
+                Text(titleText)
                     .foregroundColor(Color(.blackMediumEmphasis))
                     .font(.regularText)
                 
-                Text(generalViewModel.dateStringofCurrentReport)
+                Text(subtitleText)
                     .foregroundColor(Color(.black))
                     .font(.sectionTitleinSymptomsPage)
             }
@@ -43,6 +44,6 @@ struct NavBar: View {
 
 struct NavBar_Previews: PreviewProvider {
     static var previews: some View {
-        NavBar(loggedIn: .constant(true))
+        NavBar(loggedIn: .constant(true), titleText: "", subtitleText: "")
     }
 }

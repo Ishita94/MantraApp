@@ -12,60 +12,82 @@ struct ReportListRowforNewEntry: View {
     @EnvironmentObject var symptomController : SymptomViewModel
     @EnvironmentObject var eventController : EventsViewModel
     @Binding var loggedIn: Bool
-    
+    @State private var readyToNavigate = false
+
     var body: some View {
-//        NavigationStack{
+        NavigationStack{
             ZStack{
-                Image("ic-report-list-item-bordered")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
+                RoundedRectangle(cornerRadius: 19)
+                        .foregroundColor(Color(.primary0)) // this is the actual fill
+
+                    // Border overlay
+                    RoundedRectangle(cornerRadius: 19)
+                        .stroke(Color(.blackMediumEmphasis), lineWidth: 2)
+            
                 HStack {
                         VStack (alignment:.trailing){
-                            Text(Date.now.dayNameOfWeek()!)
+                            Text(Date.now.dayNameOfWeek())
                             //item.date.dayNameOfWeek()!
                                 .font(.dateText)
                                 .foregroundColor(Color("BlackMediumEmphasis"))
                             
-                            Text(Date.now.monthandDate()!)
+                            Text(Date.now.monthandDate())
                                 .font(.dateText)
                         
                         }
                     Spacer()
-                    ZStack{
-//                        Image("ic-report-list-item-blue-background")
-                        
-                        HStack{
-                            Image(systemName:"plus")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(height: 30)
-                                .foregroundColor(Color(.white))
-                            //                            .font(.system(size: 8))
-                            NavigationLink {
-                                AddorEditSymptomsLandingPage(loggedIn: $loggedIn, date: Date.now, dateString: Date.now.datetoString()!, createNewReport: true)
-                                
-                            } label: {
-                                Text("Add Today's Report")
-                                    .aspectRatio(contentMode: .fit)
-                                    .font(.system(size: 18))
-                                    .padding()
-                                    .foregroundColor(Color("Primary4tTextOn4"))
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 10)
-                                            .stroke(Color.white, lineWidth: 2)
-                                    ).background(Color("Primary4")) // If you have this
-                                    .cornerRadius(10)         // You also need the cornerRadius here
-                            }
-                            
-                        }
-                        
-                    }
-
                     
+                    Button(action: {
+                        readyToNavigate = true
+                    }) {
+                        HStack {
+                            Image(systemName:"plus")
+                                .font(.smallTitle)
+                                .foregroundColor(Color(.white))
+                            Text("Add Today's Report")
+                                .font(.titleinRowItem)
+                                .foregroundColor(Color("Primary4tTextOn4"))
+                        }
+                        .padding()
+                        .background(Color(.primary4))
+                        .cornerRadius(10)
+                    }
+                    
+//                    HStack{
+//
+//                       Image(systemName:"plus")
+//                                .resizable()
+//                                .aspectRatio(contentMode: .fit)
+//                                .frame(height: 30)
+//                                .foregroundColor(Color(.white))
+//                            
+//                        NavigationLink {
+//                                AddorEditSymptomsLandingPage(loggedIn: $loggedIn, date: Date.now, dateString: Date.now.datetoString()!, createNewReport: true)
+//                                
+//                            } label: {
+//                                Text("Add Today's Report")
+//                                    .aspectRatio(contentMode: .fit)
+//                                    .font(.system(size: 18))
+//                                    .padding()
+//                                    .foregroundColor(Color("Primary4tTextOn4"))
+//                                    .overlay(
+//                                        RoundedRectangle(cornerRadius: 10)
+//                                            .stroke(Color.white, lineWidth: 2)
+//                                    )
+//                                    .background(Color("Primary4"))
+//                                    .cornerRadius(10)
+//                            }
+//                        
+//                    }
                 }
-//                .background(Color(.primary0))
                 .padding()
             }
+            .padding(.vertical, 15)
+            .frame(maxWidth: .infinity, maxHeight: 60)
+        }
+        .navigationDestination(isPresented: $readyToNavigate) {
+            AddorEditSymptomsLandingPage(loggedIn: $loggedIn, date: Date.now, dateString: Date.now.datetoString()!, createNewReport: true)
+        }
         }
 }
 

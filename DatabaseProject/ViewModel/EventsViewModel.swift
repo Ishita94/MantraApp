@@ -74,37 +74,19 @@ class EventsViewModel: ObservableObject {
         }
     }
     
-    func getEventsReportedonDate(date: Date){
-        let formattedFromDate: Date? = prepareDatefromDate(date: date)
-        let formattedToDate: Date? = prepareNextDate(date: formattedFromDate!)
-        
-        DispatchQueue.main.async {
-            self.eventDataService.getReportedEventsbyDateRange(fromDate: formattedFromDate!, toDate: formattedToDate!) { events in
-                
-                // Update the UI in the main thread
-                self.reportedEventsofUserbyDate = events
-                
-            }
-            
-        }
-    }
-
-    
-    //TODO: Fix in Summaries pages
-//    func getEventsReportedonDateRange(fromDate: Date?, toDate: Date){
+//    func getEventsReportedonDate(date: Date){
+//        let formattedFromDate: Date? = prepareDatefromDate(date: date)
+//        let formattedToDate: Date? = prepareNextDate(date: formattedFromDate!)
+//        
 //        DispatchQueue.main.async {
-//            var preparedFromDate:Date? = nil;
-//            if(fromDate!==nil)
-//            {
-//                preparedFromDate = prepareDatefromDate(date: fromDate!)
+//            self.eventDataService.getReportedEventsbyDateRange(fromDate: formattedFromDate!, toDate: formattedToDate!) { events in
+//                
+//                // Update the UI in the main thread
+//                self.reportedEventsofUserbyDate = events
+//                
 //            }
-//            let preparedToDate:Date? = prepareDatefromDate(date: toDate)
 //            
-//            self.eventDataService.getReportedEventsbyDateRange(fromDate: preparedFromDate, toDate: preparedToDate) { events in
-//                self.reportedEvents = events
-//            }
 //        }
-//    }
-    
+//    }    
    
 }

@@ -14,9 +14,13 @@ struct ReportListRow: View {
 
     var body: some View {
         ZStack{
-            Image("ic-report-list-item-bordered")
-                .resizable()
-//                .aspectRatio(contentMode: .fit)
+            RoundedRectangle(cornerRadius: 19)
+                    .foregroundColor(Color(.white)) // this is the actual fill
+            
+            // Border overlay
+            RoundedRectangle(cornerRadius: 19)
+                .stroke(Color(.outlineGrey), lineWidth: 1)
+            
             HStack {
                 VStack (alignment:.trailing){
                     Text(item.dayNameofWeek)
@@ -75,7 +79,8 @@ struct ReportListRow: View {
                 }
             }
             .padding(10)
-        
+            .frame(minHeight: 88)
+
     }
 }
 

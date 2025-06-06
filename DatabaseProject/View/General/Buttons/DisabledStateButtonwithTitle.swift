@@ -8,11 +8,23 @@
 import SwiftUI
 
 struct DisabledStateButtonwithTitle: View {
+    @State var title: String
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button(action: {}) {
+            Text(title)
+                .foregroundColor(Color(.offBlackText))
+                .font(.titleinRowItem)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding()
+                .background(Color(.greyNonClickable))
+                .cornerRadius(10)
+        }
+        .allowsHitTesting(false)
+        .buttonStyle(.plain) // Avoids system styling
     }
 }
 
 #Preview {
-    DisabledStateButtonwithTitle()
+    DisabledStateButtonwithTitle(title: "")
 }

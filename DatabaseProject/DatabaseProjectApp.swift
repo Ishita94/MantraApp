@@ -17,6 +17,8 @@ struct DatabaseProjectApp: App {
     @StateObject var symptomViewModel : SymptomViewModel
     @StateObject var eventViewModel : EventsViewModel
     @StateObject var reportingViewModel : ReportingViewModel
+    @StateObject var summariesViewModel : SummariesViewModel
+
 
     private func registerCustomFonts() {
         let fonts = Bundle.main.urls(forResourcesWithExtension: "ttf", subdirectory: nil)
@@ -29,8 +31,9 @@ struct DatabaseProjectApp: App {
                 _generalViewModel = StateObject(wrappedValue: generalViewModel)
                 _symptomViewModel = StateObject(wrappedValue: SymptomViewModel(generalViewModel: generalViewModel))
                 _eventViewModel = StateObject(wrappedValue: EventsViewModel(generalViewModel: generalViewModel))
-        _reportingViewModel = StateObject(wrappedValue: ReportingViewModel(generalViewModel: generalViewModel))
-        
+                _reportingViewModel = StateObject(wrappedValue: ReportingViewModel(generalViewModel: generalViewModel))
+                _summariesViewModel = StateObject(wrappedValue: SummariesViewModel(generalViewModel: generalViewModel))
+
         registerCustomFonts()
         let providerFactory = AppCheckDebugProviderFactory()
         AppCheck.setAppCheckProviderFactory(providerFactory)
@@ -39,13 +42,12 @@ struct DatabaseProjectApp: App {
     }
     var body: some Scene {
         WindowGroup {
-           
-
             LaunchView()
                 .environmentObject(generalViewModel)
                 .environmentObject(symptomViewModel)
                 .environmentObject(eventViewModel)
                 .environmentObject(reportingViewModel)
+                .environmentObject(summariesViewModel)
         }
     }
 }

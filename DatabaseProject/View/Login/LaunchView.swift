@@ -13,7 +13,8 @@ struct LaunchView: View {
     @State var loggedIn = false
     @State var loginFormShowing = false
     @State var createFormShowing = false
-    
+    @State private var selectedTab = 1
+
     var body: some View {
         
         // Check the logged in property and show the appropriate view
@@ -59,13 +60,12 @@ struct LaunchView: View {
             else {
                 
                 // Show logged in view
-                
+                Divider ()
                 HomePageView(loggedIn: $loggedIn)
 //                    .environmentObject(SymptomController())
 //                    .environmentObject(MainController())
 //                    .environmentObject(EventController())
 
-                
                 //LoginContentView(loggedIn: $loggedIn)
             }
         }
@@ -84,6 +84,8 @@ struct LaunchView_Previews: PreviewProvider {
         let symptomViewModel = SymptomViewModel(generalViewModel: generalViewModel)  // Injected
         let eventsViewModel = EventsViewModel(generalViewModel: generalViewModel)  // Injected
         let reportingViewModel = ReportingViewModel(generalViewModel: generalViewModel)  // Injected
+        let summariesViewModel = SummariesViewModel(generalViewModel: generalViewModel) // Injected, but not needed for now
+        
         LaunchView()
             .environmentObject(generalViewModel)
             .environmentObject(symptomViewModel)

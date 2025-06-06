@@ -11,34 +11,17 @@ struct SetSymptomRatingView: View {
     @State private var sliderValue: Double = 0.5
     private let numberOfSegments = 10 // Number of segments
     @State private var selectedColorIndex: Double = 0
-    //let segmentWidth: CGFloat
+    let totalGapWidth: CGFloat = 9*1
     @EnvironmentObject var generalViewModel : GeneralViewModel
-
     @Binding var selectedSegment: Int
-
-//    init() {
-//            // Calculate the segment width based on the number of segments
-//            segmentWidth = UIScreen.main.bounds.width / CGFloat(numberOfSegments)
-//        }
-        let colors: [Color] = [
-            Color(.scale1), Color(.scale2), Color(.scale3), Color(.scale4), Color(.scale5), Color(.scale6), Color(.scale7),Color(.scale8), Color(.scale9), Color(.scale10)
-        ]
-    func colorForSegment(_ segment: Int) -> Color {
-        let x = segment % colors.count
-        return colors[segment % colors.count]
-    }
-    func getSegmentWidth(totalWidth: CGFloat) -> CGFloat {
-        let width = totalWidth / CGFloat(numberOfSegments)
-        return width
-    }
-
     
     func thumbOffset(totalWidth: CGFloat)-> CGFloat {
         if (selectedSegment==0) {
             return 0
         }
         else {
-            return (CGFloat(selectedSegment) * getSegmentWidth(totalWidth: totalWidth) + getSegmentWidth(totalWidth: totalWidth) / 2).rounded()
+            let width = RatingRectangleUtils.getSegmentWidth(totalWidth: totalWidth, numberOfSegments: numberOfSegments)
+            return (CGFloat(selectedSegment) * width + width / 2).rounded()
         }
     }
     var body: some View {
@@ -57,34 +40,20 @@ struct SetSymptomRatingView: View {
                 
                 ZStack(alignment: .leading) {
                     // Colored segments
-                    HStack(spacing: 0) {
-//                        Rectangle()
-//                            .fill(colorForSegment(0))
-//                            .frame(width: getSegmentWidth(totalWidth: geometry.size.width))
-//                            .clipShape(LeftRoundedRectangle(cornerRadius: 12))  // ✅ Only the left corners are rounded
-
-//                            .mask(
-//                                    RoundedRectangle(cornerRadius: 20)
-//                                        .frame(width: getSegmentWidth(totalWidth: geometry.size.width))
-////                                        .offset(x: -40)  // ✅ Moves mask to the left
-//                                )
-                        ForEach(0..<numberOfSegments, id: \.self) { segment in
-                            Rectangle()
-                                .fill(colorForSegment(segment))
-                                .frame(width: getSegmentWidth(totalWidth: geometry.size.width))
+                    HStack(spacing: 1) {
+                        let width = RatingRectangleUtils.getSegmentWidth(totalWidth: geometry.size.width-totalGapWidth, numberOfSegments: numberOfSegments)
+                        LeftRoundedRectangle(cornerRadius: 12)
+                            .fill(RatingRectangleUtils.colorForSegment(0))
+                            .frame(width: max(0, width))
+                        ForEach(1..<numberOfSegments-1, id: \.self) { segment in
+                                Rectangle()
+                                .fill(RatingRectangleUtils.colorForSegment(segment))
+                                    .frame(width: max(0, width))
                         }
-//                        Rectangle()
-//                            .fill(colorForSegment(numberOfSegments-1))
-//                            .frame(width: getSegmentWidth(totalWidth: geometry.size.width))
-//                            .clipShape(RightRoundedRectangle(cornerRadius: 12))  // ✅ Only the left corners are rounded
-
-//                            .mask(
-//                                    RoundedRectangle(cornerRadius: 20)
-//                                        .frame(width: getSegmentWidth(totalWidth: geometry.size.width))
-////                                        .offset(x: -40)  // ✅ Moves mask to the left
-//                                )
+                        RightRoundedRectangle(cornerRadius: 12)
+                            .fill(RatingRectangleUtils.colorForSegment(numberOfSegments-1))
+                            .frame(width: max(0, width))
                     }
-                    
                     // Slider thumb
                     Circle()
                         .fill(Color.white)
@@ -92,11 +61,14 @@ struct SetSymptomRatingView: View {
                             Circle()
                                 .stroke(Color(.secondary4), lineWidth: 6) // Green border
                         )
-                        .frame(width: getSegmentWidth(totalWidth:  geometry.size.width) - 5, height: 25) // Adjust the size of the thumb
+//                        .frame(width: max(0, getSegmentWidth(totalWidth:  geometry.size.width) - 5), height: 25) // Adjust the size of the thumb
+                        .frame(width: max(0, RatingRectangleUtils.getSegmentWidth(totalWidth: geometry.size.width - 5, numberOfSegments: numberOfSegments)), height: 25) // Adjust the size of the thumb
                         .offset(x: thumbOffset(totalWidth: geometry.size.width)-2.5) // To set at the beginning
                         .gesture(DragGesture().onChanged { value in
-                            let newPosition = value.location.x - getSegmentWidth(totalWidth:  geometry.size.width) / 2
-                            let newIndex = max(0, min(numberOfSegments-1, Int(newPosition / getSegmentWidth(totalWidth: geometry.size.width))))
+                            let width = RatingRectangleUtils.getSegmentWidth(totalWidth: geometry.size.width-totalGapWidth
+                                                                             , numberOfSegments: numberOfSegments)
+                            let newPosition = value.location.x - width / 2
+                            let newIndex = max(0, min(numberOfSegments-1, Int(newPosition / width)))
                             selectedSegment = newIndex
                             print("Selected: \(selectedSegment)")
                             sliderValue = Double(newIndex)

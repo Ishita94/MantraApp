@@ -27,30 +27,6 @@ struct SummariesTabBar: View {
                     }
                 }
                 .padding(.horizontal)
-//        if #available(iOS 18.0, *) {
-//            TabView(selection: $selectedTab)
-//            {
-//                Tab.init(value: .briefSummary) {
-//                    BriefSummaryLandingPage(loggedIn: $loggedIn)
-//                        .toolbarVisibility(.hidden, for: .tabBar)
-//                }
-//                Tab.init(value: .visualization) {
-//                    VisualizationsLandingPage(loggedIn: $loggedIn)
-//                        .toolbarVisibility(.hidden, for: .tabBar)
-//                }
-//            }
-//        } else {
-//            // Fallback on earlier versions
-//            TabView(selection: $selectedTab)
-//            {
-//                BriefSummaryLandingPage(loggedIn: $loggedIn)
-//                    .tag(SummaryTypeTab.briefSummary)
-//                    .toolbar(.hidden, for: .tabBar)
-//                VisualizationsLandingPage(loggedIn: $loggedIn)
-//                    .tag(SummaryTypeTab.visualization)
-//                    .toolbar(.hidden, for: .tabBar)
-//            }
-//        }
     }
 }
 

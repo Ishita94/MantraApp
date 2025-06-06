@@ -11,7 +11,7 @@ class GeneralViewModel: ObservableObject {
     
     @Published var currentState: Int = 1;
 //    @Published var selectedSegment: Int = 0 //for rating slider
-    @Published var currentTitle: String = "Report your symptoms";
+    @Published var currentTitle: String = "";
     @Published var dateStringofCurrentReport: String = "";
     @Published var selectedReport = Report()
 

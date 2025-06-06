@@ -13,7 +13,6 @@ import EmojiPicker
 class SymptomViewModel: ObservableObject {
     @Published var reportList = [Report]()
     @Published var trackedSymptomsofUser = [Symptom]()
-    @Published var dictionaryofSuggestedReports: OrderedDictionary<Date , SymptomReport> = [:]
     var symptomStatesforComparison : [SymptomComparisonState] = [
             SymptomComparisonState(stateName: "Much Better", imageName: "much-better"),
             SymptomComparisonState(stateName: "Somewhat Better", imageName: "somewhat-better"),
@@ -21,6 +20,7 @@ class SymptomViewModel: ObservableObject {
             SymptomComparisonState(stateName: "Somewhat Worse", imageName: "much-worse"),
             SymptomComparisonState(stateName: "Much Worse", imageName: "much-worse")
         ]
+    @Published var dictionaryofSuggestedReports: OrderedDictionary<Date , SymptomReport> = [:]
     @Published var emojis: [Emoji] = DefaultEmojiProvider().getAll()
     private var symptomDataService : SymptomDataService
     //    @Published var reportedSymptomsofUserbyDate = [SymptomReport]()
@@ -35,18 +35,9 @@ class SymptomViewModel: ObservableObject {
     func getReportsofUser() {
         
         DispatchQueue.main.async {
-            
-            
-            
             Task{
                 await self.symptomDataService.getReportsofUser() { reportsofUser in
-                    
-                    // Update the UI in the main thread
-//                    DispatchQueue.main.async {
                         self.reportList = reportsofUser
-                        //self.prepareDictionaryforReportList()
-                        //self.prepareReportsforReportList()
-//                    }
                 }
             }
             }

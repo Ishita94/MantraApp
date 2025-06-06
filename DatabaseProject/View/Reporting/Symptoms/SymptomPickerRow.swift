@@ -25,22 +25,36 @@ struct SymptomPickerRow: View {
                         .font(.symptomTitleinReportingPage)
                         .foregroundColor(Color("Primary0tTextOn0"))
                     if(item.tracking){
-                        Text(item.status)
-                        //.padding()
-                            .background(Color(.secondary2))
-                            .foregroundStyle(Color(.white))
-                            .font(.symptomSmallTitleinReportedSymptomsPage)
-                            .cornerRadius(6)
-                            .frame(maxHeight: 20)
+                        if(item.status=="Resolved"){
+                            Text(item.status)
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 4)
+                                .background(Color(.secondary2))
+                                .foregroundStyle(Color(.white))
+                                .font(.symptomSmallTitleinReportedSymptomsPage)
+                                .cornerRadius(6)
+                                .frame(minHeight: 20)
+                        }
+                        else if (item.status=="Tracked"){
+                            Text(item.status)
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 4)
+                                .background(Color(.primary4EElementsOn4))
+                                .foregroundStyle(Color(.white))
+                                .font(.symptomSmallTitleinReportedSymptomsPage)
+                                .cornerRadius(6)
+                                .frame(minHeight: 20)
+                        }
                     }
                     else{
                         Text("Suggestion")
-                        //.padding()
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 4)
                             .background(Color(.warning1))
                             .foregroundStyle(Color(.white))
                             .font(.symptomSmallTitleinReportedSymptomsPage)
                             .cornerRadius(6)
-                            .frame(maxHeight: 20)
+                            .frame(minHeight: 20)
                     }
                     Spacer()
                     if(!item.tracking){

@@ -8,8 +8,26 @@
 import SwiftUI
 
 struct WeekDayBar: View {
+    @EnvironmentObject var summariesViewModel : SummariesViewModel
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        GeometryReader { geo in
+            let spacing: CGFloat = 0
+            let itemWidth = (geo.size.width - spacing * 6) / 7
+
+            HStack (spacing: spacing){
+                ForEach(summariesViewModel.selectedWeekDays, id: \.self) { date in
+                    VStack{
+                        Text(date.shortDay)
+                            .font(.smallRegularText)
+                        Text(date.monthandDate)
+                            .font(.dateinWeekDayBar)
+                    }
+                    .frame(width: itemWidth, height: 40)
+                }
+            }
+        }
+        .frame(height: 40)
     }
 }
 

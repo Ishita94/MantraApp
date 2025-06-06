@@ -16,7 +16,7 @@ struct AddorEditEventsLandingPage: View {
     
     var body: some View {
         VStack{
-            NavBar(loggedIn: $loggedIn)
+            NavBar(loggedIn: $loggedIn, titleText: "Report your day", subtitleText: generalViewModel.dateStringofCurrentReport)
             Divider()
             SecondaryNavBar()
                 .environmentObject(generalViewModel)

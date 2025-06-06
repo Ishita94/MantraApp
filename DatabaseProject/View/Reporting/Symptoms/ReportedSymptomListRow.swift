@@ -12,12 +12,12 @@ struct ReportedSymptomListRow: View {
     @Binding var loggedIn: Bool
     @State var readyToNavigate: Bool = false
     @EnvironmentObject var generalViewModel : GeneralViewModel
-//    @State var symptomComparisonState: String = "Much Better"
+    @State var isSheetVisible: Bool = false
     @State var dateString: String
-
+    
     var body: some View {
         NavigationStack (){
-
+            
             ZStack{
                 RoundedRectangle(cornerRadius: 16)
                     .fill(Color(.primary0))
@@ -28,15 +28,15 @@ struct ReportedSymptomListRow: View {
                             Text(item.symptomName )
                                 .font(.symptomTitleinReportingPage)
                                 .foregroundColor(Color(.primary0TTextOn0))
-                            
-                            Text(item.recentStatus)
-                                .padding(.horizontal, 8)
-                                .padding(.vertical, 4)
-                                .background(Color(.warning1))
-                                .foregroundStyle(Color(.white))
-                                .font(.symptomSmallTitleinReportedSymptomsPage)
-                                .cornerRadius(6)
-                                .frame(minHeight: 27)
+                            //TODO: TBD
+                            //                            Text(item.recentStatus)
+                            //                                .padding(.horizontal, 8)
+                            //                                .padding(.vertical, 4)
+                            //                                .background(Color(.warning1))
+                            //                                .foregroundStyle(Color(.white))
+                            //                                .font(.symptomSmallTitleinReportedSymptomsPage)
+                            //                                .cornerRadius(6)
+                            //                                .frame(minHeight: 27)
                             
                         }
                         Text("Severity Rating \(item.rating) /10")
@@ -61,39 +61,54 @@ struct ReportedSymptomListRow: View {
                         }
                         
                     }
-                    //.padding(.top, 10)
                     Spacer()
+                    
                     Button(action: {
-                        readyToNavigate=true
+                        isSheetVisible = true
                     }) {
                         Image("ic-edit")
-                        
                     }
                 }
                 .padding()
-                .navigationDestination(isPresented: $readyToNavigate) {
-                    if(item.symptomComparisonState.isEmpty == false) //symptom has been compared
-                    {
-                        ChooseSymptomComparisonView(isSheetVisible: Binding.constant(true), symptomComparisonState: item.symptomComparisonState, item: item, loggedIn: $loggedIn, dateString: dateString, edit: true, selectedSegment: item.rating)
-//                            .environmentObject(SymptomViewModel())/*.frame(maxWidth: .infinity, maxHeight: 680)*/
-                    }
-                    else
-                    {
-                        //TODO: check status
-                        SetSymptomView(item: Symptom(id: item.id, symptomName: item.symptomName, rating: item.rating, status: "New", creationDateTime: item.creationDateTime, lastModifiedDateTime: item.lastModifiedDateTime, tracking: true, userId: item.userId), loggedIn: $loggedIn)
-                        
-                    }
-                    
+                
+                //                    Button(action: {
+                //                        readyToNavigate=true
+                //                    }) {
+                //                        Image("ic-edit")
+                //
+                //                    }
+            }
+
+            .sheet(isPresented: $isSheetVisible){
+                if(item.symptomComparisonState.isEmpty == false) //symptom has been compared
+                {
+                    ChooseSymptomComparisonView(isSheetVisible: $isSheetVisible, symptomComparisonState: item.symptomComparisonState, item: item, loggedIn: $loggedIn, dateString: dateString, edit: true, selectedSegment: item.rating)
+                }
+                else
+                {
+                    SetSymptomView(item: Symptom(id: item.id, symptomName: item.symptomName, rating: item.rating, status: "New", creationDateTime: item.creationDateTime, lastModifiedDateTime: item.lastModifiedDateTime, tracking: true, userId: item.userId), loggedIn: $loggedIn)
                 }
             }
-    }
+            //                .navigationDestination(isPresented: $readyToNavigate) {
+            //                    if(item.symptomComparisonState.isEmpty == false) //symptom has been compared
+            //                    {
+            //                        ChooseSymptomComparisonView(isSheetVisible: Binding.constant(true), symptomComparisonState: item.symptomComparisonState, item: item, loggedIn: $loggedIn, dateString: dateString, edit: true, selectedSegment: item.rating)
+            //                    }
+            //                    else
+            //                    {
+            //                        SetSymptomView(item: Symptom(id: item.id, symptomName: item.symptomName, rating: item.rating, status: "New", creationDateTime: item.creationDateTime, lastModifiedDateTime: item.lastModifiedDateTime, tracking: true, userId: item.userId), loggedIn: $loggedIn)
+            //                    }
+            
+//        }
+//    }
+}
 }
 
 }
 
 #Preview {
-ReportedSymptomListRow(item: SymptomReport(
-    dateFormatted: "Aug 20, 2023", creationDateTime: Date.now, lastModifiedDateTime: Date.now, rating: 0, emojiIconName: "ic-incomplete-red-filled", symptomName: "Nausea", symptomComparisonState: "", reportCompletionStatus: false, recentStatus: "N/A", symptomId: "1", userId: ""), loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!).environmentObject(GeneralViewModel())
+    ReportedSymptomListRow(item: SymptomReport(
+        dateFormatted: "Aug 20, 2023", creationDateTime: Date.now, lastModifiedDateTime: Date.now, rating: 0, emojiIconName: "ic-incomplete-red-filled", symptomName: "Nausea", symptomComparisonState: "", reportCompletionStatus: false, recentStatus: "N/A", symptomId: "", userId: ""), loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!).environmentObject(GeneralViewModel())
 }
 
 

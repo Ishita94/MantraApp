@@ -20,45 +20,47 @@ struct ReportingView: View {
     var body: some View {
         NavigationStack{
             
-            VStack{
-                TitleBarforTabs(loggedIn: $loggedIn)
-                ScrollView{
-                    ForEach(symptomViewModel.reportList, id: \.self) { item in
-                        NavigationLink {
-                            //                            AddorEditSymptomsLandingPage(loggedIn: $loggedIn, dateString: item.dateString,
-                            //                        showAfterCreatingNewSymptomReport: false)
-                            
-                            EditReportView(loggedIn: $loggedIn, dateString: item.dateString)
-                            
-                        } label: {
-                            ReportListRow(item: item)
-                            // ReportListRow(item: item, emoji: emojis.first(where: { $0.name == item.emojiStateofDay }))
+            VStack (spacing: 15){
+                TitleBarforReportingTab(loggedIn: $loggedIn)
+                ScrollView {
+                    VStack (spacing: 12){
+                        ForEach(symptomViewModel.reportList, id: \.self) { item in
+                            NavigationLink {
+                                //                            AddorEditSymptomsLandingPage(loggedIn: $loggedIn, dateString: item.dateString,
+                                //                        showAfterCreatingNewSymptomReport: false)
+                                
+                                EditReportView(loggedIn: $loggedIn, dateString: item.dateString)
+                                
+                            } label: {
+                                ReportListRow(item: item)
+                            }
+                            .simultaneousGesture(TapGesture().onEnded {
+                                generalViewModel.setSelectedReport(report: item)
+                                generalViewModel.setDateStringofCurrentReport(dateString: item.dateString)
+                            })
                         }
-                        .simultaneousGesture(TapGesture().onEnded {
-                            generalViewModel.setSelectedReport(report: item)
-                            generalViewModel.setDateStringofCurrentReport(dateString: item.dateString)
-                        })
                     }
+                    .padding(.bottom, 12)
                 }
-                
                 .frame(maxWidth: .infinity)
                 .scrollContentBackground(.hidden)
-                .listStyle(.plain)
+//                .listStyle(.plain)
                 .onAppear {
                     // Call for the data
                     symptomViewModel.getReportsofUser()
                     generalViewModel.clearDateStringofCurrentReport()
                     generalViewModel.clearSelectedReport()
                 }
-                if(!symptomViewModel.reportList.contains(where: { $0.dateString == Date.now.datetoString()!})){
+                
+                if(!symptomViewModel.reportList.contains(where: { $0.dateString == Date.now.datetoString()!}))
+                {
                     ReportListRowforNewEntry(item: Report(id:"", dayNameofWeek: "", monthNameofWeek: "", dateString: "", emojiStateofDay: "", symptomNames: "",reportCompletionStatus: false, description: "", questions: "", notes: "", symptomCompletionStatus: false, eventCompletionStatus: false,    descriptionCompletionStatus: false, questionsandNotesCompletionStatus: false, emojiCompletionStatus: false, creationDateTime: Date.now, userId: AuthViewModel.getLoggedInUserId()), loggedIn: $loggedIn)
                     //                    .environmentObject(SymptomViewModel())
                     //                    .environmentObject(GeneralViewModel())
                     //                    .environmentObject(EventsViewModel())
                 }
-                
             }
-                    .padding()
+            .padding()
         }
     }
 }

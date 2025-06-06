@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct CustomDateModel: Hashable, Codable {
+    var date:Date
+    var shortDay:String
+    var monthandDate: String
+    var dateString: String
+}
