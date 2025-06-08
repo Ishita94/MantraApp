@@ -9,9 +9,20 @@ import SwiftUI
 
 struct NavBar: View {
     @Binding var loggedIn: Bool
+    @EnvironmentObject var summariesViewModel : SummariesViewModel
     @EnvironmentObject var generalViewModel : GeneralViewModel
-    @State var titleText: String
-    @State var subtitleText: String
+    var titleText: String
+    var subtitleText: String
+    var computedSubtitleText: String{
+        if titleText=="Summary for", let week = selectedWeek{
+            return summariesViewModel.formatStringfromWeekwithYear (week)
+        }
+        else {
+            return self.subtitleText
+        }
+    }
+    var selectedWeek: Week?
+    
     var body: some View {
         HStack{
             VStack (alignment: .leading, spacing: 4) {
@@ -19,7 +30,7 @@ struct NavBar: View {
                     .foregroundColor(Color(.blackMediumEmphasis))
                     .font(.regularText)
                 
-                Text(subtitleText)
+                Text(computedSubtitleText)
                     .foregroundColor(Color(.black))
                     .font(.sectionTitleinSymptomsPage)
             }

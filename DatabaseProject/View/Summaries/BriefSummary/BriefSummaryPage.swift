@@ -10,22 +10,24 @@ import SwiftUI
 struct BriefSummaryPage: View {
     @EnvironmentObject var summariesViewModel : SummariesViewModel
     @Binding var loggedIn: Bool
-    @State var week: Week
+//    @State var week: Week
     
     var body: some View {
         VStack (alignment: .leading){
-            (Text("For the week of ")
-             + Text(week.start.fullMonthandDate())
-                .foregroundColor(Color(.primary0TTextOn0))
-             + Text(" to ")
-             + Text(week.end.fullMonthandDate())
-                .foregroundColor(Color(.primary0TTextOn0))
-             + Text(", you reported the following.")
-            )
-            .font(.tabTitleinSummariesPage)
-            .foregroundColor(Color(.black))
-            .padding(.top, 4)
-            
+            //TODO: add error msg
+            if let week = summariesViewModel.selectedWeek{
+                (Text("For the week of ")
+                 + Text(week.start.fullMonthandDate())
+                    .foregroundColor(Color(.primary0TTextOn0))
+                 + Text(" to ")
+                 + Text(week.end.fullMonthandDate())
+                    .foregroundColor(Color(.primary0TTextOn0))
+                 + Text(", you reported the following.")
+                )
+                .font(.tabTitleinSummariesPage)
+                .foregroundColor(Color(.black))
+                .padding(.top, 4)
+            }
             Divider()
             
             Text("Symptoms")
@@ -85,7 +87,7 @@ struct BriefSummaryPage: View {
     let reportingViewModel = ReportingViewModel(generalViewModel: generalViewModel)  // Injected
     let summariesViewModel = SummariesViewModel(generalViewModel: generalViewModel)  // Injected
     
-    BriefSummaryPage(loggedIn: Binding.constant(true), week: Week(start: Date.now, end: Date.now))
+    BriefSummaryPage(loggedIn: Binding.constant(true))
         .environmentObject(generalViewModel)
         .environmentObject(symptomViewModel)
         .environmentObject(eventsViewModel)

@@ -10,7 +10,7 @@ import SwiftUI
 struct VisualizationsPage: View {
     @Binding var loggedIn: Bool
     @EnvironmentObject var summariesViewModel : SummariesViewModel
-    @State var week: Week
+//    @State var week: Week
     @State var isSheetVisible: Bool = false
     @State var showEmoji = false
     @State var showSymptoms: [String] = []
@@ -24,33 +24,35 @@ struct VisualizationsPage: View {
         VStack (alignment:.leading){
             KeyBar()
             
-            HStack{
-                Button(action: {
-                    summariesViewModel.decrementWeek()
-                }) {
-                    Image(systemName: "chevron.left")
-                        .foregroundColor(Color(.blackMediumEmphasis))
-                }
-                Spacer()
-                Text(summariesViewModel.formatStringfromWeek(week))
-                    .font(.smallTitle)
-                    .foregroundStyle(Color(.black))
-                Spacer()
-                if(summariesViewModel.showingNextWeek())
-                {
+            if let week = summariesViewModel.selectedWeek{
+                HStack{
                     Button(action: {
-                        summariesViewModel.incrementWeek()
+                        summariesViewModel.decrementWeek()
                     }) {
-                        Image(systemName: "chevron.right")
+                        Image(systemName: "chevron.left")
                             .foregroundColor(Color(.blackMediumEmphasis))
                     }
+                    Spacer()
+                    Text(summariesViewModel.formatStringfromWeek(week))
+                        .font(.smallTitle)
+                        .foregroundStyle(Color(.black))
+                    Spacer()
+                    if(summariesViewModel.showingNextWeek())
+                    {
+                        Button(action: {
+                            summariesViewModel.incrementWeek()
+                        }) {
+                            Image(systemName: "chevron.right")
+                                .foregroundColor(Color(.blackMediumEmphasis))
+                        }
+                    }
+                    else{
+                        Image(systemName: "chevron.right")
+                            .foregroundColor(Color(.disabledBackground))
+                    }
                 }
-                else{
-                    Image(systemName: "chevron.right")
-                        .foregroundColor(Color(.disabledBackground))
-                }
+                .padding(.top, 6)
             }
-            .padding(.top, 6)
             Divider()
             
             ScrollView{
@@ -123,7 +125,7 @@ struct VisualizationsPage: View {
     let eventsViewModel = EventsViewModel(generalViewModel: generalViewModel)  // Injected
     let reportingViewModel = ReportingViewModel(generalViewModel: generalViewModel)  // Injected
     
-    VisualizationsPage(loggedIn: Binding.constant(true), week: Week(start: Date.now, end: Date.now))
+    VisualizationsPage(loggedIn: Binding.constant(true))
         .environmentObject(generalViewModel)
         .environmentObject(symptomViewModel)
         .environmentObject(eventsViewModel)

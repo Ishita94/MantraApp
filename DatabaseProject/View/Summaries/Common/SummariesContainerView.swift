@@ -11,11 +11,12 @@ struct SummariesContainerView: View {
     @EnvironmentObject var summariesViewModel : SummariesViewModel
     @Binding var loggedIn: Bool
     @State var selectedTab: SummaryTypeTab = .briefSummary
-    @State var week: Week
     
     var body: some View {
         VStack(alignment: .leading) {
-            NavBar(loggedIn: $loggedIn, titleText: "Summary for", subtitleText: summariesViewModel.formatStringfromWeekwithYear (week))
+            if let week = summariesViewModel.selectedWeek{
+                NavBar(loggedIn: $loggedIn, titleText: "Summary for", subtitleText: summariesViewModel.formatStringfromWeekwithYear (week) )
+            }
             Divider()
             HStack{
                 Spacer()
@@ -25,17 +26,22 @@ struct SummariesContainerView: View {
             .padding(.top, 10)
             switch selectedTab {
             case .briefSummary:
-                BriefSummaryPage(loggedIn: $loggedIn, week: week)
+                BriefSummaryPage(loggedIn: $loggedIn)
                     .padding(.top, 4)
 
             case .visualization:
-                VisualizationsPage(loggedIn: $loggedIn, week: week)
+                VisualizationsPage(loggedIn: $loggedIn)
                     .padding(.top, 4)
             }
         }
         .onAppear()
         {
-            summariesViewModel.getReportsinDateRange(fromDate: week.start, toDate: week.end)
+            if let week = summariesViewModel.selectedWeek{
+                summariesViewModel.getReportsinDateRange(fromDate: week.start, toDate: week.end)
+            }
+        }
+        .onChange(of: summariesViewModel.selectedWeek) { newValue in
+            print("selectedWeek changed to: \(String(describing: newValue))")
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
@@ -49,7 +55,7 @@ struct SummariesContainerView: View {
     let eventsViewModel = EventsViewModel(generalViewModel: generalViewModel)  // Injected
     let reportingViewModel = ReportingViewModel(generalViewModel: generalViewModel)  // Injected
     let summariesViewModel = SummariesViewModel(generalViewModel: generalViewModel)  // Injected
-    SummariesContainerView(loggedIn: Binding.constant(true), week: Week(start: Date.now, end: Date.now))
+    SummariesContainerView(loggedIn: Binding.constant(true))
         .environmentObject(generalViewModel)
         .environmentObject(symptomViewModel)
         .environmentObject(eventsViewModel)

@@ -51,6 +51,7 @@ struct WeeklySummaryRow: View {
                     }
                     Spacer()
                     Button(action: {
+                        summariesViewModel.setSelectedWeek(start: week.start, end: week.end)
                         readyToNavigate=true
                     }) {
                         Image("ic-edit")
@@ -59,9 +60,8 @@ struct WeeklySummaryRow: View {
                 .padding()
             }
             .navigationDestination(isPresented: $readyToNavigate) {
-                SummariesContainerView(loggedIn: $loggedIn, week: week)
+                SummariesContainerView(loggedIn: $loggedIn)
             }
-            
         }
     }
 }
