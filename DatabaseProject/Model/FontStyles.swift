@@ -32,6 +32,9 @@ extension Font {
     static var smallestTitle: Font{
         return Font.custom("Lato-Bold", size : 14 )
     }
+    static var dateinWeekDayBar: Font{
+        return Font.custom("Lato-Bold", size : 13 )
+    }
     static var tabTitle: Font{
         return Font.custom("Roboto-Bold", size : 15 )
     }

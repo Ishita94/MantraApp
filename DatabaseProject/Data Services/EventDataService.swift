@@ -23,8 +23,8 @@ struct EventDataService {
 //        var finalReport = report //keep remaining fields of selectedreport intact and reduces a call to remainingreports table
         var eventsinReport: [Event] = []
         do{
-            // Perform a query against the chat collection for any chats where the user is a participant
             if let id = report.id {
+                //retrieve events in this report, sorted by most recent
                 let reportedEventSnapshot = try await db.collection("remainingReports").document(id)
                     .collection("eventReport")
                     .order(by: "lastModifiedDateTime", descending: true)
@@ -47,7 +47,7 @@ struct EventDataService {
                     for chunk in chunkedIds {
                         let eventSnapshot = try await db.collection("events") //fetch event details of reported events in this report
                             .whereField("userId", isEqualTo: userId)
-                            .whereField(FieldPath.documentID(), in: chunk)
+                            .whereField(FieldPath.documentID(), in: chunk)//whose document ids match those events reported in this report
                             .getDocuments()
                         
                         var events = eventSnapshot.documents.compactMap { doc in
@@ -110,7 +110,6 @@ struct EventDataService {
                 try batch.setData(from: event, forDocument: eventRef)
             }
             try await batch.commit()
-            print("Batch commit successful")
         } catch {
             print("❌ Error adding events to a report: \(error.localizedDescription)")
         }
@@ -198,52 +197,5 @@ struct EventDataService {
 //            }
 //        }
 //    }
-    
-    func getReportedEventsbyDateRange(fromDate: Date?, toDate: Date?, completion: @escaping ([EventReport]) -> Void) {
-        
-        // Get a reference to the database
-        let db = Firestore.firestore()
-        
-        let fdate = Timestamp(date: fromDate!)
-        let tdate = Timestamp(date: toDate!)
-        var reportsofUserQuery = db.collection("eventReports")
-            .whereField("userId", isEqualTo: AuthViewModel.getLoggedInUserId())
-            .whereField("creationDateTime", isGreaterThanOrEqualTo: fdate)
-            .whereField("creationDateTime", isLessThan: tdate)
-            .order(by: "creationDateTime", descending: true)
-        
-        if(fromDate==nil) { //for getting all events before a date
-            reportsofUserQuery = db.collection("eventReports")
-                .whereField("userId", isEqualTo: AuthViewModel.getLoggedInUserId())
-                .whereField("creationDateTime", isLessThan: Timestamp(date: toDate!))
-        }
-        
-        reportsofUserQuery.getDocuments { snapshot, error in
-            
-            if snapshot != nil && error == nil {
-                
-                var events = [EventReport]()
-                
-                for doc in snapshot!.documents {
-                    let event = try? doc.data(as: EventReport.self)
-                    
-                    if let event = event {
-                        events.append(event)
-                    }
-                }
-                
-                // Return the data
-                completion(events)
-            }
-            else {
-                print("Error in database retrieval")
-            }
-        }
-    }
-    
-   
-    
-
-    
     
 }

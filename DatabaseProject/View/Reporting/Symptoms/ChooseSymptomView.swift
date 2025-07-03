@@ -19,7 +19,7 @@ struct ChooseSymptomView: View {
     var body: some View {
         NavigationStack (path: $path){
             ZStack{
-                VStack
+                VStack (alignment: .leading)
                 {
                     Text("""
                      Please choose up to 5 symptoms to understand more about your health.

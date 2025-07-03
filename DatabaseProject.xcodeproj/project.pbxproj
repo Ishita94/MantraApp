@@ -10,6 +10,7 @@
 		2003EDAB2AE5BAB9009E1BB3 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2003EDAA2AE5BAB9009E1BB3 /* LaunchView.swift */; };
 		2003EDAD2AE5BB18009E1BB3 /* LoginContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2003EDAC2AE5BB18009E1BB3 /* LoginContentView.swift */; };
 		2003EDAF2AE5BF54009E1BB3 /* LoginForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2003EDAE2AE5BF54009E1BB3 /* LoginForm.swift */; };
+		2007B2AE2DC6119C006EF756 /* VisualizationsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2007B2AD2DC6119C006EF756 /* VisualizationsPage.swift */; };
 		200CA7122AB7EC0C00B49508 /* FontStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200CA7112AB7EC0C00B49508 /* FontStyles.swift */; };
 		200CA7222AB81E8400B49508 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 200CA7182AB81E8300B49508 /* Lato-Black.ttf */; };
 		200CA7242AB81E8400B49508 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 200CA71A2AB81E8300B49508 /* Lato-Light.ttf */; };
@@ -23,13 +24,35 @@
 		200CA7442AB81E9900B49508 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 200CA7372AB81E9800B49508 /* Roboto-Regular.ttf */; };
 		200CA7462AB81EEF00B49508 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 200CA7452AB81EEF00B49508 /* Lato-Regular.ttf */; };
 		200CA74B2AB84A2400B49508 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200CA74A2AB84A2400B49508 /* HomePageView.swift */; };
-		200CA74D2AB84A5600B49508 /* SummariesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200CA74C2AB84A5600B49508 /* SummariesView.swift */; };
 		200CA74F2AB84A6B00B49508 /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200CA74E2AB84A6B00B49508 /* MoreView.swift */; };
 		200CA7532AB84B8700B49508 /* ReportingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200CA7522AB84B8700B49508 /* ReportingView.swift */; };
 		200CA7552AB85A3A00B49508 /* NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200CA7542AB85A3900B49508 /* NavBar.swift */; };
 		200CA7572AB8611C00B49508 /* ReportListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200CA7562AB8611C00B49508 /* ReportListRow.swift */; };
 		200CA75B2AB86B5800B49508 /* SymptomDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200CA75A2AB86B5800B49508 /* SymptomDataService.swift */; };
 		200CA75D2AB876F200B49508 /* ReportListRowforNewEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200CA75C2AB876F200B49508 /* ReportListRowforNewEntry.swift */; };
+		201B114A2DC7662B00415530 /* SummaryTypeTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201B11492DC7661E00415530 /* SummaryTypeTab.swift */; };
+		201B114C2DC766D400415530 /* SummariesTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201B114B2DC766D300415530 /* SummariesTabBar.swift */; };
+		201B11512DC8208600415530 /* SummariesContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201B11502DC8208600415530 /* SummariesContainerView.swift */; };
+		201B11532DC9E74F00415530 /* SymptomSummaryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201B11522DC9E74F00415530 /* SymptomSummaryRow.swift */; };
+		201B11552DC9E75A00415530 /* EventSummaryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201B11542DC9E75A00415530 /* EventSummaryRow.swift */; };
+		201B11572DCAA6ED00415530 /* KeyBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201B11562DCAA6ED00415530 /* KeyBar.swift */; };
+		201B11592DCAA72200415530 /* EditVisualizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201B11582DCAA72200415530 /* EditVisualizationView.swift */; };
+		201B115B2DCB770900415530 /* CustomDateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201B115A2DCB770900415530 /* CustomDateModel.swift */; };
+		201B115D2DCC943B00415530 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201B115C2DCC943B00415530 /* CustomTabBar.swift */; };
+		201B115F2DCCA0C000415530 /* TabType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201B115E2DCCA0B400415530 /* TabType.swift */; };
+		201B11622DCD508700415530 /* TabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201B11612DCD508700415530 /* TabBarButton.swift */; };
+		201B11652DCD60B600415530 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 201B11642DCD60B600415530 /* Assets.xcassets */; };
+		201B11672DCD6E1400415530 /* CustomTabbarforSummaries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201B11662DCD6E1400415530 /* CustomTabbarforSummaries.swift */; };
+		201B116B2DCDC12F00415530 /* SummaryTabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201B116A2DCDC12F00415530 /* SummaryTabButton.swift */; };
+		201B11702DD3F1D400415530 /* EmojiBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201B116F2DD3F1D400415530 /* EmojiBarItem.swift */; };
+		201B11722DD3F1DE00415530 /* EmojiBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201B11712DD3F1DE00415530 /* EmojiBar.swift */; };
+		201B11742DD3F1FE00415530 /* SymptomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201B11732DD3F1FE00415530 /* SymptomBar.swift */; };
+		201B11762DD3F20D00415530 /* SymptomBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201B11752DD3F20D00415530 /* SymptomBarItem.swift */; };
+		201B11782DD4C7F200415530 /* ShowSymptomArrayItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201B11772DD4C7E900415530 /* ShowSymptomArrayItem.swift */; };
+		201B117A2DD4C80700415530 /* ShowEventArrayItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201B11792DD4C80500415530 /* ShowEventArrayItem.swift */; };
+		201B117C2DD6B2BF00415530 /* WeekDayBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201B117B2DD6B2BF00415530 /* WeekDayBar.swift */; };
+		201B117F2DD738CE00415530 /* ConditionalBorderOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201B117E2DD738CE00415530 /* ConditionalBorderOverlay.swift */; };
+		201B11812DD9538700415530 /* RatingRectangles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201B11802DD9536700415530 /* RatingRectangles.swift */; };
 		202494E52AE4D26D001D253E /* SymptomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202494E42AE4D26C001D253E /* SymptomViewModel.swift */; };
 		2050DDCD2ACEFCDE006F46D2 /* ReportedSymptomsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2050DDCC2ACEFCDE006F46D2 /* ReportedSymptomsView.swift */; };
 		2050DDD42ACEFDFA006F46D2 /* Symptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2050DDD32ACEFDFA006F46D2 /* Symptom.swift */; };
@@ -59,13 +82,16 @@
 		206B8AA22AE637C500FD3BCD /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206B8AA12AE637C500FD3BCD /* AuthViewModel.swift */; };
 		2070537C2AA5C90F00E518B7 /* DatabaseProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2070537B2AA5C90F00E518B7 /* DatabaseProjectApp.swift */; };
 		2070537E2AA5C90F00E518B7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2070537D2AA5C90F00E518B7 /* ContentView.swift */; };
-		207053802AA5C91100E518B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2070537F2AA5C91100E518B7 /* Assets.xcassets */; };
 		207053842AA5C91100E518B7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 207053832AA5C91100E518B7 /* Preview Assets.xcassets */; };
 		2074793C2AEE311200551441 /* SymptomReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2074793B2AEE311100551441 /* SymptomReport.swift */; };
-		2074793E2AEE42B000551441 /* TitleBarforTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2074793D2AEE42B000551441 /* TitleBarforTabs.swift */; };
+		2074793E2AEE42B000551441 /* TitleBarforReportingTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2074793D2AEE42B000551441 /* TitleBarforReportingTab.swift */; };
 		207479442AEFD85500551441 /* AddorEditEventsLandingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207479432AEFD85500551441 /* AddorEditEventsLandingPage.swift */; };
 		207479462AEFD87100551441 /* AddorEditEventsContentPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207479452AEFD87100551441 /* AddorEditEventsContentPage.swift */; };
 		2074794D2AEFD95F00551441 /* EventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2074794C2AEFD95F00551441 /* EventsViewModel.swift */; };
+		20952D382DDDAE6300BDEDF2 /* SelectableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20952D372DDDAE6300BDEDF2 /* SelectableButton.swift */; };
+		20952D3A2DDDBC5400BDEDF2 /* DisabledStateButtonwithTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20952D392DDDBC5400BDEDF2 /* DisabledStateButtonwithTitle.swift */; };
+		20952D3C2DDDC41D00BDEDF2 /* EventChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20952D3B2DDDC41D00BDEDF2 /* EventChart.swift */; };
+		20952D3E2DDDC5E700BDEDF2 /* EventChartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20952D3D2DDDC5E700BDEDF2 /* EventChartItem.swift */; };
 		209F53FB2AC96B3300421857 /* GeneralEnumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209F53FA2AC96B3300421857 /* GeneralEnumerations.swift */; };
 		209F53FD2AC96E0F00421857 /* SetSymptomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209F53FC2AC96E0F00421857 /* SetSymptomView.swift */; };
 		209F53FF2AC96E4B00421857 /* SetSymptomContentPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209F53FE2AC96E4B00421857 /* SetSymptomContentPage.swift */; };
@@ -119,9 +145,13 @@
 		20C8FCB32AF714620010F2AC /* ExtensionDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C8FCB22AF714620010F2AC /* ExtensionDate.swift */; };
 		20C8FCB52AF841FF0010F2AC /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C8FCB42AF841FF0010F2AC /* Report.swift */; };
 		20CE1C3C2DB8491A00E35F56 /* GeneralExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CE1C3B2DB8491000E35F56 /* GeneralExtensions.swift */; };
-		20CE1C422DB8E9A700E35F56 /* SummaryDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CE1C412DB8E9A700E35F56 /* SummaryDashboardView.swift */; };
+		20CE1C422DB8E9A700E35F56 /* SummariesDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CE1C412DB8E9A700E35F56 /* SummariesDashboardView.swift */; };
 		20CE1C442DB8EA6100E35F56 /* SummariesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CE1C432DB8EA5600E35F56 /* SummariesViewModel.swift */; };
 		20CE1C462DB8EA9500E35F56 /* SummariesDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CE1C452DB8EA9500E35F56 /* SummariesDataService.swift */; };
+		20CE1C482DB8F68D00E35F56 /* WeeklySummaryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CE1C472DB8F68D00E35F56 /* WeeklySummaryRow.swift */; };
+		20CE1C4A2DB95AE100E35F56 /* BriefSummaryPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CE1C492DB95AE100E35F56 /* BriefSummaryPage.swift */; };
+		20CE1C4E2DC0351E00E35F56 /* TitleBarforSummariesTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CE1C4D2DC0351E00E35F56 /* TitleBarforSummariesTab.swift */; };
+		20CE1C512DC0DB0100E35F56 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CE1C502DC0DAFE00E35F56 /* Week.swift */; };
 		20D3CF132AC0F1160010792D /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 20D3CF122AC0F1160010792D /* FirebaseAnalytics */; };
 		20D3CF152AC0F1160010792D /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 20D3CF142AC0F1160010792D /* FirebaseAnalyticsOnDeviceConversion */; };
 		20D3CF172AC0F1160010792D /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 20D3CF162AC0F1160010792D /* FirebaseAnalyticsSwift */; };
@@ -159,6 +189,7 @@
 		2003EDAA2AE5BAB9009E1BB3 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		2003EDAC2AE5BB18009E1BB3 /* LoginContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContentView.swift; sourceTree = "<group>"; };
 		2003EDAE2AE5BF54009E1BB3 /* LoginForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginForm.swift; sourceTree = "<group>"; };
+		2007B2AD2DC6119C006EF756 /* VisualizationsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualizationsPage.swift; sourceTree = "<group>"; };
 		200CA7112AB7EC0C00B49508 /* FontStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontStyles.swift; sourceTree = "<group>"; };
 		200CA7182AB81E8300B49508 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
 		200CA71A2AB81E8300B49508 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
@@ -172,13 +203,35 @@
 		200CA7372AB81E9800B49508 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		200CA7452AB81EEF00B49508 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		200CA74A2AB84A2400B49508 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
-		200CA74C2AB84A5600B49508 /* SummariesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummariesView.swift; sourceTree = "<group>"; };
 		200CA74E2AB84A6B00B49508 /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
 		200CA7522AB84B8700B49508 /* ReportingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportingView.swift; sourceTree = "<group>"; };
 		200CA7542AB85A3900B49508 /* NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBar.swift; sourceTree = "<group>"; };
 		200CA7562AB8611C00B49508 /* ReportListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportListRow.swift; sourceTree = "<group>"; };
 		200CA75A2AB86B5800B49508 /* SymptomDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomDataService.swift; sourceTree = "<group>"; };
 		200CA75C2AB876F200B49508 /* ReportListRowforNewEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportListRowforNewEntry.swift; sourceTree = "<group>"; };
+		201B11492DC7661E00415530 /* SummaryTypeTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryTypeTab.swift; sourceTree = "<group>"; };
+		201B114B2DC766D300415530 /* SummariesTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummariesTabBar.swift; sourceTree = "<group>"; };
+		201B11502DC8208600415530 /* SummariesContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummariesContainerView.swift; sourceTree = "<group>"; };
+		201B11522DC9E74F00415530 /* SymptomSummaryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomSummaryRow.swift; sourceTree = "<group>"; };
+		201B11542DC9E75A00415530 /* EventSummaryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSummaryRow.swift; sourceTree = "<group>"; };
+		201B11562DCAA6ED00415530 /* KeyBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBar.swift; sourceTree = "<group>"; };
+		201B11582DCAA72200415530 /* EditVisualizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditVisualizationView.swift; sourceTree = "<group>"; };
+		201B115A2DCB770900415530 /* CustomDateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDateModel.swift; sourceTree = "<group>"; };
+		201B115C2DCC943B00415530 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		201B115E2DCCA0B400415530 /* TabType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabType.swift; sourceTree = "<group>"; };
+		201B11612DCD508700415530 /* TabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarButton.swift; sourceTree = "<group>"; };
+		201B11642DCD60B600415530 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		201B11662DCD6E1400415530 /* CustomTabbarforSummaries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabbarforSummaries.swift; sourceTree = "<group>"; };
+		201B116A2DCDC12F00415530 /* SummaryTabButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryTabButton.swift; sourceTree = "<group>"; };
+		201B116F2DD3F1D400415530 /* EmojiBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiBarItem.swift; sourceTree = "<group>"; };
+		201B11712DD3F1DE00415530 /* EmojiBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiBar.swift; sourceTree = "<group>"; };
+		201B11732DD3F1FE00415530 /* SymptomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomBar.swift; sourceTree = "<group>"; };
+		201B11752DD3F20D00415530 /* SymptomBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomBarItem.swift; sourceTree = "<group>"; };
+		201B11772DD4C7E900415530 /* ShowSymptomArrayItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSymptomArrayItem.swift; sourceTree = "<group>"; };
+		201B11792DD4C80500415530 /* ShowEventArrayItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEventArrayItem.swift; sourceTree = "<group>"; };
+		201B117B2DD6B2BF00415530 /* WeekDayBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDayBar.swift; sourceTree = "<group>"; };
+		201B117E2DD738CE00415530 /* ConditionalBorderOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalBorderOverlay.swift; sourceTree = "<group>"; };
+		201B11802DD9536700415530 /* RatingRectangles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingRectangles.swift; sourceTree = "<group>"; };
 		202494E42AE4D26C001D253E /* SymptomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomViewModel.swift; sourceTree = "<group>"; };
 		2050DDCC2ACEFCDE006F46D2 /* ReportedSymptomsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportedSymptomsView.swift; sourceTree = "<group>"; };
 		2050DDD32ACEFDFA006F46D2 /* Symptom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symptom.swift; sourceTree = "<group>"; };
@@ -205,14 +258,17 @@
 		207053782AA5C90F00E518B7 /* DatabaseProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DatabaseProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2070537B2AA5C90F00E518B7 /* DatabaseProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProjectApp.swift; sourceTree = "<group>"; };
 		2070537D2AA5C90F00E518B7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		2070537F2AA5C91100E518B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		207053812AA5C91100E518B7 /* DatabaseProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DatabaseProject.entitlements; sourceTree = "<group>"; };
 		207053832AA5C91100E518B7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2074793B2AEE311100551441 /* SymptomReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomReport.swift; sourceTree = "<group>"; };
-		2074793D2AEE42B000551441 /* TitleBarforTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBarforTabs.swift; sourceTree = "<group>"; };
+		2074793D2AEE42B000551441 /* TitleBarforReportingTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBarforReportingTab.swift; sourceTree = "<group>"; };
 		207479432AEFD85500551441 /* AddorEditEventsLandingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddorEditEventsLandingPage.swift; sourceTree = "<group>"; };
 		207479452AEFD87100551441 /* AddorEditEventsContentPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddorEditEventsContentPage.swift; sourceTree = "<group>"; };
 		2074794C2AEFD95F00551441 /* EventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewModel.swift; sourceTree = "<group>"; };
+		20952D372DDDAE6300BDEDF2 /* SelectableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableButton.swift; sourceTree = "<group>"; };
+		20952D392DDDBC5400BDEDF2 /* DisabledStateButtonwithTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisabledStateButtonwithTitle.swift; sourceTree = "<group>"; };
+		20952D3B2DDDC41D00BDEDF2 /* EventChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventChart.swift; sourceTree = "<group>"; };
+		20952D3D2DDDC5E700BDEDF2 /* EventChartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventChartItem.swift; sourceTree = "<group>"; };
 		209F53FA2AC96B3300421857 /* GeneralEnumerations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralEnumerations.swift; sourceTree = "<group>"; };
 		209F53FC2AC96E0F00421857 /* SetSymptomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetSymptomView.swift; sourceTree = "<group>"; };
 		209F53FE2AC96E4B00421857 /* SetSymptomContentPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetSymptomContentPage.swift; sourceTree = "<group>"; };
@@ -232,9 +288,13 @@
 		20C8FCB22AF714620010F2AC /* ExtensionDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDate.swift; sourceTree = "<group>"; };
 		20C8FCB42AF841FF0010F2AC /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		20CE1C3B2DB8491000E35F56 /* GeneralExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralExtensions.swift; sourceTree = "<group>"; };
-		20CE1C412DB8E9A700E35F56 /* SummaryDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryDashboardView.swift; sourceTree = "<group>"; };
+		20CE1C412DB8E9A700E35F56 /* SummariesDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummariesDashboardView.swift; sourceTree = "<group>"; };
 		20CE1C432DB8EA5600E35F56 /* SummariesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummariesViewModel.swift; sourceTree = "<group>"; };
 		20CE1C452DB8EA9500E35F56 /* SummariesDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummariesDataService.swift; sourceTree = "<group>"; };
+		20CE1C472DB8F68D00E35F56 /* WeeklySummaryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklySummaryRow.swift; sourceTree = "<group>"; };
+		20CE1C492DB95AE100E35F56 /* BriefSummaryPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BriefSummaryPage.swift; sourceTree = "<group>"; };
+		20CE1C4D2DC0351E00E35F56 /* TitleBarforSummariesTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBarforSummariesTab.swift; sourceTree = "<group>"; };
+		20CE1C502DC0DAFE00E35F56 /* Week.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
 		20D3CF1D2AC0F1530010792D /* TopProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopProgressBarView.swift; sourceTree = "<group>"; };
 		20D3CF212AC103460010792D /* AddorEditSymptomsLandingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddorEditSymptomsLandingPage.swift; sourceTree = "<group>"; };
 		20D3CF232AC104020010792D /* SecondaryNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryNavBar.swift; sourceTree = "<group>"; };
@@ -353,17 +413,16 @@
 		200CA7482AB847AF00B49508 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				20CE1C4F2DC0DAE500E35F56 /* Summaries */,
 				20CE1C3B2DB8491000E35F56 /* GeneralExtensions.swift */,
 				200CA7112AB7EC0C00B49508 /* FontStyles.swift */,
 				205783BB2B601C21005C51B4 /* Reporting */,
-				20F674E22B37788000862651 /* Data Services */,
 				207479492AEFD8DA00551441 /* Event */,
 				2050DDCE2ACEFD94006F46D2 /* Symptom */,
 				209F53FA2AC96B3300421857 /* GeneralEnumerations.swift */,
 				20C8FCB22AF714620010F2AC /* ExtensionDate.swift */,
 				20F393EA2D7115C90036FC57 /* ExtensionPlaceholderforTextEditor.swift */,
-				20F393F22D8D72150036FC57 /* LeftRoundedRectangle.swift */,
-				20F393F42D8D74940036FC57 /* RightRoundedRectangle.swift */,
+				201B115A2DCB770900415530 /* CustomDateModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -371,15 +430,54 @@
 		200CA7492AB847D200B49508 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				201B116C2DCDD4B800415530 /* Old Code */,
 				20CE1C3D2DB8E7C300E35F56 /* Summaries */,
 				2003EDA72AE5B523009E1BB3 /* Login */,
 				20D3CF1F2AC102570010792D /* Reporting */,
 				20D3CF1C2AC0F13B0010792D /* General */,
 				200CA74A2AB84A2400B49508 /* HomePageView.swift */,
-				200CA74C2AB84A5600B49508 /* SummariesView.swift */,
 				200CA74E2AB84A6B00B49508 /* MoreView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		201B114D2DC766EA00415530 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				201B11502DC8208600415530 /* SummariesContainerView.swift */,
+				201B11662DCD6E1400415530 /* CustomTabbarforSummaries.swift */,
+				201B116A2DCDC12F00415530 /* SummaryTabButton.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		201B116C2DCDD4B800415530 /* Old Code */ = {
+			isa = PBXGroup;
+			children = (
+				201B114B2DC766D300415530 /* SummariesTabBar.swift */,
+			);
+			path = "Old Code";
+			sourceTree = "<group>";
+		};
+		201B116D2DCDD60B00415530 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				201B115E2DCCA0B400415530 /* TabType.swift */,
+				201B115C2DCC943B00415530 /* CustomTabBar.swift */,
+				201B11612DCD508700415530 /* TabBarButton.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		201B116E2DCDD64600415530 /* Rectangle visuals */ = {
+			isa = PBXGroup;
+			children = (
+				201B11802DD9536700415530 /* RatingRectangles.swift */,
+				20F393F22D8D72150036FC57 /* LeftRoundedRectangle.swift */,
+				20F393F42D8D74940036FC57 /* RightRoundedRectangle.swift */,
+				201B117E2DD738CE00415530 /* ConditionalBorderOverlay.swift */,
+			);
+			path = "Rectangle visuals";
 			sourceTree = "<group>";
 		};
 		2050DDCE2ACEFD94006F46D2 /* Symptom */ = {
@@ -436,6 +534,8 @@
 		2070537A2AA5C90F00E518B7 /* DatabaseProject */ = {
 			isa = PBXGroup;
 			children = (
+				201B11642DCD60B600415530 /* Assets.xcassets */,
+				20F674E22B37788000862651 /* Data Services */,
 				206B8AA02AE637B400FD3BCD /* ViewModel */,
 				200CA7492AB847D200B49508 /* View */,
 				200CA7482AB847AF00B49508 /* Model */,
@@ -443,7 +543,6 @@
 				20F07C3B2AA5DB9E001D8815 /* GoogleService-Info.plist */,
 				2070537B2AA5C90F00E518B7 /* DatabaseProjectApp.swift */,
 				2070537D2AA5C90F00E518B7 /* ContentView.swift */,
-				2070537F2AA5C91100E518B7 /* Assets.xcassets */,
 				207053812AA5C91100E518B7 /* DatabaseProject.entitlements */,
 				207053822AA5C91100E518B7 /* Preview Content */,
 			);
@@ -493,9 +592,19 @@
 			path = Event;
 			sourceTree = "<group>";
 		};
+		20952D362DDDAE0F00BDEDF2 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				20952D372DDDAE6300BDEDF2 /* SelectableButton.swift */,
+				20952D392DDDBC5400BDEDF2 /* DisabledStateButtonwithTitle.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
 		20CE1C3D2DB8E7C300E35F56 /* Summaries */ = {
 			isa = PBXGroup;
 			children = (
+				201B114D2DC766EA00415530 /* Common */,
 				20CE1C402DB8E87700E35F56 /* MonthlyOverview */,
 				20CE1C3F2DB8E82D00E35F56 /* Visualizations */,
 				20CE1C3E2DB8E82000E35F56 /* BriefSummary */,
@@ -506,6 +615,9 @@
 		20CE1C3E2DB8E82000E35F56 /* BriefSummary */ = {
 			isa = PBXGroup;
 			children = (
+				20CE1C492DB95AE100E35F56 /* BriefSummaryPage.swift */,
+				201B11522DC9E74F00415530 /* SymptomSummaryRow.swift */,
+				201B11542DC9E75A00415530 /* EventSummaryRow.swift */,
 			);
 			path = BriefSummary;
 			sourceTree = "<group>";
@@ -513,6 +625,18 @@
 		20CE1C3F2DB8E82D00E35F56 /* Visualizations */ = {
 			isa = PBXGroup;
 			children = (
+				201B11792DD4C80500415530 /* ShowEventArrayItem.swift */,
+				201B11772DD4C7E900415530 /* ShowSymptomArrayItem.swift */,
+				2007B2AD2DC6119C006EF756 /* VisualizationsPage.swift */,
+				201B11562DCAA6ED00415530 /* KeyBar.swift */,
+				201B11582DCAA72200415530 /* EditVisualizationView.swift */,
+				201B116F2DD3F1D400415530 /* EmojiBarItem.swift */,
+				201B11712DD3F1DE00415530 /* EmojiBar.swift */,
+				201B11732DD3F1FE00415530 /* SymptomBar.swift */,
+				201B11752DD3F20D00415530 /* SymptomBarItem.swift */,
+				201B117B2DD6B2BF00415530 /* WeekDayBar.swift */,
+				20952D3B2DDDC41D00BDEDF2 /* EventChart.swift */,
+				20952D3D2DDDC5E700BDEDF2 /* EventChartItem.swift */,
 			);
 			path = Visualizations;
 			sourceTree = "<group>";
@@ -520,20 +644,34 @@
 		20CE1C402DB8E87700E35F56 /* MonthlyOverview */ = {
 			isa = PBXGroup;
 			children = (
-				20CE1C412DB8E9A700E35F56 /* SummaryDashboardView.swift */,
+				20CE1C412DB8E9A700E35F56 /* SummariesDashboardView.swift */,
+				20CE1C472DB8F68D00E35F56 /* WeeklySummaryRow.swift */,
 			);
 			path = MonthlyOverview;
+			sourceTree = "<group>";
+		};
+		20CE1C4F2DC0DAE500E35F56 /* Summaries */ = {
+			isa = PBXGroup;
+			children = (
+				201B11492DC7661E00415530 /* SummaryTypeTab.swift */,
+				20CE1C502DC0DAFE00E35F56 /* Week.swift */,
+			);
+			path = Summaries;
 			sourceTree = "<group>";
 		};
 		20D3CF1C2AC0F13B0010792D /* General */ = {
 			isa = PBXGroup;
 			children = (
+				20952D362DDDAE0F00BDEDF2 /* Buttons */,
+				201B116D2DCDD60B00415530 /* TabBar */,
 				200CA7542AB85A3900B49508 /* NavBar.swift */,
 				20D3CF1D2AC0F1530010792D /* TopProgressBarView.swift */,
 				20D3CF232AC104020010792D /* SecondaryNavBar.swift */,
 				20A44E552AC15488002C726B /* BackandNextButtonPanel.swift */,
-				2074793D2AEE42B000551441 /* TitleBarforTabs.swift */,
+				2074793D2AEE42B000551441 /* TitleBarforReportingTab.swift */,
+				20CE1C4D2DC0351E00E35F56 /* TitleBarforSummariesTab.swift */,
 				20EE11192D9E742E00265502 /* CustomBackButtonLabel.swift */,
+				201B116E2DCDD64600415530 /* Rectangle visuals */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -765,9 +903,9 @@
 				20C8FCB12AF6313C0010F2AC /* Lato-Bold.ttf in Resources */,
 				200CA7262AB81E8400B49508 /* Lato-Thin.ttf in Resources */,
 				200CA7462AB81EEF00B49508 /* Lato-Regular.ttf in Resources */,
+				201B11652DCD60B600415530 /* Assets.xcassets in Resources */,
 				200CA7392AB81E9900B49508 /* Roboto-Medium.ttf in Resources */,
 				200CA73E2AB81E9900B49508 /* Roboto-Black.ttf in Resources */,
-				207053802AA5C91100E518B7 /* Assets.xcassets in Resources */,
 				200CA7442AB81E9900B49508 /* Roboto-Regular.ttf in Resources */,
 				200CA72A2AB81E8400B49508 /* Lato-ExtraBold.ttf in Resources */,
 				200CA7222AB81E8400B49508 /* Lato-Black.ttf in Resources */,
@@ -813,40 +951,55 @@
 			files = (
 				20F674F02B378A4E00862651 /* ReportedEventRow.swift in Sources */,
 				205783C32B602F51005C51B4 /* QuestionsandNotesContentPage.swift in Sources */,
+				20952D3E2DDDC5E700BDEDF2 /* EventChartItem.swift in Sources */,
 				2003EDAD2AE5BB18009E1BB3 /* LoginContentView.swift in Sources */,
+				20CE1C4A2DB95AE100E35F56 /* BriefSummaryPage.swift in Sources */,
 				20F393EF2D77CCA80036FC57 /* AddorEditSymptomNavigationButtonPanel.swift in Sources */,
+				201B11672DCD6E1400415530 /* CustomTabbarforSummaries.swift in Sources */,
 				20C838A02ADDA50F00BDE91C /* AddorEditSymptomButtonPanel.swift in Sources */,
 				207479462AEFD87100551441 /* AddorEditEventsContentPage.swift in Sources */,
 				20F393F52D8D74940036FC57 /* RightRoundedRectangle.swift in Sources */,
 				205783C12B602F42005C51B4 /* QuestionsandNotesLandingPage.swift in Sources */,
 				20D3CF1E2AC0F1540010792D /* TopProgressBarView.swift in Sources */,
+				20CE1C4E2DC0351E00E35F56 /* TitleBarforSummariesTab.swift in Sources */,
 				206B8A9F2AE61F9500FD3BCD /* CreateForm.swift in Sources */,
 				20CE1C442DB8EA6100E35F56 /* SummariesViewModel.swift in Sources */,
 				20A44E5A2AC1E4E5002C726B /* SymptomPickerRow.swift in Sources */,
+				201B114A2DC7662B00415530 /* SummaryTypeTab.swift in Sources */,
 				2050DDCD2ACEFCDE006F46D2 /* ReportedSymptomsView.swift in Sources */,
-				2074793E2AEE42B000551441 /* TitleBarforTabs.swift in Sources */,
+				2074793E2AEE42B000551441 /* TitleBarforReportingTab.swift in Sources */,
 				20CE1C3C2DB8491A00E35F56 /* GeneralExtensions.swift in Sources */,
 				209F53FD2AC96E0F00421857 /* SetSymptomView.swift in Sources */,
 				20F393F12D78CB250036FC57 /* ReportforQuery.swift in Sources */,
+				201B11782DD4C7F200415530 /* ShowSymptomArrayItem.swift in Sources */,
 				209F54072ACC213700421857 /* ReportedSymptomListRow.swift in Sources */,
+				201B115D2DCC943B00415530 /* CustomTabBar.swift in Sources */,
 				200CA75D2AB876F200B49508 /* ReportListRowforNewEntry.swift in Sources */,
 				20C838902ACF0DE400BDE91C /* SuggestedSymptomsView.swift in Sources */,
 				202494E52AE4D26D001D253E /* SymptomViewModel.swift in Sources */,
 				205783D62B6AC62E005C51B4 /* ReportCompletionView.swift in Sources */,
 				20A44E542AC15424002C726B /* AddorEditSymptomsContentView.swift in Sources */,
+				201B116B2DCDC12F00415530 /* SummaryTabButton.swift in Sources */,
 				20F393EB2D7115DA0036FC57 /* ExtensionPlaceholderforTextEditor.swift in Sources */,
 				2003EDAB2AE5BAB9009E1BB3 /* LaunchView.swift in Sources */,
+				201B11532DC9E74F00415530 /* SymptomSummaryRow.swift in Sources */,
 				20C8FCB52AF841FF0010F2AC /* Report.swift in Sources */,
 				2070537E2AA5C90F00E518B7 /* ContentView.swift in Sources */,
 				20C8389E2ADD40C800BDE91C /* AddSymptomwithSuggestionsorReportedSymptomsView.swift in Sources */,
 				20EE11182D97725500265502 /* StepofReportRow.swift in Sources */,
+				20952D3C2DDDC41D00BDEDF2 /* EventChart.swift in Sources */,
 				205783D22B6A2218005C51B4 /* BackandNextButtonPanelforQuestionsandNotes.swift in Sources */,
+				201B114C2DC766D400415530 /* SummariesTabBar.swift in Sources */,
 				20F674E82B3787A400862651 /* ReportedEventsView.swift in Sources */,
+				201B11512DC8208600415530 /* SummariesContainerView.swift in Sources */,
 				200CA75B2AB86B5800B49508 /* SymptomDataService.swift in Sources */,
+				201B115B2DCB770900415530 /* CustomDateModel.swift in Sources */,
 				205783B22B601A42005C51B4 /* DescriptionContentPage.swift in Sources */,
+				201B11572DCAA6ED00415530 /* KeyBar.swift in Sources */,
 				20C838922ACF1A3500BDE91C /* ChooseSymptomComparisonView.swift in Sources */,
 				2050DDD42ACEFDFA006F46D2 /* Symptom.swift in Sources */,
 				200CA7572AB8611C00B49508 /* ReportListRow.swift in Sources */,
+				2007B2AE2DC6119C006EF756 /* VisualizationsPage.swift in Sources */,
 				20CE1C462DB8EA9500E35F56 /* SummariesDataService.swift in Sources */,
 				200CA7552AB85A3A00B49508 /* NavBar.swift in Sources */,
 				20F674E42B3778B600862651 /* EventDataService.swift in Sources */,
@@ -854,20 +1007,29 @@
 				200CA7532AB84B8700B49508 /* ReportingView.swift in Sources */,
 				20F393F32D8D72150036FC57 /* LeftRoundedRectangle.swift in Sources */,
 				205783C52B60328C005C51B4 /* EmojiLandingPage.swift in Sources */,
+				201B11622DCD508700415530 /* TabBarButton.swift in Sources */,
 				2003EDAF2AE5BF54009E1BB3 /* LoginForm.swift in Sources */,
+				201B11702DD3F1D400415530 /* EmojiBarItem.swift in Sources */,
 				20A44E562AC15488002C726B /* BackandNextButtonPanel.swift in Sources */,
 				205783C72B603297005C51B4 /* EmojiContentPage.swift in Sources */,
+				201B11722DD3F1DE00415530 /* EmojiBar.swift in Sources */,
 				205783CC2B6A0F9C005C51B4 /* LimitedEmojiProvider.swift in Sources */,
+				20952D382DDDAE6300BDEDF2 /* SelectableButton.swift in Sources */,
 				20F674F92B3CEBB900862651 /* AddorEditEventButtonPanel.swift in Sources */,
 				20EE11162D97710B00265502 /* EditReportView.swift in Sources */,
 				209F53FF2AC96E4B00421857 /* SetSymptomContentPage.swift in Sources */,
 				205783BD2B601F11005C51B4 /* RemainingReport.swift in Sources */,
 				209F53FB2AC96B3300421857 /* GeneralEnumerations.swift in Sources */,
+				201B11742DD3F1FE00415530 /* SymptomBar.swift in Sources */,
 				205783AE2B5D14FA005C51B4 /* EventReport.swift in Sources */,
 				205783AC2B5D1406005C51B4 /* Event.swift in Sources */,
+				20CE1C512DC0DB0100E35F56 /* Week.swift in Sources */,
+				201B115F2DCCA0C000415530 /* TabType.swift in Sources */,
 				205783CE2B6A1359005C51B4 /* EmojiPickerViewCustomized.swift in Sources */,
+				20952D3A2DDDBC5400BDEDF2 /* DisabledStateButtonwithTitle.swift in Sources */,
 				205783BF2B6023B2005C51B4 /* ReportingDataService.swift in Sources */,
-				20CE1C422DB8E9A700E35F56 /* SummaryDashboardView.swift in Sources */,
+				201B11762DD3F20D00415530 /* SymptomBarItem.swift in Sources */,
+				20CE1C422DB8E9A700E35F56 /* SummariesDashboardView.swift in Sources */,
 				207479442AEFD85500551441 /* AddorEditEventsLandingPage.swift in Sources */,
 				200CA74F2AB84A6B00B49508 /* MoreView.swift in Sources */,
 				20F674EC2B378A0200862651 /* SuggestedEventsView.swift in Sources */,
@@ -875,16 +1037,21 @@
 				20A44E582AC17813002C726B /* ChooseSymptomView.swift in Sources */,
 				20D3CF242AC104020010792D /* SecondaryNavBar.swift in Sources */,
 				205783D02B6A1E8A005C51B4 /* BackandNextButtonPanelforDescription.swift in Sources */,
+				201B11592DCAA72200415530 /* EditVisualizationView.swift in Sources */,
 				20C8389C2ADC049800BDE91C /* SymptomComparisonListRow.swift in Sources */,
 				2074794D2AEFD95F00551441 /* EventsViewModel.swift in Sources */,
+				20CE1C482DB8F68D00E35F56 /* WeeklySummaryRow.swift in Sources */,
 				200CA74B2AB84A2400B49508 /* HomePageView.swift in Sources */,
+				201B117A2DD4C80700415530 /* ShowEventArrayItem.swift in Sources */,
+				201B11812DD9538700415530 /* RatingRectangles.swift in Sources */,
 				20F674EA2B3789A900862651 /* SuggestedSymptomsListRow.swift in Sources */,
 				20D3CF222AC103460010792D /* AddorEditSymptomsLandingPage.swift in Sources */,
+				201B117C2DD6B2BF00415530 /* WeekDayBar.swift in Sources */,
 				20EE111A2D9E742E00265502 /* CustomBackButtonLabel.swift in Sources */,
 				2074793C2AEE311200551441 /* SymptomReport.swift in Sources */,
+				201B11552DC9E75A00415530 /* EventSummaryRow.swift in Sources */,
 				20C8FCB32AF714620010F2AC /* ExtensionDate.swift in Sources */,
 				206B8AA22AE637C500FD3BCD /* AuthViewModel.swift in Sources */,
-				200CA74D2AB84A5600B49508 /* SummariesView.swift in Sources */,
 				205783B02B601A31005C51B4 /* DescriptionLandingPage.swift in Sources */,
 				20C8FCAF2AF624FE0010F2AC /* SymptomComparisonState.swift in Sources */,
 				205783BA2B601B64005C51B4 /* ReportingViewModel.swift in Sources */,
@@ -892,6 +1059,7 @@
 				2059D5AF2AE4F3020031DF4D /* GeneralViewModel.swift in Sources */,
 				200CA7122AB7EC0C00B49508 /* FontStyles.swift in Sources */,
 				20F674F72B37903800862651 /* SetEventView.swift in Sources */,
+				201B117F2DD738CE00415530 /* ConditionalBorderOverlay.swift in Sources */,
 				20F674EE2B378A1800862651 /* SuggestedEventRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

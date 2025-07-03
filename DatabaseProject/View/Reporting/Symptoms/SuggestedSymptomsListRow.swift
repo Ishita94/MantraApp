@@ -15,19 +15,22 @@ struct SuggestedSymptomsListRow: View {
 
     var body: some View {
         ZStack{
-            if #available(iOS 17.0, *) {
-                RoundedRectangle(cornerRadius: 16)
-                    .strokeBorder(Color(.outlineGrey), style: StrokeStyle(lineWidth: 2, dash: [10]))
-                    .fill(Color(.greyNonClickable))
-                
+//            if #available(iOS 17.0, *) {
+//                RoundedRectangle(cornerRadius: 16)
+//                    .strokeBorder(Color(.outlineGrey), style: StrokeStyle(lineWidth: 2, dash: [6]))
+//                    .fill(Color(.greyNonClickable))
+//                
+//                    .frame(maxWidth: .infinity, minHeight: 92)
+//            }
+            RoundedRectangle(cornerRadius: 16)
+                    .fill(Color(.greyNonClickable)) // Background color
                     .frame(maxWidth: .infinity, minHeight: 92)
-            }
-            else
-            {
+
                 RoundedRectangle(cornerRadius: 16)
-                    .fill(Color(.greyNonClickable))
-                    .frame(maxWidth: .infinity, minHeight: 92)
-            }
+                    .stroke(style: StrokeStyle(lineWidth: 2, dash: [8])) // Dashed border overlay
+                    .foregroundColor(Color(.outlineGrey))
+                    .frame(maxWidth: .infinity, minHeight: 92) //
+
             HStack{
                 Image(systemName: "x.square.fill")
                     .foregroundColor(Color(.warning2))
@@ -39,15 +42,6 @@ struct SuggestedSymptomsListRow: View {
                         Text(item.symptomName)
                             .font(.symptomTitleinReportedSymptomsPage)
                             .foregroundColor(Color(.outlineDarker))
-                        
-//                        Text(item.recentStatus)
-//                        //.padding()
-//                            .background(Color(.warning1))
-//                            .foregroundStyle(.white)
-//                            .font(.symptomSmallTitleinReportedSymptomsPage)
-//                            .cornerRadius(6)
-//                            .frame(maxHeight: 27)
-                        
                     }
                     Text("Severity level " + "\(item.rating)" + " on \(item.creationDateTime.formatted(date: .abbreviated, time: .omitted))")
 //                        .background(Color(.secondary2))

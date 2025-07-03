@@ -10,14 +10,19 @@ import Combine
 import OrderedCollections
 
 extension Date {
-    func dayNameOfWeek() -> String? {
+    func dayNameOfWeek() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEE"
         return dateFormatter.string(from: self)
     }
-    func monthandDate() -> String? {
+    func monthandDate() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM d"
+        return dateFormatter.string(from: self)
+    }
+    func fullMonthandDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM d"
         return dateFormatter.string(from: self)
     }
     func monthandYear() -> String? {
@@ -33,6 +38,12 @@ extension Date {
     }
     static var currentTimeStamp: Int64{
         return Int64(Date().timeIntervalSince1970 * 1000)
+    }
+    func datetoFormalDatewithDayString() -> String {
+        let inputDateFormatter = DateFormatter()
+        inputDateFormatter.dateFormat = "EEEE, MMMM d"
+        inputDateFormatter.locale = Locale(identifier: "en_GB")
+        return inputDateFormatter.string(from: self)
     }
 }
 func stringtoDate(dateString: String) -> Date? {
@@ -61,6 +72,8 @@ func datetoFormalDateString(date: Date) -> String {
     inputDateFormatter.locale = Locale(identifier: "en_GB")
     return inputDateFormatter.string(from: date)
 }
+
+
 
 func prepareDatefromDate(date:Date) -> Date? {
 
@@ -129,3 +142,18 @@ func prepareNextDate(date: Date) -> Date? {
     return dateTomorrow
 }
 
+
+extension Week {
+    static var current: Week {
+        let calendar = Calendar.current
+        let now = Date()
+
+        // Start of week (Monday)
+        let startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: now))!
+
+        // End of week (Sunday)
+        let endOfWeek = calendar.date(byAdding: .day, value: 6, to: startOfWeek)!
+
+        return Week(start: startOfWeek, end: endOfWeek)
+    }
+}

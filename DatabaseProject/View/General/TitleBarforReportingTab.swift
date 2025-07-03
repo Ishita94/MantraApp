@@ -9,29 +9,12 @@ import SwiftUI
 
 struct TitleBarforReportingTab: View {    
     @EnvironmentObject var generalViewModel : GeneralViewModel
-    @EnvironmentObject var summariesViewModelViewModel : SummariesViewModel
     @Binding var loggedIn: Bool
-    
-    func getTitle() ->String {
-        if(generalViewModel.currentTab==1) {
-            return "Reporting";
-        }
-        else if (generalViewModel.currentTab==2) {
-            return "Summaries";
-        }
-        else if(generalViewModel.currentTab==3) {
-            return "More Options"
-        }
-        else {
-            return "";
-        }
-        }
-    
     
     var body: some View {
         VStack (alignment: .leading, spacing: 20) {
             HStack{
-                Text(getTitle())
+                Text("Reporting")
                     .font(.navLargeTitle)
                     .foregroundStyle(Color(.black))
                 Spacer()

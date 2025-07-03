@@ -16,7 +16,7 @@ struct SetSymptomContentPage: View {
     @State var selectedSegment: Int 
     @EnvironmentObject var generalViewModel : GeneralViewModel
     @EnvironmentObject var symptomViewModel : SymptomViewModel
-    
+    @Environment(\.dismiss) var dismiss
     @State private var readyToNavigate = false
     
     
@@ -89,7 +89,9 @@ struct SetSymptomContentPage: View {
                     .cornerRadius(10)
                 }
                 
-                Button(action: {}) {
+                Button(action: {
+                    dismiss()
+                }) {
                     HStack {
                         Image(systemName: "xmark.circle.fill")
                             .foregroundColor(Color(.warning2))

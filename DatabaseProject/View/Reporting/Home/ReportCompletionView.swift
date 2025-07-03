@@ -13,6 +13,7 @@ struct ReportCompletionView: View {
     @Binding var loggedIn: Bool
     @State var dateString: String
     @State var readyToNavigate: Bool = false
+    @State var selectedTab: Int = 0
 
     var body: some View {
         NavigationStack (){
