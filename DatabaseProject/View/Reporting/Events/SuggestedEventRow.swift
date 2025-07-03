@@ -64,7 +64,7 @@ struct SuggestedEventRow: View {
                         if(readyToNavigate){
                             if(selectedEvents.contains(where: { $0.eventId==item.id}) == false)
                             {
-                                selectedEvents.append(EventReport(creationDateTime: Date.now, lastModifiedDateTime: Date.now, eventId: item.id!, userId: AuthViewModel.getLoggedInUserId()))
+                                selectedEvents.append(EventReport(title: item.title, creationDateTime: Date.now,  lastModifiedDateTime: Date.now, eventId: item.id!, userId: AuthViewModel.getLoggedInUserId()))
                             }
                         }
                         else

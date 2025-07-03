@@ -17,7 +17,7 @@ class SummariesViewModel: ObservableObject {
     @Published var weeks: [Week] = []
     @Published var reportListforSummary = [Report]()
     @Published var dictionaryofSymptoms: OrderedDictionary<String , [SymptomReport]> = [:]
-    @Published var dictionaryofEvents: OrderedDictionary<String , [Event]> = [:]
+    @Published var dictionaryofEvents: OrderedDictionary<String , [EventReport]> = [:]
     @Published var dictionaryofEmoji: OrderedDictionary<String , Emoji> = [:]
     @Published var selectedWeek: Week? = nil //default value
     
@@ -58,8 +58,6 @@ class SummariesViewModel: ObservableObject {
                 await self.summariesDataService.getReportsinDateRange(fromDate: fromDate, toDate: toDate) { reportsofUser in
                     self.reportListforSummary = reportsofUser
                     self.prepareDictionaries(reportsofUser: reportsofUser)
-//                    self.selectedWeek = Week (start: fromDate, end: toDate)
-                    self.setSelectedWeek(start: fromDate, end: toDate)
                 }
             }
         }
@@ -74,7 +72,7 @@ class SummariesViewModel: ObservableObject {
         dictionaryofSymptoms = groupedSymptomsByName
         
         let groupedEventsByName = OrderedDictionary(grouping: reportsofUser.flatMap { $0.eventReports }, by: \.title)
-            .mapValues { (reports: [Event]) in
+            .mapValues { (reports: [EventReport]) in
                 reports.sorted { $0.creationDateTime < $1.creationDateTime }
             }
         dictionaryofEvents = groupedEventsByName
@@ -90,10 +88,10 @@ class SummariesViewModel: ObservableObject {
         dictionaryofEmoji = sortedEmojis
     }
     
-    func getDictionaryofEventsbyDate() -> OrderedDictionary<String, [Event]> {
+    func getDictionaryofEventsbyDate() -> OrderedDictionary<String, [EventReport]> {
         let events = reportListforSummary
             .flatMap { $0.eventReports }
-            .compactMap { event -> Event? in
+            .compactMap { event -> EventReport? in
                 event.creationDateTime.datetoString() != nil ? event : nil
             }
 
@@ -120,8 +118,8 @@ class SummariesViewModel: ObservableObject {
             return "\(formatter.string(from: week.start)) - \(formatter.string(from: week.end))"
         }
     func formatStringfromWeekwithYear(_ week: Week) -> String {
-        let startYear = Calendar.current.component(.year, from: week.start)
-        let endYear = Calendar.current.component(.year, from: week.end)
+        let startYear = calendar.component(.year, from: week.start)
+        let endYear = calendar.component(.year, from: week.end)
         
         let dateFormatter = DateFormatter()
         let yearFormatter = DateFormatter()
@@ -136,18 +134,21 @@ class SummariesViewModel: ObservableObject {
             dateFormatter.dateFormat = "MMM d, yyyy"
             return "\(dateFormatter.string(from: week.start)) - \(dateFormatter.string(from: week.end))"
         }
-        return "N/A"
-        }
+    }
     
     // MARK: - Month-related methods
 
     func showingNextMonth() -> Bool {
         let currentMonth = calendar.component(.month, from: Date())
-        if let month = dateCompontents.month, month<currentMonth
-        {
-            return true
-        }
-        return false
+        let currentYear = calendar.component(.year, from: Date())
+        guard
+                let month = dateCompontents.month,
+                let year = dateCompontents.year
+            else {
+                return false
+            }
+        
+        return (year < currentYear) || (year == currentYear && month < currentMonth)
     }
     
     func incrementMonth() -> Bool {
@@ -157,30 +158,39 @@ class SummariesViewModel: ObservableObject {
     func decrementMonth() -> Bool {
         return updateMonth(by: -1)
     }
-    private func updateMonth(by offset: Int) -> Bool{
+    private func updateMonth(by offset: Int) -> Bool {
         guard let currentDate = calendar.date(from: dateCompontents),
-              let newDate = calendar.date(byAdding: .month, value: offset, to: currentDate) else {
+              let currentMonthInterval = calendar.dateInterval(of: .month, for: currentDate) else {
             return false
         }
-        
+
+        let alignedCurrentDate = currentMonthInterval.start
+
+        guard let newDate = calendar.date(byAdding: .month, value: offset, to: alignedCurrentDate),
+              let newMonthInterval = calendar.dateInterval(of: .month, for: newDate) else {
+            return false
+        }
+
         let todayComponents = calendar.dateComponents([.year, .month], from: Date())
-        
+        let newStart = newMonthInterval.start
+        let newComponents = calendar.dateComponents(in: TimeZone.current, from: newStart)
+
         // Don't allow months beyond today's month
         if offset > 0 {
-            // Check if new date would be in the future
-            let newComponents = calendar.dateComponents([.year, .month], from: newDate)
-            if (newComponents.year! > todayComponents.year!) ||
-                (newComponents.year == todayComponents.year && newComponents.month! > todayComponents.month!) {
-                return false// return nil if it goes beyond today
+            if let newYear = newComponents.year,
+               let newMonth = newComponents.month,
+               let todayYear = todayComponents.year,
+               let todayMonth = todayComponents.month,
+               (newYear > todayYear || (newYear == todayYear && newMonth > todayMonth)) {
+                return false
             }
         }
-        
-        // Valid month — update
-        dateCompontents = calendar.dateComponents(in: TimeZone.current, from: newDate)
 
-//        dateCompontents = calendar.dateComponents([.year, .month, .weekOfYear, .yearForWeekOfYear], from: newDate)
+        // Valid month — update
+        dateCompontents = newComponents
         return true
     }
+
     
     // MARK: - Week-related methods
     
@@ -210,34 +220,36 @@ class SummariesViewModel: ObservableObject {
     func decrementWeek() -> Bool {
         return updateWeek(by: -1)
     }
-    private func updateWeek(by offset: Int) -> Bool{
-        let initialDateComponents = dateCompontents
-        guard let currentDate = calendar.date(from: dateCompontents), let newDate = calendar.date(byAdding: .weekOfYear, value: offset, to: currentDate)
-           else {
-               return false
-           }
-        
-        let todayComponents = calendar.dateComponents([.weekOfYear, .yearForWeekOfYear], from: Date())
-        let newComponents = calendar.dateComponents(in: TimeZone.current, from: newDate)
+    private func updateWeek(by offset: Int) -> Bool {
+        guard let selectedWeek = selectedWeek else { return false }
 
-        // Don't allow months beyond today's month
+        let rawDate = (offset < 0) ? selectedWeek.start : selectedWeek.end
+
+        guard let currentWeekInterval = calendar.dateInterval(of: .weekOfYear, for: rawDate),
+              let newDate = calendar.date(byAdding: .weekOfYear, value: offset, to: currentWeekInterval.start),
+              let newWeekInterval = calendar.dateInterval(of: .weekOfYear, for: newDate) else {
+            return false
+        }
+
+        let newStart = newWeekInterval.start
+        let newComponents = calendar.dateComponents(in: TimeZone.current, from: newStart)
+        let todayComponents = calendar.dateComponents([.weekOfYear, .yearForWeekOfYear], from: Date())
+
         if offset > 0 {
-            // Check if new date would be in the future
-            if (newComponents.yearForWeekOfYear! > todayComponents.yearForWeekOfYear!) ||
-                (newComponents.yearForWeekOfYear == todayComponents.yearForWeekOfYear && newComponents.weekOfYear! > todayComponents.weekOfYear!) {
-                return false// return if it goes beyond today
+            if let newYear = newComponents.yearForWeekOfYear,
+               let newWeek = newComponents.weekOfYear,
+               let todayYear = todayComponents.yearForWeekOfYear,
+               let todayWeek = todayComponents.weekOfYear,
+               (newYear > todayYear || (newYear == todayYear && newWeek > todayWeek)) {
+                return false
             }
         }
-        
-        // Valid week — update dateCompontents
-        dateCompontents = newComponents
-        
-        //Valid week - update selected week variable
-        if let weekInterval = calendar.dateInterval(of: .weekOfYear, for: newDate) {
-            self.setSelectedWeek(start: weekInterval.start, end: weekInterval.end.addingTimeInterval(-1))  // end is exclusive, so subtract 1 second
-        }
+
+        self.dateCompontents = newComponents
+        self.setSelectedWeek(start: newWeekInterval.start, end: newWeekInterval.end.addingTimeInterval(-1))
         return true
     }
+
     func daysInWeek(start: Date, end: Date) -> [CustomDateModel] {
         var dates: [CustomDateModel] = []
         var currentDate = start
@@ -261,7 +273,7 @@ class SummariesViewModel: ObservableObject {
         
     func calculateWeeklyBoundaries() -> [Week] {
         var placeHolder : DateComponents = dateCompontents
-
+        placeHolder.day = 1 //start of that month
         guard let startOfMonth = calendar.date(from: placeHolder),
               let range = calendar.range(of: .day, in: .month, for: startOfMonth) else {
             return []
@@ -301,7 +313,8 @@ class SummariesViewModel: ObservableObject {
     
     func resetDateComponents(){
         dateCompontents = calendar.dateComponents(in: TimeZone.current, from: Date())
+        Task {
+            await getWeeklyBoundaries()
+        }
     }
-    
-    
 }

@@ -62,7 +62,7 @@ class SummariesDataService {
                     .getDocuments()
                 
                 let events = eventSnapshot.documents.compactMap { doc in
-                    try? doc.data(as: Event.self)
+                    try? doc.data(as: EventReport.self)
                 }
                 
                 report.eventReports = events // Attach events to the report
@@ -79,10 +79,6 @@ class SummariesDataService {
             print("❌ Error fetching reports: \(error.localizedDescription)")
         }
     }
-    
-    
-    
-    
     
 //
 //    func getReportsinDateRange(fromDate: Date, toDate: Date, completion: @escaping ([Report]) -> Void) {

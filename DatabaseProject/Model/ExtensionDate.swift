@@ -39,6 +39,12 @@ extension Date {
     static var currentTimeStamp: Int64{
         return Int64(Date().timeIntervalSince1970 * 1000)
     }
+    func datetoFormalDatewithDayString() -> String {
+        let inputDateFormatter = DateFormatter()
+        inputDateFormatter.dateFormat = "EEEE, MMMM d"
+        inputDateFormatter.locale = Locale(identifier: "en_GB")
+        return inputDateFormatter.string(from: self)
+    }
 }
 func stringtoDate(dateString: String) -> Date? {
     let dateFormatter = DateFormatter()
@@ -66,6 +72,8 @@ func datetoFormalDateString(date: Date) -> String {
     inputDateFormatter.locale = Locale(identifier: "en_GB")
     return inputDateFormatter.string(from: date)
 }
+
+
 
 func prepareDatefromDate(date:Date) -> Date? {
 

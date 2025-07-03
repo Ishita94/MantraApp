@@ -18,6 +18,7 @@ struct VisualizationsPage: View {
     
     private func autoSelectSymptoms () {
         showSymptoms = summariesViewModel.dictionaryofSymptoms.elements.map (\.key)
+        showEvents = summariesViewModel.dictionaryofEvents.elements.map (\.key)
     }
     
     var body: some View {
@@ -74,7 +75,7 @@ struct VisualizationsPage: View {
                 //TODO: Fix
                 if showEvents.count>0
                 {
-                    EventChart(selectedWeekDays: summariesViewModel.selectedWeekDays, dictionaryofEvents:  summariesViewModel.dictionaryofEvents)
+                    EventChart(selectedWeekDays: summariesViewModel.selectedWeekDays, dictionaryofEvents:  summariesViewModel.dictionaryofEvents.filter{showEvents.contains($0.key)})
                 }
                 
 //                Spacer()

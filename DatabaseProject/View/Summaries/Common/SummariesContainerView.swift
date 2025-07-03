@@ -40,9 +40,6 @@ struct SummariesContainerView: View {
                 summariesViewModel.getReportsinDateRange(fromDate: week.start, toDate: week.end)
             }
         }
-        .onChange(of: summariesViewModel.selectedWeek) { newValue in
-            print("selectedWeek changed to: \(String(describing: newValue))")
-        }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         

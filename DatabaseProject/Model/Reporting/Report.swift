@@ -34,7 +34,7 @@ struct Report: Identifiable, Hashable, Codable {
     var userId: String
     
     var symptomReports: [SymptomReport] = []
-    var eventReports: [Event] = []
+    var eventReports: [EventReport] = []
 
     init(from report: ReportforQuery) {
             self.id = report.id
@@ -72,7 +72,7 @@ struct Report: Identifiable, Hashable, Codable {
              lastModifiedDateTime: Date = Date(),
              userId: String = "",
              symptomReports: [SymptomReport] = [],
-             eventReports: [Event] = []) {
+            eventReports: [EventReport] = []) {
                 self.id = id
                 self.dayNameofWeek = dayNameofWeek
                 self.monthNameofWeek = monthNameofWeek

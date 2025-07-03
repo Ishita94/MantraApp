@@ -32,11 +32,14 @@ struct SummariesDashboardView: View {
                 }
             }
             .onChange(of: selectedTab) { newValue in
-                if(newValue == .summaries){
-                    summariesViewModel.resetDateComponents()
-                    summariesViewModel.resetSelectedWeek()
-                }
+                summariesViewModel.resetDateComponents()
+                summariesViewModel.resetSelectedWeek()
             }
+//            .onAppear(){
+//            summariesViewModel.resetDateComponents()
+//            summariesViewModel.resetSelectedWeek()
+//            
+//        }
             .padding()
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
             

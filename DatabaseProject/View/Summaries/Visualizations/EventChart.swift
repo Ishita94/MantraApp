@@ -11,25 +11,32 @@ import OrderedCollections
 struct EventChart: View {
     //    @EnvironmentObject var summariesViewModel: SummariesViewModel
     var selectedWeekDays: [CustomDateModel]
-    var dictionaryofEvents: OrderedDictionary<String, [Event]>
+    var dictionaryofEvents: OrderedDictionary<String, [EventReport]>
     var body: some View {
         ScrollView([.horizontal, .vertical]) {
-            HStack(alignment: .top, spacing: 8) {
-                ForEach(0..<7) { index in
-                    VStack(spacing: 12) {
-                        ForEach(0..<3) { _ in
-                            Rectangle()
-                                .fill(Color.blue)
-                                .frame(width: 60, height: 40)
-                                .cornerRadius(6)
-                        }
-                    }
-                    .frame(width: 70)
+            ForEach(Array(dictionaryofEvents), id: \.key) { item in
+                
+                VStack(spacing: 8) {
+                    Text(item.key)
                 }
+                //                ForEach(0..<7) { index in
+                //                    VStack(spacing: 12) {
+                //                        ForEach(0..<3) { _ in
+                //                            Rectangle()
+                //                                .fill(Color.blue)
+                //                                .frame(width: 60, height: 40)
+                //                                .cornerRadius(6)
+                //                        }
+                //                    }
+                //                    .frame(width: 70)
+                //                }
+                //            }
             }
             .padding()
+            
+            .frame(height: 300)
+            
         }
-        .frame(height: 300)
     }
 }
 

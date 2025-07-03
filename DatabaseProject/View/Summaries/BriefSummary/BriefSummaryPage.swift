@@ -43,7 +43,7 @@ struct BriefSummaryPage: View {
                     }
                     else
                     {
-                        SymptomSummaryRow(symptomName: "You have not logged any symptom in this period.", symptomReports: [])
+                        SymptomSummaryRow(symptomName: "You have not logged any symptoms in this period.", symptomReports: [])
                     }
                 }
                 .padding(.bottom, 20)
@@ -63,12 +63,12 @@ struct BriefSummaryPage: View {
                     if(summariesViewModel.dictionaryofEvents.count>0)
                     {
                         ForEach(Array(summariesViewModel.dictionaryofEvents), id: \.key) { item in
-                            EventSummaryRow(events: [])
+                            EventSummaryRow(title: item.key, events: item.value) //per each event
                         }
                     }
                     else
                     {
-                        EventSummaryRow(events: [])
+                        EventSummaryRow(title: "You have not logged any events in this period.", events: [])
                     }
                 }
             }

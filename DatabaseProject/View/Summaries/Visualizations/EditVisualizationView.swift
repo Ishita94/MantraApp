@@ -87,7 +87,14 @@ struct EditVisualizationView: View {
                         VStack{
                             //TODO: Add code
                             if(localShowEvents.count>0){
-                                
+                                ForEach(localShowEvents.indices, id: \.self) { index in
+                                    Button(action: {
+                                        localShowEvents[index].isSelected.toggle()
+                                    }) {
+                                        SelectableButton(title: localShowEvents[index].name, toggleState: $localShowEvents[index].isSelected)
+                                    }
+                                    .buttonStyle(.plain)
+                                }
                             }
                             else{
                                 DisabledStateButtonwithTitle(title: "No events were logged in this period.")
@@ -103,6 +110,9 @@ struct EditVisualizationView: View {
                 
                 Button(action: {
                     showSymptoms = localShowSymptoms
+                        .filter { $0.isSelected }
+                        .map { $0.name } // Send back selected names
+                    showEvents = localShowEvents
                         .filter { $0.isSelected }
                         .map { $0.name } // Send back selected names
                     dismiss()
