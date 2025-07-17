@@ -70,7 +70,7 @@ struct BackandNextButtonPanelforDescription: View {
             }
             .navigationDestination(isPresented: $readyToNavigateBack) {
                  if(generalViewModel.currentState==2){
-                    AddorEditEventsLandingPage(dateString: dateString, loggedIn: $loggedIn)
+                     AddorEditEventsLandingPage(dateString: dateString, loggedIn: $loggedIn)
                     .environmentObject(generalViewModel)
                 }
             }

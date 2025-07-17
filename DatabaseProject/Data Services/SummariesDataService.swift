@@ -40,7 +40,7 @@ class SummariesDataService {
             for document in reportSnapshot.documents {
                 let reportQuery = try document.data(as: ReportforQuery.self) // Convert Firestore document to Report
                 
-                // 🔹 Step 2: Fetch the symptomReport subcollection for each report
+                // Fetch the symptomReport subcollection for each report
                 let symptomSnapshot = try await db.collection("remainingReports")
                     .document(document.documentID)
                     .collection("symptomReport")
@@ -56,6 +56,8 @@ class SummariesDataService {
                 report.monthNameofWeek = report.creationDateTime.monthandDate()
                 report.dateString = report.creationDateTime.datetoString() ?? ""
                 
+                // Fetch the eventReport subcollection for each report
+
                 let eventSnapshot = try await db.collection("remainingReports")
                     .document(document.documentID)
                     .collection("eventReport")

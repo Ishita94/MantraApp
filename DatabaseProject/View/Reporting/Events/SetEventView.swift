@@ -89,7 +89,7 @@ struct SetEventView: View {
                     Divider()
                     
                     Button(action: {
-                        eventViewModel.saveEvent(event: Event(id: item.id, title: title, category: selection, creationDateTime: Date.now, lastModifiedDateTime: Date.now, userId: AuthViewModel.getLoggedInUserId(), eventId: item.eventId, tracking: false))
+                        eventViewModel.saveEvent(event: Event(id: item.id, title: title, category: selection, creationDateTime: item.creationDateTime, lastModifiedDateTime: Date.now, userId: AuthViewModel.getLoggedInUserId(), eventId: item.eventId, tracking: false))
                         
                         readyToNavigate = true
                     }) {
@@ -130,11 +130,11 @@ struct SetEventView: View {
             }
             .navigationDestination(isPresented: $readyToNavigate) {
                 if let id = item.id{//edit
-                        AddorEditEventsLandingPage(dateString: dateString, loggedIn: $loggedIn)
+                    AddorEditEventsLandingPage(dateString: dateString, loggedIn: $loggedIn)
                 }
                 else
                 {
-                    SuggestedEventsView(isSheetVisible: $isSheetVisible, loggedIn: $loggedIn, dateString: dateString)
+                    SuggestedEventsView(isSheetVisible: $isSheetVisible, loggedIn: $loggedIn, dateString: dateString, creationDateTime: item.creationDateTime)
                 }
             }
             .presentationDetents([.fraction(0.6), .large])

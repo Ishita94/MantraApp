@@ -50,7 +50,7 @@ struct ReportListRow: View {
                                 .font(.navLargeTitle)
                         }
 //                        Spacer()
-                        VStack (alignment: .leading, spacing: 4){
+                        VStack (alignment: .center, spacing: 4){
                             if item.emojiStateofDay.isEmpty
                             {
                                 Text("Incomplete\nReport")

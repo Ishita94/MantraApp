@@ -17,4 +17,8 @@ struct EventReport: Identifiable, Hashable, Codable {
     var eventId: String
     var userId: String
 //    var reportCompletionStatus:Bool
+    
+//    static func == (lhs: EventReport, rhs: EventReport) -> Bool {
+//            return lhs.title == rhs.title
+//        }
 }
