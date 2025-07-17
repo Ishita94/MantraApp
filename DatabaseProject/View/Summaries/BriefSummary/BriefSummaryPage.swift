@@ -29,12 +29,14 @@ struct BriefSummaryPage: View {
                 .padding(.top, 4)
             }
             Divider()
-            
-            Text("Symptoms")
-                .font(.sectionTitleinSummariesPage)
-                .foregroundColor(Color(.black))
+           
             ScrollView{
-                VStack (alignment: .leading, spacing: 16){
+                VStack (alignment: .leading, spacing: 12){
+
+                Text("Symptoms")
+                    .font(.sectionTitleinSummariesPage)
+                    .foregroundColor(Color(.black))
+                
                     if(summariesViewModel.dictionaryofSymptoms.count>0)
                     {
                         ForEach(Array(summariesViewModel.dictionaryofSymptoms), id: \.key) { item in
@@ -46,10 +48,6 @@ struct BriefSummaryPage: View {
                         SymptomSummaryRow(symptomName: "You have not logged any symptoms in this period.", symptomReports: [])
                     }
                 }
-                .padding(.bottom, 20)
-            }
-            .frame(maxWidth: .infinity, minHeight: summariesViewModel.dictionaryofSymptoms.isEmpty ? nil : 219, alignment: .leading)
-            .scrollContentBackground(.hidden)
                 
             Spacer()
             
@@ -57,8 +55,6 @@ struct BriefSummaryPage: View {
                 .font(.sectionTitleinSummariesPage)
                 .foregroundColor(Color(.black))
             
-            ScrollView{
-                VStack (alignment: .leading, spacing: 16){
                     //TODO: Fix
                     if(summariesViewModel.dictionaryofEvents.count>0)
                     {
@@ -70,10 +66,8 @@ struct BriefSummaryPage: View {
                     {
                         EventSummaryRow(title: "You have not logged any events in this period.", events: [])
                     }
-                }
             }
-//            .padding(.bottom, 12)
-            .frame(maxWidth: .infinity, maxHeight: 219, alignment: .leading)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
             .scrollContentBackground(.hidden)
         }
     }

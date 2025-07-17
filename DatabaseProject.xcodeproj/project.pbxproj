@@ -83,6 +83,8 @@
 		2070537C2AA5C90F00E518B7 /* DatabaseProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2070537B2AA5C90F00E518B7 /* DatabaseProjectApp.swift */; };
 		2070537E2AA5C90F00E518B7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2070537D2AA5C90F00E518B7 /* ContentView.swift */; };
 		207053842AA5C91100E518B7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 207053832AA5C91100E518B7 /* Preview Assets.xcassets */; };
+		2071629B2E1DC68400F135DC /* EventChartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2071629A2E1DC67900F135DC /* EventChartModel.swift */; };
+		2071629D2E1DD07500F135DC /* EventChartBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2071629C2E1DD06D00F135DC /* EventChartBuilder.swift */; };
 		2074793C2AEE311200551441 /* SymptomReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2074793B2AEE311100551441 /* SymptomReport.swift */; };
 		2074793E2AEE42B000551441 /* TitleBarforReportingTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2074793D2AEE42B000551441 /* TitleBarforReportingTab.swift */; };
 		207479442AEFD85500551441 /* AddorEditEventsLandingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207479432AEFD85500551441 /* AddorEditEventsLandingPage.swift */; };
@@ -260,6 +262,8 @@
 		2070537D2AA5C90F00E518B7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		207053812AA5C91100E518B7 /* DatabaseProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DatabaseProject.entitlements; sourceTree = "<group>"; };
 		207053832AA5C91100E518B7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2071629A2E1DC67900F135DC /* EventChartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventChartModel.swift; sourceTree = "<group>"; };
+		2071629C2E1DD06D00F135DC /* EventChartBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventChartBuilder.swift; sourceTree = "<group>"; };
 		2074793B2AEE311100551441 /* SymptomReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomReport.swift; sourceTree = "<group>"; };
 		2074793D2AEE42B000551441 /* TitleBarforReportingTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBarforReportingTab.swift; sourceTree = "<group>"; };
 		207479432AEFD85500551441 /* AddorEditEventsLandingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddorEditEventsLandingPage.swift; sourceTree = "<group>"; };
@@ -625,6 +629,7 @@
 		20CE1C3F2DB8E82D00E35F56 /* Visualizations */ = {
 			isa = PBXGroup;
 			children = (
+				2071629C2E1DD06D00F135DC /* EventChartBuilder.swift */,
 				201B11792DD4C80500415530 /* ShowEventArrayItem.swift */,
 				201B11772DD4C7E900415530 /* ShowSymptomArrayItem.swift */,
 				2007B2AD2DC6119C006EF756 /* VisualizationsPage.swift */,
@@ -653,6 +658,7 @@
 		20CE1C4F2DC0DAE500E35F56 /* Summaries */ = {
 			isa = PBXGroup;
 			children = (
+				2071629A2E1DC67900F135DC /* EventChartModel.swift */,
 				201B11492DC7661E00415530 /* SummaryTypeTab.swift */,
 				20CE1C502DC0DAFE00E35F56 /* Week.swift */,
 			);
@@ -1018,6 +1024,7 @@
 				20F674F92B3CEBB900862651 /* AddorEditEventButtonPanel.swift in Sources */,
 				20EE11162D97710B00265502 /* EditReportView.swift in Sources */,
 				209F53FF2AC96E4B00421857 /* SetSymptomContentPage.swift in Sources */,
+				2071629D2E1DD07500F135DC /* EventChartBuilder.swift in Sources */,
 				205783BD2B601F11005C51B4 /* RemainingReport.swift in Sources */,
 				209F53FB2AC96B3300421857 /* GeneralEnumerations.swift in Sources */,
 				201B11742DD3F1FE00415530 /* SymptomBar.swift in Sources */,
@@ -1053,6 +1060,7 @@
 				20C8FCB32AF714620010F2AC /* ExtensionDate.swift in Sources */,
 				206B8AA22AE637C500FD3BCD /* AuthViewModel.swift in Sources */,
 				205783B02B601A31005C51B4 /* DescriptionLandingPage.swift in Sources */,
+				2071629B2E1DC68400F135DC /* EventChartModel.swift in Sources */,
 				20C8FCAF2AF624FE0010F2AC /* SymptomComparisonState.swift in Sources */,
 				205783BA2B601B64005C51B4 /* ReportingViewModel.swift in Sources */,
 				205783D42B6A2462005C51B4 /* BackandNextButtonPanelforEmoji.swift in Sources */,

@@ -108,7 +108,6 @@ class SymptomViewModel: ObservableObject {
                     self.dictionaryofSuggestedReports = symptomReports
                 }
         }
-            
     }
     
     func saveNewReport(){

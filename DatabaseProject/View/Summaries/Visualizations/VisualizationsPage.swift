@@ -22,7 +22,7 @@ struct VisualizationsPage: View {
     }
     
     var body: some View {
-        VStack (alignment:.leading){
+        VStack (alignment:.leading, spacing: 0){
             KeyBar()
             
             if let week = summariesViewModel.selectedWeek{
@@ -52,7 +52,7 @@ struct VisualizationsPage: View {
                             .foregroundColor(Color(.disabledBackground))
                     }
                 }
-                .padding(.top, 6)
+                .padding(.vertical, 20)
             }
             Divider()
             
@@ -72,25 +72,22 @@ struct VisualizationsPage: View {
                 }
                 
                 //Event Chart
-                //TODO: Fix
                 if showEvents.count>0
                 {
-                    EventChart(selectedWeekDays: summariesViewModel.selectedWeekDays, dictionaryofEvents:  summariesViewModel.dictionaryofEvents.filter{showEvents.contains($0.key)})
+                    EventChart(selectedWeekDays: summariesViewModel.selectedWeekDays, showEvents: showEvents)
                 }
                 
-//                Spacer()
             }
             .frame(maxWidth: .infinity)
             .scrollContentBackground(.hidden)
             
             Divider()
-                .padding(.bottom, 4)
             
             WeekDayBar()
             
             
             Divider()
-//                .padding(.bottom, 4)
+                .padding(.bottom, 20)
             
             Button(action: {
                 isSheetVisible = true

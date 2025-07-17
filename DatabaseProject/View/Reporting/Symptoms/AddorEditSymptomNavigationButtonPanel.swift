@@ -15,6 +15,7 @@ struct AddorEditSymptomNavigationButtonPanel: View {
     @State var readyToNavigateBack: Bool = false
     @State var dateString: String
     @Binding var descriptionText: String
+    @State var creationDateTime: Date
 
     var body: some View {
         HStack{
@@ -85,7 +86,7 @@ struct AddorEditSymptomNavigationButtonPanel: View {
     let eventsViewModel = EventsViewModel(generalViewModel: generalViewModel)  // Injected
     let reportingViewModel = ReportingViewModel(generalViewModel: generalViewModel)  // Injected
     
-    AddorEditSymptomNavigationButtonPanel(loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!, descriptionText: Binding.constant(""))
+    AddorEditSymptomNavigationButtonPanel(loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!, descriptionText: Binding.constant(""), creationDateTime: Date.now)
         .environmentObject(generalViewModel)
         .environmentObject(symptomViewModel)
         .environmentObject(eventsViewModel)

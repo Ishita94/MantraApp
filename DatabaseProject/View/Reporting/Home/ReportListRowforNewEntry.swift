@@ -86,7 +86,7 @@ struct ReportListRowforNewEntry: View {
             .frame(maxWidth: .infinity, maxHeight: 60)
         }
         .navigationDestination(isPresented: $readyToNavigate) {
-            AddorEditSymptomsLandingPage(loggedIn: $loggedIn, date: Date.now, dateString: Date.now.datetoString()!, createNewReport: true)
+            AddorEditSymptomsLandingPage(loggedIn: $loggedIn, date: Date.now, dateString: Date.now.datetoString()!)
         }
         }
 }

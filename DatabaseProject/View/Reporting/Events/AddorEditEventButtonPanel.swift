@@ -11,6 +11,7 @@ struct AddorEditEventButtonPanel: View {
     @State var isSheetVisible: Bool = false
     @Binding var loggedIn: Bool
     @State var dateString: String
+    @State var creationDateTime: Date
 
 //    @Binding var path: NavigationPath
 
@@ -39,12 +40,12 @@ struct AddorEditEventButtonPanel: View {
             .cornerRadius(10)
         }
         .sheet(isPresented: $isSheetVisible){
-            SuggestedEventsView(isSheetVisible: $isSheetVisible, loggedIn: $loggedIn, dateString: dateString) /*.frame(maxWidth: .infinity, maxHeight: 680)*/
+            SuggestedEventsView(isSheetVisible: $isSheetVisible, loggedIn: $loggedIn, dateString: dateString, creationDateTime: creationDateTime) /*.frame(maxWidth: .infinity, maxHeight: 680)*/
         }
         
     }
 }
 
 #Preview {
-    AddorEditEventButtonPanel(loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!)
+    AddorEditEventButtonPanel(loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!, creationDateTime: Date.now)
 }

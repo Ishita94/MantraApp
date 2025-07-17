@@ -24,15 +24,19 @@ struct EventSummaryRow: View {
                 event.creationDateTime.datetoFormalDatewithDayString()
             }.joined(separator: " and ")
 
-            Text(events.isEmpty ? title :
-                "On \(dateString) you logged an event: \(title), which may have affected how your symptoms trended.")
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 16)
-                    .font(.regularText)
-                    .foregroundColor(Color(.offBlackText))
-                    .multilineTextAlignment(.leading)
-            
-           
+            if(events.isEmpty)
+            {
+                DisabledStateButtonwithTitle(title: title)
+            }
+            else{
+                Text(events.isEmpty ? title :
+                        "On \(dateString) you logged an event: \(title), which may have affected how your symptoms trended.")
+                .padding(.horizontal, 20)
+                .padding(.vertical, 16)
+                .font(.regularText)
+                .foregroundColor(Color(.offBlackText))
+                .multilineTextAlignment(.leading)
+            }
         }
     }
 }

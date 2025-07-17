@@ -18,6 +18,7 @@ class SummariesViewModel: ObservableObject {
     @Published var reportListforSummary = [Report]()
     @Published var dictionaryofSymptoms: OrderedDictionary<String , [SymptomReport]> = [:]
     @Published var dictionaryofEvents: OrderedDictionary<String , [EventReport]> = [:]
+    @Published var dictionaryofEventsbyDate: OrderedDictionary<String , [EventReport]> = [:]
     @Published var dictionaryofEmoji: OrderedDictionary<String , Emoji> = [:]
     @Published var selectedWeek: Week? = nil //default value
     
@@ -88,11 +89,17 @@ class SummariesViewModel: ObservableObject {
         dictionaryofEmoji = sortedEmojis
     }
     
-    func getDictionaryofEventsbyDate() -> OrderedDictionary<String, [EventReport]> {
-        let events = reportListforSummary
+    func setDictionaryofEventsbyDate(showEvents: [String]) -> () {
+        let events = self.reportListforSummary
             .flatMap { $0.eventReports }
             .compactMap { event -> EventReport? in
-                event.creationDateTime.datetoString() != nil ? event : nil
+                if event.creationDateTime.datetoString() != nil, showEvents.contains(event.title)
+                {
+                    return event
+                }
+                else {
+                    return nil
+                }
             }
 
         let groupedEvents = OrderedDictionary(
@@ -100,7 +107,7 @@ class SummariesViewModel: ObservableObject {
             by: { $0.creationDateTime.datetoString()! } // safe now because nils are filtered
         ).mapValues { $0.sorted { $0.creationDateTime < $1.creationDateTime } }
 
-        return groupedEvents
+        dictionaryofEventsbyDate = groupedEvents ?? [:]
     }
 
 
