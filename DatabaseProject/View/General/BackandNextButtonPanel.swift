@@ -15,7 +15,6 @@ struct BackandNextButtonPanel: View {
     @State var readyToNavigateBack: Bool = false
     @State var dateString: String
 
-
     var body: some View {
         HStack{
             Button(action: {
@@ -60,6 +59,7 @@ struct BackandNextButtonPanel: View {
         .navigationDestination(isPresented: $readyToNavigateNext) {
             if(generalViewModel.currentState==2){
                 AddorEditEventsLandingPage(dateString: dateString, loggedIn: $loggedIn).environmentObject(generalViewModel)
+                //default value current date
             }
             else if(generalViewModel.currentState==3){
                 DescriptionLandingPage(dateString: dateString, loggedIn: $loggedIn)
@@ -69,7 +69,7 @@ struct BackandNextButtonPanel: View {
         .navigationDestination(isPresented: $readyToNavigateBack) {
             if(generalViewModel.currentState==1){
                 AddorEditSymptomsLandingPage(loggedIn: $loggedIn, dateString: dateString,
-                    showAfterCreatingNewSymptomReport: false)
+                                             showAfterCreatingNewSymptomReport: false)
                 .environmentObject(generalViewModel)
             }
             else if(generalViewModel.currentState==2){

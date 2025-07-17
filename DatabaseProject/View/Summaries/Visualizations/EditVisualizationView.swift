@@ -85,7 +85,6 @@ struct EditVisualizationView: View {
                             .font(.actionCompletionTitle)
                             .foregroundColor(.black)
                         VStack{
-                            //TODO: Add code
                             if(localShowEvents.count>0){
                                 ForEach(localShowEvents.indices, id: \.self) { index in
                                     Button(action: {

@@ -19,6 +19,7 @@ struct SuggestedEventRow: View {
     @State var readyToNavigate: Bool = false
     @EnvironmentObject var generalViewModel : GeneralViewModel
     @Binding var selectedEvents: [EventReport]
+    @State var creationDateTime: Date
 
     var body: some View {
             ZStack{
@@ -64,7 +65,7 @@ struct SuggestedEventRow: View {
                         if(readyToNavigate){
                             if(selectedEvents.contains(where: { $0.eventId==item.id}) == false)
                             {
-                                selectedEvents.append(EventReport(title: item.title, creationDateTime: Date.now,  lastModifiedDateTime: Date.now, eventId: item.id!, userId: AuthViewModel.getLoggedInUserId()))
+                                selectedEvents.append(EventReport(title: item.title, creationDateTime: creationDateTime,  lastModifiedDateTime: Date.now, eventId: item.id!, userId: AuthViewModel.getLoggedInUserId()))
                             }
                         }
                         else
@@ -100,5 +101,5 @@ struct SuggestedEventRow: View {
 
 #Preview {
     SuggestedEventRow(item: Event(title: "Went on a walk", category: "Physical Well-Being", creationDateTime: Date.now, lastModifiedDateTime: Date.now,  userId: "", tracking: false)
-                      , loggedIn: Binding.constant(true), selectedEvents: Binding.constant([])).environmentObject(GeneralViewModel())
+                      , loggedIn: Binding.constant(true), selectedEvents: Binding.constant([]), creationDateTime: Date.now).environmentObject(GeneralViewModel())
 }

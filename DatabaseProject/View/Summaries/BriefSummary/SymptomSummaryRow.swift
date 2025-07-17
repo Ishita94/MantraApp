@@ -12,19 +12,21 @@ struct SymptomSummaryRow: View {
     var symptomReports: [SymptomReport]
 
     var body: some View {
-        ZStack{
-            RoundedRectangle(cornerRadius: 16)
-                .foregroundColor(Color(.greyNonClickable)) // this is the actual fill
-
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(Color(.outlineGrey), lineWidth: 1)
-            
-            HStack (alignment: .center){
-                Text(symptomName)
-                    .font(.largeTitleinListinSummariesandMorePage)
-                    .foregroundColor(Color(.offBlackText))
+        if(symptomReports.count>0){
+            ZStack{
+                RoundedRectangle(cornerRadius: 16)
+                    .foregroundColor(Color(.greyNonClickable)) // this is the actual fill
                 
-                if(symptomReports.count>0){
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(Color(.outlineGrey), lineWidth: 1)
+                
+                HStack (alignment: .center){
+                    
+                    Text(symptomName)
+                        .font(.largeTitleinListinSummariesandMorePage)
+                        .foregroundColor(Color(.offBlackText))
+                    
+                    
                     Spacer()
                     
                     Text("Trended worse beginning of the week, then trended better ")

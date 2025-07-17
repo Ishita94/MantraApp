@@ -25,7 +25,7 @@ struct AddorEditEventsLandingPage: View {
             
             if (eventViewModel.suggestedEvents.count>0 || eventViewModel.reportedEvents.count>0)
             {
-                AddorEditEventButtonPanel(loggedIn: $loggedIn, dateString: dateString)
+                AddorEditEventButtonPanel(loggedIn: $loggedIn, dateString: dateString, creationDateTime: stringtoDate(dateString: dateString) ?? Date.now)
                 Divider()
                 ReportedEventsView(loggedIn: $loggedIn
                                      , dateString: dateString)
@@ -34,7 +34,7 @@ struct AddorEditEventsLandingPage: View {
             }
             else
             {
-                AddorEditEventsContentPage(loggedIn: $loggedIn, dateString: dateString)
+                AddorEditEventsContentPage(loggedIn: $loggedIn, dateString: dateString, creationDateTime: stringtoDate(dateString: dateString) ?? Date.now)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
 
             }

@@ -14,6 +14,7 @@ struct SuggestedEventsView: View {
     @State private var path = NavigationPath()
     @Binding var loggedIn: Bool
     @State var dateString: String
+    @State var creationDateTime: Date
     @EnvironmentObject var eventsViewModel : EventsViewModel
     @Environment(\.dismiss) var dismiss
     @State var selectedEvents: [EventReport] = []
@@ -67,7 +68,7 @@ struct SuggestedEventsView: View {
 
                     ScrollView{
                         ForEach(eventsViewModel.suggestedEvents, id: \.self) { item in
-                            SuggestedEventRow(item: item, loggedIn: $loggedIn, selectedEvents: $selectedEvents)
+                            SuggestedEventRow(item: item, loggedIn: $loggedIn, selectedEvents: $selectedEvents, creationDateTime: creationDateTime)
                         }
                     }
                     .frame(maxWidth: .infinity)
@@ -118,7 +119,7 @@ struct SuggestedEventsView: View {
             }
             .navigationDestination(isPresented: $readyToCreateNewEvent) {
                 //create new event
-                SetEventView(item: Event(title: "", category: "", creationDateTime: Date.now, lastModifiedDateTime: Date.now, userId: AuthViewModel.getLoggedInUserId(), tracking: false), title: "", loggedIn: $loggedIn, isSheetVisible: isSheetVisible, selection: "Physical Well-Being", dateString: dateString)
+                SetEventView(item: Event(title: "", category: "", creationDateTime: creationDateTime, lastModifiedDateTime: Date.now, userId: AuthViewModel.getLoggedInUserId(), tracking: false), title: "", loggedIn: $loggedIn, isSheetVisible: isSheetVisible, selection: "Physical Well-Being", dateString: dateString)
             }
         }
         .onAppear()
@@ -135,7 +136,7 @@ struct SuggestedEventsView: View {
     let eventsViewModel = EventsViewModel(generalViewModel: generalViewModel)  // Injected
     let reportingViewModel = ReportingViewModel(generalViewModel: generalViewModel)  // Injected
     
-    SuggestedEventsView(isSheetVisible:  Binding.constant(true), loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!)
+    SuggestedEventsView(isSheetVisible:  Binding.constant(true), loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!, creationDateTime: Date.now)
         .environmentObject(generalViewModel)
         .environmentObject(symptomViewModel)
         .environmentObject(eventsViewModel)

@@ -616,7 +616,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "CC54C8BC-5623-4174-A56A-B0D3859556A8"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DatabaseProject/View/Reporting/Symptoms/ChooseSymptomComparisonView.swift"
@@ -696,60 +696,16 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "6ED9DE00-DBAF-4792-A14E-6CD209BD3EE4"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DatabaseProject/ViewModel/SymptomViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "saveNewReport()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "6ED9DE00-DBAF-4792-A14E-6CD209BD3EE4 - 8ce508239fb23e7e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for closure #1 () async -&gt; () in closure #1 @Swift.MainActor () -&gt; () in DatabaseProject.SymptomViewModel.saveNewReport() -&gt; ()"
-                  moduleName = "DatabaseProject.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ishitahaque/Documents/Resources%20from%20Lenovo%20Laptop/UBC%20Nursing%20App%20Development/CodeWithChris%20Projects/DatabaseProject/DatabaseProject/ViewModel/SymptomViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "118"
-                  endingLineNumber = "118">
-               </Location>
-               <Location
-                  uuid = "6ED9DE00-DBAF-4792-A14E-6CD209BD3EE4 - 791a065f239c4a7f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(2) await resume partial function for closure #1 () async -&gt; () in closure #1 @Swift.MainActor () -&gt; () in DatabaseProject.SymptomViewModel.saveNewReport() -&gt; ()"
-                  moduleName = "DatabaseProject.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ishitahaque/Documents/Resources%20from%20Lenovo%20Laptop/UBC%20Nursing%20App%20Development/CodeWithChris%20Projects/DatabaseProject/DatabaseProject/ViewModel/SymptomViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "118"
-                  endingLineNumber = "118">
-               </Location>
-               <Location
-                  uuid = "6ED9DE00-DBAF-4792-A14E-6CD209BD3EE4 - 13122d61c8ef9a60"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for closure #1 () async -&gt; () in closure #1 @Swift.MainActor () -&gt; () in DatabaseProject.SymptomViewModel.saveNewReport() -&gt; ()"
-                  moduleName = "DatabaseProject.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ishitahaque/Documents/Resources%20from%20Lenovo%20Laptop/UBC%20Nursing%20App%20Development/CodeWithChris%20Projects/DatabaseProject/DatabaseProject/ViewModel/SymptomViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "118"
-                  endingLineNumber = "118">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1092,7 +1048,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "3B1E4162-43B9-4F09-9F4E-A4276F165ADD"
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DatabaseProject/ViewModel/EventsViewModel.swift"
@@ -1102,13 +1058,71 @@
             endingLineNumber = "67"
             landmarkName = "saveEvent(event:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3B1E4162-43B9-4F09-9F4E-A4276F165ADD - 368acd5d075468ed"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #1 () async -&gt; () in closure #1 @Swift.MainActor () -&gt; () in DatabaseProject.EventsViewModel.saveEvent(event: DatabaseProject.Event) -&gt; ()"
+                  moduleName = "DatabaseProject.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ishitahaque/Documents/Resources%20from%20Lenovo%20Laptop/UBC%20Nursing%20App%20Development/CodeWithChris%20Projects/DatabaseProject/DatabaseProject/ViewModel/EventsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "67"
+                  endingLineNumber = "67">
+               </Location>
+               <Location
+                  uuid = "3B1E4162-43B9-4F09-9F4E-A4276F165ADD - 300e158e86146dff"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) await resume partial function for closure #1 () async -&gt; () in closure #1 @Swift.MainActor () -&gt; () in DatabaseProject.EventsViewModel.saveEvent(event: DatabaseProject.Event) -&gt; ()"
+                  moduleName = "DatabaseProject.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ishitahaque/Documents/Resources%20from%20Lenovo%20Laptop/UBC%20Nursing%20App%20Development/CodeWithChris%20Projects/DatabaseProject/DatabaseProject/ViewModel/EventsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "67"
+                  endingLineNumber = "67">
+               </Location>
+               <Location
+                  uuid = "3B1E4162-43B9-4F09-9F4E-A4276F165ADD - a217a37bc302f088"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for closure #1 () async -&gt; () in closure #1 @Swift.MainActor () -&gt; () in DatabaseProject.EventsViewModel.saveEvent(event: DatabaseProject.Event) -&gt; ()"
+                  moduleName = "DatabaseProject.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ishitahaque/Documents/Resources%20from%20Lenovo%20Laptop/UBC%20Nursing%20App%20Development/CodeWithChris%20Projects/DatabaseProject/DatabaseProject/ViewModel/EventsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66">
+               </Location>
+               <Location
+                  uuid = "3B1E4162-43B9-4F09-9F4E-A4276F165ADD - a217a37bc302f0e9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for closure #1 () async -&gt; () in closure #1 @Swift.MainActor () -&gt; () in DatabaseProject.EventsViewModel.saveEvent(event: DatabaseProject.Event) -&gt; ()"
+                  moduleName = "DatabaseProject.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ishitahaque/Documents/Resources%20from%20Lenovo%20Laptop/UBC%20Nursing%20App%20Development/CodeWithChris%20Projects/DatabaseProject/DatabaseProject/ViewModel/EventsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "67"
+                  endingLineNumber = "67">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "32474C87-8D43-4C42-8F08-ADE5CD9402CF"
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DatabaseProject/ViewModel/EventsViewModel.swift"
@@ -1118,6 +1132,50 @@
             endingLineNumber = "71"
             landmarkName = "saveEvent(event:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "32474C87-8D43-4C42-8F08-ADE5CD9402CF - 368acd5d07546869"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #1 () async -&gt; () in closure #1 @Swift.MainActor () -&gt; () in DatabaseProject.EventsViewModel.saveEvent(event: DatabaseProject.Event) -&gt; ()"
+                  moduleName = "DatabaseProject.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ishitahaque/Documents/Resources%20from%20Lenovo%20Laptop/UBC%20Nursing%20App%20Development/CodeWithChris%20Projects/DatabaseProject/DatabaseProject/ViewModel/EventsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71">
+               </Location>
+               <Location
+                  uuid = "32474C87-8D43-4C42-8F08-ADE5CD9402CF - 64a13aaf224ea175"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for closure #1 () async -&gt; () in closure #1 @Swift.MainActor () -&gt; () in DatabaseProject.EventsViewModel.saveEvent(event: DatabaseProject.Event) -&gt; ()"
+                  moduleName = "DatabaseProject.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ishitahaque/Documents/Resources%20from%20Lenovo%20Laptop/UBC%20Nursing%20App%20Development/CodeWithChris%20Projects/DatabaseProject/DatabaseProject/ViewModel/EventsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71">
+               </Location>
+               <Location
+                  uuid = "32474C87-8D43-4C42-8F08-ADE5CD9402CF - 7c585448613d346f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 () async -&gt; () in closure #1 @Swift.MainActor () -&gt; () in DatabaseProject.EventsViewModel.saveEvent(event: DatabaseProject.Event) -&gt; ()"
+                  moduleName = "DatabaseProject.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ishitahaque/Documents/Resources%20from%20Lenovo%20Laptop/UBC%20Nursing%20App%20Development/CodeWithChris%20Projects/DatabaseProject/DatabaseProject/ViewModel/EventsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1178,8 +1236,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "283"
-            endingLineNumber = "283"
+            startingLineNumber = "290"
+            endingLineNumber = "290"
             landmarkName = "calculateWeeklyBoundaries()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1194,8 +1252,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "301"
-            endingLineNumber = "301"
+            startingLineNumber = "308"
+            endingLineNumber = "308"
             landmarkName = "calculateWeeklyBoundaries()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1210,8 +1268,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
             landmarkName = "decrementMonth()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1226,8 +1284,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
             landmarkName = "incrementMonth()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1242,8 +1300,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "277"
-            endingLineNumber = "277"
+            startingLineNumber = "284"
+            endingLineNumber = "284"
             landmarkName = "calculateWeeklyBoundaries()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1290,8 +1348,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "init(generalViewModel:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1306,8 +1364,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "init(generalViewModel:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1322,8 +1380,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "270"
-            endingLineNumber = "270"
+            startingLineNumber = "277"
+            endingLineNumber = "277"
             landmarkName = "getWeeklyBoundaries()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1338,8 +1396,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "268"
-            endingLineNumber = "268"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
             landmarkName = "getWeeklyBoundaries()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1354,8 +1412,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "315"
-            endingLineNumber = "315"
+            startingLineNumber = "322"
+            endingLineNumber = "322"
             landmarkName = "resetDateComponents()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1370,8 +1428,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "309"
-            endingLineNumber = "309"
+            startingLineNumber = "316"
+            endingLineNumber = "316"
             landmarkName = "calculateWeeklyBoundaries()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1386,8 +1444,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "SummariesViewModel"
             landmarkType = "3">
          </BreakpointContent>
@@ -1434,8 +1492,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "265"
-            endingLineNumber = "265"
+            startingLineNumber = "272"
+            endingLineNumber = "272"
             landmarkName = "daysInWeek(start:end:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1482,8 +1540,8 @@
             filePath = "DatabaseProject/Data Services/SummariesDataService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
             landmarkName = "getReportsinDateRange(fromDate:toDate:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1498,8 +1556,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "getReportsinDateRange(fromDate:toDate:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1514,8 +1572,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "prepareDictionaries(reportsofUser:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1530,8 +1588,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "prepareDictionaries(reportsofUser:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1562,8 +1620,8 @@
             filePath = "DatabaseProject/Data Services/SummariesDataService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "getReportsinDateRange(fromDate:toDate:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1594,8 +1652,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
             landmarkName = "selectedWeekDays"
             landmarkType = "24">
          </BreakpointContent>
@@ -1690,8 +1748,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
             landmarkName = "decrementWeek()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1706,8 +1764,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
             landmarkName = "formatStringfromWeekwithYear(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1738,8 +1796,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
             landmarkName = "updateMonth(by:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1754,8 +1812,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "191"
-            endingLineNumber = "191"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
             landmarkName = "updateMonth(by:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1770,8 +1828,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "249"
-            endingLineNumber = "249"
+            startingLineNumber = "256"
+            endingLineNumber = "256"
             landmarkName = "updateWeek(by:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1786,8 +1844,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
             landmarkName = "updateWeek(by:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1802,8 +1860,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
             landmarkName = "updateMonth(by:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1866,8 +1924,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
+            startingLineNumber = "231"
+            endingLineNumber = "231"
             landmarkName = "updateWeek(by:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1882,8 +1940,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "244"
-            endingLineNumber = "244"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
             landmarkName = "updateWeek(by:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1898,8 +1956,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "231"
-            endingLineNumber = "231"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
             landmarkName = "updateWeek(by:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1908,7 +1966,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "40268AF7-5BCE-48B9-9DF9-4624A98A0176"
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DatabaseProject/ViewModel/EventsViewModel.swift"
@@ -1918,13 +1976,57 @@
             endingLineNumber = "57"
             landmarkName = "saveEventReport(events:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "40268AF7-5BCE-48B9-9DF9-4624A98A0176 - 4f829f69e1b14229"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #1 () async -&gt; () in closure #1 @Swift.MainActor () -&gt; () in DatabaseProject.EventsViewModel.saveEventReport(events: Swift.Array&lt;DatabaseProject.EventReport&gt;) -&gt; ()"
+                  moduleName = "DatabaseProject.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ishitahaque/Documents/Resources%20from%20Lenovo%20Laptop/UBC%20Nursing%20App%20Development/CodeWithChris%20Projects/DatabaseProject/DatabaseProject/ViewModel/EventsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57">
+               </Location>
+               <Location
+                  uuid = "40268AF7-5BCE-48B9-9DF9-4624A98A0176 - bdda2987b1d5ca49"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for closure #1 () async -&gt; () in closure #1 @Swift.MainActor () -&gt; () in DatabaseProject.EventsViewModel.saveEventReport(events: Swift.Array&lt;DatabaseProject.EventReport&gt;) -&gt; ()"
+                  moduleName = "DatabaseProject.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ishitahaque/Documents/Resources%20from%20Lenovo%20Laptop/UBC%20Nursing%20App%20Development/CodeWithChris%20Projects/DatabaseProject/DatabaseProject/ViewModel/EventsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57">
+               </Location>
+               <Location
+                  uuid = "40268AF7-5BCE-48B9-9DF9-4624A98A0176 - 7a03fe1904760e2b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 () async -&gt; () in closure #1 @Swift.MainActor () -&gt; () in DatabaseProject.EventsViewModel.saveEventReport(events: Swift.Array&lt;DatabaseProject.EventReport&gt;) -&gt; ()"
+                  moduleName = "DatabaseProject.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ishitahaque/Documents/Resources%20from%20Lenovo%20Laptop/UBC%20Nursing%20App%20Development/CodeWithChris%20Projects/DatabaseProject/DatabaseProject/ViewModel/EventsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "92528916-4319-439E-81E6-98286F337A1C"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DatabaseProject/Data Services/EventDataService.swift"
@@ -1946,8 +2048,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "prepareDictionaries(reportsofUser:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1962,8 +2064,8 @@
             filePath = "DatabaseProject/Data Services/SummariesDataService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "getReportsinDateRange(fromDate:toDate:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1978,8 +2080,8 @@
             filePath = "DatabaseProject/Data Services/SummariesDataService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
             landmarkName = "getReportsinDateRange(fromDate:toDate:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1994,8 +2096,8 @@
             filePath = "DatabaseProject/Data Services/SummariesDataService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "getReportsinDateRange(fromDate:toDate:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2010,8 +2112,438 @@
             filePath = "DatabaseProject/View/Summaries/Visualizations/VisualizationsPage.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9EEBBFFE-B7C4-4B27-8790-21BB5181F6B5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DatabaseProject/View/Summaries/Visualizations/EventChart.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1"
+            endingLineNumber = "1"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D82801E4-8928-4AF4-845C-59BDE61A3C4D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DatabaseProject/View/Summaries/Visualizations/EventChart.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "eventRow(rowIndex:itemsinRow:yPosition:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "10DD86DB-32A0-447B-B1D0-AE71F6AAEBA0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DatabaseProject/View/Summaries/Visualizations/EventChart.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "eventsWithSimpleSpanning()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D45FD2CA-C709-428C-8A86-57A9635345E4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DatabaseProject/View/Summaries/Visualizations/EventChartBuilder.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "buildEventGrid(columnWidth:spacing:selectedWeekDays:eventDictionary:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8DFB011B-E004-45ED-B376-31D6C3059E52"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DatabaseProject/View/Summaries/Visualizations/EventChartBuilder.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "buildEventGrid(columnWidth:spacing:selectedWeekDays:eventDictionary:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6151B357-191F-40DF-BD4F-AE8BD21FDFBC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DatabaseProject/View/Summaries/Visualizations/EventChartBuilder.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "buildEventGrid(columnWidth:spacing:selectedWeekDays:eventDictionary:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "854A7D13-7BFE-4460-BBB2-ED7EC44F9DC7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "setDictionaryofEventsbyDate(showEvents:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2F94FB2D-ADA7-4EC0-9942-61FD8E3483C5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "setDictionaryofEventsbyDate(showEvents:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E7AB9D63-409B-4976-BF7B-10AFCAC2D878"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DatabaseProject/View/Summaries/Visualizations/EventChartBuilder.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "buildEventGrid(columnWidth:spacing:selectedWeekDays:eventDictionary:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F9AEABEF-90BA-421D-B09E-7B7178432B2B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DatabaseProject/View/Summaries/Visualizations/EventChartItem.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D2D50948-DE8F-4CE9-8916-40E43918814D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DatabaseProject/View/Summaries/Visualizations/EventChart.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "eventsWithSimpleSpanning()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "85E244B2-57D8-40A0-B0C9-CB15E339A8EC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DatabaseProject/View/Summaries/Visualizations/EventChart.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "eventCell(eventItem:rowIndex:yPosition:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EFF1CEBC-D9F2-4631-99A7-7349CBAB4E6C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DatabaseProject/View/Summaries/Visualizations/EventChart.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "eventsWithSimpleSpanning()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F7BE3E3A-0590-4705-9A10-DEDFBFBBA01E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DatabaseProject/View/Summaries/Visualizations/EventChart.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "eventsWithSimpleSpanning()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CFA94F7A-1428-4A84-84E1-2C55CDD481AA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DatabaseProject/View/Summaries/Visualizations/EventChart.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "eventsWithSimpleSpanning()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F2189F87-A803-45A8-BE29-217B56D95487"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DatabaseProject/View/Summaries/Visualizations/EventChart.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "eventsWithSimpleSpanning()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0A11FD0E-274A-448B-988C-75450C74306E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DatabaseProject/View/Summaries/Visualizations/EventChartBuilder.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "buildEventGrid(columnWidth:spacing:selectedWeekDays:eventDictionary:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "17F8D72B-8F64-4DCD-B087-3E7F7AC29357"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DatabaseProject/View/Summaries/Visualizations/EventChart.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "eventsWithSimpleSpanning()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "995FDD44-1656-46AE-A30C-E2AAE4814AAD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "setDictionaryofEventsbyDate(showEvents:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "76632D12-6AF0-44F2-8DD0-2C2184310784"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DatabaseProject/View/Summaries/Visualizations/EventChart.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B0D7A0BE-6536-444B-8C3E-05F0808570ED"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DatabaseProject/View/Reporting/Events/SetEventView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "69CFFE5C-1CEC-47AE-A4E8-CE19ED97EE65"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DatabaseProject/ViewModel/EventsViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "saveEvent(event:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "69CFFE5C-1CEC-47AE-A4E8-CE19ED97EE65 - 368acd5d0754688c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #1 () async -&gt; () in closure #1 @Swift.MainActor () -&gt; () in DatabaseProject.EventsViewModel.saveEvent(event: DatabaseProject.Event) -&gt; ()"
+                  moduleName = "DatabaseProject.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ishitahaque/Documents/Resources%20from%20Lenovo%20Laptop/UBC%20Nursing%20App%20Development/CodeWithChris%20Projects/DatabaseProject/DatabaseProject/ViewModel/EventsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66">
+               </Location>
+               <Location
+                  uuid = "69CFFE5C-1CEC-47AE-A4E8-CE19ED97EE65 - a217a37bc302f088"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for closure #1 () async -&gt; () in closure #1 @Swift.MainActor () -&gt; () in DatabaseProject.EventsViewModel.saveEvent(event: DatabaseProject.Event) -&gt; ()"
+                  moduleName = "DatabaseProject.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ishitahaque/Documents/Resources%20from%20Lenovo%20Laptop/UBC%20Nursing%20App%20Development/CodeWithChris%20Projects/DatabaseProject/DatabaseProject/ViewModel/EventsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "25F82D52-AD72-4C77-BA0B-D0A8B62ED40F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DatabaseProject/View/Reporting/Events/SetEventView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7E8021C8-A70C-4D13-8520-0B5F27A1DE6E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DatabaseProject/View/Reporting/Events/SuggestedEventsView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "284C37FC-9662-486B-82EA-3C02ECBAF599"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DatabaseProject/View/Reporting/Events/SetEventView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
