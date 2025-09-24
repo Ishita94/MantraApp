@@ -30,24 +30,18 @@ struct SymptomSummaryRow: View {
                     Spacer()
                     
                     Text("Trended worse beginning of the week, then trended better ")
-//                        .padding(.horizontal, 8)
-//                        .padding(.vertical, 4)
                         .background(Color(.secondary2))
                         .font(.smallTitle)
                         .foregroundColor(Color(.white))
                         .multilineTextAlignment(.leading)
                         .cornerRadius(6)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 4)
                         .frame(minHeight: 20)
                 }
             }
             .padding(.horizontal, 20)
             .padding(.vertical, 16)
-            
-            
-        }
-        else
-        {
-            DisabledStateButtonwithTitle(title: symptomName)
         }
     }
 }
