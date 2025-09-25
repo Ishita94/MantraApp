@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RemindersLandingPage: View {
+    @State var title: String = "Reminders"
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }

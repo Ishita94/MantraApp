@@ -90,6 +90,13 @@
 		207479442AEFD85500551441 /* AddorEditEventsLandingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207479432AEFD85500551441 /* AddorEditEventsLandingPage.swift */; };
 		207479462AEFD87100551441 /* AddorEditEventsContentPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207479452AEFD87100551441 /* AddorEditEventsContentPage.swift */; };
 		2074794D2AEFD95F00551441 /* EventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2074794C2AEFD95F00551441 /* EventsViewModel.swift */; };
+		208171792E83C5F300705315 /* TitleBarforMoreTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208171782E83C5E800705315 /* TitleBarforMoreTab.swift */; };
+		2081717C2E84512900705315 /* OptionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2081717B2E84512100705315 /* OptionRow.swift */; };
+		208171842E845F3100705315 /* QuestionsandNotesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208171832E845F3100705315 /* QuestionsandNotesList.swift */; };
+		208171862E845F4D00705315 /* QuestionsandNotesListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208171852E845F4D00705315 /* QuestionsandNotesListRow.swift */; };
+		208171882E845FFC00705315 /* RemindersLandingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208171872E845FFC00705315 /* RemindersLandingPage.swift */; };
+		2081718A2E84601E00705315 /* ReminderRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208171892E84601E00705315 /* ReminderRow.swift */; };
+		2081718C2E84603500705315 /* FAQsLandingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2081718B2E84602700705315 /* FAQsLandingPage.swift */; };
 		20952D382DDDAE6300BDEDF2 /* SelectableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20952D372DDDAE6300BDEDF2 /* SelectableButton.swift */; };
 		20952D3A2DDDBC5400BDEDF2 /* DisabledStateButtonwithTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20952D392DDDBC5400BDEDF2 /* DisabledStateButtonwithTitle.swift */; };
 		20952D3C2DDDC41D00BDEDF2 /* EventChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20952D3B2DDDC41D00BDEDF2 /* EventChart.swift */; };
@@ -269,6 +276,13 @@
 		207479432AEFD85500551441 /* AddorEditEventsLandingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddorEditEventsLandingPage.swift; sourceTree = "<group>"; };
 		207479452AEFD87100551441 /* AddorEditEventsContentPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddorEditEventsContentPage.swift; sourceTree = "<group>"; };
 		2074794C2AEFD95F00551441 /* EventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewModel.swift; sourceTree = "<group>"; };
+		208171782E83C5E800705315 /* TitleBarforMoreTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBarforMoreTab.swift; sourceTree = "<group>"; };
+		2081717B2E84512100705315 /* OptionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionRow.swift; sourceTree = "<group>"; };
+		208171832E845F3100705315 /* QuestionsandNotesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsandNotesList.swift; sourceTree = "<group>"; };
+		208171852E845F4D00705315 /* QuestionsandNotesListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsandNotesListRow.swift; sourceTree = "<group>"; };
+		208171872E845FFC00705315 /* RemindersLandingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersLandingPage.swift; sourceTree = "<group>"; };
+		208171892E84601E00705315 /* ReminderRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderRow.swift; sourceTree = "<group>"; };
+		2081718B2E84602700705315 /* FAQsLandingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQsLandingPage.swift; sourceTree = "<group>"; };
 		20952D372DDDAE6300BDEDF2 /* SelectableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableButton.swift; sourceTree = "<group>"; };
 		20952D392DDDBC5400BDEDF2 /* DisabledStateButtonwithTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisabledStateButtonwithTitle.swift; sourceTree = "<group>"; };
 		20952D3B2DDDC41D00BDEDF2 /* EventChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventChart.swift; sourceTree = "<group>"; };
@@ -417,6 +431,7 @@
 		200CA7482AB847AF00B49508 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				208171772E83C3F000705315 /* Reminders */,
 				20CE1C4F2DC0DAE500E35F56 /* Summaries */,
 				20CE1C3B2DB8491000E35F56 /* GeneralExtensions.swift */,
 				200CA7112AB7EC0C00B49508 /* FontStyles.swift */,
@@ -434,13 +449,13 @@
 		200CA7492AB847D200B49508 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2081717A2E84511300705315 /* More */,
 				201B116C2DCDD4B800415530 /* Old Code */,
 				20CE1C3D2DB8E7C300E35F56 /* Summaries */,
 				2003EDA72AE5B523009E1BB3 /* Login */,
 				20D3CF1F2AC102570010792D /* Reporting */,
 				20D3CF1C2AC0F13B0010792D /* General */,
 				200CA74A2AB84A2400B49508 /* HomePageView.swift */,
-				200CA74E2AB84A6B00B49508 /* MoreView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -596,6 +611,51 @@
 			path = Event;
 			sourceTree = "<group>";
 		};
+		208171762E83C3B600705315 /* Reminders */ = {
+			isa = PBXGroup;
+			children = (
+				208171872E845FFC00705315 /* RemindersLandingPage.swift */,
+				208171892E84601E00705315 /* ReminderRow.swift */,
+			);
+			path = Reminders;
+			sourceTree = "<group>";
+		};
+		208171772E83C3F000705315 /* Reminders */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Reminders;
+			sourceTree = "<group>";
+		};
+		2081717A2E84511300705315 /* More */ = {
+			isa = PBXGroup;
+			children = (
+				2081717E2E84580A00705315 /* FAQs */,
+				2081717D2E8457FB00705315 /* QuestionsandNotes */,
+				2081717B2E84512100705315 /* OptionRow.swift */,
+				200CA74E2AB84A6B00B49508 /* MoreView.swift */,
+				208171762E83C3B600705315 /* Reminders */,
+			);
+			path = More;
+			sourceTree = "<group>";
+		};
+		2081717D2E8457FB00705315 /* QuestionsandNotes */ = {
+			isa = PBXGroup;
+			children = (
+				208171832E845F3100705315 /* QuestionsandNotesList.swift */,
+				208171852E845F4D00705315 /* QuestionsandNotesListRow.swift */,
+			);
+			path = QuestionsandNotes;
+			sourceTree = "<group>";
+		};
+		2081717E2E84580A00705315 /* FAQs */ = {
+			isa = PBXGroup;
+			children = (
+				2081718B2E84602700705315 /* FAQsLandingPage.swift */,
+			);
+			path = FAQs;
+			sourceTree = "<group>";
+		};
 		20952D362DDDAE0F00BDEDF2 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
@@ -668,6 +728,7 @@
 		20D3CF1C2AC0F13B0010792D /* General */ = {
 			isa = PBXGroup;
 			children = (
+				208171782E83C5E800705315 /* TitleBarforMoreTab.swift */,
 				20952D362DDDAE0F00BDEDF2 /* Buttons */,
 				201B116D2DCDD60B00415530 /* TabBar */,
 				200CA7542AB85A3900B49508 /* NavBar.swift */,
@@ -967,10 +1028,13 @@
 				20F393F52D8D74940036FC57 /* RightRoundedRectangle.swift in Sources */,
 				205783C12B602F42005C51B4 /* QuestionsandNotesLandingPage.swift in Sources */,
 				20D3CF1E2AC0F1540010792D /* TopProgressBarView.swift in Sources */,
+				2081718A2E84601E00705315 /* ReminderRow.swift in Sources */,
 				20CE1C4E2DC0351E00E35F56 /* TitleBarforSummariesTab.swift in Sources */,
 				206B8A9F2AE61F9500FD3BCD /* CreateForm.swift in Sources */,
+				208171792E83C5F300705315 /* TitleBarforMoreTab.swift in Sources */,
 				20CE1C442DB8EA6100E35F56 /* SummariesViewModel.swift in Sources */,
 				20A44E5A2AC1E4E5002C726B /* SymptomPickerRow.swift in Sources */,
+				2081717C2E84512900705315 /* OptionRow.swift in Sources */,
 				201B114A2DC7662B00415530 /* SummaryTypeTab.swift in Sources */,
 				2050DDCD2ACEFCDE006F46D2 /* ReportedSymptomsView.swift in Sources */,
 				2074793E2AEE42B000551441 /* TitleBarforReportingTab.swift in Sources */,
@@ -986,6 +1050,7 @@
 				205783D62B6AC62E005C51B4 /* ReportCompletionView.swift in Sources */,
 				20A44E542AC15424002C726B /* AddorEditSymptomsContentView.swift in Sources */,
 				201B116B2DCDC12F00415530 /* SummaryTabButton.swift in Sources */,
+				208171842E845F3100705315 /* QuestionsandNotesList.swift in Sources */,
 				20F393EB2D7115DA0036FC57 /* ExtensionPlaceholderforTextEditor.swift in Sources */,
 				2003EDAB2AE5BAB9009E1BB3 /* LaunchView.swift in Sources */,
 				201B11532DC9E74F00415530 /* SymptomSummaryRow.swift in Sources */,
@@ -1037,6 +1102,8 @@
 				205783BF2B6023B2005C51B4 /* ReportingDataService.swift in Sources */,
 				201B11762DD3F20D00415530 /* SymptomBarItem.swift in Sources */,
 				20CE1C422DB8E9A700E35F56 /* SummariesDashboardView.swift in Sources */,
+				208171862E845F4D00705315 /* QuestionsandNotesListRow.swift in Sources */,
+				208171882E845FFC00705315 /* RemindersLandingPage.swift in Sources */,
 				207479442AEFD85500551441 /* AddorEditEventsLandingPage.swift in Sources */,
 				200CA74F2AB84A6B00B49508 /* MoreView.swift in Sources */,
 				20F674EC2B378A0200862651 /* SuggestedEventsView.swift in Sources */,
@@ -1063,6 +1130,7 @@
 				2071629B2E1DC68400F135DC /* EventChartModel.swift in Sources */,
 				20C8FCAF2AF624FE0010F2AC /* SymptomComparisonState.swift in Sources */,
 				205783BA2B601B64005C51B4 /* ReportingViewModel.swift in Sources */,
+				2081718C2E84603500705315 /* FAQsLandingPage.swift in Sources */,
 				205783D42B6A2462005C51B4 /* BackandNextButtonPanelforEmoji.swift in Sources */,
 				2059D5AF2AE4F3020031DF4D /* GeneralViewModel.swift in Sources */,
 				200CA7122AB7EC0C00B49508 /* FontStyles.swift in Sources */,

@@ -20,7 +20,7 @@ struct HomePageView: View {
             case .summaries:
                 SummariesDashboardView(loggedIn: $loggedIn, selectedTab: $selectedTab)
             case .more:
-                MoreView()
+                MoreView(loggedIn: $loggedIn)
             }
             Spacer()
             Divider()
