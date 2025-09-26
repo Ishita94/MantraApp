@@ -56,6 +56,9 @@
 		202494E52AE4D26D001D253E /* SymptomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202494E42AE4D26C001D253E /* SymptomViewModel.swift */; };
 		2050DDCD2ACEFCDE006F46D2 /* ReportedSymptomsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2050DDCC2ACEFCDE006F46D2 /* ReportedSymptomsView.swift */; };
 		2050DDD42ACEFDFA006F46D2 /* Symptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2050DDD32ACEFDFA006F46D2 /* Symptom.swift */; };
+		205315152E85197900C86098 /* SymptomTrendModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205315142E85197900C86098 /* SymptomTrendModels.swift */; };
+		205315162E85197900C86098 /* AffectedSymptominEventTrend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205315122E85197900C86098 /* AffectedSymptominEventTrend.swift */; };
+		205315172E85197900C86098 /* EventTrendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205315132E85197900C86098 /* EventTrendModel.swift */; };
 		205783AC2B5D1406005C51B4 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205783AB2B5D1406005C51B4 /* Event.swift */; };
 		205783AE2B5D14FA005C51B4 /* EventReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205783AD2B5D14FA005C51B4 /* EventReport.swift */; };
 		205783B02B601A31005C51B4 /* DescriptionLandingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205783AF2B601A31005C51B4 /* DescriptionLandingPage.swift */; };
@@ -244,6 +247,9 @@
 		202494E42AE4D26C001D253E /* SymptomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomViewModel.swift; sourceTree = "<group>"; };
 		2050DDCC2ACEFCDE006F46D2 /* ReportedSymptomsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportedSymptomsView.swift; sourceTree = "<group>"; };
 		2050DDD32ACEFDFA006F46D2 /* Symptom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symptom.swift; sourceTree = "<group>"; };
+		205315122E85197900C86098 /* AffectedSymptominEventTrend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffectedSymptominEventTrend.swift; sourceTree = "<group>"; };
+		205315132E85197900C86098 /* EventTrendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTrendModel.swift; sourceTree = "<group>"; };
+		205315142E85197900C86098 /* SymptomTrendModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomTrendModels.swift; sourceTree = "<group>"; };
 		205783AB2B5D1406005C51B4 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		205783AD2B5D14FA005C51B4 /* EventReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventReport.swift; sourceTree = "<group>"; };
 		205783AF2B601A31005C51B4 /* DescriptionLandingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionLandingPage.swift; sourceTree = "<group>"; };
@@ -718,6 +724,9 @@
 		20CE1C4F2DC0DAE500E35F56 /* Summaries */ = {
 			isa = PBXGroup;
 			children = (
+				205315122E85197900C86098 /* AffectedSymptominEventTrend.swift */,
+				205315132E85197900C86098 /* EventTrendModel.swift */,
+				205315142E85197900C86098 /* SymptomTrendModels.swift */,
 				2071629A2E1DC67900F135DC /* EventChartModel.swift */,
 				201B11492DC7661E00415530 /* SummaryTypeTab.swift */,
 				20CE1C502DC0DAFE00E35F56 /* Week.swift */,
@@ -1060,6 +1069,9 @@
 				20EE11182D97725500265502 /* StepofReportRow.swift in Sources */,
 				20952D3C2DDDC41D00BDEDF2 /* EventChart.swift in Sources */,
 				205783D22B6A2218005C51B4 /* BackandNextButtonPanelforQuestionsandNotes.swift in Sources */,
+				205315152E85197900C86098 /* SymptomTrendModels.swift in Sources */,
+				205315162E85197900C86098 /* AffectedSymptominEventTrend.swift in Sources */,
+				205315172E85197900C86098 /* EventTrendModel.swift in Sources */,
 				201B114C2DC766D400415530 /* SummariesTabBar.swift in Sources */,
 				20F674E82B3787A400862651 /* ReportedEventsView.swift in Sources */,
 				201B11512DC8208600415530 /* SummariesContainerView.swift in Sources */,
