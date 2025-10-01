@@ -62,7 +62,6 @@ struct SymptomPickerRow: View {
                             SetSymptomView(item: item, loggedIn: $loggedIn)
                             
                         } label: {
-//                            SymptomPickerRow(item: item)
                             Image("ic-play-blue")
 //                                    .padding(.vertical, 5)
                         }
