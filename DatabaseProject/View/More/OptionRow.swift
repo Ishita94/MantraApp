@@ -8,16 +8,20 @@
 
 import SwiftUI
 
+enum MoreMenuOption: String, CaseIterable {
+    case allQuestionsAndNotes = "All Questions and Notes"
+    case faqs = "Cancer Education (FAQs)"
+    case reminders = "Reminders"
+    case tutorials = "Tutorials"
+    case settings = "Settings"
+}
+
 struct OptionRow: View {
     @EnvironmentObject var generalViewModel : GeneralViewModel
     
     @Binding var loggedIn: Bool
     @State var readyToNavigate: Bool = false
-//    @State var OptionId: Int = 1
-//    @State var optionTitle: String = ""
-    @State var option: MenuOption
-
-    //    @State var dateString: String
+    @State var option: MoreMenuOption
     
     var body: some View {
         NavigationStack (){

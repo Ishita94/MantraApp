@@ -1236,8 +1236,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "290"
-            endingLineNumber = "290"
+            startingLineNumber = "302"
+            endingLineNumber = "302"
             landmarkName = "calculateWeeklyBoundaries()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1252,8 +1252,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "308"
-            endingLineNumber = "308"
+            startingLineNumber = "320"
+            endingLineNumber = "320"
             landmarkName = "calculateWeeklyBoundaries()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1268,8 +1268,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
             landmarkName = "decrementMonth()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1284,8 +1284,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
             landmarkName = "incrementMonth()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1300,8 +1300,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "284"
-            endingLineNumber = "284"
+            startingLineNumber = "296"
+            endingLineNumber = "296"
             landmarkName = "calculateWeeklyBoundaries()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1348,8 +1348,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "init(generalViewModel:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1364,8 +1364,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "init(generalViewModel:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1380,8 +1380,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "277"
-            endingLineNumber = "277"
+            startingLineNumber = "289"
+            endingLineNumber = "289"
             landmarkName = "getWeeklyBoundaries()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1396,8 +1396,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "275"
-            endingLineNumber = "275"
+            startingLineNumber = "287"
+            endingLineNumber = "287"
             landmarkName = "getWeeklyBoundaries()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1412,8 +1412,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "322"
-            endingLineNumber = "322"
+            startingLineNumber = "419"
+            endingLineNumber = "419"
             landmarkName = "resetDateComponents()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1428,8 +1428,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "316"
-            endingLineNumber = "316"
+            startingLineNumber = "328"
+            endingLineNumber = "328"
             landmarkName = "calculateWeeklyBoundaries()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1444,8 +1444,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "SummariesViewModel"
             landmarkType = "3">
          </BreakpointContent>
@@ -1492,8 +1492,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "272"
-            endingLineNumber = "272"
+            startingLineNumber = "284"
+            endingLineNumber = "284"
             landmarkName = "daysInWeek(start:end:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1556,8 +1556,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "getReportsinDateRange(fromDate:toDate:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1572,8 +1572,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "prepareDictionaries(reportsofUser:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1588,8 +1588,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "prepareDictionaries(reportsofUser:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1652,8 +1652,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "selectedWeekDays"
             landmarkType = "24">
          </BreakpointContent>
@@ -1748,8 +1748,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
+            startingLineNumber = "240"
+            endingLineNumber = "240"
             landmarkName = "decrementWeek()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1764,8 +1764,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
             landmarkName = "formatStringfromWeekwithYear(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1796,8 +1796,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
             landmarkName = "updateMonth(by:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1812,8 +1812,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "198"
-            endingLineNumber = "198"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
             landmarkName = "updateMonth(by:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1828,8 +1828,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "256"
-            endingLineNumber = "256"
+            startingLineNumber = "268"
+            endingLineNumber = "268"
             landmarkName = "updateWeek(by:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1844,8 +1844,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "235"
-            endingLineNumber = "235"
+            startingLineNumber = "247"
+            endingLineNumber = "247"
             landmarkName = "updateWeek(by:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1860,8 +1860,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
             landmarkName = "updateMonth(by:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1924,8 +1924,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "231"
-            endingLineNumber = "231"
+            startingLineNumber = "243"
+            endingLineNumber = "243"
             landmarkName = "updateWeek(by:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1940,8 +1940,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "251"
-            endingLineNumber = "251"
+            startingLineNumber = "263"
+            endingLineNumber = "263"
             landmarkName = "updateWeek(by:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1956,8 +1956,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "238"
-            endingLineNumber = "238"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
             landmarkName = "updateWeek(by:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2048,8 +2048,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "prepareDictionaries(reportsofUser:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2224,8 +2224,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
             landmarkName = "setDictionaryofEventsbyDate(showEvents:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2240,8 +2240,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "setDictionaryofEventsbyDate(showEvents:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2416,8 +2416,8 @@
             filePath = "DatabaseProject/ViewModel/SummariesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
             landmarkName = "setDictionaryofEventsbyDate(showEvents:)"
             landmarkType = "7">
          </BreakpointContent>

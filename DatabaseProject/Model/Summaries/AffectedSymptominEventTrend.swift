@@ -12,8 +12,8 @@ import SwiftUICore
 struct AffectedSymptominEventTrend: Equatable {
     let name: String
     let trend: String
-    let colorforSymptomName: Color?    // Pre-calculated
-    let colorforSymptomTrend: Color?   // Pre-calculated
+//    let colorforSymptomName: Color    // Pre-calculated
+    let colorforSymptomTrend: Color   // Pre-calculated
     let rating: Int
     //        let trendType: TrendType          // Raw data for custom logic
     

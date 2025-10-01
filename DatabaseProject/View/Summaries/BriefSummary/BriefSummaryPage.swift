@@ -55,16 +55,15 @@ struct BriefSummaryPage: View {
                 .font(.sectionTitleinSummariesPage)
                 .foregroundColor(Color(.black))
             
-                    //TODO: Fix
-                    if(summariesViewModel.dictionaryofEvents.count>0)
+                if(summariesViewModel.eventTrends.count>0)
                     {
-                        ForEach(Array(summariesViewModel.dictionaryofEvents), id: \.key) { item in
-                            EventSummaryRow(title: item.key, events: item.value) //per each event
+                    ForEach(summariesViewModel.eventTrends, id: \.date) { item in
+                        EventSummaryRow(eventTrend: item) //per each event
                         }
                     }
                     else
                     {
-                        EventSummaryRow(title: "You have not logged any events in this period.", events: [])
+                        DisabledStateButtonwithTitle(title: "You have not logged any events in this period.")
                     }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)

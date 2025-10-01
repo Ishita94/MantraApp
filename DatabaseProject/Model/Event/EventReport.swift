@@ -16,6 +16,14 @@ struct EventReport: Identifiable, Hashable, Codable {
     var lastModifiedDateTime: Date
     var eventId: String
     var userId: String
+//    var pastTenseTitle: String?=nil // Only calculate when needed
+//        
+//        // Method to calculate and store it
+//        mutating func generatePastTenseTitle() {
+//            if pastTenseTitle == nil {
+//                pastTenseTitle = PastTenseConverter.convertToPast(title.lowercased())
+//            }
+//        }
 //    var reportCompletionStatus:Bool
     
 //    static func == (lhs: EventReport, rhs: EventReport) -> Bool {

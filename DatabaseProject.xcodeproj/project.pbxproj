@@ -11,7 +11,6 @@
 		2003EDAD2AE5BB18009E1BB3 /* LoginContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2003EDAC2AE5BB18009E1BB3 /* LoginContentView.swift */; };
 		2003EDAF2AE5BF54009E1BB3 /* LoginForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2003EDAE2AE5BF54009E1BB3 /* LoginForm.swift */; };
 		2007B2AE2DC6119C006EF756 /* VisualizationsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2007B2AD2DC6119C006EF756 /* VisualizationsPage.swift */; };
-		200CA7122AB7EC0C00B49508 /* FontStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200CA7112AB7EC0C00B49508 /* FontStyles.swift */; };
 		200CA7222AB81E8400B49508 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 200CA7182AB81E8300B49508 /* Lato-Black.ttf */; };
 		200CA7242AB81E8400B49508 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 200CA71A2AB81E8300B49508 /* Lato-Light.ttf */; };
 		200CA7262AB81E8400B49508 /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 200CA71C2AB81E8400B49508 /* Lato-Thin.ttf */; };
@@ -37,7 +36,6 @@
 		201B11552DC9E75A00415530 /* EventSummaryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201B11542DC9E75A00415530 /* EventSummaryRow.swift */; };
 		201B11572DCAA6ED00415530 /* KeyBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201B11562DCAA6ED00415530 /* KeyBar.swift */; };
 		201B11592DCAA72200415530 /* EditVisualizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201B11582DCAA72200415530 /* EditVisualizationView.swift */; };
-		201B115B2DCB770900415530 /* CustomDateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201B115A2DCB770900415530 /* CustomDateModel.swift */; };
 		201B115D2DCC943B00415530 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201B115C2DCC943B00415530 /* CustomTabBar.swift */; };
 		201B115F2DCCA0C000415530 /* TabType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201B115E2DCCA0B400415530 /* TabType.swift */; };
 		201B11622DCD508700415530 /* TabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201B11612DCD508700415530 /* TabBarButton.swift */; };
@@ -56,6 +54,13 @@
 		202494E52AE4D26D001D253E /* SymptomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202494E42AE4D26C001D253E /* SymptomViewModel.swift */; };
 		2050DDCD2ACEFCDE006F46D2 /* ReportedSymptomsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2050DDCC2ACEFCDE006F46D2 /* ReportedSymptomsView.swift */; };
 		2050DDD42ACEFDFA006F46D2 /* Symptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2050DDD32ACEFDFA006F46D2 /* Symptom.swift */; };
+		20528A732E86792200D0ADEC /* ExtensionPlaceholderforTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20528A6D2E86792200D0ADEC /* ExtensionPlaceholderforTextEditor.swift */; };
+		20528A742E86792200D0ADEC /* GeneralEnumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20528A6F2E86792200D0ADEC /* GeneralEnumerations.swift */; };
+		20528A752E86792200D0ADEC /* PastTenseConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20528A712E86792200D0ADEC /* PastTenseConverter.swift */; };
+		20528A762E86792200D0ADEC /* FontStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20528A6E2E86792200D0ADEC /* FontStyles.swift */; };
+		20528A772E86792200D0ADEC /* CustomDateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20528A6B2E86792200D0ADEC /* CustomDateModel.swift */; };
+		20528A782E86792200D0ADEC /* ExtensionDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20528A6C2E86792200D0ADEC /* ExtensionDate.swift */; };
+		20528A792E86792200D0ADEC /* GeneralExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20528A702E86792200D0ADEC /* GeneralExtensions.swift */; };
 		205315152E85197900C86098 /* SymptomTrendModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205315142E85197900C86098 /* SymptomTrendModels.swift */; };
 		205315162E85197900C86098 /* AffectedSymptominEventTrend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205315122E85197900C86098 /* AffectedSymptominEventTrend.swift */; };
 		205315172E85197900C86098 /* EventTrendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205315132E85197900C86098 /* EventTrendModel.swift */; };
@@ -104,7 +109,6 @@
 		20952D3A2DDDBC5400BDEDF2 /* DisabledStateButtonwithTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20952D392DDDBC5400BDEDF2 /* DisabledStateButtonwithTitle.swift */; };
 		20952D3C2DDDC41D00BDEDF2 /* EventChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20952D3B2DDDC41D00BDEDF2 /* EventChart.swift */; };
 		20952D3E2DDDC5E700BDEDF2 /* EventChartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20952D3D2DDDC5E700BDEDF2 /* EventChartItem.swift */; };
-		209F53FB2AC96B3300421857 /* GeneralEnumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209F53FA2AC96B3300421857 /* GeneralEnumerations.swift */; };
 		209F53FD2AC96E0F00421857 /* SetSymptomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209F53FC2AC96E0F00421857 /* SetSymptomView.swift */; };
 		209F53FF2AC96E4B00421857 /* SetSymptomContentPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209F53FE2AC96E4B00421857 /* SetSymptomContentPage.swift */; };
 		209F54012AC96E6200421857 /* SetSymptomRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209F54002AC96E6200421857 /* SetSymptomRatingView.swift */; };
@@ -154,9 +158,7 @@
 		20C838A02ADDA50F00BDE91C /* AddorEditSymptomButtonPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C8389F2ADDA50F00BDE91C /* AddorEditSymptomButtonPanel.swift */; };
 		20C8FCAF2AF624FE0010F2AC /* SymptomComparisonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C8FCAE2AF624FE0010F2AC /* SymptomComparisonState.swift */; };
 		20C8FCB12AF6313C0010F2AC /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20C8FCB02AF6313C0010F2AC /* Lato-Bold.ttf */; };
-		20C8FCB32AF714620010F2AC /* ExtensionDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C8FCB22AF714620010F2AC /* ExtensionDate.swift */; };
 		20C8FCB52AF841FF0010F2AC /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C8FCB42AF841FF0010F2AC /* Report.swift */; };
-		20CE1C3C2DB8491A00E35F56 /* GeneralExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CE1C3B2DB8491000E35F56 /* GeneralExtensions.swift */; };
 		20CE1C422DB8E9A700E35F56 /* SummariesDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CE1C412DB8E9A700E35F56 /* SummariesDashboardView.swift */; };
 		20CE1C442DB8EA6100E35F56 /* SummariesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CE1C432DB8EA5600E35F56 /* SummariesViewModel.swift */; };
 		20CE1C462DB8EA9500E35F56 /* SummariesDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CE1C452DB8EA9500E35F56 /* SummariesDataService.swift */; };
@@ -182,7 +184,6 @@
 		20F07C452AA5DCC1001D8815 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 20F07C442AA5DCC1001D8815 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		20F07C472AA5DCC1001D8815 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 20F07C462AA5DCC1001D8815 /* FirebaseAppCheck */; };
 		20F07C492AA5DCC1001D8815 /* FirebaseAppDistribution-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 20F07C482AA5DCC1001D8815 /* FirebaseAppDistribution-Beta */; };
-		20F393EB2D7115DA0036FC57 /* ExtensionPlaceholderforTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F393EA2D7115C90036FC57 /* ExtensionPlaceholderforTextEditor.swift */; };
 		20F393EF2D77CCA80036FC57 /* AddorEditSymptomNavigationButtonPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F393EE2D77CCA80036FC57 /* AddorEditSymptomNavigationButtonPanel.swift */; };
 		20F393F12D78CB250036FC57 /* ReportforQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F393F02D78CB150036FC57 /* ReportforQuery.swift */; };
 		20F393F32D8D72150036FC57 /* LeftRoundedRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F393F22D8D72150036FC57 /* LeftRoundedRectangle.swift */; };
@@ -202,7 +203,6 @@
 		2003EDAC2AE5BB18009E1BB3 /* LoginContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContentView.swift; sourceTree = "<group>"; };
 		2003EDAE2AE5BF54009E1BB3 /* LoginForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginForm.swift; sourceTree = "<group>"; };
 		2007B2AD2DC6119C006EF756 /* VisualizationsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualizationsPage.swift; sourceTree = "<group>"; };
-		200CA7112AB7EC0C00B49508 /* FontStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontStyles.swift; sourceTree = "<group>"; };
 		200CA7182AB81E8300B49508 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
 		200CA71A2AB81E8300B49508 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
 		200CA71C2AB81E8400B49508 /* Lato-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Thin.ttf"; sourceTree = "<group>"; };
@@ -228,7 +228,6 @@
 		201B11542DC9E75A00415530 /* EventSummaryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSummaryRow.swift; sourceTree = "<group>"; };
 		201B11562DCAA6ED00415530 /* KeyBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBar.swift; sourceTree = "<group>"; };
 		201B11582DCAA72200415530 /* EditVisualizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditVisualizationView.swift; sourceTree = "<group>"; };
-		201B115A2DCB770900415530 /* CustomDateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDateModel.swift; sourceTree = "<group>"; };
 		201B115C2DCC943B00415530 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		201B115E2DCCA0B400415530 /* TabType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabType.swift; sourceTree = "<group>"; };
 		201B11612DCD508700415530 /* TabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarButton.swift; sourceTree = "<group>"; };
@@ -247,6 +246,13 @@
 		202494E42AE4D26C001D253E /* SymptomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomViewModel.swift; sourceTree = "<group>"; };
 		2050DDCC2ACEFCDE006F46D2 /* ReportedSymptomsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportedSymptomsView.swift; sourceTree = "<group>"; };
 		2050DDD32ACEFDFA006F46D2 /* Symptom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symptom.swift; sourceTree = "<group>"; };
+		20528A6B2E86792200D0ADEC /* CustomDateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDateModel.swift; sourceTree = "<group>"; };
+		20528A6C2E86792200D0ADEC /* ExtensionDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDate.swift; sourceTree = "<group>"; };
+		20528A6D2E86792200D0ADEC /* ExtensionPlaceholderforTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionPlaceholderforTextEditor.swift; sourceTree = "<group>"; };
+		20528A6E2E86792200D0ADEC /* FontStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontStyles.swift; sourceTree = "<group>"; };
+		20528A6F2E86792200D0ADEC /* GeneralEnumerations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralEnumerations.swift; sourceTree = "<group>"; };
+		20528A702E86792200D0ADEC /* GeneralExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralExtensions.swift; sourceTree = "<group>"; };
+		20528A712E86792200D0ADEC /* PastTenseConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastTenseConverter.swift; sourceTree = "<group>"; };
 		205315122E85197900C86098 /* AffectedSymptominEventTrend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffectedSymptominEventTrend.swift; sourceTree = "<group>"; };
 		205315132E85197900C86098 /* EventTrendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTrendModel.swift; sourceTree = "<group>"; };
 		205315142E85197900C86098 /* SymptomTrendModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomTrendModels.swift; sourceTree = "<group>"; };
@@ -293,7 +299,6 @@
 		20952D392DDDBC5400BDEDF2 /* DisabledStateButtonwithTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisabledStateButtonwithTitle.swift; sourceTree = "<group>"; };
 		20952D3B2DDDC41D00BDEDF2 /* EventChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventChart.swift; sourceTree = "<group>"; };
 		20952D3D2DDDC5E700BDEDF2 /* EventChartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventChartItem.swift; sourceTree = "<group>"; };
-		209F53FA2AC96B3300421857 /* GeneralEnumerations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralEnumerations.swift; sourceTree = "<group>"; };
 		209F53FC2AC96E0F00421857 /* SetSymptomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetSymptomView.swift; sourceTree = "<group>"; };
 		209F53FE2AC96E4B00421857 /* SetSymptomContentPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetSymptomContentPage.swift; sourceTree = "<group>"; };
 		209F54002AC96E6200421857 /* SetSymptomRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetSymptomRatingView.swift; sourceTree = "<group>"; };
@@ -309,9 +314,7 @@
 		20C8389F2ADDA50F00BDE91C /* AddorEditSymptomButtonPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddorEditSymptomButtonPanel.swift; sourceTree = "<group>"; };
 		20C8FCAE2AF624FE0010F2AC /* SymptomComparisonState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomComparisonState.swift; sourceTree = "<group>"; };
 		20C8FCB02AF6313C0010F2AC /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
-		20C8FCB22AF714620010F2AC /* ExtensionDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDate.swift; sourceTree = "<group>"; };
 		20C8FCB42AF841FF0010F2AC /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
-		20CE1C3B2DB8491000E35F56 /* GeneralExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralExtensions.swift; sourceTree = "<group>"; };
 		20CE1C412DB8E9A700E35F56 /* SummariesDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummariesDashboardView.swift; sourceTree = "<group>"; };
 		20CE1C432DB8EA5600E35F56 /* SummariesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummariesViewModel.swift; sourceTree = "<group>"; };
 		20CE1C452DB8EA9500E35F56 /* SummariesDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummariesDataService.swift; sourceTree = "<group>"; };
@@ -326,7 +329,6 @@
 		20EE11172D97725500265502 /* StepofReportRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepofReportRow.swift; sourceTree = "<group>"; };
 		20EE11192D9E742E00265502 /* CustomBackButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackButtonLabel.swift; sourceTree = "<group>"; };
 		20F07C3B2AA5DB9E001D8815 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		20F393EA2D7115C90036FC57 /* ExtensionPlaceholderforTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionPlaceholderforTextEditor.swift; sourceTree = "<group>"; };
 		20F393EE2D77CCA80036FC57 /* AddorEditSymptomNavigationButtonPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddorEditSymptomNavigationButtonPanel.swift; sourceTree = "<group>"; };
 		20F393F02D78CB150036FC57 /* ReportforQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportforQuery.swift; sourceTree = "<group>"; };
 		20F393F22D8D72150036FC57 /* LeftRoundedRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftRoundedRectangle.swift; sourceTree = "<group>"; };
@@ -439,15 +441,10 @@
 			children = (
 				208171772E83C3F000705315 /* Reminders */,
 				20CE1C4F2DC0DAE500E35F56 /* Summaries */,
-				20CE1C3B2DB8491000E35F56 /* GeneralExtensions.swift */,
-				200CA7112AB7EC0C00B49508 /* FontStyles.swift */,
 				205783BB2B601C21005C51B4 /* Reporting */,
 				207479492AEFD8DA00551441 /* Event */,
 				2050DDCE2ACEFD94006F46D2 /* Symptom */,
-				209F53FA2AC96B3300421857 /* GeneralEnumerations.swift */,
-				20C8FCB22AF714620010F2AC /* ExtensionDate.swift */,
-				20F393EA2D7115C90036FC57 /* ExtensionPlaceholderforTextEditor.swift */,
-				201B115A2DCB770900415530 /* CustomDateModel.swift */,
+				20528A722E86792200D0ADEC /* General */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -513,6 +510,20 @@
 				20C8FCAE2AF624FE0010F2AC /* SymptomComparisonState.swift */,
 			);
 			path = Symptom;
+			sourceTree = "<group>";
+		};
+		20528A722E86792200D0ADEC /* General */ = {
+			isa = PBXGroup;
+			children = (
+				20528A6B2E86792200D0ADEC /* CustomDateModel.swift */,
+				20528A6C2E86792200D0ADEC /* ExtensionDate.swift */,
+				20528A6D2E86792200D0ADEC /* ExtensionPlaceholderforTextEditor.swift */,
+				20528A6E2E86792200D0ADEC /* FontStyles.swift */,
+				20528A6F2E86792200D0ADEC /* GeneralEnumerations.swift */,
+				20528A702E86792200D0ADEC /* GeneralExtensions.swift */,
+				20528A712E86792200D0ADEC /* PastTenseConverter.swift */,
+			);
+			path = General;
 			sourceTree = "<group>";
 		};
 		205783BB2B601C21005C51B4 /* Reporting */ = {
@@ -1047,7 +1058,6 @@
 				201B114A2DC7662B00415530 /* SummaryTypeTab.swift in Sources */,
 				2050DDCD2ACEFCDE006F46D2 /* ReportedSymptomsView.swift in Sources */,
 				2074793E2AEE42B000551441 /* TitleBarforReportingTab.swift in Sources */,
-				20CE1C3C2DB8491A00E35F56 /* GeneralExtensions.swift in Sources */,
 				209F53FD2AC96E0F00421857 /* SetSymptomView.swift in Sources */,
 				20F393F12D78CB250036FC57 /* ReportforQuery.swift in Sources */,
 				201B11782DD4C7F200415530 /* ShowSymptomArrayItem.swift in Sources */,
@@ -1060,7 +1070,13 @@
 				20A44E542AC15424002C726B /* AddorEditSymptomsContentView.swift in Sources */,
 				201B116B2DCDC12F00415530 /* SummaryTabButton.swift in Sources */,
 				208171842E845F3100705315 /* QuestionsandNotesList.swift in Sources */,
-				20F393EB2D7115DA0036FC57 /* ExtensionPlaceholderforTextEditor.swift in Sources */,
+				20528A732E86792200D0ADEC /* ExtensionPlaceholderforTextEditor.swift in Sources */,
+				20528A742E86792200D0ADEC /* GeneralEnumerations.swift in Sources */,
+				20528A752E86792200D0ADEC /* PastTenseConverter.swift in Sources */,
+				20528A762E86792200D0ADEC /* FontStyles.swift in Sources */,
+				20528A772E86792200D0ADEC /* CustomDateModel.swift in Sources */,
+				20528A782E86792200D0ADEC /* ExtensionDate.swift in Sources */,
+				20528A792E86792200D0ADEC /* GeneralExtensions.swift in Sources */,
 				2003EDAB2AE5BAB9009E1BB3 /* LaunchView.swift in Sources */,
 				201B11532DC9E74F00415530 /* SymptomSummaryRow.swift in Sources */,
 				20C8FCB52AF841FF0010F2AC /* Report.swift in Sources */,
@@ -1076,7 +1092,6 @@
 				20F674E82B3787A400862651 /* ReportedEventsView.swift in Sources */,
 				201B11512DC8208600415530 /* SummariesContainerView.swift in Sources */,
 				200CA75B2AB86B5800B49508 /* SymptomDataService.swift in Sources */,
-				201B115B2DCB770900415530 /* CustomDateModel.swift in Sources */,
 				205783B22B601A42005C51B4 /* DescriptionContentPage.swift in Sources */,
 				201B11572DCAA6ED00415530 /* KeyBar.swift in Sources */,
 				20C838922ACF1A3500BDE91C /* ChooseSymptomComparisonView.swift in Sources */,
@@ -1103,7 +1118,6 @@
 				209F53FF2AC96E4B00421857 /* SetSymptomContentPage.swift in Sources */,
 				2071629D2E1DD07500F135DC /* EventChartBuilder.swift in Sources */,
 				205783BD2B601F11005C51B4 /* RemainingReport.swift in Sources */,
-				209F53FB2AC96B3300421857 /* GeneralEnumerations.swift in Sources */,
 				201B11742DD3F1FE00415530 /* SymptomBar.swift in Sources */,
 				205783AE2B5D14FA005C51B4 /* EventReport.swift in Sources */,
 				205783AC2B5D1406005C51B4 /* Event.swift in Sources */,
@@ -1136,7 +1150,6 @@
 				20EE111A2D9E742E00265502 /* CustomBackButtonLabel.swift in Sources */,
 				2074793C2AEE311200551441 /* SymptomReport.swift in Sources */,
 				201B11552DC9E75A00415530 /* EventSummaryRow.swift in Sources */,
-				20C8FCB32AF714620010F2AC /* ExtensionDate.swift in Sources */,
 				206B8AA22AE637C500FD3BCD /* AuthViewModel.swift in Sources */,
 				205783B02B601A31005C51B4 /* DescriptionLandingPage.swift in Sources */,
 				2071629B2E1DC68400F135DC /* EventChartModel.swift in Sources */,
@@ -1145,7 +1158,6 @@
 				2081718C2E84603500705315 /* FAQsLandingPage.swift in Sources */,
 				205783D42B6A2462005C51B4 /* BackandNextButtonPanelforEmoji.swift in Sources */,
 				2059D5AF2AE4F3020031DF4D /* GeneralViewModel.swift in Sources */,
-				200CA7122AB7EC0C00B49508 /* FontStyles.swift in Sources */,
 				20F674F72B37903800862651 /* SetEventView.swift in Sources */,
 				201B117F2DD738CE00415530 /* ConditionalBorderOverlay.swift in Sources */,
 				20F674EE2B378A1800862651 /* SuggestedEventRow.swift in Sources */,

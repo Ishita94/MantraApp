@@ -9,6 +9,7 @@ import Foundation
 import Combine
 import OrderedCollections
 import EmojiPicker
+import SwiftUICore
 
 class SummariesViewModel: ObservableObject {
     private var summariesDataService : SummariesDataService
@@ -21,6 +22,17 @@ class SummariesViewModel: ObservableObject {
     @Published var dictionaryofEventsbyDate: OrderedDictionary<String , [EventReport]> = [:]
     @Published var dictionaryofEmoji: OrderedDictionary<String , Emoji> = [:]
     @Published var selectedWeek: Week? = nil //default value
+    @Published var eventTrends: [EventTrendModel] = []
+    @Published var symptomTrends: [SymptomTrendModel] = []
+    var symptomStatesforComparison : [SymptomComparisonState] = [
+        SymptomComparisonState(stateName: "Much Better", imageName: "much-better"),
+        SymptomComparisonState(stateName: "Somewhat Better", imageName: "somewhat-better"),
+        SymptomComparisonState(stateName: "No Change", imageName: "no-change"),
+        SymptomComparisonState(stateName: "Somewhat Worse", imageName: "much-worse"),
+        SymptomComparisonState(stateName: "Much Worse", imageName: "much-worse"),
+        SymptomComparisonState(stateName: "Resolved", imageName: "much-better")
+    ]
+    
     
     //create array of all days in a week
     var selectedWeekDays: [CustomDateModel] {
@@ -31,7 +43,7 @@ class SummariesViewModel: ObservableObject {
             return []
         }
     }
-
+    
     init(generalViewModel: GeneralViewModel) {
         self.summariesDataService = SummariesDataService(generalViewModel: generalViewModel)
         dateCompontents = calendar.dateComponents( [.year, .month], from: Date())
@@ -50,9 +62,9 @@ class SummariesViewModel: ObservableObject {
     {
         selectedWeek = nil
     }
-
+    
     // MARK: - Helpers to fetch summary data
-
+    
     func getReportsinDateRange(fromDate: Date, toDate: Date){
         DispatchQueue.main.async {
             Task{
@@ -68,7 +80,7 @@ class SummariesViewModel: ObservableObject {
         let groupedSymptomsByName = OrderedDictionary(grouping: reportsofUser.flatMap { $0.symptomReports }, by: \.symptomName)
             .mapValues { (reports: [SymptomReport]) in
                 reports.sorted { $0.creationDateTime < $1.creationDateTime }
-
+                
             }
         dictionaryofSymptoms = groupedSymptomsByName
         
@@ -81,10 +93,10 @@ class SummariesViewModel: ObservableObject {
         let sortedEmojis: OrderedDictionary<String, Emoji> = OrderedDictionary(
             uniqueKeysWithValues:
                 reportsofUser
-                    .sorted { $0.creationDateTime < $1.creationDateTime }
-                    .map { report in
-                        (report.creationDateTime.datetoString() ?? "", Emoji(value: report.emojiValue, name: report.emojiStateofDay))
-                    }
+                .sorted { $0.creationDateTime < $1.creationDateTime }
+                .map { report in
+                    (report.creationDateTime.datetoString() ?? "", Emoji(value: report.emojiValue, name: report.emojiStateofDay))
+                }
         )
         dictionaryofEmoji = sortedEmojis
     }
@@ -101,16 +113,16 @@ class SummariesViewModel: ObservableObject {
                     return nil
                 }
             }
-
+        
         let groupedEvents = OrderedDictionary(
             grouping: events,
             by: { $0.creationDateTime.datetoString()! } // safe now because nils are filtered
         ).mapValues { $0.sorted { $0.creationDateTime < $1.creationDateTime } }
-
-        dictionaryofEventsbyDate = groupedEvents ?? [:]
+        
+        dictionaryofEventsbyDate = groupedEvents
     }
-
-
+    
+    
     // MARK: - Date formatting methods
     
     func monthAndYearFormatted() -> String? {
@@ -120,10 +132,10 @@ class SummariesViewModel: ObservableObject {
         return formatter.string(from: date)
     }
     func formatStringfromWeek(_ week: Week) -> String {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "MMM d"
-            return "\(formatter.string(from: week.start)) - \(formatter.string(from: week.end))"
-        }
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d"
+        return "\(formatter.string(from: week.start)) - \(formatter.string(from: week.end))"
+    }
     func formatStringfromWeekwithYear(_ week: Week) -> String {
         let startYear = calendar.component(.year, from: week.start)
         let endYear = calendar.component(.year, from: week.end)
@@ -144,16 +156,16 @@ class SummariesViewModel: ObservableObject {
     }
     
     // MARK: - Month-related methods
-
+    
     func showingNextMonth() -> Bool {
         let currentMonth = calendar.component(.month, from: Date())
         let currentYear = calendar.component(.year, from: Date())
         guard
-                let month = dateCompontents.month,
-                let year = dateCompontents.year
-            else {
-                return false
-            }
+            let month = dateCompontents.month,
+            let year = dateCompontents.year
+        else {
+            return false
+        }
         
         return (year < currentYear) || (year == currentYear && month < currentMonth)
     }
@@ -170,18 +182,18 @@ class SummariesViewModel: ObservableObject {
               let currentMonthInterval = calendar.dateInterval(of: .month, for: currentDate) else {
             return false
         }
-
+        
         let alignedCurrentDate = currentMonthInterval.start
-
+        
         guard let newDate = calendar.date(byAdding: .month, value: offset, to: alignedCurrentDate),
               let newMonthInterval = calendar.dateInterval(of: .month, for: newDate) else {
             return false
         }
-
+        
         let todayComponents = calendar.dateComponents([.year, .month], from: Date())
         let newStart = newMonthInterval.start
         let newComponents = calendar.dateComponents(in: TimeZone.current, from: newStart)
-
+        
         // Don't allow months beyond today's month
         if offset > 0 {
             if let newYear = newComponents.year,
@@ -192,33 +204,33 @@ class SummariesViewModel: ObservableObject {
                 return false
             }
         }
-
+        
         // Valid month — update
         dateCompontents = newComponents
         return true
     }
-
+    
     
     // MARK: - Week-related methods
     
     func showingNextWeek() -> Bool {
         let currentWeek = calendar.component(.weekOfYear, from: Date())
         let currentYear = calendar.component(.yearForWeekOfYear, from: Date())
-
+        
         guard
-                let week = dateCompontents.weekOfYear,
-                let year = dateCompontents.yearForWeekOfYear
-            else {
-                return false
-            }
-
-            if year < currentYear {
-                return true // clearly before
-            } else if year == currentYear {
-                return week < currentWeek // same year,selected week is before current week, so next button should be enabled
-            } else {
-                return false // future year
-            }
+            let week = dateCompontents.weekOfYear,
+            let year = dateCompontents.yearForWeekOfYear
+        else {
+            return false
+        }
+        
+        if year < currentYear {
+            return true // clearly before
+        } else if year == currentYear {
+            return week < currentWeek // same year,selected week is before current week, so next button should be enabled
+        } else {
+            return false // future year
+        }
     }
     func incrementWeek() -> Bool {
         return updateWeek(by: 1)
@@ -229,19 +241,19 @@ class SummariesViewModel: ObservableObject {
     }
     private func updateWeek(by offset: Int) -> Bool {
         guard let selectedWeek = selectedWeek else { return false }
-
+        
         let rawDate = (offset < 0) ? selectedWeek.start : selectedWeek.end
-
+        
         guard let currentWeekInterval = calendar.dateInterval(of: .weekOfYear, for: rawDate),
               let newDate = calendar.date(byAdding: .weekOfYear, value: offset, to: currentWeekInterval.start),
               let newWeekInterval = calendar.dateInterval(of: .weekOfYear, for: newDate) else {
             return false
         }
-
+        
         let newStart = newWeekInterval.start
         let newComponents = calendar.dateComponents(in: TimeZone.current, from: newStart)
         let todayComponents = calendar.dateComponents([.weekOfYear, .yearForWeekOfYear], from: Date())
-
+        
         if offset > 0 {
             if let newYear = newComponents.yearForWeekOfYear,
                let newWeek = newComponents.weekOfYear,
@@ -251,16 +263,16 @@ class SummariesViewModel: ObservableObject {
                 return false
             }
         }
-
+        
         self.dateCompontents = newComponents
         self.setSelectedWeek(start: newWeekInterval.start, end: newWeekInterval.end.addingTimeInterval(-1))
         return true
     }
-
+    
     func daysInWeek(start: Date, end: Date) -> [CustomDateModel] {
         var dates: [CustomDateModel] = []
         var currentDate = start
-
+        
         while currentDate <= end {
             let dateObject = CustomDateModel(date: currentDate, shortDay: currentDate.dayNameOfWeek(), monthandDate: currentDate.monthandDate(), dateString: currentDate.datetoString() ?? "")
             dates.append(dateObject)
@@ -277,7 +289,7 @@ class SummariesViewModel: ObservableObject {
             self.weeks = weekarray
         }
     }
-        
+    
     func calculateWeeklyBoundaries() -> [Week] {
         var placeHolder : DateComponents = dateCompontents
         placeHolder.day = 1 //start of that month
@@ -288,20 +300,20 @@ class SummariesViewModel: ObservableObject {
         
         // Find the start of the first visible week (safe)
         let startOfWeek = calendar.dateInterval(of: .weekOfYear, for: startOfMonth)?.start ?? startOfMonth
-
+        
         // Get end of the month
         placeHolder.day = range.count
         guard let endOfMonth = calendar.date(from: placeHolder) else {
             return []
         }
         
-//        let endOfWeek = calendar.nextDate(after: endOfMonth,
-//                                          matching: DateComponents(weekday: 7),
-//                                          matchingPolicy: .nextTimePreservingSmallerComponents) ?? endOfMonth
+        //        let endOfWeek = calendar.nextDate(after: endOfMonth,
+        //                                          matching: DateComponents(weekday: 7),
+        //                                          matchingPolicy: .nextTimePreservingSmallerComponents) ?? endOfMonth
         // Find the end of the week containing today/end of that month - whichever one comes earlier
         let endOfMonthWeekEnd = calendar.dateInterval(of: .weekOfYear, for: endOfMonth)?.end ?? endOfMonth
         let todayWeekEnd = calendar.dateInterval(of: .weekOfYear, for: Date())?.end ?? Date()
-
+        
         let endOfWeek = min(endOfMonthWeekEnd, todayWeekEnd)
         
         // Build full weeks from Sunday to Saturday
@@ -315,6 +327,91 @@ class SummariesViewModel: ObservableObject {
         }
         return boundaries
     }
+    //MARK: - Preparing dictionary of symptom trends
+    
+    //MARK: - Preparing dictionary of event trends
+    
+    func generateEventTrends(events: [EventReport], symptoms: [SymptomReport]) {
+        // Group symptoms by date for quick lookup
+        let symptomsByDate = Dictionary(grouping: symptoms) {
+            Calendar.current.startOfDay(for: $0.creationDateTime)
+        }
+        
+        // Group events by date
+        let eventsByDate = Dictionary(grouping: events) {
+            Calendar.current.startOfDay(for: $0.creationDateTime)
+        }
+        
+        // Create EventTrendModel for each date that has events
+        eventTrends = eventsByDate.compactMap { (date, eventReports) in
+            createEventTrendModel(
+                eventReports: eventReports,
+                date: date,
+                symptoms: symptomsByDate
+            )
+        }.sorted { $0.date < $1.date } // Sort by date
+    }
+    private func createEventTrendModel(
+        eventReports: [EventReport],
+        date: Date,
+        symptoms: [Date: [SymptomReport]]
+    ) -> EventTrendModel? {
+        guard !eventReports.isEmpty else { return nil }
+        
+        // Get symptoms for this specific date
+        let daySymptoms = symptoms[date] ?? []
+        
+        // Process symptoms
+        var aggregatedSymptoms: [AffectedSymptominEventTrend] = []
+        
+        for symptom in daySymptoms {
+            let affectedSymptom = processSymptomToAffectedSymptom(symptom)
+            aggregatedSymptoms.append(affectedSymptom)
+        }
+        
+        // Sort by name for consistency
+        aggregatedSymptoms.sort { $0.name < $1.name }
+        
+        // Create and return the model
+        return EventTrendModel(
+            eventReports: eventReports,
+            aggregatedSymptoms: aggregatedSymptoms,
+            date: date
+        )
+    }
+    private func processSymptomToAffectedSymptom(_ symptom: SymptomReport) -> AffectedSymptominEventTrend {
+        let name = symptom.symptomName
+        let rating = symptom.rating
+        var trendValue = ""
+        var colorforSymptomTrend: Color = .primary0TTextOn0
+        
+        
+        // Priority 1: Check if resolved (rating = 0)
+        if rating == 0 {
+            trendValue = "resolved"
+            colorforSymptomTrend = .secondary
+        }
+        
+        // Priority 2: Check if symptomComparisonState is available
+        if !symptom.symptomComparisonState.isEmpty {
+            trendValue = symptom.symptomComparisonState.lowercased()
+            colorforSymptomTrend = symptomStatesforComparison.first(where: { $0.stateName.lowercased() == trendValue.lowercased() })?.color ??  .primary0TTextOn0
+        }
+        else // Priority 3: Fallback to rating/10
+        {
+            trendValue = "\(rating)/10"
+            colorforSymptomTrend = .primary0TTextOn0
+        }
+        
+        return AffectedSymptominEventTrend(
+            name: name,
+            trend: trendValue,
+            colorforSymptomTrend: colorforSymptomTrend,
+            rating: rating
+        )
+    }
+    
+    
     
     //MARK: - Reset variables
     
