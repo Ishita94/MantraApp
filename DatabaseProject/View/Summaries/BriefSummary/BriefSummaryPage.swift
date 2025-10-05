@@ -38,15 +38,15 @@ struct BriefSummaryPage: View {
                         .font(.sectionTitleinSummariesPage)
                         .foregroundColor(Color(.black))
                     
-                    if(summariesViewModel.dictionaryofSymptoms.count>0)
+                    if(summariesViewModel.symptomTrends.count>0)
                     {
-                        ForEach(Array(summariesViewModel.dictionaryofSymptoms), id: \.key) { item in
-                            SymptomSummaryRow(symptomName: item.key, symptomReports: item.value)
+                        ForEach(summariesViewModel.symptomTrends) { item in
+                            SymptomSummaryRow(symptomTrendModel: item)
                         }
                     }
                     else
                     {
-                        SymptomSummaryRow(symptomName: "You have not logged any symptoms in this period.", symptomReports: [])
+                        DisabledStateButtonwithTitle(title: "You have not logged any symptoms in this period.")
                     }
                     
                     Spacer()
@@ -68,7 +68,6 @@ struct BriefSummaryPage: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
             }
-         
             .scrollContentBackground(.hidden)
         }
     }

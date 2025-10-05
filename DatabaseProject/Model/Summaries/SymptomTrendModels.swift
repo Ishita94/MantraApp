@@ -55,7 +55,7 @@ struct SymptomSegment {
 
 struct TrendAnalysisResult {
     let trendString: String //
-    //let trendType: TrendType //improving, worsening, stable...
+//    let trendType: TrendType //improving, worsening, stable...
     let strength: TrendStrength //intensity - moderate, slight, strong
 }
 
@@ -456,14 +456,14 @@ class SymptomTrendGenerator {
                 if dataPoints[0].rating == 0 {
                     baseTrend = "Logged for the first time as resolved on \(dateFormatter.string(from: dataPoints[0].date))"
                 } else {
-                    baseTrend = "Logged for the first and only time this week: \(dataPoints[0].rating)/10 on \(dateFormatter.string(from: dataPoints[0].date))"
+                    baseTrend = "Logged for the first time and reported once this week: \(dataPoints[0].rating)/10 on \(dateFormatter.string(from: dataPoints[0].date))"
                 }
             } else {
                 // Regular single report (not first time)
                 if dataPoints[0].rating == 0 {
-                    baseTrend = "Only logged once this week: resolved on \(dateFormatter.string(from: dataPoints[0].date))"
+                    baseTrend = "Logged once this week: resolved on \(dateFormatter.string(from: dataPoints[0].date))"
                 } else {
-                    baseTrend = "Only logged once this week: \(dataPoints[0].rating)/10 on \(dateFormatter.string(from: dataPoints[0].date))"
+                    baseTrend = "Logged once this week: \(dataPoints[0].rating)/10 on \(dateFormatter.string(from: dataPoints[0].date))"
                     if dataPoints[0].symptomComparisonState != "" {
                         baseTrend += ", noted as \(dataPoints[0].symptomComparisonState.lowercased())"
                     }

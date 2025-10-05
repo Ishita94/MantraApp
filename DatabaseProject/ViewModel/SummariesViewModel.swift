@@ -71,6 +71,7 @@ class SummariesViewModel: ObservableObject {
                 await self.summariesDataService.getReportsinDateRange(fromDate: fromDate, toDate: toDate) { reportsofUser in
                     self.reportListforSummary = reportsofUser
                     self.prepareDictionaries(reportsofUser: reportsofUser)
+                    self.generateSymptomTrends()
                     self.generateEventTrends()
                 }
             }
@@ -347,6 +348,44 @@ class SummariesViewModel: ObservableObject {
     }
     //MARK: - Preparing dictionary of symptom trends
     
+    
+    func generateSymptomTrends() {
+        var trends: [SymptomTrendModel] = []
+
+        // Initialize the trend generator with your existing symptom states
+        let trendGenerator = SymptomTrendGenerator(symptomStates: self.symptomStatesforComparison)
+        
+        for (symptomName, symptomReports) in self.dictionaryofSymptoms {
+            // Map symptom reports to data points
+            let dataPoints = symptomReports.map { report in
+                SymptomDataPoint(
+                    rating: report.rating,  // Keeping as reference
+                    date: report.creationDateTime,
+                    symptomComparisonState: report.symptomComparisonState,
+                    recentStatus: report.recentStatus
+                )
+            }.sorted { $0.date < $1.date }
+            
+            // Skip if no data points
+            guard !dataPoints.isEmpty else { continue }
+            
+            // Analyze trend
+            let trendAnalysis = trendGenerator.analyzeTrend(for: dataPoints)
+            
+            // Create symptom trend model
+            let symptomTrendModel = SymptomTrendModel(
+                symptomName: symptomName,
+                symptomDataPoints: dataPoints,
+                completeTrendString: trendAnalysis.trendString,
+//                trendType: trendAnalysis.trendType,
+                trendStrength: trendAnalysis.strength
+            )
+            
+            trends.append(symptomTrendModel)
+        }
+        symptomTrends = trends
+    }
+    
     //MARK: - Preparing dictionary of event trends
     
     func generateEventTrends() {
@@ -363,7 +402,7 @@ class SummariesViewModel: ObservableObject {
             let firstTimeEvents = eventReports.filter { $0.isFirstLoggedInstance }
                 
             
-            // ✅ If there are first-time events, create a separate trend for them
+            // ✅ If there are first logged instance of events, create a separate trend for them
             if !firstTimeEvents.isEmpty {
                 if let firstTimeModel = createEventTrendModel(
                     eventReports: firstTimeEvents,
