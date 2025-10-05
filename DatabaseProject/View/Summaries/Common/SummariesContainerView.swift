@@ -38,6 +38,7 @@ struct SummariesContainerView: View {
         {
             if let week = summariesViewModel.selectedWeek{
                 summariesViewModel.getReportsinDateRange(fromDate: week.start, toDate: week.end)
+                
             }
         }
         .padding()

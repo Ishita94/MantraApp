@@ -21,15 +21,6 @@ class EventsViewModel: ObservableObject {
         self.eventDataService = EventDataService(generalViewModel: generalViewModel)
     }
     
-    var definedEventList: [Event] = [
-        Event(title: "Went on a walk", category: "Physical Well-Being", creationDateTime: Date.now, lastModifiedDateTime: Date.now, userId: "",  tracking: false),
-        Event(title: "Yoga", category: "Physical Well-Being", creationDateTime: Date.now, lastModifiedDateTime: Date.now, userId: "", tracking: false),
-        Event(title: "Took heart medication", category: "Physical Well-Being", creationDateTime: Date.now, lastModifiedDateTime: Date.now, userId: "", tracking: false),
-        Event(title: "Visited friends", category: "Emotional Well-Being", creationDateTime: Date.now, lastModifiedDateTime: Date.now, userId: "", tracking: false),
-        Event(title: "Watched a funny movie", category: "Emotional Well-Being", creationDateTime: Date.now, lastModifiedDateTime: Date.now, userId: "", tracking: false),
-        Event(title: "Gloomy weather", category: "Miscellaneous", creationDateTime: Date.now, lastModifiedDateTime: Date.now,  userId: "", tracking: false)
-    ]
-    
     @Published var suggestedEvents: [Event] = []
     
     func getEventsinReport(report: Report){

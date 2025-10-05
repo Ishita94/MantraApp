@@ -61,6 +61,6 @@ struct ReportedEventRow: View {
 }
 
 #Preview {
-    ReportedEventRow(item: Event(title: "Went on a walk", category: "Physical Well-Being", creationDateTime: Date.now, lastModifiedDateTime: Date.now,  userId: "", tracking: true)
+    ReportedEventRow(item: Event(title: "Went on a walk", category: "Physical Well-Being", creationDateTime: Date.now, lastModifiedDateTime: Date.now,  userId: "", tracking: true, isLoggedinReport: true)
                      , loggedIn: Binding.constant(true), dateString: Date.now.datetoString()!).environmentObject(GeneralViewModel())
 }

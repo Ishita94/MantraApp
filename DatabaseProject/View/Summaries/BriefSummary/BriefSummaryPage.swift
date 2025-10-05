@@ -31,12 +31,13 @@ struct BriefSummaryPage: View {
             Divider()
            
             ScrollView{
-                VStack (alignment: .leading, spacing: 12){
-
-                Text("Symptoms")
-                    .font(.sectionTitleinSummariesPage)
-                    .foregroundColor(Color(.black))
-                
+                VStack (alignment: .leading, spacing: 12)
+                {
+                    
+                    Text("Symptoms")
+                        .font(.sectionTitleinSummariesPage)
+                        .foregroundColor(Color(.black))
+                    
                     if(summariesViewModel.dictionaryofSymptoms.count>0)
                     {
                         ForEach(Array(summariesViewModel.dictionaryofSymptoms), id: \.key) { item in
@@ -47,26 +48,27 @@ struct BriefSummaryPage: View {
                     {
                         SymptomSummaryRow(symptomName: "You have not logged any symptoms in this period.", symptomReports: [])
                     }
-                }
-                
-            Spacer()
-            
-            Text("Events")
-                .font(.sectionTitleinSummariesPage)
-                .foregroundColor(Color(.black))
-            
-                if(summariesViewModel.eventTrends.count>0)
+                    
+                    Spacer()
+                    
+                    Text("Events")
+                        .font(.sectionTitleinSummariesPage)
+                        .foregroundColor(Color(.black))
+                    
+                    if(summariesViewModel.eventTrends.count>0)
                     {
-                    ForEach(summariesViewModel.eventTrends, id: \.date) { item in
-                        EventSummaryRow(eventTrend: item) //per each event
+                        ForEach(summariesViewModel.eventTrends) { item in
+                            EventSummaryRow(eventTrend: item) //per each event
                         }
                     }
                     else
                     {
                         DisabledStateButtonwithTitle(title: "You have not logged any events in this period.")
                     }
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+         
             .scrollContentBackground(.hidden)
         }
     }

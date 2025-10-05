@@ -8,26 +8,34 @@
 import Foundation
 import SwiftUI
 
-struct EventTrendModel {
+struct EventTrendModel: Identifiable {
+    let id = UUID()  
     var eventReports: [EventReport]
     let aggregatedSymptoms: [AffectedSymptominEventTrend]
-    let date: Date
-    
+    let date: String
+    let isFirstTime: Bool
+
     var dateText: String {
-        date.datetoFormalDatewithDayString()
+        return stringtoFormalShortDate(dateString: date)
     }
     
     var eventTitles: [String] {
-        eventReports.map { PastTenseConverter.convertToPast($0.title.lowercased()) }
-    }
+            eventReports.map {
+                isFirstTime ? $0.title.lowercased() : PastTenseConverter.convertToPast($0.title.lowercased())
+            }
+        }
     
     var concatenatedEventTitles: String {
         concatenateStringList(eventTitles)
     }
     
     var baseText: String {
-        "On \(dateText), you \(concatenatedEventTitles)."
-    }
+            if isFirstTime {
+                return "On \(dateText), you logged \(concatenatedEventTitles) for the first time."
+            } else {
+                return "On \(dateText), you \(concatenatedEventTitles)."
+            }
+        }
     
     var hasSymptoms: Bool {
         !aggregatedSymptoms.isEmpty
@@ -38,7 +46,7 @@ struct EventTrendModel {
     }
     
     var endingText: String {
-        hasSymptoms ? " during this period." : ""
+        hasSymptoms ? " on that day." : ""
     }
     
     private func concatenateStringList(_ items: [String]) -> String {

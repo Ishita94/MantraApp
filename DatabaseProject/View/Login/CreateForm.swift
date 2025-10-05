@@ -86,15 +86,15 @@ struct CreateForm: View {
             let path = db.collection("users").document(currentUser.uid)
             path.setData(["name":cleansedFirstName, "createDate": Date.now]) { error in
                 
-                if error == nil {
-                    // Saved
-                    for event in eventViewModel.definedEventList{
-                        eventViewModel.saveEvent(event: event)
-                    }
-                }
-                else {
-                    // Error
-                }
+//                if error == nil {
+//                    // Saved
+//                    for event in eventViewModel.definedEventList{
+//                        eventViewModel.saveEvent(event: event)
+//                    }
+//                }
+//                else {
+//                    // Error
+//                }
             }
         }
         

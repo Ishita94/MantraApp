@@ -95,7 +95,6 @@ struct PastTenseConverter {
         "pause": "paused",
         "break": "broke",
         "interrupt": "interrupted",
-        "go": "went",
         "come": "came",
         "arrive": "arrived",
         "leave": "left",
@@ -291,7 +290,10 @@ struct PastTenseConverter {
         "feel": "felt",
         "taste": "tasted",
         "smell": "smelled",
-        "touch": "touched"
+        "touch": "touched",
+        "going": "went",
+        "go": "went",
+
     ]
     
     // Special cases (activities that aren't verbs)

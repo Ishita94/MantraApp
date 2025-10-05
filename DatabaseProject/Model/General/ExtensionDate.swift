@@ -66,12 +66,26 @@ func stringtoFormalDate(dateString: String) -> String {
         }
 }
 
+func stringtoFormalShortDate(dateString: String) -> String {
+    let inputDateFormatter = DateFormatter()
+    inputDateFormatter.dateFormat = "yyyy-MM-dd"
+    inputDateFormatter.locale = Locale.init(identifier: "en_GB")
+    if let date = inputDateFormatter.date(from: dateString) {
+            let outputFormatter = DateFormatter()
+            outputFormatter.dateFormat = "MMM dd"
+            return outputFormatter.string(from: date)
+        } else {
+            return "Invalid Date"
+        }
+}
+
 func datetoFormalDateString(date: Date) -> String {
     let inputDateFormatter = DateFormatter()
     inputDateFormatter.dateFormat = "MMMM dd, yyyy"  // Example: "March 05, 2024"
     inputDateFormatter.locale = Locale(identifier: "en_GB")
     return inputDateFormatter.string(from: date)
 }
+
 
 
 
