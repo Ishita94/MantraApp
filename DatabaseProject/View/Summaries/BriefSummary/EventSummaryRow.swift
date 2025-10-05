@@ -10,62 +10,68 @@ import SwiftUI
 struct EventSummaryRow: View {
     let eventTrend: EventTrendModel
     
-    // Define your three colors
-    let colorA: Color = .primary0TTextOn0      // Date, Event titles, Symptom names
-    let colorB: Color = .offBlackText    // Normal text
+    let colorA: Color = .primary0TTextOn0
+    let colorB: Color = .offBlackText
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            // Date and events with colors
-            buildBaseText()
+        ZStack {
+            RoundedRectangle(cornerRadius: 16)
+                .foregroundColor(Color(.greyNonClickable))
             
-            // Symptoms section with three colors
-            if eventTrend.hasSymptoms {
-                (Text(eventTrend.transitionText)
-                    .foregroundColor(colorB) +
-                 
-                 buildSymptomText() +
-                 
-                 Text(eventTrend.endingText)
-                    .foregroundColor(colorB))
-                .font(.body)
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(Color(.outlineGrey), lineWidth: 1)
+            
+            VStack(alignment: .leading, spacing: 0) {
+                buildFullText()
+                    .font(.blackinText)
+                    .multilineTextAlignment(.leading)
+                    .frame(minHeight: 20, alignment: .leading) 
             }
+            .padding(16)
+            .frame(maxWidth: .infinity, alignment: .leading)  //Ensure VStack is leading-aligned
         }
-        .padding()
-        .background(Color.gray.opacity(0.05))
-        .cornerRadius(12)
+    }
+    
+    private func buildFullText() -> Text {
+        var result = buildBaseText()
+        
+        if eventTrend.hasSymptoms && !eventTrend.isFirstTime {
+            result = result +
+                Text(eventTrend.transitionText).foregroundColor(colorB) +
+                buildSymptomText() +
+                Text(eventTrend.endingText).foregroundColor(colorB)
+        }
+        
+        return result
     }
     
     private func buildBaseText() -> Text {
-        // "On " (colorB)
         var result = Text("On ")
-            .font(.headline)
-            .fontWeight(.semibold)
             .foregroundColor(colorB)
         
-        // Date (colorA)
         result = result + Text(eventTrend.dateText)
-            .font(.headline)
-            .fontWeight(.semibold)
             .foregroundColor(colorA)
         
-        // ", you " (colorB)
-        result = result + Text(", you ")
-            .font(.headline)
-            .fontWeight(.semibold)
-            .foregroundColor(colorB)
-        
-        // Event titles (colorA)
-        result = result + Text(eventTrend.concatenatedEventTitles)
-            .font(.headline)
-            .fontWeight(.semibold)
-            .foregroundColor(colorA)
-        
-        // "." (colorB)
-        result = result + Text(".")
-            .font(.headline)
-            .fontWeight(.semibold)
-            .foregroundColor(colorB)
+        // Different text based on isFirstTime
+        if eventTrend.isFirstTime {
+            result = result + Text(", you logged ")
+                .foregroundColor(colorB)
+            
+            result = result + Text(eventTrend.concatenatedEventTitles)
+                .foregroundColor(colorA)
+            
+            result = result + Text(" for the first time.")
+                .foregroundColor(colorB)
+        } else {
+            result = result + Text(", you ")
+                .foregroundColor(colorB)
+            
+            result = result + Text(eventTrend.concatenatedEventTitles)
+                .foregroundColor(colorA)
+            
+            result = result + Text(".")
+                .foregroundColor(colorB)
+        }
         
         return result
     }
@@ -75,24 +81,18 @@ struct EventSummaryRow: View {
         var result = Text("")
         
         for (index, symptom) in symptoms.enumerated() {
-            // "your "
             result = result + Text("your ")
                 .foregroundColor(colorB)
             
-            // Symptom name (colorA)
             result = result + Text("\(symptom.name.lowercased()) ")
                 .foregroundColor(colorA)
             
-            // "was "
             result = result + Text("was ")
                 .foregroundColor(colorB)
             
-            // Trend value (colorC - different per symptom)
             result = result + Text(symptom.trend.lowercased())
-                .fontWeight(.semibold)
                 .foregroundColor(symptom.colorforSymptomTrend)
             
-            // Connector
             if index < symptoms.count - 1 {
                 if index == symptoms.count - 2 {
                     result = result + Text(" and ")
@@ -109,5 +109,5 @@ struct EventSummaryRow: View {
 }
 
 #Preview {
-    EventSummaryRow(eventTrend: EventTrendModel(eventReports: [], aggregatedSymptoms: [], date: Date()))
+    EventSummaryRow(eventTrend: EventTrendModel(eventReports: [], aggregatedSymptoms: [], date: "", isFirstTime: false))
 }

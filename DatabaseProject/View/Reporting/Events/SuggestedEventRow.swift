@@ -65,7 +65,8 @@ struct SuggestedEventRow: View {
                         if(readyToNavigate){
                             if(selectedEvents.contains(where: { $0.eventId==item.id}) == false)
                             {
-                                selectedEvents.append(EventReport(title: item.title, creationDateTime: creationDateTime,  lastModifiedDateTime: Date.now, eventId: item.id!, userId: AuthViewModel.getLoggedInUserId()))
+                                selectedEvents.append(EventReport(title: item.title, creationDateTime: creationDateTime,  lastModifiedDateTime: Date.now, eventId: item.id!, userId: AuthViewModel.getLoggedInUserId(), isFirstLoggedInstance: !item.isLoggedinReport))
+                                //if event.isLoggedinReport==false, this is the first logged instance of this event, otherwise, should set false
                             }
                         }
                         else
@@ -100,6 +101,6 @@ struct SuggestedEventRow: View {
 }
 
 #Preview {
-    SuggestedEventRow(item: Event(title: "Went on a walk", category: "Physical Well-Being", creationDateTime: Date.now, lastModifiedDateTime: Date.now,  userId: "", tracking: false)
+    SuggestedEventRow(item: Event(title: "Went on a walk", category: "Physical Well-Being", creationDateTime: Date.now, lastModifiedDateTime: Date.now,  userId: "", tracking: false, isLoggedinReport: true)
                       , loggedIn: Binding.constant(true), selectedEvents: Binding.constant([]), creationDateTime: Date.now).environmentObject(GeneralViewModel())
 }

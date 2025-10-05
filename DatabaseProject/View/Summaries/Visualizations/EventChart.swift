@@ -20,11 +20,11 @@ struct EventChart: View {
         }
         .onAppear()
         {
-            summariesViewModel.setDictionaryofEventsbyDate(showEvents: showEvents)
+            summariesViewModel.setDictionaryofEventsbyDate(showEvents: showEvents, showEventTrends: false)
         }
         .onChange(of: showEvents) { newValue in
             print("showEvents changed from \(showEvents) to \(newValue)")
-            summariesViewModel.setDictionaryofEventsbyDate(showEvents: newValue)
+            summariesViewModel.setDictionaryofEventsbyDate(showEvents: newValue, showEventTrends: false)
         }
     }
     

@@ -17,4 +17,5 @@ struct Event: Identifiable, Hashable, Codable {
     var userId: String
     var eventId: String?
     var tracking:Bool
+    var isLoggedinReport: Bool = false
 }

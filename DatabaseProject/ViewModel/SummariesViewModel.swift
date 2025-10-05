@@ -71,6 +71,7 @@ class SummariesViewModel: ObservableObject {
                 await self.summariesDataService.getReportsinDateRange(fromDate: fromDate, toDate: toDate) { reportsofUser in
                     self.reportListforSummary = reportsofUser
                     self.prepareDictionaries(reportsofUser: reportsofUser)
+                    self.generateEventTrends()
                 }
             }
         }
@@ -99,14 +100,31 @@ class SummariesViewModel: ObservableObject {
                 }
         )
         dictionaryofEmoji = sortedEmojis
+        
+        self.setDictionaryofEventsbyDate(reportsofUser: reportsofUser, showEvents: [], showEventTrends: true)
     }
     
-    func setDictionaryofEventsbyDate(showEvents: [String]) -> () {
-        let events = self.reportListforSummary
-            .flatMap { $0.eventReports }
+    func setDictionaryofEventsbyDate(reportsofUser: [Report]? = nil, showEvents: [String], showEventTrends: Bool) -> () {
+        var allEvents: [EventReport] = []
+        if reportsofUser == nil {
+            allEvents = self.reportListforSummary
+                .flatMap { $0.eventReports }
+        }
+        else
+        {
+            allEvents = reportsofUser?
+                .flatMap { $0.eventReports } ?? []
+        }
+        let compactEventList = allEvents
             .compactMap { event -> EventReport? in
-                if event.creationDateTime.datetoString() != nil, showEvents.contains(event.title)
-                {
+                guard event.creationDateTime.datetoString() != nil else {
+                    return nil  // Filter out events without valid dates
+                }
+                
+                if showEventTrends {
+                    return event
+                }
+                else if showEvents.contains(event.title) {
                     return event
                 }
                 else {
@@ -115,7 +133,7 @@ class SummariesViewModel: ObservableObject {
             }
         
         let groupedEvents = OrderedDictionary(
-            grouping: events,
+            grouping: compactEventList,
             by: { $0.creationDateTime.datetoString()! } // safe now because nils are filtered
         ).mapValues { $0.sorted { $0.creationDateTime < $1.creationDateTime } }
         
@@ -331,40 +349,58 @@ class SummariesViewModel: ObservableObject {
     
     //MARK: - Preparing dictionary of event trends
     
-    func generateEventTrends(events: [EventReport], symptoms: [SymptomReport]) {
-        // Group symptoms by date for quick lookup
-        let symptomsByDate = Dictionary(grouping: symptoms) {
-            Calendar.current.startOfDay(for: $0.creationDateTime)
-        }
+    func generateEventTrends() {
+        self.setDictionaryofEventsbyDate(showEvents: [], showEventTrends: true)
         
-        // Group events by date
-        let eventsByDate = Dictionary(grouping: events) {
-            Calendar.current.startOfDay(for: $0.creationDateTime)
-        }
-        
-        // Create EventTrendModel for each date that has events
-        eventTrends = eventsByDate.compactMap { (date, eventReports) in
-            createEventTrendModel(
+        var trends: [EventTrendModel] = []
+
+        for (date, eventReports) in self.dictionaryofEventsbyDate {
+                let symptoms = self.reportListforSummary
+                    .first(where: { $0.creationDateTime.datetoString() == date })?
+                    .symptomReports ?? []
+            
+            // ✅ Check if there are any first-time events
+            let firstTimeEvents = eventReports.filter { $0.isFirstLoggedInstance }
+                
+            
+            // ✅ If there are first-time events, create a separate trend for them
+            if !firstTimeEvents.isEmpty {
+                if let firstTimeModel = createEventTrendModel(
+                    eventReports: firstTimeEvents,
+                    date: date,
+                    symptoms: [],  // No symptoms for first-time display
+                    isFirstTime: true
+                ) {
+                    trends.append(firstTimeModel)
+                }
+            }
+            
+            if let regularModel = createEventTrendModel(
                 eventReports: eventReports,
                 date: date,
-                symptoms: symptomsByDate
+                symptoms: symptoms,
+                isFirstTime: false
             )
-        }.sorted { $0.date < $1.date } // Sort by date
+            {
+                trends.append(regularModel)
+            }
+        }
+        
+        eventTrends = trends.sorted { $0.date < $1.date }
     }
+    
     private func createEventTrendModel(
         eventReports: [EventReport],
-        date: Date,
-        symptoms: [Date: [SymptomReport]]
+        date: String,
+        symptoms: [SymptomReport],
+        isFirstTime: Bool
     ) -> EventTrendModel? {
         guard !eventReports.isEmpty else { return nil }
-        
-        // Get symptoms for this specific date
-        let daySymptoms = symptoms[date] ?? []
-        
+              
         // Process symptoms
         var aggregatedSymptoms: [AffectedSymptominEventTrend] = []
         
-        for symptom in daySymptoms {
+        for symptom in symptoms {
             let affectedSymptom = processSymptomToAffectedSymptom(symptom)
             aggregatedSymptoms.append(affectedSymptom)
         }
@@ -376,7 +412,8 @@ class SummariesViewModel: ObservableObject {
         return EventTrendModel(
             eventReports: eventReports,
             aggregatedSymptoms: aggregatedSymptoms,
-            date: date
+            date: date,
+            isFirstTime: isFirstTime
         )
     }
     private func processSymptomToAffectedSymptom(_ symptom: SymptomReport) -> AffectedSymptominEventTrend {

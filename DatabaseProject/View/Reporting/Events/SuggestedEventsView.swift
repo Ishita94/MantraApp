@@ -109,7 +109,6 @@ struct SuggestedEventsView: View {
                             .strokeBorder(Color(.outlineGrey), lineWidth: 1)
                     )
                 }
-                
                 .padding()
                 .cornerRadius(30)
                 .presentationDetents([.fraction(0.8), .large])

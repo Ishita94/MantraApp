@@ -89,7 +89,7 @@ struct SetEventView: View {
                     Divider()
                     
                     Button(action: {
-                        eventViewModel.saveEvent(event: Event(id: item.id, title: title, category: selection, creationDateTime: item.creationDateTime, lastModifiedDateTime: Date.now, userId: AuthViewModel.getLoggedInUserId(), eventId: item.eventId, tracking: false))
+                        eventViewModel.saveEvent(event: Event(id: item.id, title: title, category: selection, creationDateTime: item.creationDateTime, lastModifiedDateTime: Date.now, userId: AuthViewModel.getLoggedInUserId(), eventId: item.eventId, tracking: false, isLoggedinReport: item.isLoggedinReport))
                         
                         readyToNavigate = true
                     }) {
@@ -148,7 +148,7 @@ struct SetEventView: View {
     let eventsViewModel = EventsViewModel(generalViewModel: generalViewModel)  // Injected
     let reportingViewModel = ReportingViewModel(generalViewModel: generalViewModel)  // Injected
     
-    SetEventView(item: Event(title: "Went on a walk", category: "Physical Well-Being", creationDateTime: Date.now, lastModifiedDateTime: Date.now, userId: "", tracking: false), title: "Went on a walk", loggedIn: Binding.constant(true), isSheetVisible: true, selection: "Physical Well-Being", dateString: Date.now.datetoString()!)
+    SetEventView(item: Event(title: "Went on a walk", category: "Physical Well-Being", creationDateTime: Date.now, lastModifiedDateTime: Date.now, userId: "", tracking: false, isLoggedinReport: true), title: "Went on a walk", loggedIn: Binding.constant(true), isSheetVisible: true, selection: "Physical Well-Being", dateString: Date.now.datetoString()!)
         .environmentObject(generalViewModel)
         .environmentObject(symptomViewModel)
         .environmentObject(eventsViewModel)

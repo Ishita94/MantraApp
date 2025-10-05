@@ -94,6 +94,17 @@ struct EventDataService {
         return eventsofUser
     }
     
+    func updateReportedStatusinEvent(eventId: String) async{
+        // Get reference to database
+        let db = Firestore.firestore()
+        do{
+            let eventRef = db.collection("events").document(eventId)
+            try await eventRef.updateData(["isLoggedinReport": true])
+        } catch {
+            print("❌ Error updating event isReported field: \(error.localizedDescription)")
+        }
+    }
+    
     func setEventReport(events: [EventReport]) async{
         // Get reference to database
         let db = Firestore.firestore()
@@ -108,8 +119,12 @@ struct EventDataService {
                 let eventRef = reportRef.collection("eventReport").document()
                 event.id = eventRef.documentID // store the auto-ID in the model if needed
                 try batch.setData(from: event, forDocument: eventRef)
+                if event.isFirstLoggedInstance{
+                    await updateReportedStatusinEvent(eventId: event.eventId)
+                }
             }
             try await batch.commit()
+            
         } catch {
             print("❌ Error adding events to a report: \(error.localizedDescription)")
         }
@@ -152,7 +167,8 @@ struct EventDataService {
                                     "title": event.title,
                                     "category": event.category,
                                     "tracking": false,
-                                    "userId" : event.userId])
+                                    "userId" : event.userId,
+                                    "isLoggedinReport" : event.isLoggedinReport])
         }
         catch {
             print("❌ Error adding events to a report: \(error.localizedDescription)")
