@@ -7,6 +7,15 @@
 
 import SwiftUI
 
+
+enum MenuOption: String, CaseIterable {
+    case allQuestionsAndNotes = "All Questions and Notes"
+    case faqs = "Cancer Education (FAQs)"
+    case reminders = "Reminders"
+    case tutorials = "Tutorial"
+    case settings = "Settings"
+}
+    
 struct MoreView: View {
     @Binding var loggedIn: Bool
 

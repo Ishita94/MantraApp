@@ -1074,6 +1074,7 @@
                   endingLineNumber = "58">
                </Location>
                <Location
+<<<<<<< Updated upstream
                   uuid = "3B1E4162-43B9-4F09-9F4E-A4276F165ADD - 300e158e86146e96"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
@@ -1103,6 +1104,9 @@
                </Location>
                <Location
                   uuid = "3B1E4162-43B9-4F09-9F4E-A4276F165ADD - a217a37bc302f380"
+=======
+                  uuid = "3B1E4162-43B9-4F09-9F4E-A4276F165ADD - a217a37bc302f3bf"
+>>>>>>> Stashed changes
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -1992,11 +1996,15 @@
                   endingLineNumber = "48">
                </Location>
                <Location
+<<<<<<< Updated upstream
                   uuid = "40268AF7-5BCE-48B9-9DF9-4624A98A0176 - bdda2987b1d5d4a0"
+=======
+                  uuid = "40268AF7-5BCE-48B9-9DF9-4624A98A0176 - cc7c1a4311a2f8f8"
+>>>>>>> Stashed changes
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "(2) await resume partial function for closure #1 () async -&gt; () in closure #1 @Swift.MainActor () -&gt; () in DatabaseProject.EventsViewModel.saveEventReport(events: Swift.Array&lt;DatabaseProject.EventReport&gt;) -&gt; ()"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in DatabaseProject.EventsViewModel.saveEventReport(events: Swift.Array&lt;DatabaseProject.EventReport&gt;) -&gt; ()"
                   moduleName = "DatabaseProject.debug.dylib"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ishitahaque/Documents/Resources%20from%20Lenovo%20Laptop/UBC%20Nursing%20App%20Development/CodeWithChris%20Projects/DatabaseProject/DatabaseProject/ViewModel/EventsViewModel.swift"
@@ -2006,11 +2014,15 @@
                   endingLineNumber = "48">
                </Location>
                <Location
+<<<<<<< Updated upstream
                   uuid = "40268AF7-5BCE-48B9-9DF9-4624A98A0176 - 7a03fe19047610c2"
+=======
+                  uuid = "40268AF7-5BCE-48B9-9DF9-4624A98A0176 - 12eff3be3e13accc"
+>>>>>>> Stashed changes
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for closure #1 () async -&gt; () in closure #1 @Swift.MainActor () -&gt; () in DatabaseProject.EventsViewModel.saveEventReport(events: Swift.Array&lt;DatabaseProject.EventReport&gt;) -&gt; ()"
+                  symbolName = "closure #1 () async -&gt; () in closure #1 @Swift.MainActor () -&gt; () in DatabaseProject.EventsViewModel.saveEventReport(events: Swift.Array&lt;DatabaseProject.EventReport&gt;) -&gt; ()"
                   moduleName = "DatabaseProject.debug.dylib"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ishitahaque/Documents/Resources%20from%20Lenovo%20Laptop/UBC%20Nursing%20App%20Development/CodeWithChris%20Projects/DatabaseProject/DatabaseProject/ViewModel/EventsViewModel.swift"
@@ -2484,11 +2496,29 @@
                   endingLineNumber = "57">
                </Location>
                <Location
+<<<<<<< Updated upstream
                   uuid = "69CFFE5C-1CEC-47AE-A4E8-CE19ED97EE65 - a217a37bc302f3bf"
+=======
+                  uuid = "69CFFE5C-1CEC-47AE-A4E8-CE19ED97EE65 - 92ac6d0cd2422822"
+>>>>>>> Stashed changes
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "(5) suspend resume partial function for closure #1 () async -&gt; () in closure #1 @Swift.MainActor () -&gt; () in DatabaseProject.EventsViewModel.saveEvent(event: DatabaseProject.Event) -&gt; ()"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in DatabaseProject.EventsViewModel.saveEvent(event: DatabaseProject.Event) -&gt; ()"
+                  moduleName = "DatabaseProject.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ishitahaque/Documents/Resources%20from%20Lenovo%20Laptop/UBC%20Nursing%20App%20Development/CodeWithChris%20Projects/DatabaseProject/DatabaseProject/ViewModel/EventsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56">
+               </Location>
+               <Location
+                  uuid = "69CFFE5C-1CEC-47AE-A4E8-CE19ED97EE65 - 254534c16bc2781c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () async -&gt; () in closure #1 @Swift.MainActor () -&gt; () in DatabaseProject.EventsViewModel.saveEvent(event: DatabaseProject.Event) -&gt; ()"
                   moduleName = "DatabaseProject.debug.dylib"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ishitahaque/Documents/Resources%20from%20Lenovo%20Laptop/UBC%20Nursing%20App%20Development/CodeWithChris%20Projects/DatabaseProject/DatabaseProject/ViewModel/EventsViewModel.swift"
