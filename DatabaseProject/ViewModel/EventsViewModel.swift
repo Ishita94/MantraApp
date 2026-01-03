@@ -15,7 +15,7 @@ class EventsViewModel: ObservableObject {
 //    @Published var dictionaryofEvents: OrderedDictionary<String , [EventReport]> = [:]
     @Published var reportedEventsofUserbyDate = [EventReport]()
     private var eventDataService : EventDataService
-    
+    @Published var isLoadingEvents = false
     
     init(generalViewModel: GeneralViewModel) {
         self.eventDataService = EventDataService(generalViewModel: generalViewModel)
@@ -23,12 +23,11 @@ class EventsViewModel: ObservableObject {
     
     @Published var suggestedEvents: [Event] = []
     
-    func getEventsinReport(report: Report){
-        DispatchQueue.main.async {
-            Task{
-                self.reportedEvents = await self.eventDataService.getEventsinReport(report: report)
-            }
-        }
+    @MainActor
+    func getEventsinReport(report: Report) async {
+        isLoadingEvents = true
+        reportedEvents = await eventDataService.getEventsinReport(report: report)
+        isLoadingEvents = false
     }
     
     func getSuggestedEvents(){
@@ -64,20 +63,4 @@ class EventsViewModel: ObservableObject {
             }
         }
     }
-    
-//    func getEventsReportedonDate(date: Date){
-//        let formattedFromDate: Date? = prepareDatefromDate(date: date)
-//        let formattedToDate: Date? = prepareNextDate(date: formattedFromDate!)
-//        
-//        DispatchQueue.main.async {
-//            self.eventDataService.getReportedEventsbyDateRange(fromDate: formattedFromDate!, toDate: formattedToDate!) { events in
-//                
-//                // Update the UI in the main thread
-//                self.reportedEventsofUserbyDate = events
-//                
-//            }
-//            
-//        }
-//    }    
-   
 }

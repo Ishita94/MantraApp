@@ -15,6 +15,7 @@ struct LoginForm: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var errorMessage: String?
+    @State private var isPasswordVisible = false
     
     var body: some View {
         
@@ -24,7 +25,30 @@ struct LoginForm: View {
                 
                 Section {
                     TextField("Email", text: $email)
-                    SecureField("Password", text: $password)
+                        .keyboardType(.emailAddress)
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled()
+                    HStack {
+                        Group {
+                            if isPasswordVisible {
+                                TextField("Password", text: $password)
+                            } else {
+                                SecureField("Password", text: $password)
+                            }
+                        }
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled()
+                        
+                        Button {
+                            isPasswordVisible.toggle()
+                        } label: {
+                            Image(systemName: isPasswordVisible ? "eye.slash" : "eye")
+                                .foregroundColor(.secondary)
+                        }
+                        .accessibilityLabel(
+                            isPasswordVisible ? "Hide password" : "Show password"
+                        )
+                    }
                 }
                 
                 if errorMessage != nil {
@@ -51,25 +75,53 @@ struct LoginForm: View {
         
     }
     
-    func signIn() {
+    func mapAuthError(_ error: Error) -> LoginError {
+        let nsError = error as NSError
         
-        Auth.auth().signIn(withEmail: email, password: password) { result, error in
-            
-            DispatchQueue.main.async {
-                if error == nil {
-                    
-                    // Sign in successful
-                    
-                    // Dismiss this sheet
-                    formShowing = false
-                }
-                else {
-                    // If there's an issue with logging in
-                    errorMessage = error!.localizedDescription
-                }
-            }
+        guard let code = AuthErrorCode.Code(rawValue: nsError.code) else {
+            return .unknown
         }
         
+        switch code {
+        case .invalidEmail:
+            return .invalidEmail
+        case .wrongPassword, .invalidCredential, .internalError:
+            return .wrongPasswordorEmail
+        case .userNotFound:
+            return .userNotFound
+        case .networkError:
+            return .networkIssue
+        default:
+            return .unknown
+        }
+    }
+    
+    func signIn() {
+        print("Sign in button tapped")
+        print("Email: \(email)")
+        print("Password length: \(password.count)")
+        
+        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+            if let error = error {
+                let loginError = mapAuthError(error)
+                DispatchQueue.main.async {
+                    errorMessage = loginError.localizedDescription
+                }
+                return
+            }
+            if let user = result?.user {
+                DispatchQueue.main.async {
+                    formShowing = false
+                }
+            }
+            else
+            {
+                DispatchQueue.main.async {
+                    errorMessage = "Sign in failed."
+                }
+                return
+            }
+        }
     }
 }
 

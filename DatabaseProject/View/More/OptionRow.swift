@@ -49,7 +49,7 @@ struct OptionRow: View {
                     case .faqs:
                         FAQsLandingPage()
                     case .reminders:
-                        RemindersLandingPage()
+                        RemindersLandingPage(loggedIn: $loggedIn)
                     case .tutorials:
                         QuestionsandNotesList()
                     case .settings:
