@@ -17,7 +17,6 @@ struct ReportedSymptomListRow: View {
     
     var body: some View {
         NavigationStack (){
-            
             ZStack{
                 RoundedRectangle(cornerRadius: 16)
                     .fill(Color(.primary0))
@@ -28,16 +27,17 @@ struct ReportedSymptomListRow: View {
                             Text(item.symptomName )
                                 .font(.symptomTitleinReportingPage)
                                 .foregroundColor(Color(.primary0TTextOn0))
-                            //TODO: TBD
-                            //                            Text(item.recentStatus)
-                            //                                .padding(.horizontal, 8)
-                            //                                .padding(.vertical, 4)
-                            //                                .background(Color(.warning1))
-                            //                                .foregroundStyle(Color(.white))
-                            //                                .font(.symptomSmallTitleinReportedSymptomsPage)
-                            //                                .cornerRadius(6)
-                            //                                .frame(minHeight: 27)
-                            
+                            if !item.recentStatus.isEmpty //TODO: change it to boolean if time permits
+                            {
+                                Text(item.recentStatus)
+                                    .padding(.horizontal, 8)
+                                    .padding(.vertical, 4)
+                                    .background(Color(.warning1))
+                                    .foregroundStyle(Color(.white))
+                                    .font(.symptomSmallTitleinReportedSymptomsPage)
+                                    .cornerRadius(6)
+                                    .frame(minHeight: 27)
+                            }
                         }
                         Text("Severity Rating \(item.rating) /10")
                             .padding(.horizontal, 8)
@@ -70,15 +70,7 @@ struct ReportedSymptomListRow: View {
                     }
                 }
                 .padding()
-                
-                //                    Button(action: {
-                //                        readyToNavigate=true
-                //                    }) {
-                //                        Image("ic-edit")
-                //
-                //                    }
             }
-
             .sheet(isPresented: $isSheetVisible){
                 if(item.symptomComparisonState.isEmpty == false) //symptom has been compared
                 {
@@ -89,21 +81,9 @@ struct ReportedSymptomListRow: View {
                     SetSymptomView(item: Symptom(id: item.id, symptomName: item.symptomName, rating: item.rating, status: "New", creationDateTime: item.creationDateTime, lastModifiedDateTime: item.lastModifiedDateTime, tracking: true, userId: item.userId), loggedIn: $loggedIn)
                 }
             }
-            //                .navigationDestination(isPresented: $readyToNavigate) {
-            //                    if(item.symptomComparisonState.isEmpty == false) //symptom has been compared
-            //                    {
-            //                        ChooseSymptomComparisonView(isSheetVisible: Binding.constant(true), symptomComparisonState: item.symptomComparisonState, item: item, loggedIn: $loggedIn, dateString: dateString, edit: true, selectedSegment: item.rating)
-            //                    }
-            //                    else
-            //                    {
-            //                        SetSymptomView(item: Symptom(id: item.id, symptomName: item.symptomName, rating: item.rating, status: "New", creationDateTime: item.creationDateTime, lastModifiedDateTime: item.lastModifiedDateTime, tracking: true, userId: item.userId), loggedIn: $loggedIn)
-            //                    }
-            
-//        }
-//    }
-}
-}
-
+        }
+    }
+    
 }
 
 #Preview {

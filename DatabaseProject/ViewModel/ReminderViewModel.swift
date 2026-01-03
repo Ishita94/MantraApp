@@ -5,14 +5,27 @@
 //  Created by Ishita Haque on 2025-10-06.
 //
 
-import SwiftUI
+import Foundation
+import Combine
+import OrderedCollections
 
-struct ReminderViewModel: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+class ReminderViewModel: ObservableObject {
+    private var reminderDataService : ReminderDataService
+    @Published var reminders = [Reminder]()
+    @Published var isLoading = false
+
+    init(generalViewModel: GeneralViewModel) {
+        self.reminderDataService = ReminderDataService(generalViewModel: generalViewModel)
     }
-}
-
-#Preview {
-    ReminderViewModel()
+    
+    @MainActor
+    func getAllReminders(){
+        DispatchQueue.main.async {
+            Task{
+                self.isLoading = true
+                self.reminders = await self.reminderDataService.getAllReminders()
+                self.isLoading = false
+            }
+        }
+    }
 }

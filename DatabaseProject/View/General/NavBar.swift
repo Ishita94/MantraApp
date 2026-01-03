@@ -28,11 +28,12 @@ struct NavBar: View {
             VStack (alignment: .leading, spacing: 4) {
                 Text(titleText)
                     .foregroundColor(Color(.blackMediumEmphasis))
-                    .font(.regularText)
-                
-                Text(computedSubtitleText)
-                    .foregroundColor(Color(.black))
-                    .font(.sectionTitleinSymptomsPage)
+                    .font(computedSubtitleText.isEmpty ? .editReportNavBarTitle : .regularText)
+                if !computedSubtitleText.isEmpty {
+                    Text(computedSubtitleText)
+                        .foregroundColor(Color(.black))
+                        .font(.sectionTitleinSymptomsPage)
+                }
             }
             Spacer()
             HStack{
