@@ -38,7 +38,7 @@ struct ReportCompletionView: View {
                 
                 (Text("""
         You have completed entering your health report for today! You can view your report from the
- """ ) +  Text(" Reporting").bold() + Text(" page."))
+        """ ) +  Text(" Reporting").bold() + Text(" page."))
                 .multilineTextAlignment(.center)
                     
                 

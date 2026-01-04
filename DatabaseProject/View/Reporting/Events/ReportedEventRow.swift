@@ -12,6 +12,7 @@ struct ReportedEventRow: View {
     @Binding var loggedIn: Bool
     @State var readyToNavigate: Bool = false
     @EnvironmentObject var generalViewModel : GeneralViewModel
+    @EnvironmentObject var eventsViewModel : EventsViewModel
     @State var dateString: String
 
     var body: some View {
@@ -47,9 +48,15 @@ struct ReportedEventRow: View {
                 }
                 .padding()
             }
-            .sheet(isPresented: $readyToNavigate){
-                SetEventView(item: item,  title: item.title,  loggedIn: $loggedIn, isSheetVisible: true, selection: item.category, dateString: dateString)
+            .sheet(isPresented: $readyToNavigate, onDismiss: {
+                Task {
+                    await eventsViewModel.getEventsinReport(report: generalViewModel.selectedReport)
+                }
+            }) {
+                SetEventView(item: item, title: item.title, loggedIn: $loggedIn, isSheetVisible: true, selection: item.category, dateString: dateString)
+                    .presentationDetents([.fraction(0.6), .large])
             }
+        
 //            .navigationDestination(isPresented: $readyToNavigate) {
 //                
 //                SetEventView(item: item,  title: item.title,  loggedIn: $loggedIn, isSheetVisible: true, selection: item.category, dateString: dateString)

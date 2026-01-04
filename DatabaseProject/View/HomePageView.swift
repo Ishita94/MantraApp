@@ -35,12 +35,14 @@ struct HomePageView_Previews: PreviewProvider {
         let symptomViewModel = SymptomViewModel(generalViewModel: generalViewModel)  // Injected
         let eventsViewModel = EventsViewModel(generalViewModel: generalViewModel)  // Injected
         let reportingViewModel = ReportingViewModel(generalViewModel: generalViewModel)  // Injected
-        
+        let reminderViewModel = ReminderViewModel(generalViewModel: generalViewModel)  // Injected
+
         HomePageView(loggedIn: Binding.constant(true))
             .environmentObject(generalViewModel)
             .environmentObject(symptomViewModel)
             .environmentObject(eventsViewModel)
             .environmentObject(reportingViewModel)
+            .environmentObject(reminderViewModel)
             .padding()
     }
 }

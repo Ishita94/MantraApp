@@ -137,7 +137,6 @@ struct SetEventView: View {
                     SuggestedEventsView(isSheetVisible: $isSheetVisible, loggedIn: $loggedIn, dateString: dateString, creationDateTime: item.creationDateTime)
                 }
             }
-            .presentationDetents([.fraction(0.6), .large])
         }
     }
 }

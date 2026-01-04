@@ -8,47 +8,51 @@
 import SwiftUI
 
 struct AddorEditEventsLandingPage: View {
-    @EnvironmentObject var eventViewModel : EventsViewModel
-    @EnvironmentObject var generalViewModel : GeneralViewModel
-    @State var dateString: String
-    
-    @Binding var loggedIn: Bool
-    
-    var body: some View {
-        VStack{
-            NavBar(loggedIn: $loggedIn, titleText: "Report your day", subtitleText: generalViewModel.dateStringofCurrentReport)
-            Divider()
-            SecondaryNavBar()
-                .environmentObject(generalViewModel)
-            Divider()
-            //            ScrollView{
-            
-            if (eventViewModel.suggestedEvents.count>0 || eventViewModel.reportedEvents.count>0)
-            {
-                AddorEditEventButtonPanel(loggedIn: $loggedIn, dateString: dateString, creationDateTime: stringtoDate(dateString: dateString) ?? Date.now)
+        @EnvironmentObject var eventViewModel : EventsViewModel
+        @EnvironmentObject var generalViewModel : GeneralViewModel
+        @State var dateString: String
+        
+        @Binding var loggedIn: Bool
+        
+        var body: some View {
+            VStack{
+                NavBar(loggedIn: $loggedIn, titleText: "Report your day", subtitleText: generalViewModel.dateStringofCurrentReport)
                 Divider()
-                ReportedEventsView(loggedIn: $loggedIn
-                                     , dateString: dateString)
+                SecondaryNavBar()
+                    .environmentObject(generalViewModel)
+                Divider()
                 
-                Spacer()
+                if eventViewModel.isLoadingEvents {
+                    ProgressView("Loading...")  // Show loading indicator
+                        .progressViewStyle(CircularProgressViewStyle(tint: .primary4))  // Change color
+                        .scaleEffect(1.25)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                }
+                else if (eventViewModel.reportedEvents.count>0)
+                {
+                    AddorEditEventButtonPanel(loggedIn: $loggedIn, dateString: dateString, creationDateTime: stringtoDate(dateString: dateString) ?? Date.now)
+                    Divider()
+                    ReportedEventsView(loggedIn: $loggedIn
+                                       , dateString: dateString)
+                    
+                    Spacer()
+                }
+                else
+                {
+                    AddorEditEventsContentPage(loggedIn: $loggedIn, dateString: dateString, creationDateTime: stringtoDate(dateString: dateString) ?? Date.now)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    
+                }
+                Divider()
+                BackandNextButtonPanel(loggedIn: $loggedIn, dateString: dateString)
             }
-            else
-            {
-                AddorEditEventsContentPage(loggedIn: $loggedIn, dateString: dateString, creationDateTime: stringtoDate(dateString: dateString) ?? Date.now)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-
+            .task {
+                await eventViewModel.getEventsinReport(report: generalViewModel.selectedReport)
             }
-            Divider()
-            BackandNextButtonPanel(loggedIn: $loggedIn, dateString: dateString)
+            .padding()
         }
-        .onAppear {
-            // Call for the data
-            eventViewModel.getEventsinReport(report: generalViewModel.selectedReport)
-        }
-        .padding()
-//        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
-}
+
 
 #Preview {
     let generalViewModel = GeneralViewModel()

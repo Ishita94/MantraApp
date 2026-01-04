@@ -31,7 +31,7 @@ struct SuggestedEventsView: View {
                     .font(.titleinRowItem)
                     Divider()
                     Text("""
-                Select Add a new event to add a new event to the list.
+                Select the button below to add a new event to the list.
                 """)
                     .foregroundColor(Color(.black))
                     .font(.regularText)
@@ -111,7 +111,6 @@ struct SuggestedEventsView: View {
                 }
                 .padding()
                 .cornerRadius(30)
-                .presentationDetents([.fraction(0.8), .large])
             }
             .navigationDestination(isPresented: $readyToNavigate) {
                 AddorEditEventsLandingPage(dateString: dateString, loggedIn: $loggedIn)
@@ -119,6 +118,7 @@ struct SuggestedEventsView: View {
             .navigationDestination(isPresented: $readyToCreateNewEvent) {
                 //create new event
                 SetEventView(item: Event(title: "", category: "", creationDateTime: creationDateTime, lastModifiedDateTime: Date.now, userId: AuthViewModel.getLoggedInUserId(), tracking: false), title: "", loggedIn: $loggedIn, isSheetVisible: isSheetVisible, selection: "Physical Well-Being", dateString: dateString)
+                    .presentationDetents([.fraction(0.6), .large])
             }
         }
         .onAppear()

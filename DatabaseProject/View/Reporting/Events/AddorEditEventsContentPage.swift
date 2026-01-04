@@ -15,7 +15,7 @@ struct AddorEditEventsContentPage: View {
     @State var creationDateTime: Date
 
     var body: some View {
-        NavigationStack{
+//        NavigationStack{
             VStack (){
                 Text("""
                 What events today might have affected your symptoms?
@@ -51,7 +51,9 @@ struct AddorEditEventsContentPage: View {
                 .cornerRadius(10)
             }
             .sheet(isPresented: $isSheetVisible){
-                SuggestedEventsView(isSheetVisible: $isSheetVisible, loggedIn: $loggedIn, dateString: dateString, creationDateTime: creationDateTime) /*.frame(maxWidth: .infinity, maxHeight: 680)*/
+                SuggestedEventsView(isSheetVisible: $isSheetVisible, loggedIn: $loggedIn, dateString: dateString, creationDateTime: creationDateTime)
+                    .presentationDetents([.fraction(0.8), .large])
+
             }
             
         }
@@ -60,7 +62,7 @@ struct AddorEditEventsContentPage: View {
 //                EmptyView()
 //            }
 //        )
-    }
+    //}
 }
 
 #Preview {
