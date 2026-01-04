@@ -19,15 +19,17 @@ struct CreateForm: View {
     
     @State private var errorMessage: String?
     @EnvironmentObject var eventViewModel : EventsViewModel
-
+    
     var body: some View {
         
         NavigationView {
-            
             Form {
                 
                 Section {
                     TextField("Email", text: $email)
+                        .keyboardType(.emailAddress)
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled()
                     TextField("Name", text: $name)
                     SecureField("Password", text: $password)
                 }
@@ -57,48 +59,67 @@ struct CreateForm: View {
     }
     
     func createAccount() {
+        try? Auth.auth().signOut()
+        
+        print("Current user after signout:", Auth.auth().currentUser?.uid ?? "nil")
+
+        
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             
             DispatchQueue.main.async {
-                if error == nil {
+                if let error = error {
+                    errorMessage = error.localizedDescription
+                    return
+                }
+                // Save the first name
+                if let user = result?.user {
+                    print("Created user UID:", user.uid)
+
+                    // CHECK PROVIDERS HERE
+                            let providers = user.providerData.map { $0.providerID }
+                            print("Providers after create:", providers)
+
+                            if providers.contains("phone") {
+                                print("ERROR: Phone provider should not be present")
+                            }
+
+                            if providers.contains("password") {
+                                print("✅ Email/password user created correctly")
+                            }
                     
-                    // Save the first name
-                    saveFirstName()
-                    
+                    saveFirstName(for : user)
                     // Dismiss the form
                     formShowing = false
                 }
-                else {
-                    errorMessage = error!.localizedDescription
+                else{
+                    errorMessage = "User creation failed."
+                    return
                 }
             }
+        }
+        
+    }
+    
+    func saveFirstName(for user: User) {
+        let cleansedFirstName = name.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        let db = Firestore.firestore()
+        let path = db.collection("users").document(user.uid)
+        path.setData(["name":cleansedFirstName, "createDate": Date.now]) { error in
             
+            //                if error == nil {
+            //                    // Saved
+            //                    for event in eventViewModel.definedEventList{
+            //                        eventViewModel.saveEvent(event: event)
+            //                    }
+            //                }
+            //                else {
+            //                    // Error
+            //                }
         }
     }
     
-    func saveFirstName() {
-        
-        if let currentUser = Auth.auth().currentUser {
-        
-            let cleansedFirstName = name.trimmingCharacters(in: .whitespacesAndNewlines)
-                
-            let db = Firestore.firestore()
-            let path = db.collection("users").document(currentUser.uid)
-            path.setData(["name":cleansedFirstName, "createDate": Date.now]) { error in
-                
-//                if error == nil {
-//                    // Saved
-//                    for event in eventViewModel.definedEventList{
-//                        eventViewModel.saveEvent(event: event)
-//                    }
-//                }
-//                else {
-//                    // Error
-//                }
-            }
-        }
-        
-    }
+    //}
 }
 
 struct CreateForm_Previews: PreviewProvider {

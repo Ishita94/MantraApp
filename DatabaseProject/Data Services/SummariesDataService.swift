@@ -81,47 +81,4 @@ class SummariesDataService {
             print("❌ Error fetching reports: \(error.localizedDescription)")
         }
     }
-    
-//
-//    func getReportsinDateRange(fromDate: Date, toDate: Date, completion: @escaping ([Report]) -> Void) {
-//        // Get a reference to the database
-//        let db = Firestore.firestore()
-//        
-//        let fdate = Timestamp(date: fromDate!)
-//        let tdate = Timestamp(date: toDate!)
-//        var reportsofUserQuery = db.collection("eventReports")
-//            .whereField("userId", isEqualTo: AuthViewModel.getLoggedInUserId())
-//            .whereField("creationDateTime", isGreaterThanOrEqualTo: fdate)
-//            .whereField("creationDateTime", isLessThan: tdate)
-//            .order(by: "creationDateTime", descending: true)
-//        
-//        if(fromDate==nil) { //for getting all events before a date
-//            reportsofUserQuery = db.collection("eventReports")
-//                .whereField("userId", isEqualTo: AuthViewModel.getLoggedInUserId())
-//                .whereField("creationDateTime", isLessThan: Timestamp(date: toDate!))
-//        }
-//        
-//        reportsofUserQuery.getDocuments { snapshot, error in
-//            
-//            if snapshot != nil && error == nil {
-//                
-//                var events = [EventReport]()
-//                
-//                for doc in snapshot!.documents {
-//                    let event = try? doc.data(as: EventReport.self)
-//                    
-//                    if let event = event {
-//                        events.append(event)
-//                    }
-//                }
-//                
-//                // Return the data
-//                completion(events)
-//            }
-//            else {
-//                print("Error in database retrieval")
-//            }
-//        }
-//    }
-//    
 }

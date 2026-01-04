@@ -7,9 +7,8 @@
 
 import SwiftUI
 import FirebaseCore
-import FirebaseFirestore
 import FirebaseAppCheck
-
+import FirebaseFirestore
 
 @main
 struct DatabaseProjectApp: App {
@@ -18,7 +17,7 @@ struct DatabaseProjectApp: App {
     @StateObject var eventViewModel : EventsViewModel
     @StateObject var reportingViewModel : ReportingViewModel
     @StateObject var summariesViewModel : SummariesViewModel
-
+    @StateObject var reminderViewModel : ReminderViewModel
 
     private func registerCustomFonts() {
         let fonts = Bundle.main.urls(forResourcesWithExtension: "ttf", subdirectory: nil)
@@ -33,6 +32,7 @@ struct DatabaseProjectApp: App {
                 _eventViewModel = StateObject(wrappedValue: EventsViewModel(generalViewModel: generalViewModel))
                 _reportingViewModel = StateObject(wrappedValue: ReportingViewModel(generalViewModel: generalViewModel))
                 _summariesViewModel = StateObject(wrappedValue: SummariesViewModel(generalViewModel: generalViewModel))
+                _reminderViewModel = StateObject(wrappedValue: ReminderViewModel(generalViewModel: generalViewModel))
 
         registerCustomFonts()
         let providerFactory = AppCheckDebugProviderFactory()
@@ -48,6 +48,7 @@ struct DatabaseProjectApp: App {
                 .environmentObject(eventViewModel)
                 .environmentObject(reportingViewModel)
                 .environmentObject(summariesViewModel)
+                .environmentObject(reminderViewModel)
         }
     }
 }
