@@ -2019,6 +2019,20 @@
                   startingLineNumber = "48"
                   endingLineNumber = "48">
                </Location>
+               <Location
+                  uuid = "40268AF7-5BCE-48B9-9DF9-4624A98A0176 - 7a03fe1904760f23"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 () async -&gt; () in closure #1 @Swift.MainActor () -&gt; () in DatabaseProject.EventsViewModel.saveEventReport(events: Swift.Array&lt;DatabaseProject.EventReport&gt;) -&gt; ()"
+                  moduleName = "DatabaseProject.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ishitahaque/Documents/Resources%20from%20Lenovo%20Laptop/UBC%20Nursing%20App%20Development/CodeWithChris%20Projects/DatabaseProject/DatabaseProject/ViewModel/EventsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -2496,6 +2510,34 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "57"
                   endingLineNumber = "57">
+               </Location>
+               <Location
+                  uuid = "69CFFE5C-1CEC-47AE-A4E8-CE19ED97EE65 - 300e158e86146ea9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) await resume partial function for closure #1 () async -&gt; () in closure #1 @Swift.MainActor () -&gt; () in DatabaseProject.EventsViewModel.saveEvent(event: DatabaseProject.Event) -&gt; ()"
+                  moduleName = "DatabaseProject.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ishitahaque/Documents/Resources%20from%20Lenovo%20Laptop/UBC%20Nursing%20App%20Development/CodeWithChris%20Projects/DatabaseProject/DatabaseProject/ViewModel/EventsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57">
+               </Location>
+               <Location
+                  uuid = "69CFFE5C-1CEC-47AE-A4E8-CE19ED97EE65 - a217a37bc302f25e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for closure #1 () async -&gt; () in closure #1 @Swift.MainActor () -&gt; () in DatabaseProject.EventsViewModel.saveEvent(event: DatabaseProject.Event) -&gt; ()"
+                  moduleName = "DatabaseProject.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ishitahaque/Documents/Resources%20from%20Lenovo%20Laptop/UBC%20Nursing%20App%20Development/CodeWithChris%20Projects/DatabaseProject/DatabaseProject/ViewModel/EventsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56">
                </Location>
             </Locations>
          </BreakpointContent>
